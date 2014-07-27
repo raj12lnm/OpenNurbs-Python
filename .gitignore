@@ -1,0 +1,10 @@
+build
+build_opennurbs_xcode.xcworkspace
+example_brep
+example_gl
+example_read
+example_roundtrip
+example_userdata
+example_write
+openNURBS
+.idea
