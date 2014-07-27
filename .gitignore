@@ -8,3 +8,5 @@ example_userdata
 example_write
 openNURBS
 .idea
+*.pyc
+
