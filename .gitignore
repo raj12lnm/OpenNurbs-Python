@@ -1,5 +1,6 @@
-build
 build_opennurbs_xcode.xcworkspace
+build/lib.*
+build/temp.*
 example_brep
 example_gl
 example_read
@@ -9,4 +10,4 @@ example_write
 openNURBS
 .idea
 *.pyc
-
+src
