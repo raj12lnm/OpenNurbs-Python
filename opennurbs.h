@@ -10,7 +10,7 @@
 // THIS SOFTWARE IS PROVIDED "AS IS" WITHOUT EXPRESS OR IMPLIED WARRANTY.
 // ALL IMPLIED WARRANTIES OF FITNESS FOR ANY PARTICULAR PURPOSE AND OF
 // MERCHANTABILITY ARE HEREBY DISCLAIMED.
-//
+//				
 // For complete openNURBS copyright information see <http://www.opennurbs.org>.
 //
 ////////////////////////////////////////////////////////////////
@@ -59,7 +59,7 @@
 
 #if _MSC_VER >= 1300
 #define ON_COMPILER_MSC1300
-// If you are using VC7/.NET and are having trouble linking
+// If you are using VC7/.NET and are having trouble linking 
 // to functions that have whcar_t types in arguments, then
 // read the documentation about the wchar_t type and
 // the /Zc:wchar_t compiler option.
@@ -144,7 +144,7 @@
 /*
 /////////////////////////////////////////////////////////////////////////
 //
-// Begin Windows system includes -
+// Begin Windows system includes - 
 */
 #if defined(_WIN32) || defined(WIN32) || defined(_WIN64) || defined(WIN64)
 
@@ -167,7 +167,7 @@
 /*
 // From windows.h openNURBS only needs definitions of ON_BOOL32, true,
 // and false, and a declarations of OutputDebugString(), and
-// WideCharToMultiByte().  These
+// WideCharToMultiByte().  These 
 // defines disable the inclusion of most of the Windows garbage.
 */
 
@@ -209,10 +209,10 @@
 #endif
 
 #if defined(_MSC_VER)
-/*
+/* 
   Microsoft's Visual C/C++ requires some functions, including those that
-  use vargs to be declared with __cdecl
-  Since this code must also compile with non-Micorosoft compilers,
+  use vargs to be declared with __cdecl 
+  Since this code must also compile with non-Micorosoft compilers, 
   the ON_MSC_CDECL macro is used to insert __cdecl when needed.
 */
 #define ON_MSC_CDECL __cdecl
@@ -331,7 +331,7 @@ extern "C" {
 #endif
 
 #if !defined(_WCHAR_T_DEFINED)
-// If you are using VC7/.NET and are having trouble linking
+// If you are using VC7/.NET and are having trouble linking 
 // to functions that have whcar_t types in arguments, then
 // read the documentation about the wchar_t type and
 // the /Zc:wchar_t compiler option.
@@ -353,10 +353,10 @@ typedef ON__UINT16 wchar_t;
 
 // As 64 bit compilers become more common, the definitions
 // of the next 6 typedefs may need to vary with compiler.
-// As much as possible, the size of runtime types is left
-// up to the compiler so performance and ease of use can
-// be maximized.  In the rare cases where it is critical
-// to use an integer that is exactly 16 bits, 32 bits
+// As much as possible, the size of runtime types is left 
+// up to the compiler so performance and ease of use can 
+// be maximized.  In the rare cases where it is critical 
+// to use an integer that is exactly 16 bits, 32 bits 
 // or 64 bits, the ON__INT16, ON__INT32, and ON__INT64
 // typedefs are used.
 
@@ -461,7 +461,7 @@ typedef unsigned int ON__UINT_PTR;
 
 
 
-// In some functions, performance is slightly increased
+// In some functions, performance is slightly increased 
 // when the endianess of the CPU is known at compile time.
 // If the endianness is not known, it is quickly detected
 // at runtime and all opennurbs code still works.
@@ -1052,7 +1052,7 @@ int on_vsnwprintf( wchar_t *buffer, size_t count, const wchar_t *format, va_list
 // THIS SOFTWARE IS PROVIDED "AS IS" WITHOUT EXPRESS OR IMPLIED WARRANTY.
 // ALL IMPLIED WARRANTIES OF FITNESS FOR ANY PARTICULAR PURPOSE AND OF
 // MERCHANTABILITY ARE HEREBY DISCLAIMED.
-//
+//				
 // For complete openNURBS copyright information see <http://www.opennurbs.org>.
 //
 ////////////////////////////////////////////////////////////////
@@ -1083,7 +1083,7 @@ int on_vsnwprintf( wchar_t *buffer, size_t count, const wchar_t *format, va_list
 
 #define ON_EXTERNC
 #define ON_BEGIN_EXTERNC
-#define ON_END_EXTERNC
+#define ON_END_EXTERNC  
 
 #endif
 
@@ -1246,7 +1246,7 @@ int on_vsnwprintf( wchar_t *buffer, size_t count, const wchar_t *format, va_list
 
 /*
 // ON_UNSET_FLOAT is used to indicate a texture coordinate
-// value cannot be calculated or is not well defined.
+// value cannot be calculated or is not well defined.  
 // In hindsight, this value should have been ON_FLT_QNAN
 // because many calculation convert float texture coordinates
 // to doubles and the "unset"ness attribute is lost.
@@ -1275,13 +1275,13 @@ Remarks:
   is a QNaN (quiet nan) and the invalid operation excpetion
   flag is set.  If this exception is not masked, then the
   exception handler is invoked.
-
+ 
     double x, y;
     ON_DBL_SNAN(&x);
     y = x;     // y = QNAN and invalid op exception occurs
     z = sin(x) // z = QNAN and invalid op exception occurs
 
-  So, if you want to reliably initialize doubles to SNaNs,
+  So, if you want to reliably initialize doubles to SNaNs, 
   you must use memcpy() or some other method that does not
   use the Intel FPU.
 */
@@ -1295,19 +1295,19 @@ ON_END_EXTERNC
 
 /*
 // In cases where lazy evaluation of a color value is
-// performed, this value is used to indicate the value
+// performed, this value is used to indicate the value 
 // has not been computed.
 */
 #define ON_UNSET_COLOR 0xFFFFFFFF
 
 /*
-// In cases when an absolute "zero" tolerance
+// In cases when an absolute "zero" tolerance 
 // is required to compare model space coordinates,
 // ON_ZERO_TOLERANCE is used.  The value of
 // ON_ZERO_TOLERANCE should be no smaller than
-// ON_EPSILON and should be several orders of
+// ON_EPSILON and should be several orders of 
 // magnitude smaller than ON_SQRT_EPSILON
-//
+// 
 */
 //#define ON_ZERO_TOLERANCE 1.0e-12
 // ON_ZERO_TOLERANCE = 2^-32
@@ -1315,18 +1315,18 @@ ON_END_EXTERNC
 
 /*
 // In cases when an relative "zero" tolerance is
-// required for comparing model space coordinates,
+// required for comparing model space coordinates, 
 // (fabs(a)+fabs(b))*ON_RELATIVE_TOLERANCE is used.
 // ON_RELATIVE_TOLERANCE should be larger than
-// ON_EPSILON and smaller than no larger than
+// ON_EPSILON and smaller than no larger than 
 // ON_ZERO_TOLERANCE*2^-10.
-//
+// 
 */
 // ON_RELATIVE_TOLERANCE = 2^-42
 #define ON_RELATIVE_TOLERANCE 2.27373675443232059478759765625e-13
 
 /*
-// Bugs in geometry calculations involving world coordinates
+// Bugs in geometry calculations involving world coordinates 
 // values > ON_MAXIMUM_WORLD_COORDINATE_VALUE
 // will be a low priority.
 */
@@ -1335,7 +1335,7 @@ ON_END_EXTERNC
 
 /*
 // The default test for deciding if a curvature value should be
-// treated as zero is
+// treated as zero is 
 // length(curvature) <= ON_ZERO_CURVATURE_TOLERANCE.
 // ON_ZERO_CURVATURE_TOLERANCE must be set so that
 // ON_ZERO_CURVATURE_TOLERANCE >= sqrt(3)*ON_ZERO_TOLERANCE
@@ -1547,10 +1547,10 @@ public:
   //// unit_system ///////////////////////////////////////////////////////////////
   enum unit_system
   {
-    // The constant enum values are saved in 3dm files
+    // The constant enum values are saved in 3dm files 
     // and must never be changed.  The values > 11 were
     // added 5 April 2006.
-    no_unit_system =  0,
+    no_unit_system =  0, 
 
     // atomic distances
     angstroms      = 12,  // 1.0e-10 meters
@@ -1581,23 +1581,23 @@ public:
     printer_pica   = 21,  // 1/6 inches  (computer picas)
 
     // terrestrial distances
-    nautical_mile  = 22, // 1852 meters
+    nautical_mile  = 22, // 1852 meters 
                          //    Approximately 1 minute of arc on a terrestrial great circle.
                          //    See http://en.wikipedia.org/wiki/Nautical_mile.
 
     // astronomical distances
     astronomical   = 23, // 1.4959787e+11 // http://en.wikipedia.org/wiki/Astronomical_unit
-                         // 1.495979e+11  // http://units.nist.gov/Pubs/SP811/appenB9.htm
-                         //    An astronomical unit (au) is the mean distance from the
+                         // 1.495979e+11  // http://units.nist.gov/Pubs/SP811/appenB9.htm  
+                         //    An astronomical unit (au) is the mean distance from the 
                          //    center of the earth to the center of the sun.
     lightyears     = 24, // 9.4607304725808e+15 // http://en.wikipedia.org/wiki/Light_year
                          // 9.46073e+15 meters  // http://units.nist.gov/Pubs/SP811/appenB9.htm
                          //    A light year is the distance light travels in one Julian year.
                          //    The speed of light is exactly 299792458 meters/second.
-                         //    A Julian year is exactly 365.25 * 86400 seconds and is
+                         //    A Julian year is exactly 365.25 * 86400 seconds and is 
                          //    approximately the time it takes for one earth orbit.
     parsecs        = 25, // 3.08567758e+16  // http://en.wikipedia.org/wiki/Parsec
-                         // 3.085678e+16    // http://units.nist.gov/Pubs/SP811/appenB9.htm
+                         // 3.085678e+16    // http://units.nist.gov/Pubs/SP811/appenB9.htm  
 
     // Custom unit systems
     custom_unit_system = 11 // x meters with x defined in ON_3dmUnitsAndTolerances.m_custom_unit_scale
@@ -1610,16 +1610,16 @@ public:
     Scale factor for changing unit "standard" systems.
   Parameters:
     us_from - [in]
-    us_to - [in]
+    us_to - [in] 
   For example:
 
-          100.0 = ON::UnitScale( ON::meters, ON::centimeters )
-          2.54  = ON::UnitScale( ON::inches, ON::centimeters )
-          12.0  = ON::UnitScale( ON::feet,   ON::inches )
+          100.0 = ON::UnitScale( ON::meters, ON::centimeters ) 
+          2.54  = ON::UnitScale( ON::inches, ON::centimeters ) 
+          12.0  = ON::UnitScale( ON::feet,   ON::inches ) 
 
   Remarks:
     If you are using custom unit systems, use the version
-    that takes ON_UnitSystem or ON_3dmUnitsAndTolerances
+    that takes ON_UnitSystem or ON_3dmUnitsAndTolerances 
     parameters.
   */
   static double UnitScale(
@@ -1627,7 +1627,7 @@ public:
       ON::unit_system us_to
       );
   static double UnitScale(
-      const class ON_UnitSystem& us_from,
+      const class ON_UnitSystem& us_from, 
       const class ON_UnitSystem& us_to
       );
   static double UnitScale(
@@ -1635,11 +1635,11 @@ public:
       const class ON_UnitSystem& us_to
       );
   static double UnitScale(
-      const class ON_UnitSystem& us_from,
+      const class ON_UnitSystem& us_from, 
       ON::unit_system us_to
       );
   static double UnitScale(
-      const class ON_3dmUnitsAndTolerances& us_from,
+      const class ON_3dmUnitsAndTolerances& us_from, 
       const class ON_3dmUnitsAndTolerances& us_to
       );
 
@@ -1647,9 +1647,9 @@ public:
   /*
   Description:
     Returns the string " : ".  This is the string Rhino uses
-    to separate reference model names from the root name for
+    to separate reference model names from the root name for 
     things like layer, block definition, material, linetype,
-    dimstyle and font names.
+    dimstyle and font names.  
   See Also:
     ON::NameReferenceDelimiterLength()
     ON::IsNameReferenceDelimiter()
@@ -1668,7 +1668,7 @@ public:
 
   /*
   Description:
-    Test a string to see if its beginning matches the
+    Test a string to see if its beginning matches the 
     string returned by ON::NameReferenceDelimiter().
   Parameters:
     s - [in];
@@ -1691,7 +1691,7 @@ public:
   //// distance_display_mode ///////////////////////////////////
   enum distance_display_mode
   {
-    decimal     = 0,
+    decimal     = 0, 
     fractional  = 1,
     feet_inches = 2
   };
@@ -1700,7 +1700,7 @@ public:
 
 
   //// point_style ///////////////////////////////////////////////////////////////
-  enum point_style
+  enum point_style 
   {
     unknown_point_style   = 0,
     not_rational          = 1,
@@ -1732,7 +1732,7 @@ public:
     unknown_continuity = 0,
 
     // These test for parametric continuity.  In particular,
-    // all types of ON_Curves are considered infinitely
+    // all types of ON_Curves are considered infinitely 
     // continuous at the start/end of the evaluation domain.
     C0_continuous =  1, // continuous function
     C1_continuous =  2, // continuous first derivative
@@ -1745,11 +1745,11 @@ public:
     // Continuity tests using the following enum values
     // are identical to tests using the preceding enum values
     // on the INTERIOR of a curve's domain.  At the END of
-    // a curve a "locus" test is performed in place of a
+    // a curve a "locus" test is performed in place of a 
     // parametric test. In particular, at the END of a domain,
     // all open curves are locus discontinuous.  At the END of
     // a domain, all closed curves are at least C0_locus_continuous.
-    // By convention all ON_Curves are considered
+    // By convention all ON_Curves are considered 
     // locus continuous at the START of the evaluation domain.
     // This convention is not strictly correct, but is was
     // adopted to make iterative kink finding tools easier to
@@ -1782,14 +1782,14 @@ public:
   /*
   Description:
     Convert int to ON::continuity enum value and
-    convert the higher order flavored values to
+    convert the higher order flavored values to 
     the corresponding C1 or G1 values needed to
     test piecewise linear curves.
   */
   static continuity PolylineContinuity(int);
 
   //// curve_style ///////////////////////////////////////////////////////////////
-  enum curve_style
+  enum curve_style 
   {
     unknown_curve_style   =  0,
     line                  =  1,
@@ -1807,7 +1807,7 @@ public:
   static curve_style CurveStyle(int); // convert integer to curve_style enum
 
   //// surface_style ///////////////////////////////////////////////////////////////
-  enum surface_style
+  enum surface_style 
   {
     unknown_surface_style =  0,
     plane                 =  1,
@@ -1859,11 +1859,11 @@ public:
   //// view projections ///////////////////////////////////////////////////////////
 
   // The x/y/z_2pt_perspective_view projections are ordinary perspective
-  // projection. Using these values insures the ON_Viewport member
+  // projection. Using these values insures the ON_Viewport member 
   // fuctions properly constrain the camera up and camera direction vectors
   // to preserve the specified perspective vantage.
   enum view_projection
-  {
+  { 
     unknown_view       = 0,
     parallel_view      = 1,
     perspective_view   = 2
@@ -1900,21 +1900,21 @@ public:
 
   //// view coordinates ///////////////////////////////////////////////////////////
 
-  enum coordinate_system
+  enum coordinate_system 
   {
-    world_cs  = 0,
-    camera_cs = 1,
-    clip_cs   = 2,
-    screen_cs = 3
+    world_cs  = 0, 
+    camera_cs = 1, 
+    clip_cs   = 2, 
+    screen_cs = 3 
   };
 
   static coordinate_system CoordinateSystem(int); // convert integer to coordinate_system enum
 
   //// exception types ///////////////////////////////////////////////////////////
-	enum exception_type
+	enum exception_type 
   {
     unknown_exception = 0,
-		out_of_memory,
+		out_of_memory,  
     corrupt_object,               // invalid object encountered - continuing would crash or
                                   // result in corrupt object being saved in archive.
 		unable_to_write_archive,      // write operation failed - out of file space/read only mode/...?
@@ -1926,8 +1926,8 @@ public:
   static exception_type ExceptionType(int); // convert integer to exception_type enum
 
   //// layer mode ///////////////////////////////////////////////////////////
-  // OBSOLETE
-	enum layer_mode
+  // OBSOLETE 
+	enum layer_mode 
   {
     normal_layer       = 0, // visible, objects on layer can be selected and changed
     hidden_layer       = 1, // not visible, objects on layer cannot be selected or changed
@@ -1937,7 +1937,7 @@ public:
   static layer_mode LayerMode(int); // convert integer to layer_mode enum
 
   //// object mode ///////////////////////////////////////////////////////////
-	enum object_mode
+	enum object_mode 
   {
     normal_object    = 0, // object mode comes from layer
     hidden_object    = 1, // not visible, object cannot be selected or changed
@@ -1996,12 +1996,12 @@ public:
   {
     material_from_layer  = 0, // use material assigned to layer
     material_from_object = 1, // use material assigned to object
-    material_from_parent = 3  // for objects with parents, like
+    material_from_parent = 3  // for objects with parents, like 
                               // definition geometry in instance
                               // references and faces in polysurfaces,
                               // this value indicates the material
                               // definition should come from the parent.
-                              // If the object does not have an
+                              // If the object does not have an 
                               // obvious "parent", then treat
                               // it the same as material_from_layer.
   };
@@ -2018,7 +2018,7 @@ public:
     camera_point_light       = 5, //   +x points to right, +y points up, +z points towards camera
     camera_spot_light        = 6,
     world_directional_light  = 7, // light location and direction in world coordinates
-    world_point_light        = 8,
+    world_point_light        = 8, 
     world_spot_light         = 9,
     ambient_light            = 10, // pure ambient light
     world_linear_light       = 11,
@@ -2057,7 +2057,7 @@ public:
                                 // A page view must be orthographic,
                                 // the camera frame x,y,z direction must be
                                 // world x,y,z (which means the camera direction
-                                // is always (0,0,-1)).
+                                // is always (0,0,-1)).  
     nested_view_type = 2        // This view is a "model" view that is nested
                                 // in another view.  The nesting and parent
                                 // information is saved in ON_3dmView.
@@ -2067,16 +2067,16 @@ public:
 
   //// texture mapping mode ///////////////////////////////////////////////////
   //
-  // OBSOLETE
+  // OBSOLETE 
   enum texture_mode
   {
     no_texture = 0,        // texture disabled
     modulate_texture = 1,  // modulate with material diffuse color
     decal_texture = 2      // decal
   };
-  // OBSOLETE
+  // OBSOLETE 
   static texture_mode TextureMode(int); // convert integer to texture_mode enum
-  // OBSOLETE
+  // OBSOLETE 
   //
   /////////////////////////////////////////////////////////////////////////////
 
@@ -2119,7 +2119,7 @@ public:
     clipplane_object     = 0x20000000,
     beam_object          = 0x40000000, // obsolete - use extrusion_object
     extrusion_object     = 0x40000000, // some type of ON_Extrusion
-
+    
     any_object           = 0xFFFFFFFF
 
     // Please discuss any changes with Dale Lear
@@ -2157,8 +2157,8 @@ public:
   static mesh_type MeshType(int); // convert integer to mesh_type enum
 
 
-  // Types of object snapping.
-  // In situations where more than one type of snap applies,
+  // Types of object snapping.  
+  // In situations where more than one type of snap applies, 
   // snaps with higher value take precedence.
   // enum values must be a power of 2.
   // ON_ObjRef saves these values in files.  Do not change
@@ -2227,8 +2227,8 @@ public:
     If i does not correspond to a cubic_loft_end_condition
     enum value, then cubic_loft_ec_quadratic is returned.
   */
-  static
-  cubic_loft_end_condition CubicLoftEndCondition(int i);
+  static 
+  cubic_loft_end_condition CubicLoftEndCondition(int i); 
 
 private:
   // prohibit instantiaion
@@ -2304,11 +2304,11 @@ public:
   Parameters:
     i - [in] integer with value equal to one of the TYPE enums.
   Returns:
-    The TYPE enum with the same numeric value
+    The TYPE enum with the same numeric value 
     or ON_COMPONENT_INDEX::invalid_type if no corresponding enum
     exists.
   */
-  static
+  static 
   TYPE Type(int i);
 
   /*
@@ -2365,7 +2365,7 @@ public:
 
   /*
   Returns:
-    True if m_type is set to one of the
+    True if m_type is set to one of the 
     brep TYPE enum values and m_index >= 0.
   */
   bool IsBrepComponentIndex() const;
@@ -2505,11 +2505,11 @@ See Also:
   on_WideCharToMultiByte
   on_MultiByteToWideChar
   ON_wString::operator=(const char*)
-  ON_String::operator=(const wchar_t*)
+  ON_String::operator=(const wchar_t*)  
 */
 ON_DECL
-unsigned int ON_SetStringConversionWindowsCodePage(
-                unsigned int code_page
+unsigned int ON_SetStringConversionWindowsCodePage( 
+                unsigned int code_page 
                 );
 
 /*
@@ -2534,7 +2534,7 @@ See Also:
   on_WideCharToMultiByte
   on_MultiByteToWideChar
   ON_wString::operator=(const char*)
-  ON_String::operator=(const wchar_t*)
+  ON_String::operator=(const wchar_t*)  
 */
 ON_DECL
 unsigned int ON_GetStringConversionWindowsCodePage();
@@ -2558,8 +2558,8 @@ See Also:
   on_wcsicmp
 */
 ON_DECL
-unsigned int ON_SetStringConversionWindowsLocaleID(
-                unsigned int locale_id,
+unsigned int ON_SetStringConversionWindowsLocaleID( 
+                unsigned int locale_id, 
                 ON_BOOL32 bWin9X
                 );
 
@@ -2600,7 +2600,7 @@ wchar_t* on_wcsrev(wchar_t*);
 // and calls one of _stricmp(), stricmp(), or strcasecmp()
 // depending on OS.
 ON_DECL
-int on_stricmp(const char*, const char*);
+int on_stricmp(const char*, const char*); 
 
 // on_stricmp() is a wrapper for case insensitive string compare
 // and calls one of _strnicmp() or strncasecmp()
@@ -2652,7 +2652,7 @@ Parameters:
   path - [in]
     UTF-8 encoded string that is a legitimate path to a file.
   drive - [out] (pass null if you don't need the drive)
-    If drive is not null and the path parameter begins with
+    If drive is not null and the path parameter begins with 
     an A-Z or a-z followed by a colon ( : ) then the returned
     value of *drive will equal the input value of path.
   dir - [out] (pass null if you don't need the directory)
@@ -2704,7 +2704,7 @@ Parameters:
     UTF-8, UTF-16 or UTF-32 encoded wchar_t string that is a
     legitimate path to a file.
   drive - [out] (pass null if you don't need the drive)
-    If drive is not null and the path parameter begins with
+    If drive is not null and the path parameter begins with 
     an A-Z or a-z followed by a colon ( : ) then the returned
     value of *drive will equal the input value of path.
   dir - [out] (pass null if you don't need the directory)
@@ -2761,7 +2761,7 @@ ON_END_EXTERNC
 // THIS SOFTWARE IS PROVIDED "AS IS" WITHOUT EXPRESS OR IMPLIED WARRANTY.
 // ALL IMPLIED WARRANTIES OF FITNESS FOR ANY PARTICULAR PURPOSE AND OF
 // MERCHANTABILITY ARE HEREBY DISCLAIMED.
-//
+//				
 // For complete openNURBS copyright information see <http://www.opennurbs.org>.
 //
 ////////////////////////////////////////////////////////////////
@@ -2798,10 +2798,10 @@ ON_BEGIN_EXTERNC
 // that is appropriate for debugging your application.
 */
 ON_DECL
-void ON_ErrorMessage(
+void ON_ErrorMessage( 
        int,         /* 0 = warning message, 1 = serious error message, 2 = assert failure */
-       const char*
-       );
+       const char*  
+       ); 
 
 /*
 Returns:
@@ -2819,7 +2819,7 @@ int     ON_GetWarningCount(void);
 
 /*
 Returns:
-  Number of math library or floating point errors that have
+  Number of math library or floating point errors that have 
   been handled since program started.
 */
 ON_DECL
@@ -2879,7 +2879,7 @@ void    ON_AssertEx( int,        // if false, error is flagged
                   );
 
 ON_DECL
-void    ON_MathError(
+void    ON_MathError( 
         const char*, /* sModuleName */
         const char*, /* sErrorType */
         const char*  /* sFunctionName */
@@ -2898,7 +2898,7 @@ ON_END_EXTERNC
 // THIS SOFTWARE IS PROVIDED "AS IS" WITHOUT EXPRESS OR IMPLIED WARRANTY.
 // ALL IMPLIED WARRANTIES OF FITNESS FOR ANY PARTICULAR PURPOSE AND OF
 // MERCHANTABILITY ARE HEREBY DISCLAIMED.
-//
+//				
 // For complete openNURBS copyright information see <http://www.opennurbs.org>.
 //
 ////////////////////////////////////////////////////////////////
@@ -2960,20 +2960,20 @@ unsigned char* onmbsdup( const unsigned char* );
 
 ON_DECL
 size_t onmemoryusecount(
-          size_t* malloc_count,
-          size_t* realloc_count,
-          size_t* free_count,
-          size_t* pool_count
+          size_t* malloc_count, 
+          size_t* realloc_count, 
+          size_t* free_count, 
+          size_t* pool_count 
           );
 
 ON_DECL
 size_t onmemoryusecountex(
-          size_t* malloc_count,
-          size_t* realloc_count,
-          size_t* free_count,
+          size_t* malloc_count, 
+          size_t* realloc_count, 
+          size_t* free_count, 
           size_t* pool_count,
           size_t* malloc_zero_count,
-          size_t* free_null_count
+          size_t* free_null_count 
           );
 
 /* define to handle _TCHAR* ontcsdup( const _TCHAR* ) */
@@ -3000,7 +3000,7 @@ size_t onmemoryusecountex(
 // THIS SOFTWARE IS PROVIDED "AS IS" WITHOUT EXPRESS OR IMPLIED WARRANTY.
 // ALL IMPLIED WARRANTIES OF FITNESS FOR ANY PARTICULAR PURPOSE AND OF
 // MERCHANTABILITY ARE HEREBY DISCLAIMED.
-//
+//				
 // For complete openNURBS copyright information see <http://www.opennurbs.org>.
 //
 ////////////////////////////////////////////////////////////////
@@ -3049,7 +3049,7 @@ Parameters:
   rand_context - [in/out]
     random number context.  The first time rand_context is
     used it must be either initialized by calling on_random_number_seed()
-    or rand_context->mti must be set to 0xFFFFFFFF.  Otherwise do not
+    or rand_context->mti must be set to 0xFFFFFFFF.  Otherwise do not 
     modify randcontext between calls to on_random_number.
 Returns:
   A random number.
@@ -3160,7 +3160,7 @@ private:
 // THIS SOFTWARE IS PROVIDED "AS IS" WITHOUT EXPRESS OR IMPLIED WARRANTY.
 // ALL IMPLIED WARRANTIES OF FITNESS FOR ANY PARTICULAR PURPOSE AND OF
 // MERCHANTABILITY ARE HEREBY DISCLAIMED.
-//
+//				
 // For complete openNURBS copyright information see <http://www.opennurbs.org>.
 //
 ////////////////////////////////////////////////////////////////
@@ -3178,7 +3178,7 @@ Description:
 Parameters:
   current_remainder - [in]
   sizeof_buffer - [in]  number of bytes in buffer
-  buffer - [in]
+  buffer - [in] 
 
 Example:
   16 bit CRC calculations are typically done something like this:
@@ -3195,7 +3195,7 @@ Example:
 
           // make sure 16 bit CRC calculation is valid
           ON__UINT16 check_crc_calculation = ON_CRC16( first_crc, 2, &first_crc );
-          if ( check_crc_calculation != 0 )
+          if ( check_crc_calculation != 0 ) 
           {
              printf("ON_CRC16() calculated a bogus 16 bit CRC\n");
           }
@@ -3208,7 +3208,7 @@ Example:
           second_crc = ON_CRC16( second_crc, size1, buffer1 );
           ...
           second_crc = ON_CRC16( second_crc, sizeN, bufferN );
-          if ( 0 != ON_CRC16( second_crc, 2, &first_crc ) )
+          if ( 0 != ON_CRC16( second_crc, 2, &first_crc ) ) 
           {
             printf( "The value of at least one byte has changed.\n" );
           }
@@ -3227,15 +3227,15 @@ Description:
   ON_CRC32() is a slightly altered version of zlib 1.3.3's crc32()
   and the zlib "legal stuff" is reproduced below.
 
-  ON_CRC32() and zlib's crc32() compute the same values.  ON_CRC32()
-  was renamed so it wouldn't clash with the other crc32()'s that are
+  ON_CRC32() and zlib's crc32() compute the same values.  ON_CRC32() 
+  was renamed so it wouldn't clash with the other crc32()'s that are 
   out there and the argument order was switched to match that used by
   the legacy ON_CRC16().
 
 Parameters:
   current_remainder - [in]
   sizeof_buffer - [in]  number of bytes in buffer
-  buffer - [in]
+  buffer - [in] 
 
 Example:
   32 bit CRC calculations are typically done something like this:
@@ -3256,7 +3256,7 @@ Example:
           second_crc = ON_CRC32( second_crc, size1, buffer1 );
           ...
           second_crc = ON_CRC32( second_crc, sizeN, bufferN );
-          if ( second_crc != first_crc )
+          if ( second_crc != first_crc ) 
           {
             printf( "The value of at least one byte has changed.\n" );
           }
@@ -3312,7 +3312,7 @@ ON_END_EXTERNC
 // THIS SOFTWARE IS PROVIDED "AS IS" WITHOUT EXPRESS OR IMPLIED WARRANTY.
 // ALL IMPLIED WARRANTIES OF FITNESS FOR ANY PARTICULAR PURPOSE AND OF
 // MERCHANTABILITY ARE HEREBY DISCLAIMED.
-//
+//				
 // For complete openNURBS copyright information see <http://www.opennurbs.org>.
 //
 ////////////////////////////////////////////////////////////////
@@ -3338,7 +3338,7 @@ public:
   ON__UINT32     Data1;    // 32 bit unsigned integer
   ON__UINT16     Data2;    // 16 bit unsigned integer
   ON__UINT16     Data3;    // 16 bit unsigned integer
-  unsigned char  Data4[8];
+  unsigned char  Data4[8]; 
 
   bool operator==(const ON_UUID& other) const;
   bool operator!=(const ON_UUID& other) const;
@@ -3406,7 +3406,7 @@ Returns:
 Remarks:
   Only works on Windows.
 */
-ON_DECL
+ON_DECL 
 bool ON_CreateUuid( ON_UUID& uuid );
 
 /*
@@ -3423,25 +3423,25 @@ public:
   /*
   Dictionary compare m_id and then m_i.
   */
-  static
+  static 
   int CompareIdAndIndex( const ON_UuidIndex* a, const ON_UuidIndex* b );
 
   /*
   Dictionary compare m_id and then m_i.
   */
-  static
+  static 
   int CompareIndexAndId( const ON_UuidIndex* a, const ON_UuidIndex* b );
 
   /*
   Compare m_id and ignore m_i.
   */
-  static
+  static 
   int CompareId( const ON_UuidIndex* a, const ON_UuidIndex* b );
 
   /*
   Compare m_i and ignore m_id.
   */
-  static
+  static 
   int CompareIndex( const ON_UuidIndex* a, const ON_UuidIndex* b );
 
   // In cases when there is a discrepancy between the m_id and
@@ -3465,10 +3465,10 @@ Returns:
 Remarks:
   A NULL pointer is considered < a non-NULL pointer.
 */
-ON_DECL
-int ON_UuidCompare(
-        const ON_UUID* a,
-        const ON_UUID* b
+ON_DECL 
+int ON_UuidCompare( 
+        const ON_UUID* a, 
+        const ON_UUID* b 
         );
 
 /*
@@ -3483,9 +3483,9 @@ Returns:
    0    a == b
   +1    a > b
 */
-ON_DECL
-int ON_UuidCompare(
-        const ON_UUID& a,
+ON_DECL 
+int ON_UuidCompare( 
+        const ON_UUID& a, 
         const ON_UUID& b
         );
 
@@ -3498,8 +3498,8 @@ Returns:
   true if uuid is nil.
 */
 ON_DECL
-bool ON_UuidIsNil(
-        const ON_UUID& uuid
+bool ON_UuidIsNil( 
+        const ON_UUID& uuid 
         );
 
 /*
@@ -3511,14 +3511,14 @@ Returns:
   true if uuid is not nil (non zero)
 */
 ON_DECL
-bool ON_UuidIsNotNil(
-        const ON_UUID& uuid
+bool ON_UuidIsNotNil( 
+        const ON_UUID& uuid 
         );
 
 /*
 Description:
   Converts a string like
-    "{85A08515-f383-11d3-BFE7-0010830122F0}"
+    "{85A08515-f383-11d3-BFE7-0010830122F0}" 
   into a uuid.
   The brackets are optional and are ignored.
   Hyphens can appear anywhere or be missing.
@@ -3526,16 +3526,16 @@ Description:
 Parameters:
   s - [in]
 Returns:
-  uuid.
+  uuid.  
   If the string is not a uuid, then ON_nil_uuid is returnd.
 */
-ON_DECL
+ON_DECL 
 ON_UUID ON_UuidFromString( const char* s );
 
 /*
 Description:
   Converts a string like
-    "{85A08515-f383-11d3-BFE7-0010830122F0}"
+    "{85A08515-f383-11d3-BFE7-0010830122F0}" 
   into a uuid.
   The brackets are optional and are ignored.
   Hyphens can appear anywhere or be missing.
@@ -3543,71 +3543,71 @@ Description:
 Parameters:
   s - [in]
 Returns:
-  uuid.
+  uuid.  
   If the string is not a uuid, then ON_nil_uuid is returnd.
 */
-ON_DECL
+ON_DECL 
 ON_UUID ON_UuidFromString( const wchar_t* s );
 
 /*
 Description:
-  Converts a uuid to a null termintated ASCII string like
-     "85a08515-f383-11d3-bfe7-0010830122f0".
+  Converts a uuid to a null termintated ASCII string like 
+     "85a08515-f383-11d3-bfe7-0010830122f0". 
 Parameters:
   uuid - [in]
-  s - [out]  The s[] char array must have length >= 37.
-             The returned char array will have a 36
+  s - [out]  The s[] char array must have length >= 37.  
+             The returned char array will have a 36 
              character uuid in s[0..35] and a null in s[36].
 Returns:
   The pointer to the array is returned.
 */
-ON_DECL
+ON_DECL 
 char* ON_UuidToString( const ON_UUID& uuid, char* s );
 
 
 /*
 Description:
-  Converts a uuid to a null termintated UNICODE string like
-     "85a08515-f383-11d3-bfe7-0010830122f0".
+  Converts a uuid to a null termintated UNICODE string like 
+     "85a08515-f383-11d3-bfe7-0010830122f0". 
 Parameters:
   uuid - [in]
-  s - [out]  The s[] wchar_t array must have length >= 37.
-             The returned char array will have a 36
+  s - [out]  The s[] wchar_t array must have length >= 37.  
+             The returned char array will have a 36 
              character uuid in s[0..35] and a null in s[36].
 Returns:
   The pointer to the array is returned.
 */
-ON_DECL
+ON_DECL 
 wchar_t* ON_UuidToString( const ON_UUID& uuid, wchar_t* s );
 
 class ON_String;
 
 /*
 Description:
-  Converts a uuid to a null termintated string like
-     "85a08515-f383-11d3-bfe7-0010830122f0".
+  Converts a uuid to a null termintated string like 
+     "85a08515-f383-11d3-bfe7-0010830122f0". 
 Parameters:
   uuid - [in]
   s - [out]
 Returns:
   The pointer to the array is returned.
 */
-ON_DECL
+ON_DECL 
 const char* ON_UuidToString( const ON_UUID& uuid, ON_String& s);
 
 class ON_wString;
 
 /*
 Description:
-  Converts a uuid to a null termintated string like
-     "85a08515-f383-11d3-bfe7-0010830122f0".
+  Converts a uuid to a null termintated string like 
+     "85a08515-f383-11d3-bfe7-0010830122f0". 
 Parameters:
   uuid - [in]
   s - [out]
 Returns:
   The pointer to the array is returned.
 */
-ON_DECL
+ON_DECL 
 const wchar_t* ON_UuidToString( const ON_UUID& uuid, ON_wString& s);
 
 #endif
@@ -3623,7 +3623,7 @@ const wchar_t* ON_UuidToString( const ON_UUID& uuid, ON_wString& s);
 // THIS SOFTWARE IS PROVIDED "AS IS" WITHOUT EXPRESS OR IMPLIED WARRANTY.
 // ALL IMPLIED WARRANTIES OF FITNESS FOR ANY PARTICULAR PURPOSE AND OF
 // MERCHANTABILITY ARE HEREBY DISCLAIMED.
-//
+//				
 // For complete openNURBS copyright information see <http://www.opennurbs.org>.
 //
 ////////////////////////////////////////////////////////////////
@@ -3641,7 +3641,7 @@ struct ON_UnicodeErrorParameters
   set to indicate what type of error occured.
 
   Error types:
-    1: The input parameters were invalid.
+    1: The input parameters were invalid. 
        This error cannot be masked.
 
     2: The ouput buffer was not large enough to hold the converted
@@ -3649,25 +3649,25 @@ struct ON_UnicodeErrorParameters
        case and the error cannot be masked.
 
     4: When parsing a UTF-8 or UTF-32 string, the values of two
-       consecutive encoding sequences formed a valid UTF-16
-       surrogate pair.
-
+       consecutive encoding sequences formed a valid UTF-16 
+       surrogate pair. 
+          
        This error is masked if 0 != (4 & m_error_mask).
        If the error is masked, then the surrogate pair is
        decoded, the value of the resulting unicode code point
        is used, and parsing continues.
 
-    8: An overlong UTF-8 encoding sequence was encountered and
+    8: An overlong UTF-8 encoding sequence was encountered and 
        the value of the overlong sUTF-8 equence was a valid unicode
-       code point.
-
+       code point. 
+          
        This error is masked if 0 != (8 & m_error_mask).
-       If the error is masked, then the unicode code point is
+       If the error is masked, then the unicode code point is 
        used and parsing continues.
 
    16: An illegal UTF-8 encoding sequence occured or an invalid
        unicode code point value resulted from decoding a
-       UTF-8 sequence.
+       UTF-8 sequence. 
 
        This error is masked if 0 != (16 & m_error_mask).
        If the error is masked and the value of m_error_code_point is
@@ -3702,7 +3702,7 @@ Returns:
   true: u is a valid unicode code point
   false: u is not a valid unicode code point
 Remarks:
-  Valid unicode code points are
+  Valid unicode code points are 
   (0 <= u && u <= 0xD7FF) || (0xE000 <= u && u <= 0x10FFFF)
 */
 ON_DECL
@@ -3718,7 +3718,7 @@ Parameters:
     Valid values are in the interval [0,2147483647].
   sUTF8 - [out]
     sUTF8 is a buffer of 6 ON__UINT8 elements and the UTF-8 form
-    is returned in sUTF8[]. The returned value specifies how
+    is returned in sUTF8[]. The returned value specifies how 
     many elements of sUTF8[] are set.
 Returns:
   0: u is too large (>=2^31) to be encode as a UTF-8 string.
@@ -3750,7 +3750,7 @@ Parameters:
   sUTF8_count - [in]
     number of ON__UINT8 elements in sUTF8[].
 
-   e - [in/out]
+   e - [in/out] 
     If e is null, errors are not masked and parsing is performed
     to the point where the first error occurs.
     If e is not null, all errors are reported by setting the appropriate
@@ -3779,21 +3779,21 @@ Description:
 Parameters:
   unicode_code_point - [in]
     4 byte unicode code point value in the CPU's native byte order.
-    Valid values are in the interval [0,0xD7FF] or the
+    Valid values are in the interval [0,0xD7FF] or the 
     interval [0xE000,0x10FFFF].
   sUTF16 - [out]
     sUTF16 is buffer of 2 ON__UINT16 elements. If the UTF-16 form
     is a single value, it is returned in sUTF16[0]. If the UTF-16
-    is a surrogate pair, the first code unit (high surrogate)
+    is a surrogate pair, the first code unit (high surrogate) 
     is returned sUTF16[0] and the second unit (low surrogate) is
     returned in sUTF16[1].  The returned values are in
     the CPU's native byte order.
 Returns:
   0: u is not a valid Unicode code point. No changes are
      made to the w[] values.
-  1: u is a valie Unicode code point with a UTF-16 form
+  1: u is a valie Unicode code point with a UTF-16 form 
      consisting of the single value returned in w[0].
-  2: u is a valid Unicode code point with a UTF-16 form
+  2: u is a valid Unicode code point with a UTF-16 form 
      consisting of a surrogate pair returned in w[0] and w[1].
 */
 ON_DECL
@@ -3809,7 +3809,7 @@ Parameters:
   sUTF16_count - [in]
     number of ON__UINT16 elements in sUTF16[].
 
-  e - [in/out]
+  e - [in/out] 
     If e is null, errors are not masked and parsing is performed
     to the point where the first error occurs.
     If e is not null, all errors are reported by setting the appropriate
@@ -3844,7 +3844,7 @@ Parameters:
   sUTF16_count - [in]
     number of ON__UINT16 elements in sUTF16[].
 
-  e - [in/out]
+  e - [in/out] 
     If e is null, errors are not masked and parsing is performed
     to the point where the first error occurs.
     If e is not null, all errors are reported by setting the appropriate
@@ -3888,30 +3888,30 @@ Parameters:
     If sUTF16 is not null and sUTF16_count > 0, then the UTF-16
     encoded string is returned in this buffer. If there is room
     for the null terminator, the converted string will be null
-    terminated. The null terminator is never included in the count
-    of returned by this function. The converted string is in the
+    terminated. The null terminator is never included in the count 
+    of returned by this function. The converted string is in the 
     CPU's native byte order. No byte order mark is prepended.
 
   sUTF16_count - [in]
     If sUTF16_count > 0, then it specifies the number of available
     ON__UINT16 elements in the sUTF16[] buffer.
-
+    
     If sUTF16_count == 0, then the sUTF16 parameter is ignored.
 
   error_status - [out]
     If error_status is not null, then bits of *error_status are
-    set to indicate the success or failure of the conversion.
+    set to indicate the success or failure of the conversion.  
     When the error_mask parameter is used to used to mask some
     conversion errors, multiple bits may be set.
        0: Successful conversion with no errors.
        1: Invalid input parameters. This error cannot be masked.
-       2: The sUTF16 output buffer was not large enough to hold
+       2: The sUTF16 output buffer was not large enough to hold 
           the converted string. This error cannot be masked.
        4: The values of two UTF-8 encoding sequences formed a valid
           UTF-16 surrogate pair. This error can be masked.  If the
           error is masked, then the surrogate pair is added
           to the UTF-16 output string and parsing continues.
-       8: An overlong UTF-8 encoding sequence was encountered.
+       8: An overlong UTF-8 encoding sequence was encountered. 
           The value of the overlong sequence was a valid unicode
           code point. This error can be masked. If the error is masked,
           then the unicode code point is encoded and added to the
@@ -3936,7 +3936,7 @@ Parameters:
 
   sNextUTF8 - [out]
     If sNextUTF8 is not null, then *sNextUTF8 points to the first
-    element in the input sUTF8[] buffer that was not converted.
+    element in the input sUTF8[] buffer that was not converted. 
 
     If an error occurs and is not masked, then *sNextUTF8 points to
     the element of sUTF8[] where the conversion failed.  If no errors
@@ -3950,7 +3950,7 @@ Returns:
 
   If sUTF16_count == 0, the return value is the minimum number of
   ON__UINT16 elements that are needed to hold the converted string.
-  The return value does not include room for a null terminator.
+  The return value does not include room for a null terminator.  
   Increment the return value by one if you want to have an element
   to use for a null terminator.
 */
@@ -3987,31 +3987,31 @@ Parameters:
     If sUTF32 is not null and sUTF32_count > 0, then the UTF-32
     encoded string is returned in this buffer. If there is room
     for the null terminator, the converted string will be null
-    terminated. The null terminator is never included in the count
-    of returned by this function. The converted string is in the
+    terminated. The null terminator is never included in the count 
+    of returned by this function. The converted string is in the 
     CPU's native byte order. No byte order mark is prepended.
 
   sUTF32_count - [in]
     If sUTF32_count > 0, then it specifies the number of available
     ON__UINT32 elements in the sUTF32[] buffer.
-
+    
     If sUTF32_count == 0, then the sUTF32 parameter is ignored.
 
   error_status - [out]
     If error_status is not null, then bits of *error_status are
-    set to indicate the success or failure of the conversion.
+    set to indicate the success or failure of the conversion.  
     When the error_mask parameter is used to used to mask some
     conversion errors, multiple bits may be set.
        0: Successful conversion with no errors.
        1: Invalid input parameters. This error cannot be masked.
-       2: The sUTF32 output buffer was not large enough to hold
+       2: The sUTF32 output buffer was not large enough to hold 
           the converted string. This error cannot be masked.
        4: The values of two UTF-8 encoding sequences formed a valid
           UTF-16 surrogate pair. This error can be masked.  If the
           error is masked, then the surrogate pair is decoded,
-          the code point value is added to the UTF-32 output
+          the code point value is added to the UTF-32 output 
           string and parsing continues.
-       8: An overlong UTF-8 encoding sequence was encountered.
+       8: An overlong UTF-8 encoding sequence was encountered. 
           The value of the overlong sequence was a valid unicode
           code point. This error can be masked. If the error is masked,
           then the unicode code point is added to the UTF-32
@@ -4020,7 +4020,7 @@ Parameters:
           unicode code point value resulted from decoding a
           UTF-8 sequence. This error can be masked. If the error is
           masked and error_code_point is a valid unicode code point,
-          then its value is added to the UTF-32 output string and
+          then its value is added to the UTF-32 output string and 
           parsing continues.
 
   error_mask - [in]
@@ -4036,7 +4036,7 @@ Parameters:
 
   sNextUTF8 - [out]
     If sNextUTF8 is not null, then *sNextUTF8 points to the first
-    element in the input sUTF8[] buffer that was not converted.
+    element in the input sUTF8[] buffer that was not converted. 
 
     If an error occurs and is not masked, then *sNextUTF8 points to
     the element of sUTF8[] where the conversion failed.  If no errors
@@ -4050,7 +4050,7 @@ Returns:
 
   If sUTF32_count == 0, the return value is the minimum number of
   ON__UINT32 elements that are needed to hold the converted string.
-  The return value does not include room for a null terminator.
+  The return value does not include room for a null terminator.  
   Increment the return value by one if you want to have an element
   to use for a null terminator.
 */
@@ -4078,21 +4078,21 @@ Parameters:
 
     If bTestByteOrder is true and the first element of sUTF16[]
     is 0xFFFE, then this element is ignored and the subsequent
-    elements of sUTF16[] have their bytes swapped before the
+    elements of sUTF16[] have their bytes swapped before the 
     conversion is calculated.
 
-    In all other cases the first element of sUTF16[] is
+    In all other cases the first element of sUTF16[] is 
     converted and no byte swapping is performed.
 
   sUTF16 - [in]
-    UTF-16 string to convert.
-
+    UTF-16 string to convert.  
+    
     If bTestByteOrder is true and the first element of sUTF16[]
-    is 0xFEFF, then this element is skipped and it is assumed
+    is 0xFEFF, then this element is skipped and it is assumed 
     that sUTF16[] is in the CPU's native byte order.
-
+    
     If bTestByteOrder is true and the first element of sUTF16[]
-    is 0xFFFE, then this element is skipped and it is assumed
+    is 0xFFFE, then this element is skipped and it is assumed 
     that sUTF16[] is not in the CPU's native byte order and bytes
     are swapped before characters are converted.
 
@@ -4107,29 +4107,29 @@ Parameters:
     If sUTF16_count == -1, then sUTF16 must be a null terminated
     string and all the elements up to the first null element are
     converted.
-
+    
   sUTF8 - [out]
     If sUTF8 is not null and sUTF8_count > 0, then the UTF-8
     encoded string is returned in this buffer. If there is room
     for the null terminator, the converted string will be null
-    terminated. The null terminator is never included in the count
-    of returned by this function. The converted string is in the
+    terminated. The null terminator is never included in the count 
+    of returned by this function. The converted string is in the 
     CPU's native byte order. No byte order mark is prepended.
 
   sUTF8_count - [in]
     If sUTF8_count > 0, then it specifies the number of available
     ON__UINT8 elements in the sUTF8[] buffer.
-
+    
     If sUTF8_count == 0, then the sUTF8 parameter is ignored.
 
   error_status - [out]
     If error_status is not null, then bits of *error_status are
-    set to indicate the success or failure of the conversion.
+    set to indicate the success or failure of the conversion.  
     When the error_mask parameter is used to used to mask some
     conversion errors, multiple bits may be set.
        0: Successful conversion with no errors.
        1: Invalid input parameters. This error cannot be masked.
-       2: The sUTF8 output buffer was not large enough to hold
+       2: The sUTF8 output buffer was not large enough to hold 
           the converted string. This error cannot be masked.
       16: An illegal UTF-16 encoding sequence occured or an invalid
           unicode code point value resulted from decoding a
@@ -4149,7 +4149,7 @@ Parameters:
 
   sNextUTF16 - [out]
     If sNextUTF16 is not null, then *sNextUTF16 points to the first
-    element in the input sUTF16[] buffer that was not converted.
+    element in the input sUTF16[] buffer that was not converted. 
 
     If an error occurs and is not masked, then *sNextUTF16 points to
     the element of sUTF16[] where the conversion failed.  If no errors
@@ -4162,7 +4162,7 @@ Parameters:
 
   If sUTF8_count == 0, the return value is the minimum number of
   ON__UINT8 elements that are needed to hold the converted string.
-  The return value does not include room for a null terminator.
+  The return value does not include room for a null terminator.  
   Increment the return value by one if you want to have an element
   to use for a null terminator.
 */
@@ -4191,21 +4191,21 @@ Parameters:
 
     If bTestByteOrder is true and the first element of sUTF16[]
     is 0xFFFE, then this element is ignored and the subsequent
-    elements of sUTF16[] have their bytes swapped before the
+    elements of sUTF16[] have their bytes swapped before the 
     conversion is calculated.
 
-    In all other cases the first element of sUTF16[] is
+    In all other cases the first element of sUTF16[] is 
     converted and no byte swapping is performed.
 
   sUTF16 - [in]
-    UTF-16 string to convert.
-
+    UTF-16 string to convert.  
+    
     If bTestByteOrder is true and the first element of sUTF16[]
-    is 0xFEFF, then this element is skipped and it is assumed
+    is 0xFEFF, then this element is skipped and it is assumed 
     that sUTF16[] is in the CPU's native byte order.
-
+    
     If bTestByteOrder is true and the first element of sUTF16[]
-    is 0xFFFE, then this element is skipped and it is assumed
+    is 0xFFFE, then this element is skipped and it is assumed 
     that sUTF16[] is not in the CPU's native byte order and bytes
     are swapped before characters are converted.
 
@@ -4225,30 +4225,30 @@ Parameters:
     If sUTF32 is not null and sUTF32_count > 0, then the UTF-32
     encoded string is returned in this buffer. If there is room
     for the null terminator, the converted string will be null
-    terminated. The null terminator is never included in the count
-    of returned by this function. The converted string is in the
+    terminated. The null terminator is never included in the count 
+    of returned by this function. The converted string is in the 
     CPU's native byte order. No byte order mark is prepended.
 
   sUTF32_count - [in]
     If sUTF32_count > 0, then it specifies the number of available
     ON__UINT32 elements in the sUTF32[] buffer.
-
+    
     If sUTF32_count == 0, then the sUTF32 parameter is ignored.
 
   error_status - [out]
     If error_status is not null, then bits of *error_status are
-    set to indicate the success or failure of the conversion.
+    set to indicate the success or failure of the conversion.  
     When the error_mask parameter is used to used to mask some
     conversion errors, multiple bits may be set.
        0: Successful conversion with no errors.
        1: Invalid input parameters. This error cannot be masked.
-       2: The sUTF32 output buffer was not large enough to hold
+       2: The sUTF32 output buffer was not large enough to hold 
           the converted string. This error cannot be masked.
       16: An illegal UTF-16 encoding sequence occured or an invalid
           unicode code point value resulted from decoding a
           UTF-16 sequence. This error can be masked. If the error is
           masked and error_code_point is a valid unicode code point,
-          then its value is added to the UTF-32 output string and
+          then its value is added to the UTF-32 output string and 
           parsing continues.
 
   error_mask - [in]
@@ -4262,7 +4262,7 @@ Parameters:
 
   sNextUTF16 - [out]
     If sNextUTF16 is not null, then *sNextUTF16 points to the first
-    element in the input sUTF16[] buffer that was not converted.
+    element in the input sUTF16[] buffer that was not converted. 
 
     If an error occurs and is not masked, then *sNextUTF16 points to
     the element of sUTF16[] where the conversion failed.  If no errors
@@ -4276,7 +4276,7 @@ Returns:
 
   If sUTF32_count == 0, the return value is the minimum number of
   ON__UINT32 elements that are needed to hold the converted string.
-  The return value does not include room for a null terminator.
+  The return value does not include room for a null terminator.  
   Increment the return value by one if you want to have an element
   to use for a null terminator.
 */
@@ -4305,26 +4305,26 @@ Parameters:
 
     If bTestByteOrder is true and the first element of sUTF32[]
     is 0xFFFE0000, then this element is ignored and the subsequent
-    elements of sUTF32[] have their bytes swapped before the
+    elements of sUTF32[] have their bytes swapped before the 
     conversion is calculated.
 
-    In all other cases the first element of sUTF32[] is
+    In all other cases the first element of sUTF32[] is 
     converted and no byte swapping is performed.
 
   sUTF32 - [in]
-    UTF-32 string to convert.
-
+    UTF-32 string to convert.  
+    
     If bTestByteOrder is true and the first element of sUTF32[]
-    is 0x0000FEFF, then this element is skipped and it is assumed
+    is 0x0000FEFF, then this element is skipped and it is assumed 
     that sUTF32[] is in the CPU's native byte order.
-
+    
     If bTestByteOrder is true and the first element of sUTF32[]
-    is 0xFFFE0000, then this element is skipped and it is assumed
+    is 0xFFFE0000, then this element is skipped and it is assumed 
     that sUTF32[] is not in the CPU's native byte order and bytes
     are swapped before characters are converted.
 
     If bTestByteOrder is false or the first character of sUTF32[]
-    is neither 0x0000FEFF nor 0xFFFE0000, then the sUTF32 string
+    is neither 0x0000FEFF nor 0xFFFE0000, then the sUTF32 string 
     must match the CPU's byte order.
 
   sUTF32_count - [in]
@@ -4334,29 +4334,29 @@ Parameters:
     If sUTF32_count == -1, then sUTF32 must be a null terminated
     string and all the elements up to the first null element are
     converted.
-
+    
   sUTF8 - [out]
     If sUTF8 is not null and sUTF8_count > 0, then the UTF-8
     encoded string is returned in this buffer. If there is room
     for the null terminator, the converted string will be null
-    terminated. The null terminator is never included in the count
-    of returned by this function. The converted string is in the
+    terminated. The null terminator is never included in the count 
+    of returned by this function. The converted string is in the 
     CPU's native byte order. No byte order mark is prepended.
 
   sUTF8_count - [in]
     If sUTF8_count > 0, then it specifies the number of available
     ON__UINT8 elements in the sUTF8[] buffer.
-
+    
     If sUTF8_count == 0, then the sUTF8 parameter is ignored.
 
   error_status - [out]
     If error_status is not null, then bits of *error_status are
-    set to indicate the success or failure of the conversion.
+    set to indicate the success or failure of the conversion.  
     When the error_mask parameter is used to used to mask some
     conversion errors, multiple bits may be set.
        0: Successful conversion with no errors.
        1: Invalid input parameters. This error cannot be masked.
-       2: The sUTF8 output buffer was not large enough to hold
+       2: The sUTF8 output buffer was not large enough to hold 
           the converted string. This error cannot be masked.
        4: The values of two UTF-32 elements form a valid
           UTF-16 surrogate pair. This error can be masked. If the
@@ -4381,7 +4381,7 @@ Parameters:
 
   sNextUTF32 - [out]
     If sNextUTF32 is not null, then *sNextUTF32 points to the first
-    element in the input sUTF32[] buffer that was not converted.
+    element in the input sUTF32[] buffer that was not converted. 
 
     If an error occurs and is not masked, then *sNextUTF32 points to
     the element of sUTF32[] where the conversion failed.  If no errors
@@ -4395,7 +4395,7 @@ Returns:
 
   If sUTF8_count == 0, the return value is the minimum number of
   ON__UINT8 elements that are needed to hold the converted string.
-  The return value does not include room for a null terminator.
+  The return value does not include room for a null terminator.  
   Increment the return value by one if you want to have an element
   to use for a null terminator.
 */
@@ -4424,26 +4424,26 @@ Parameters:
 
     If bTestByteOrder is true and the first element of sUTF32[]
     is 0xFFFE0000, then this element is ignored and the subsequent
-    elements of sUTF32[] have their bytes swapped before the
+    elements of sUTF32[] have their bytes swapped before the 
     conversion is calculated.
 
-    In all other cases the first element of sUTF32[] is
+    In all other cases the first element of sUTF32[] is 
     converted and no byte swapping is performed.
 
   sUTF32 - [in]
-    UTF-32 string to convert.
-
+    UTF-32 string to convert.  
+    
     If bTestByteOrder is true and the first element of sUTF32[]
-    is 0x0000FEFF, then this element is skipped and it is assumed
+    is 0x0000FEFF, then this element is skipped and it is assumed 
     that sUTF32[] is in the CPU's native byte order.
-
+    
     If bTestByteOrder is true and the first element of sUTF32[]
-    is 0xFFFE0000, then this element is skipped and it is assumed
+    is 0xFFFE0000, then this element is skipped and it is assumed 
     that sUTF32[] is not in the CPU's native byte order and bytes
     are swapped before characters are converted.
 
     If bTestByteOrder is false or the first character of sUTF32[]
-    is neither 0x0000FEFF nor 0xFFFE0000, then the sUTF32 string
+    is neither 0x0000FEFF nor 0xFFFE0000, then the sUTF32 string 
     must match the CPU's byte order.
 
   sUTF32_count - [in]
@@ -4458,24 +4458,24 @@ Parameters:
     If sUTF16 is not null and sUTF16_count > 0, then the UTF-16
     encoded string is returned in this buffer. If there is room
     for the null terminator, the converted string will be null
-    terminated. The null terminator is never included in the count
-    of returned by this function. The converted string is in the
+    terminated. The null terminator is never included in the count 
+    of returned by this function. The converted string is in the 
     CPU's native byte order. No byte order mark is prepended.
 
   sUTF16_count - [in]
     If sUTF16_count > 0, then it specifies the number of available
     ON__UINT16 elements in the sUTF16[] buffer.
-
+    
     If sUTF16_count == 0, then the sUTF16 parameter is ignored.
 
   error_status - [out]
     If error_status is not null, then bits of *error_status are
-    set to indicate the success or failure of the conversion.
+    set to indicate the success or failure of the conversion.  
     When the error_mask parameter is used to used to mask some
     conversion errors, multiple bits may be set.
        0: Successful conversion with no errors.
        1: Invalid input parameters. This error cannot be masked.
-       2: The sUTF16 output buffer was not large enough to hold
+       2: The sUTF16 output buffer was not large enough to hold 
           the converted string. This error cannot be masked.
        4: The values of two UTF-32 elements form a valid
           UTF-16 surrogate pair. This error can be masked. If the
@@ -4499,12 +4499,12 @@ Parameters:
 
   sNextUnicode - [out]
     If sNextUnicode is not null, then *sNextUnicode points to the first
-    byte in the input sNextUnicode[] buffer that was not converted.
+    byte in the input sNextUnicode[] buffer that was not converted. 
 
     If an error occurs and is not masked, then this unsigned int
     will be an illegal unicode code point value.
 
-    If an error does not occur, then (*sNextUnicode - sUnicode)
+    If an error does not occur, then (*sNextUnicode - sUnicode) 
     is the number of values converted.
 
 Returns:
@@ -4514,7 +4514,7 @@ Returns:
 
   If sUTF16_count == 0, the return value is the minimum number of
   ON__UINT16 elements that are needed to hold the converted string.
-  The return value does not include room for a null terminator.
+  The return value does not include room for a null terminator.  
   Increment the return value by one if you want to have an element
   to use for a null terminator.
 */
@@ -4551,21 +4551,21 @@ Parameters:
 
     If bTestByteOrder is true and the first element of sWideChar[]
     is 0xFFFE, then this element is ignored and the subsequent
-    elements of sWideChar[] have their bytes swapped before the
+    elements of sWideChar[] have their bytes swapped before the 
     conversion is calculated.
 
-    In all other cases the first element of sWideChar[] is
+    In all other cases the first element of sWideChar[] is 
     converted and no byte swapping is performed.
 
   sWideChar - [in]
-    wchar_t string to convert.
-
+    wchar_t string to convert.  
+    
     If bTestByteOrder is true and the first element of sWideChar[]
-    is 0xFEFF, then this element is skipped and it is assumed
+    is 0xFEFF, then this element is skipped and it is assumed 
     that sWideChar[] is in the CPU's native byte order.
-
+    
     If bTestByteOrder is true and the first element of sWideChar[]
-    is 0xFFFE, then this element is skipped and it is assumed
+    is 0xFFFE, then this element is skipped and it is assumed 
     that sWideChar[] is not in the CPU's native byte order and bytes
     are swapped before characters are converted.
 
@@ -4580,29 +4580,29 @@ Parameters:
     If sWideChar_count == -1, then sWideChar must be a null terminated
     string and all the elements up to the first null element are
     converted.
-
+    
   sUTF8 - [out]
     If sUTF8 is not null and sUTF8_count > 0, then the UTF-8
     encoded string is returned in this buffer. If there is room
     for the null terminator, the converted string will be null
-    terminated. The null terminator is never included in the count
-    of returned by this function. The converted string is in the
+    terminated. The null terminator is never included in the count 
+    of returned by this function. The converted string is in the 
     CPU's native byte order. No byte order mark is prepended.
 
   sUTF8_count - [in]
     If sUTF8_count > 0, then it specifies the number of available
     ON__UINT8 elements in the sUTF8[] buffer.
-
+    
     If sUTF8_count == 0, then the sUTF8 parameter is ignored.
 
   error_status - [out]
     If error_status is not null, then bits of *error_status are
-    set to indicate the success or failure of the conversion.
+    set to indicate the success or failure of the conversion.  
     When the error_mask parameter is used to used to mask some
     conversion errors, multiple bits may be set.
        0: Successful conversion with no errors.
        1: Invalid input parameters. This error cannot be masked.
-       2: The sUTF8 output buffer was not large enough to hold
+       2: The sUTF8 output buffer was not large enough to hold 
           the converted string. This error cannot be masked.
       16: An illegal wchar_t encoding sequence occured or an invalid
           unicode code point value resulted from decoding a
@@ -4622,7 +4622,7 @@ Parameters:
 
   sNextWideChar - [out]
     If sNextWideChar is not null, then *sNextWideChar points to the first
-    element in the input sWideChar[] buffer that was not converted.
+    element in the input sWideChar[] buffer that was not converted. 
 
     If an error occurs and is not masked, then *sNextWideChar points to
     the element of sWideChar[] where the conversion failed.  If no errors
@@ -4635,7 +4635,7 @@ Parameters:
 
   If sUTF8_count == 0, the return value is the minimum number of
   ON__UINT8 elements that are needed to hold the converted string.
-  The return value does not include room for a null terminator.
+  The return value does not include room for a null terminator.  
   Increment the return value by one if you want to have an element
   to use for a null terminator.
 */
@@ -4681,30 +4681,30 @@ Parameters:
     If sWideChar is not null and sWideChar_count > 0, then the
     output string is returned in this buffer. If there is room
     for the null terminator, the converted string will be null
-    terminated. The null terminator is never included in the count
-    of returned by this function. The converted string is in the
+    terminated. The null terminator is never included in the count 
+    of returned by this function. The converted string is in the 
     CPU's native byte order. No byte order mark is prepended.
 
   sWideChar_count - [in]
     If sWideChar_count > 0, then it specifies the number of available
     wchar_t elements in the sWideChar[] buffer.
-
+    
     If sWideChar_count == 0, then the sWideChar parameter is ignored.
 
   error_status - [out]
     If error_status is not null, then bits of *error_status are
-    set to indicate the success or failure of the conversion.
+    set to indicate the success or failure of the conversion.  
     When the error_mask parameter is used to used to mask some
     conversion errors, multiple bits may be set.
        0: Successful conversion with no errors.
        1: Invalid input parameters. This error cannot be masked.
-       2: The sWideChar output buffer was not large enough to hold
+       2: The sWideChar output buffer was not large enough to hold 
           the converted string. This error cannot be masked.
        4: The values of two UTF-8 encoding sequences formed a valid
           UTF-16 surrogate pair. This error can be masked.  If the
           error is masked, then the surrogate pair is added
           to the UTF-16 output string and parsing continues.
-       8: An overlong UTF-8 encoding sequence was encountered.
+       8: An overlong UTF-8 encoding sequence was encountered. 
           The value of the overlong sequence was a valid unicode
           code point. This error can be masked. If the error is masked,
           then the unicode code point is encoded and added to the
@@ -4729,7 +4729,7 @@ Parameters:
 
   sNextUTF8 - [out]
     If sNextUTF8 is not null, then *sNextUTF8 points to the first
-    element in the input sUTF8[] buffer that was not converted.
+    element in the input sUTF8[] buffer that was not converted. 
 
     If an error occurs and is not masked, then *sNextUTF8 points to
     the element of sUTF8[] where the conversion failed.  If no errors
@@ -4743,7 +4743,7 @@ Returns:
 
   If sWideChar_count == 0, the return value is the minimum number of
   wchar_t elements that are needed to hold the converted string.
-  The return value does not include room for a null terminator.
+  The return value does not include room for a null terminator.  
   Increment the return value by one if you want to have an element
   to use for a null terminator.
 */
@@ -4772,7 +4772,7 @@ ON_END_EXTERNC
 // THIS SOFTWARE IS PROVIDED "AS IS" WITHOUT EXPRESS OR IMPLIED WARRANTY.
 // ALL IMPLIED WARRANTIES OF FITNESS FOR ANY PARTICULAR PURPOSE AND OF
 // MERCHANTABILITY ARE HEREBY DISCLAIMED.
-//
+//				
 // For complete openNURBS copyright information see <http://www.opennurbs.org>.
 //
 ////////////////////////////////////////////////////////////////
@@ -4785,15 +4785,15 @@ class ON_CLASS ON_FixedSizePool
 public:
   ON_FixedSizePool();
   ~ON_FixedSizePool();
-
+  
   /*
   Description:
     Create a fixed size memory pool.
   Parameters:
-    sizeof_element - [in]
+    sizeof_element - [in] 
       number of bytes in each element. This parameter must be greater than zero.
-      In general, use sizeof(element type).  If you pass a "raw" number as
-      sizeof_element, then be certain that it is the right size to insure the
+      In general, use sizeof(element type).  If you pass a "raw" number as 
+      sizeof_element, then be certain that it is the right size to insure the 
       fields in your elements will be properly aligned.
     element_count_estimate - [in] (0 = good default)
       If you know how many elements you will need, pass that number here.
@@ -4803,8 +4803,8 @@ public:
       If block_element_capacity is zero, Create() will calculate a block
       size that is efficent for most applications.  If you are an expert
       user and want to specify the number of elements per block,
-      then pass the number of elements per block here.  When
-      block_element_capacity > 0 and element_count_estimate > 0, the first
+      then pass the number of elements per block here.  When 
+      block_element_capacity > 0 and element_count_estimate > 0, the first 
       block will have a capacity of at least element_count_estimate; in this
       case do not ask for extraordinarly large amounts of contiguous heap.
   Remarks:
@@ -4813,7 +4813,7 @@ public:
   Returns:
     True if successful and the pool can be used.
   */
-  bool Create(
+  bool Create( 
     size_t sizeof_element,
     size_t element_count_estimate,
     size_t block_element_capacity
@@ -4830,7 +4830,7 @@ public:
     A pointer to sizeof_element bytes.  The memory is zeroed.
   */
   void* AllocateElement();
-
+  
   /*
   Description:
     Return an element to the pool.
@@ -4852,7 +4852,7 @@ public:
 
     ON_FixedMemoryPool uses the first sizeof(void*) bytes of the
     returned element for bookkeeping purposes.  Therefore, if you
-    are going to use ReturnElement(), then SizeofElement() must be
+    are going to use ReturnElement(), then SizeofElement() must be 
     at least sizeof(void*).  If you are using a platform that requires
     pointers to be aligned on sizeof(void*) boundaries, then
     SizeofElement() must be a multiple of sizeof(void*).
@@ -4860,9 +4860,9 @@ public:
     and NextElement() to iterate through the list of elements, then you
     need to set a value in the returned element to indicate that it
     needs to be skipped during the iteration.  This value cannot be
-    located in the fist sizeof(void*) bytes of the element.  If the
-    element is a class with a vtable, you cannot call a virtual
-    function on a returned element because the vtable pointer is
+    located in the fist sizeof(void*) bytes of the element.  If the 
+    element is a class with a vtable, you cannot call a virtual 
+    function on a returned element because the vtable pointer is 
     trashed when ReturnElement() modifies the fist sizeof(void*) bytes.
   */
   void ReturnElement(void* p);
@@ -4899,7 +4899,7 @@ public:
     Get the first element when iterating through the list of elements.
   Parameters:
     element_index - [in]
-      If you use the version of FirstElement() that has an
+      If you use the version of FirstElement() that has an 
       element_index parameter, then the iteration begins at
       that element.
   Example:
@@ -4924,8 +4924,8 @@ public:
   Returns:
     The first element when iterating through the list of elements.
   Remarks:
-    FirstElement() and NextElement() will return elements that have
-    been returned to the pool using ReturnElement().  If you use
+    FirstElement() and NextElement() will return elements that have 
+    been returned to the pool using ReturnElement().  If you use 
     ReturnElement(), then be sure to mark the element so it can be
     identified and skipped.
 
@@ -4935,7 +4935,7 @@ public:
     If you need iterate through a fixed size pool and another
     function may also be in the middle of iterating the pool
     as well, then use ON_FixedSizePoolIterator.  In particular,
-    if you have multiple concurrent threads iterating the same
+    if you have multiple concurrent threads iterating the same 
     fixed size pool, then use ON_FixedSizePoolIterator.
   */
   void* FirstElement();
@@ -4949,8 +4949,8 @@ public:
   Returns:
     The next element when iterating through the list of elements.
   Remarks:
-    FirstElement() and NextElement() will return elements that have
-    been returned to the pool using ReturnElement().  If you use
+    FirstElement() and NextElement() will return elements that have 
+    been returned to the pool using ReturnElement().  If you use 
     ReturnElement(), then be sure to mark the element so it can be
     identified and skipped.
 
@@ -4960,7 +4960,7 @@ public:
     If you need iterate through a fixed size pool and another
     function may also be in the middle of iterating the pool
     as well, then use ON_FixedSizePoolIterator.  In particular,
-    if you have multiple concurrent threads iterating the same
+    if you have multiple concurrent threads iterating the same 
     fixed size pool, then use ON_FixedSizePoolIterator.
   */
   void* NextElement();
@@ -4979,15 +4979,15 @@ public:
 
           // iterate through all blocks in the pool
           size_t block_element_count = 0;
-          for ( void* p = FirstBlock(&block_element_count);
-                0 != p;
-                p = NextBlock(&block_element_count)
+          for ( void* p = FirstBlock(&block_element_count); 
+                0 != p; 
+                p = NextBlock(&block_element_count) 
               )
           {
             ElementType* e = (ElementType*)p;
-            for ( size_t i = 0;
-                  i < block_element_count;
-                  i++, e = ((const char*)e) + SizeofElement()
+            for ( size_t i = 0; 
+                  i < block_element_count; 
+                  i++, e = ((const char*)e) + SizeofElement() 
                 )
             {
               ...
@@ -5007,7 +5007,7 @@ public:
     If you need iterate through a fixed size pool and another
     function may also be in the middle of iterating the pool
     as well, then use ON_FixedSizePoolIterator.  In particular,
-    if you have multiple concurrent threads iterating the same
+    if you have multiple concurrent threads iterating the same 
     fixed size pool, then use ON_FixedSizePoolIterator.
   */
   void* FirstBlock( size_t* block_element_count );
@@ -5032,7 +5032,7 @@ public:
     If you need iterate through a fixed size pool and another
     function may also be in the middle of iterating the pool
     as well, then use ON_FixedSizePoolIterator.  In particular,
-    if you have multiple concurrent threads iterating the same
+    if you have multiple concurrent threads iterating the same 
     fixed size pool, then use ON_FixedSizePoolIterator.
   */
   void* NextBlock( size_t* block_element_count );
@@ -5055,8 +5055,8 @@ public:
     in the first few blocks.
 
     If ReturnElement() is not used or AllocateElement() calls to
-    are made after any use of ReturnElement(), then the i-th
-    element is the one returned by the (i+1)-th call to
+    are made after any use of ReturnElement(), then the i-th 
+    element is the one returned by the (i+1)-th call to 
     AllocateElement().
   */
   void* Element(size_t element_index) const;
@@ -5084,7 +5084,7 @@ public:
   Description:
     Expert user function to call when the heap used by this pool
     is no longer valid.  This call zeros all fields and does not
-    call any heap functions.  After calling EmergencyDestroy(),
+    call any heap functions.  After calling EmergencyDestroy(), 
     the destructor will not attempt to free any heap.
   */
   void EmergencyDestroy();
@@ -5111,7 +5111,7 @@ private:
   size_t m_active_element_count; // number of active elements
   size_t m_total_element_count;  // total number of elements (active + returned)
   ON_MEMORY_POOL* m_heap;
-
+  
 private:
   // returns capacity of elements in existing block
   size_t BlockElementCapacity( const void* block ) const;
@@ -5136,7 +5136,7 @@ public:
     Get the first element when iterating through the list of elements.
   Parameters:
     element_index - [in]
-      If you use the version of FirstElement() that has an
+      If you use the version of FirstElement() that has an 
       element_index parameter, then the iteration begins at
       that element.
   Example:
@@ -5161,8 +5161,8 @@ public:
   Returns:
     The first element when iterating through the list of elements.
   Remarks:
-    FirstElement() and NextElement() will return elements that have
-    been returned to the pool using ReturnElement().  If you use
+    FirstElement() and NextElement() will return elements that have 
+    been returned to the pool using ReturnElement().  If you use 
     ReturnElement(), then be sure to mark the element so it can be
     identified and skipped.
 
@@ -5180,8 +5180,8 @@ public:
   Returns:
     The next element when iterating through the list of elements.
   Remarks:
-    FirstElement() and NextElement() will return elements that have
-    been returned to the pool using ReturnElement().  If you use
+    FirstElement() and NextElement() will return elements that have 
+    been returned to the pool using ReturnElement().  If you use 
     ReturnElement(), then be sure to mark the element so it can be
     identified and skipped.
 
@@ -5204,15 +5204,15 @@ public:
 
           // iterate through all blocks in the pool
           size_t block_element_count = 0;
-          for ( void* p = FirstBlock(&block_element_count);
-                0 != p;
-                p = NextBlock(&block_element_count)
+          for ( void* p = FirstBlock(&block_element_count); 
+                0 != p; 
+                p = NextBlock(&block_element_count) 
               )
           {
             ElementType* e = (ElementType*)p;
-            for ( size_t i = 0;
-                  i < block_element_count;
-                  i++, e = ((const char*)e) + SizeofElement()
+            for ( size_t i = 0; 
+                  i < block_element_count; 
+                  i++, e = ((const char*)e) + SizeofElement() 
                 )
             {
               ...
@@ -5266,7 +5266,7 @@ public:
 
   ON_SimpleFixedSizePool();
   ~ON_SimpleFixedSizePool();
-
+  
   /*
   Description:
     Create a fixed size memory pool.
@@ -5289,7 +5289,7 @@ public:
   Returns:
     True if successful and the pool can be used.
   */
-  bool Create(
+  bool Create( 
     size_t element_count_estimate,
     size_t block_element_count
     );
@@ -5305,7 +5305,7 @@ public:
     A pointer to sizeof_element bytes.  The memory is zeroed.
   */
   T* AllocateElement();
-
+  
   /*
   Description:
     Return an element to the pool.
@@ -5327,7 +5327,7 @@ public:
 
     ON_FixedMemoryPool uses the first sizeof(void*) bytes of the
     returned element for bookkeeping purposes.  Therefore, if you
-    are going to use ReturnElement(), then SizeofElement() must be
+    are going to use ReturnElement(), then SizeofElement() must be 
     at least sizeof(void*).  If you are using a platform that requires
     pointers to be aligned on sizeof(void*) boundaries, then
     SizeofElement() must be a multiple of sizeof(void*).
@@ -5335,9 +5335,9 @@ public:
     and NextElement() to iterate through the list of elements, then you
     need to set a value in the returned element to indicate that it
     needs to be skipped during the iteration.  This value cannot be
-    located in the fist sizeof(void*) bytes of the element.  If the
-    element is a class with a vtable, you cannot call a virtual
-    function on a returned element because the vtable pointer is
+    located in the fist sizeof(void*) bytes of the element.  If the 
+    element is a class with a vtable, you cannot call a virtual 
+    function on a returned element because the vtable pointer is 
     trashed when ReturnElement() modifies the fist sizeof(void*) bytes.
   */
   void ReturnElement(T* p);
@@ -5421,9 +5421,9 @@ public:
 
           // iterate through all blocks in the pool
           size_t block_element_count = 0;
-          for ( T* p = FirstBlock(&block_element_count);
-                0 != p;
-                p = NextBlock(&block_element_count)
+          for ( T* p = FirstBlock(&block_element_count); 
+                0 != p; 
+                p = NextBlock(&block_element_count) 
               )
           {
             // a[] is an array of length block_element_count
@@ -5469,8 +5469,8 @@ public:
     in the first few blocks.
 
     If ReturnElement() is not used or AllocateElement() calls to
-    are made after any use of ReturnElement(), then the i-th
-    element is the one returned by the (i+1)-th call to
+    are made after any use of ReturnElement(), then the i-th 
+    element is the one returned by the (i+1)-th call to 
     AllocateElement().
   */
   T* Element(size_t element_index) const;
@@ -5498,7 +5498,7 @@ public:
   Description:
     Expert user function to call when the heap used by this pool
     is no longer valid.  This call zeros all fields and does not
-    call any heap functions.  After calling EmergencyDestroy(),
+    call any heap functions.  After calling EmergencyDestroy(), 
     the destructor will not attempt to free any heap.
   */
   void EmergencyDestroy();
@@ -5526,7 +5526,7 @@ private:
 // THIS SOFTWARE IS PROVIDED "AS IS" WITHOUT EXPRESS OR IMPLIED WARRANTY.
 // ALL IMPLIED WARRANTIES OF FITNESS FOR ANY PARTICULAR PURPOSE AND OF
 // MERCHANTABILITY ARE HEREBY DISCLAIMED.
-//
+//				
 // For complete openNURBS copyright information see <http://www.opennurbs.org>.
 //
 ////////////////////////////////////////////////////////////////
@@ -5546,7 +5546,7 @@ Parameters
     Use ON::heap_sort only after doing meaningful performance
     testing using optimized release builds that demonstrate
     ON::heap_sort is significantly better.
-  index - [out]
+  index - [out] 
     Pass in an array of count integers.  The returned
     index[] is a permutation of (0,1,..,count-1)
     such that compare(B[index[i]],B[index[i+1]) <= 0
@@ -5562,7 +5562,7 @@ Parameters
     Comparison function a la qsort().
 */
 ON_DECL
-void ON_Sort(
+void ON_Sort( 
         ON::sort_algorithm method,
         int* index,
         const void* base,
@@ -5582,7 +5582,7 @@ Parameters
     Use ON::heap_sort only after doing meaningful performance
     testing using optimized release builds that demonstrate
     ON::heap_sort is significantly better.
-  index - [out]
+  index - [out] 
     Pass in an array of count integers.  The returned
     index[] is a permutation of (0,1,..,count-1)
     such that compare(B[index[i]],B[index[i+1]) <= 0
@@ -5601,7 +5601,7 @@ Parameters
     pointer passed as the third argument to compare().
 */
 ON_DECL
-void ON_Sort(
+void ON_Sort( 
         ON::sort_algorithm method,
         int* index,
         const void* base,
@@ -5631,19 +5631,19 @@ Parameters
     pointer passed as the third argument to compare().
 Remarks:
   As a rule, use quick sort unless extensive tests in your case
-  prove that heap sort is faster.
-
-  This implementation of quick sort is generally faster than
+  prove that heap sort is faster. 
+  
+  This implementation of quick sort is generally faster than 
   heap sort, even when the input arrays are nearly sorted.
   The only common case when heap sort is faster occurs when
-  the arrays are strictly "chevron" (3,2,1,2,3) or "carat"
+  the arrays are strictly "chevron" (3,2,1,2,3) or "carat" 
   (1,2,3,2,1) ordered, and in these cases heap sort is about
-  50% faster.  If the "chevron" or "caret" ordered arrays
-  have a little randomness added, the two algorithms have
+  50% faster.  If the "chevron" or "caret" ordered arrays 
+  have a little randomness added, the two algorithms have 
   the same speed.
 */
 ON_DECL
-void ON_hsort(
+void ON_hsort( 
         void* base,
         size_t count,
         size_t sizeof_element,
@@ -5651,7 +5651,7 @@ void ON_hsort(
         );
 
 ON_DECL
-void ON_qsort(
+void ON_qsort( 
         void* base,
         size_t count,
         size_t sizeof_element,
@@ -5659,7 +5659,7 @@ void ON_qsort(
         );
 
 ON_DECL
-void ON_hsort(
+void ON_hsort( 
         void* base,
         size_t count,
         size_t sizeof_element,
@@ -5668,7 +5668,7 @@ void ON_hsort(
         );
 
 ON_DECL
-void ON_qsort(
+void ON_qsort( 
         void* base,
         size_t count,
         size_t sizeof_element,
@@ -5680,19 +5680,19 @@ void ON_qsort(
 Description:
   Sort an array of doubles in place.
 Parameters:
-  sort_algorithm - [in]
+  sort_algorithm - [in]  
     ON::quick_sort (best in general) or ON::heap_sort
     Use ON::heap_sort only if you have done extensive testing with
-    optimized release builds and are confident heap sort is
+    optimized release builds and are confident heap sort is 
     significantly faster in your case.
-  a - [in / out]
+  a - [in / out] 
     The values in a[] are sorted so that a[i] <= a[i+1].
     a[] cannot contain NaNs.
   nel - [in]
     length of array a[]
 */
 ON_DECL
-void ON_SortDoubleArray(
+void ON_SortDoubleArray( 
         ON::sort_algorithm sort_algorithm,
         double* a,
         size_t nel
@@ -5702,12 +5702,12 @@ void ON_SortDoubleArray(
 Description:
   Sort an array of ints in place.
 Parameters:
-  sort_algorithm - [in]
+  sort_algorithm - [in]  
     ON::quick_sort (best in general) or ON::heap_sort
     Use ON::heap_sort only if you have done extensive testing with
-    optimized release builds and are confident heap sort is
+    optimized release builds and are confident heap sort is 
     significantly faster in your case.
-  a - [in / out]
+  a - [in / out] 
     The values in a[] are sorted so that a[i] <= a[i+1].
   nel - [in]
     length of array a[]
@@ -5723,12 +5723,12 @@ void ON_SortIntArray(
 Description:
   Sort an array of unsigned ints in place.
 Parameters:
-  sort_algorithm - [in]
+  sort_algorithm - [in]  
     ON::quick_sort (best in general) or ON::heap_sort
     Use ON::heap_sort only if you have done extensive testing with
-    optimized release builds and are confident heap sort is
+    optimized release builds and are confident heap sort is 
     significantly faster in your case.
-  a - [in / out]
+  a - [in / out] 
     The values in a[] are sorted so that a[i] <= a[i+1].
   nel - [in]
     length of array a[]
@@ -5744,12 +5744,12 @@ void ON_SortUnsignedIntArray(
 Description:
   Sort an array of unsigned null terminated char strings in place.
 Parameters:
-  sort_algorithm - [in]
+  sort_algorithm - [in]  
     ON::quick_sort (best in general) or ON::heap_sort
     Use ON::heap_sort only if you have done extensive testing with
-    optimized release builds and are confident heap sort is
+    optimized release builds and are confident heap sort is 
     significantly faster in your case.
-  a - [in / out]
+  a - [in / out] 
     The values in a[] are sorted so that strcmp(a[i],a[i+1]) <= 0.
   nel - [in]
     length of array a[]
@@ -5762,23 +5762,23 @@ void ON_SortStringArray(
         );
 
 ON_DECL
-const int* ON_BinarySearchIntArray(
-          int key,
-          const int* base,
+const int* ON_BinarySearchIntArray( 
+          int key, 
+          const int* base, 
           size_t nel
           );
 
 ON_DECL
-const unsigned int* ON_BinarySearchUnsignedIntArray(
-          unsigned int key,
-          const unsigned int* base,
+const unsigned int* ON_BinarySearchUnsignedIntArray( 
+          unsigned int key, 
+          const unsigned int* base, 
           size_t nel
           );
 
 ON_DECL
-const double* ON_BinarySearchDoubleArray(
-          double key,
-          const double* base,
+const double* ON_BinarySearchDoubleArray( 
+          double key, 
+          const double* base, 
           size_t nel
           );
 
@@ -5812,16 +5812,16 @@ public:
   Descripton:
     Set check sum values for a buffer
   Parameters:
-    size - [in]
+    size - [in] 
       number of bytes in buffer
-    buffer - [in]
+    buffer - [in]  
     time - [in]
       last modified time in seconds since Jan 1, 1970, UCT
   Returns:
     True if checksum is set.
   */
-  bool SetBufferCheckSum(
-    size_t size,
+  bool SetBufferCheckSum( 
+    size_t size, 
     const void* buffer,
     time_t time
    );
@@ -5834,7 +5834,7 @@ public:
   Returns:
     True if checksum is set.
   */
-  bool SetFileCheckSum(
+  bool SetFileCheckSum( 
     FILE* fp
    );
 
@@ -5846,7 +5846,7 @@ public:
   Returns:
     True if checksum is set.
   */
-  bool SetFileCheckSum(
+  bool SetFileCheckSum( 
     const wchar_t* filename
    );
 
@@ -5859,8 +5859,8 @@ public:
   Returns:
     True if the buffer has a matching checksum.
   */
-  bool CheckBuffer(
-    size_t size,
+  bool CheckBuffer( 
+    size_t size, 
     const void* buffer
     ) const;
 
@@ -5874,7 +5874,7 @@ public:
   Returns:
     True if the file has a matching checksum.
   */
-  bool CheckFile(
+  bool CheckFile( 
     FILE* fp,
     bool bSkipTimeCheck = false
     ) const;
@@ -5889,7 +5889,7 @@ public:
   Returns:
     True if the file has a matching checksum.
   */
-  bool CheckFile(
+  bool CheckFile( 
     const wchar_t* filename,
     bool bSkipTimeCheck = false
     ) const;
@@ -5906,7 +5906,7 @@ public:
 };
 
 /////////////////////////////////////////////////////////////////////////////
-//
+// 
 // ON_String is a char (a.k.a single byte or ascii) string
 //
 // ON_wString is a wide char (a.k.a double byte or unicode) string
@@ -5925,13 +5925,13 @@ class ON_CLASS ON_String
 public:
 
 // Constructors
-	ON_String();
-	ON_String( const ON_String& );
+  ON_String();
+  ON_String( const ON_String& );
 
-	ON_String( const char* );
-	ON_String( const char*, int /*length*/ );        // from substring
+  ON_String( const char* );
+  ON_String( const char*, int /*length*/ );        // from substring
 
-	ON_String( const unsigned char* );
+  ON_String( const unsigned char* );
 
 
   // construct a UTF-8 string string from a UTF-16 string.
@@ -5952,7 +5952,7 @@ public:
 
   /*
   Description:
-    Enables reference counting.  I limited cases, this is useful
+    Enables reference counting.  I limited cases, this is useful 
     for large strings or strings that are frequently passed around.
     Reference counted strings must be carefully managed in
     when multi-threading is used.
@@ -5973,7 +5973,7 @@ public:
   // Attributes & Operations
 	// as an array of characters
 	int Length() const;
-	bool IsEmpty() const; // returns true if length == 0
+	bool IsEmpty() const; // returns true if length == 0 
   void Empty();   // sets length to zero - if possible, memory is retained
 
 	char& operator[](int);
@@ -5998,7 +5998,7 @@ public:
   ON_String operator+(const char*) const;
   ON_String operator+(const unsigned char*) const;
 
-	// string comparison
+	// string comparison 
   bool operator==(const ON_String&) const;
   bool operator==(const char*)const ;
   bool operator!=(const ON_String&)const ;
@@ -6021,7 +6021,7 @@ public:
 	const ON_String& operator+=(const char*);
 	const ON_String& operator+=(const unsigned char*);
 
-	// string comparison
+	// string comparison 
   // If this < string, returns < 0.
   // If this = string, returns 0.
   // If this < string, returns > 0.
@@ -6067,7 +6067,6 @@ public:
     Number of times token1 was replaced with token2.
   */
   int Replace( const char* token1, const char* token2 );
-
 
 	// simple sub-string extraction
 	ON_String Mid(
@@ -6131,7 +6130,7 @@ public:
     path - [in]
       path to split
     drive - [out] (pass null if you don't need the drive)
-      If drive is not null and the path parameter contains a Windows
+      If drive is not null and the path parameter contains a Windows 
       drive specification, then the returned value of *drive will
       either be empty or the Windows drive letter followed by
       the trailing colon.
@@ -6166,7 +6165,7 @@ public:
   See Also:
     on_splitpath
   */
-  static void SplitPath(
+  static void SplitPath( 
     const char* path,
     ON_String* drive,
     ON_String* dir,
@@ -6211,22 +6210,20 @@ class ON_CLASS ON_wString
 public:
 
 // Constructors
-	ON_wString();
-	ON_wString( const ON_wString& );
+  ON_wString();
+  ON_wString( const ON_wString& );
 
-	ON_wString( const ON_String& src ); // src = UTF-8 string
+  ON_wString( const ON_String& src ); // src = UTF-8 string
 
-	ON_wString( const char* src ); // src = nul; terminated UTF-8 string
+  ON_wString( const char* src ); // src = nul; terminated UTF-8 string
   ON_wString( const char* src, int /*length*/ );  // from UTF-8 substring
 
-	ON_wString( const unsigned char* src); // src = nul; terminated UTF-8 string
+  ON_wString( const unsigned char* src); // src = nul; terminated UTF-8 string
 
   ON_wString( const wchar_t* );
   ON_wString( const wchar_t*, int /*length*/ );        // from substring
   ON_wString( wchar_t, int = 1 /* repeat count */ );
-
-       // from substring
-
+  
 #if defined(ON_OS_WINDOWS)
   // Windows support
 	bool LoadResourceString(HINSTANCE, UINT); // load from string resource
@@ -6239,7 +6236,7 @@ public:
 
   /*
   Description:
-    Enables reference counting.  I limited cases, this is useful
+    Enables reference counting.  I limited cases, this is useful 
     for large strings or strings that are frequently passed around.
     Reference counted strings must be carefully managed in
     when multi-threading is used.
@@ -6302,7 +6299,7 @@ public:
   ON_wString operator+(const unsigned char* sUTF8) const; // concatinate with a UTF-8 string
   ON_wString operator+(const wchar_t*) const;
 
-	// string comparison
+	// string comparison 
   bool operator==(const ON_wString&) const;
   bool operator==(const wchar_t*) const;
   bool operator!=(const ON_wString&) const;
@@ -6316,7 +6313,7 @@ public:
   bool operator>=(const ON_wString&) const;
   bool operator>=(const wchar_t*) const;
 
-	// string comparison
+	// string comparison 
   // If this < string, returns < 0.
   // If this == string, returns 0.
   // If this < string, returns > 0.
@@ -6376,7 +6373,7 @@ public:
   Description:
     Replaces all %xx where xx a two digit hexadecimal number,
     with a single character. Returns false if the orginal
-    string contained
+    string contained 
   */
   bool UrlDecode();
 
@@ -6388,7 +6385,7 @@ public:
   Parameters:
     token - [in]
     whitespace - [in] if not null, this is a 0 terminated
-      string that lists the characters considered to be
+      string that lists the characters considered to be 
       white space.  If null, then (1,2,...,32,127) is used.
   Returns:
     Number of whitespace characters replaced.
@@ -6402,7 +6399,7 @@ public:
     Removes all white-space characters with the token.
   Parameters:
     whitespace - [in] if not null, this is a 0 terminated
-      string that lists the characters considered to be
+      string that lists the characters considered to be 
       white space.  If null, then (1,2,...,32,127) is used.
   Returns:
     Number of whitespace characters removed.
@@ -6450,8 +6447,6 @@ public:
   int Find(const char*) const;
   int Find(const wchar_t*) const;
 
-
-
 	// simple formatting - be careful with %s in format string
 	void ON_MSC_CDECL Format( const char*, ...);
 	void ON_MSC_CDECL Format( const unsigned char*, ...);
@@ -6493,7 +6488,7 @@ public:
     path - [in]
       path to split
     drive - [out] (pass null if you don't need the drive)
-      If drive is not null and the path parameter contains a Windows
+      If drive is not null and the path parameter contains a Windows 
       drive specification, then the returned value of *drive will
       either be empty or the Windows drive letter followed by
       the trailing colon.
@@ -6529,7 +6524,7 @@ public:
     on_splitpath
     on_wsplitpath
   */
-  static void SplitPath(
+  static void SplitPath( 
     const char* path,
     ON_wString* drive,
     ON_wString* dir,
@@ -6537,7 +6532,7 @@ public:
     ON_wString* ext
     );
 
-  static void SplitPath(
+  static void SplitPath( 
     const wchar_t* path,
     ON_wString* drive,
     ON_wString* dir,
@@ -6616,7 +6611,7 @@ public:
 // THIS SOFTWARE IS PROVIDED "AS IS" WITHOUT EXPRESS OR IMPLIED WARRANTY.
 // ALL IMPLIED WARRANTIES OF FITNESS FOR ANY PARTICULAR PURPOSE AND OF
 // MERCHANTABILITY ARE HEREBY DISCLAIMED.
-//
+//				
 // For complete openNURBS copyright information see <http://www.opennurbs.org>.
 //
 ////////////////////////////////////////////////////////////////
@@ -6642,27 +6637,27 @@ public:
       1. Overriding the virtual Out() function.
       2. Providing a callback function.
     SetCallback() is used to specify a callback function to handle
-    the compressed stream and to specify a context pointer to be
+    the compressed stream and to specify a context pointer to be 
     passed to either option of the handler.
   Parameters:
     callback_function - [in]
       Function to call with sections of the compressed stream.
-      If callback_function is null, then the virtual Out()
-      function will be called. When callback_function
-      is specified, it must return true if the compression
-      calculation should continue and false to cancel the
+      If callback_function is null, then the virtual Out() 
+      function will be called. When callback_function 
+      is specified, it must return true if the compression 
+      calculation should continue and false to cancel the 
       compression calculation.
     callback_context - [in]
-      This value is passed as the first argument when calling
+      This value is passed as the first argument when calling 
       callback_function or the virutal Out() function.
   Returns:
     True if successful.
   Remarks:
     Once compression has started, it would be unusual to
     intentionally change the compressed stream output handler,
-    but you can do this if you need to.
+    but you can do this if you need to.    
   */
-  bool SetCallback(
+  bool SetCallback( 
     ON_StreamCallbackFunction callback_function,
     void* callback_context
     );
@@ -6682,13 +6677,13 @@ public:
     argument to the compressed stream output handler function.
   */
   void* CallbackContext() const;
-
+  
   /*
   Description:
     Call Begin() one time to initialize the compression
-    calculation.  Then call In() one or more times
-    to submit the uncompressed stream to the compression calculation.
-    When you reach the end of the uncompressed stream, call
+    calculation.  Then call In() one or more times 
+    to submit the uncompressed stream to the compression calculation.  
+    When you reach the end of the uncompressed stream, call 
     End().
   Returns:
     true if successful, false if an error occured.
@@ -6707,15 +6702,15 @@ public:
   Returns:
     true if successful, false if an error occured.
   */
-  bool In(
-    ON__UINT64 in_buffer_size,
-    const void* in_buffer
+  bool In( 
+    ON__UINT64 in_buffer_size, 
+    const void* in_buffer 
     );
 
   /*
   Description:
     If an explicit compressed stream output handler is not specified
-    ( CallbackFunction() returns null ), then the virtual Out()
+    ( CallbackFunction() returns null ), then the virtual Out() 
     function is called to handle the compressed output stream.
     As the input stream is compressed, one or more calls to Out()
     will occur.
@@ -6724,20 +6719,20 @@ public:
     calculation.
   Remarks:
     In general, it is probably going to be easier to test and debug
-    your code if you ignore the callback_context parameter and add
+    your code if you ignore the callback_context parameter and add 
     a member variable to your derived class to make additional
     information accessable to your Out function.
   */
-  virtual bool Out(
-    void* callback_context,
-    ON__UINT32 out_buffer_size,
-    const void* out_buffer
+  virtual bool Out( 
+    void* callback_context, 
+    ON__UINT32 out_buffer_size, 
+    const void* out_buffer 
     );
 
   /*
   Description:
-    After the last call to In(), call End().
-    Calling End() may generate zero or more
+    After the last call to In(), call End().  
+    Calling End() may generate zero or more 
     calls to the output stream handler.
   Returns:
     true if successful, false if an error occured.
@@ -6747,10 +6742,10 @@ public:
   /*
   Returns:
     Then the returned value is the total number bytes in the input
-    stream. The size is updated every time In() is called before
-    any calls are made to the output stream handler.  If the
+    stream. The size is updated every time In() is called before 
+    any calls are made to the output stream handler.  If the 
     calculation is finished ( End() has been called ), then the
-    returned value is the total number of bytes in the entire
+    returned value is the total number of bytes in the entire 
     input stream.
   */
   ON__UINT64 InSize() const;
@@ -6759,7 +6754,7 @@ public:
   Returns:
     Then the returned value is the total number bytes in the output
     stream. The size is incremented immediately after each call to
-    the output stream handler.  If the compression calculation is
+    the output stream handler.  If the compression calculation is 
     finished ( End() has been called ), then the returned value is
     the total number of bytes in the entire output stream.
   */
@@ -6769,7 +6764,7 @@ public:
   Returns:
     Then the returned value is the 32-bit crc of the input stream.
     The crc is updated every time In() is called before any calls
-    are made to the output stream handler.  If the compression
+    are made to the output stream handler.  If the compression 
     calculation is finished ( End() has been called ), then the
     returned value is the 32-bit crc of the entire input stream.
   */
@@ -6779,7 +6774,7 @@ public:
   Returns:
     Then the returned value is the 32bit crc of the output stream.
     The crc is updated immediately after each call to the output
-    stream handler.  If the calculation is finished ( End() has
+    stream handler.  If the calculation is finished ( End() has 
     been called ), then the returned value is the 32-bit crc of
     the entire output stream.
   */
@@ -6819,27 +6814,27 @@ public:
       1. Overriding the virtual Out() function.
       2. Providing a callback function.
     SetCallback() is used to specify a callback function to handle
-    the uncompressed stream and to specify a context pointer to be
+    the uncompressed stream and to specify a context pointer to be 
     passed to either option of the handler.
   Parameters:
     callback_function - [in]
       Function to call with sections of the uncompressed stream.
-      If callback_function is null, then the virtual Out()
-      function will be called. When callback_function
-      is specified, it must return true if the uncompression
-      calculation should continue and false to cancel the
+      If callback_function is null, then the virtual Out() 
+      function will be called. When callback_function 
+      is specified, it must return true if the uncompression 
+      calculation should continue and false to cancel the 
       uncompression calculation.
     callback_context - [in]
-      This value is passed as the first argument when calling
+      This value is passed as the first argument when calling 
       callback_function or the virutal Out() function.
   Returns:
     True if successful.
   Remarks:
     Once uncompression has started, it would be unusual to
     intentionally change the uncompressed stream output handler,
-    but you can do this if you need to.
+    but you can do this if you need to.    
   */
-  bool SetCallback(
+  bool SetCallback( 
     ON_StreamCallbackFunction callback_function,
     void* callback_context
     );
@@ -6859,13 +6854,13 @@ public:
     argument to the uncompressed stream output handler function.
   */
   void* CallbackContext() const;
-
+  
   /*
   Description:
     Call BeginUnompressStream() one time to initialize the compression
-    calculation.  Then call In() one or more times
-    to submit the compressed stream to the uncompression calculation.
-    When you reach the end of the compressed stream, call
+    calculation.  Then call In() one or more times 
+    to submit the compressed stream to the uncompression calculation.  
+    When you reach the end of the compressed stream, call 
     End().
   Returns:
     true if successful, false if an error occured.
@@ -6892,29 +6887,29 @@ public:
   /*
   Description:
     If an explicit uncompressed stream handler is not specified
-    ( CallbackFunction() returns null ), then the virtual Out()
+    ( CallbackFunction() returns null ), then the virtual Out() 
     function is called to handle the uncompressed output stream.
     As the input stream is uncompressed, one or more calls to Out()
     will occur.
   Returns:
-    True to continue uncompressing and false to cancel the
+    True to continue uncompressing and false to cancel the 
     uncompression calculation.
   Remarks:
     In general, it is probably going to be easier to test and debug
-    your code if you ignore the callback_context parameter and add
+    your code if you ignore the callback_context parameter and add 
     a member variable to your derived class to make additional
     information accessable to your Out function.
   */
-  virtual bool Out(
-    void* callback_context,
-    ON__UINT32 out_buffer_size,
-    const void* out_buffer
+  virtual bool Out( 
+    void* callback_context, 
+    ON__UINT32 out_buffer_size, 
+    const void* out_buffer 
     );
 
   /*
   Description:
-    After the last call to In(), call End().
-    Calling End() may generate zero or more
+    After the last call to In(), call End().  
+    Calling End() may generate zero or more 
     calls to the output stream handler.
   Returns:
     true if successful, false if an error occured.
@@ -6924,10 +6919,10 @@ public:
   /*
   Returns:
     Then the returned value is the total number bytes in the input
-    stream. The size is updated every time In() is called before
-    any calls are made to the output stream handler.  If the
+    stream. The size is updated every time In() is called before 
+    any calls are made to the output stream handler.  If the 
     calculation is finished ( End() has been called ), then the
-    returned value is the total number of bytes in the entire
+    returned value is the total number of bytes in the entire 
     input stream.
   */
   ON__UINT64 InSize() const;
@@ -6936,7 +6931,7 @@ public:
   Returns:
     Then the returned value is the total number bytes in the output
     stream. The size is incremented immediately after each call to
-    the output stream handler.  If the compression calculation is
+    the output stream handler.  If the compression calculation is 
     finished ( End() has been called ), then the returned value is
     the total number of bytes in the entire output stream.
   */
@@ -6946,7 +6941,7 @@ public:
   Returns:
     Then the returned value is the 32-bit crc of the input stream.
     The crc is updated every time In() is called before any calls
-    are made to the output stream handler.  If the compression
+    are made to the output stream handler.  If the compression 
     calculation is finished ( End() has been called ), then the
     returned value is the 32-bit crc of the entire input stream.
   */
@@ -6956,7 +6951,7 @@ public:
   Returns:
     Then the returned value is the 32bit crc of the output stream.
     The crc is updated immediately after each call to the output
-    stream handler.  If the calculation is finished ( End() has
+    stream handler.  If the calculation is finished ( End() has 
     been called ), then the returned value is the 32-bit crc of
     the entire output stream.
   */
@@ -6991,7 +6986,7 @@ private:
 // THIS SOFTWARE IS PROVIDED "AS IS" WITHOUT EXPRESS OR IMPLIED WARRANTY.
 // ALL IMPLIED WARRANTIES OF FITNESS FOR ANY PARTICULAR PURPOSE AND OF
 // MERCHANTABILITY ARE HEREBY DISCLAIMED.
-//
+//				
 // For complete openNURBS copyright information see <http://www.opennurbs.org>.
 //
 ////////////////////////////////////////////////////////////////
@@ -7011,33 +7006,33 @@ public:
   /*
   Description:
     ON_Base64EncodeStream delivers the base64 encoded stream by
-    calling a base64 encoded stream output handler function.
+    calling a base64 encoded stream output handler function. 
     There are two options for specifying the base64 encoded stream
     output handler function.
       1. Overriding the virtual Out() function.
       2. Providing a callback function.
     SetCallback() is used to specify a callback function to handle
-    the base64 encoded stream and to specify a context pointer to be
+    the base64 encoded stream and to specify a context pointer to be 
     passed to either option of the handler.
   Parameters:
     callback_function - [in]
       Function to handle sections of the base64 encoded stream.
-      If callback_function is null, then the virtual Out()
-      function will be called. When callback_function
-      is specified, it must return true if the base64 encoding
-      calculation should continue and false to cancel the
+      If callback_function is null, then the virtual Out() 
+      function will be called. When callback_function 
+      is specified, it must return true if the base64 encoding 
+      calculation should continue and false to cancel the 
       base64 encoding calculation.
     callback_context - [in]
-      This value is passed as the first argument when calling
+      This value is passed as the first argument when calling 
       callback_function or the virutal Out() function.
   Returns:
     True if successful.
   Remarks:
     Once base64 encoding has started, it would be unusual to
     intentionally change the base64 encoded stream output handler,
-    but you can do this if you need to.
+    but you can do this if you need to.    
   */
-  bool SetCallback(
+  bool SetCallback( 
     ON_StreamCallbackFunction callback_function,
     void* callback_context
     );
@@ -7057,11 +7052,11 @@ public:
     argument to the base64 encoded stream output handler function.
   */
   void* CallbackContext() const;
-
+  
   /*
   Description:
     Call Begin() one time to initialize the base64 encoding
-    calculation.  Then call In() one or more times
+    calculation.  Then call In() one or more times 
     to submit the unencoded stream to the base64 encoding
     calculation. When you reach the end of the unencoded
     stream, call End().
@@ -7075,7 +7070,7 @@ public:
   Description:
     Call In() one or more times to base64 encode a stream of bytes.
     After the last call to In(), call End().  Calling In() will
-    result in at least in_buffer_size/57 and at most
+    result in at least in_buffer_size/57 and at most 
     (in_buffer_size+56)/57 calls to to the output stream handler.
   Parameters:
     in_buffer_size - [in]
@@ -7092,13 +7087,13 @@ public:
   /*
   Description:
     If an explicit base 64 encoded stream output handler is not
-    specified ( CallbackFunction() returns null ), then the
+    specified ( CallbackFunction() returns null ), then the 
     virtual Out() function is called to handle the base 64 encoded
     output stream.  As the input stream is encoded, one or more
     calls to Out() will occur.
 
     With a possible exception of the last call to Out(), when Out()
-    is called, 57 input bytes have been encoded into 76 output
+    is called, 57 input bytes have been encoded into 76 output 
     characters with ASCII codes A-Z, a-z, 0-9, +, /.
   Parameters:
     callback_context - [in]
@@ -7112,15 +7107,15 @@ public:
       A null terminated ASCII string that is a base 64 encoding.
       out_buffer[0...(out_buffer_size-1)] are ASCII characters with
       values characters with ASCII codes A-Z, a-z, 0-9, +, /
-      and out_buffer[out_buffer_size] = 0.
+      and out_buffer[out_buffer_size] = 0.    
   Returns:
     True to continue base 64 encodeing and false to cancel the
     encoding calculation.
   */
-  virtual bool Out(
-    void* callback_context,
-    ON__UINT32 out_buffer_size,
-    const char* out_buffer
+  virtual bool Out( 
+    void* callback_context, 
+    ON__UINT32 out_buffer_size, 
+    const char* out_buffer 
     );
 
   /*
@@ -7132,14 +7127,14 @@ public:
     true if successful, false if an error occured.
   */
   bool End();
-
+  
   /*
   Returns:
     Then the returned value is the total number bytes in the input
-    stream. The size is updated every time In() is called before
-    any calls are made to the output stream handler.  If the
+    stream. The size is updated every time In() is called before 
+    any calls are made to the output stream handler.  If the 
     calculation is finished ( End() has been called ), then the
-    returned value is the total number of bytes in the entire
+    returned value is the total number of bytes in the entire 
     input stream.
   */
   ON__UINT64 InSize() const;
@@ -7150,7 +7145,7 @@ public:
     output stream. The size is incremented immediately after each
     call to the output stream handler.  If the base64 encoding
     calculation is finished ( End() has been called ), then the
-    returned value is the total number of bytes in the entire
+    returned value is the total number of bytes in the entire 
     output stream.
   */
   ON__UINT64 OutSize() const;
@@ -7159,7 +7154,7 @@ public:
   Returns:
     Then the returned value is the 32-bit crc of the input stream.
     The crc is updated every time In() is called before any calls
-    are made to the output stream handler.  If the base64 encoding
+    are made to the output stream handler.  If the base64 encoding 
     calculation is finished ( End() has been called ), then the
     returned value is the 32-bit crc of the entire input stream.
   */
@@ -7169,12 +7164,12 @@ public:
   Returns:
     Then the returned value is the 32bit crc of the output stream.
     The crc is updated immediately after each call to the output
-    stream handler.  If the calculation is finished ( End() has
+    stream handler.  If the calculation is finished ( End() has 
     been called ), then the returned value is the 32-bit crc of
     the entire output stream.
   */
   ON__UINT32 OutCRC() const;
-
+    
 private:
   ON_StreamCallbackFunction m_out_callback_function;
   void* m_out_callback_context;
@@ -7186,7 +7181,7 @@ private:
   void* m_reserved;
 
   void ErrorHandler();
-
+  
 private:
   // prohibit use - no implementation
   ON_Base64EncodeStream(const ON_Base64EncodeStream&);
@@ -7228,7 +7223,7 @@ public:
   // returns false.
   bool End();
 
-  // Override the virtual Output() callback function to process the
+  // Override the virtual Output() callback function to process the 
   // decoded output.  Each time Output() is called there are m_output_count
   // bytes in the m_output[] array.
   // Every call to Decode() can result in zero, one, or many callbacks
@@ -7238,7 +7233,7 @@ public:
 
   // m_decode_count = total number of input base64 characters
   // that Decode() has decoded.
-  unsigned int m_decode_count;
+  unsigned int m_decode_count; 
 
   int  m_output_count; // 0 to 512
   unsigned char m_output[512];
@@ -7258,7 +7253,7 @@ private:
                 // 4: successfully parsed "***="
                 // 5: End() successfully called.
 
-  // cached encoded input from previous call to Decode()
+  // cached encoded input from previous call to Decode() 
   int m_cache_count;
   int m_cache[4];
 
@@ -7305,12 +7300,12 @@ public:
   int m_encode_count;
 
   // When the virtual Output() is called, there are m_output_count (1 to 76)
-  // characters of base64 encoded output in m_output[].  The remainder of
+  // characters of base64 encoded output in m_output[].  The remainder of 
   // the m_output[] array is zero.  The Output function may modify the
   // contents of m_output[] any way it sees fit.
   int  m_output_count;
   char m_output[80];
-
+  
 private:
   // input waiting to be encoded
   // At most 56 bytes can be waiting to be processed in m_input[].
@@ -7336,7 +7331,7 @@ private:
 // THIS SOFTWARE IS PROVIDED "AS IS" WITHOUT EXPRESS OR IMPLIED WARRANTY.
 // ALL IMPLIED WARRANTIES OF FITNESS FOR ANY PARTICULAR PURPOSE AND OF
 // MERCHANTABILITY ARE HEREBY DISCLAIMED.
-//
+//				
 // For complete openNURBS copyright information see <http://www.opennurbs.org>.
 //
 ////////////////////////////////////////////////////////////////
@@ -7348,11 +7343,11 @@ private:
 ///////////////////////////////////////////////////////////////////////////////
 //
 // Class ON_Color
-//
+// 
 class ON_CLASS ON_Color
 {
 public:
-	// Constructors & Conversions -     also default copy and assignment
+	// Constructors & Conversions -     also default copy and assignment	
 
   static const ON_Color UnsetColor; // 0xFFFFFFFF
 
@@ -7377,11 +7372,11 @@ public:
 	ON_Color(unsigned int);
 
 	// Conversion to Windows COLORREF
-  operator unsigned int() const;
+  operator unsigned int() const;	
 
   /*
   Description:
-    Call this function when the color is needed in a
+    Call this function when the color is needed in a 
     Windows COLORREF format with alpha = 0;
   Returns
     A Windows COLOREF with alpha = 0.
@@ -7389,7 +7384,7 @@ public:
   unsigned int WindowsRGB() const;
 
   // < 0 if this < arg, 0 ir this==arg, > 0 if this > arg
-  int Compare( const ON_Color& ) const;
+  int Compare( const ON_Color& ) const; 
 
 	int Red()   const; // ( 0 to 255 )
 	int Green() const; // ( 0 to 255 )
@@ -7436,9 +7431,9 @@ public:
     double alpha  // alpha in range 0.0 to 1.0 (0.0 = opaque, 1.0 = transparent)
     );
 
-  // Hue() returns an angle in the range 0 to 2*pi
+  // Hue() returns an angle in the range 0 to 2*pi 
   //
-  //           0 = red, pi/3 = yellow, 2*pi/3 = green,
+  //           0 = red, pi/3 = yellow, 2*pi/3 = green, 
   //           pi = cyan, 4*pi/3 = blue,5*pi/3 = magenta,
   //           2*pi = red
   double Hue() const;
@@ -7449,10 +7444,10 @@ public:
   // Returns 0.0 (black) to 1.0 (white)
   double Value() const;
 
-  void SetHSV(
+  void SetHSV( 
          double h, // hue in radians 0 to 2*pi
          double s, // satuation 0.0 = gray, 1.0 = saturated
-         double v // value
+         double v // value     
          );
 
 private:
@@ -7474,7 +7469,7 @@ private:
 // THIS SOFTWARE IS PROVIDED "AS IS" WITHOUT EXPRESS OR IMPLIED WARRANTY.
 // ALL IMPLIED WARRANTIES OF FITNESS FOR ANY PARTICULAR PURPOSE AND OF
 // MERCHANTABILITY ARE HEREBY DISCLAIMED.
-//
+//				
 // For complete openNURBS copyright information see <http://www.opennurbs.org>.
 //
 ////////////////////////////////////////////////////////////////
@@ -7487,16 +7482,16 @@ private:
 ///////////////////////////////////////////////////////////////////////////////
 //
 // Class ON_DisplayMaterialRef
-//
+// 
 
 /*
 Description:
   Objects can have per viewport display properties
   that override a viewport's default display
-  properties.  These overrides are stored on
-  ON_3dmObjectAttributes as a list of
+  properties.  These overrides are stored on 
+  ON_3dmObjectAttributes as a list of 
   ON_DisplayMaterialRefs.
-
+  
 Example:
   For example, by default a viewport
   might display objects using a wireframe, but
@@ -7582,7 +7577,7 @@ public:
 // THIS SOFTWARE IS PROVIDED "AS IS" WITHOUT EXPRESS OR IMPLIED WARRANTY.
 // ALL IMPLIED WARRANTIES OF FITNESS FOR ANY PARTICULAR PURPOSE AND OF
 // MERCHANTABILITY ARE HEREBY DISCLAIMED.
-//
+//				
 // For complete openNURBS copyright information see <http://www.opennurbs.org>.
 //
 ////////////////////////////////////////////////////////////////
@@ -7655,7 +7650,7 @@ public:
     ON_Interval::ON_Interval( double, double )
   */
   void Set(
-    double t0,
+    double t0, 
     double t1
     );
 
@@ -7663,7 +7658,7 @@ public:
   Description:
     Convert normalized parameter to interval value, or pair of values.
   Parameters:
-    normalized_parameter - [in]
+    normalized_parameter - [in] 
   Returns:
     Interval parameter
     min*(1.0-normalized_parameter) + max*normalized_parameter
@@ -7672,18 +7667,18 @@ public:
   */
   double ParameterAt (
     double normalized_parameter
-    ) const;
+    ) const; 
   ON_Interval ParameterAt (
     ON_Interval normalized_interval
-    ) const;
-
+    ) const; 
+  
   /*
   Description:
     Convert interval value, or pair of values, to normalized parameter.
   Parameters:
     interval_parameter - [in] value in interval
   Returns:
-    Normalized parameter x so that
+    Normalized parameter x so that 
     min*(1.0-x) + max*x = interval_parameter.
   See Also:
     ON_Interval::ParameterAt
@@ -7715,7 +7710,7 @@ public:
   // OBSOLETE - Use IsEmptyInterval()
   bool IsEmptySet() const;   // returns true if m_t[0] == m_t[1] == ON_UNSET_VALUE
 
-	bool MakeIncreasing();		// returns true if resulting interval IsIncreasing()
+	bool MakeIncreasing();		// returns true if resulting interval IsIncreasing() 
 
   /*
   Returns:
@@ -7728,12 +7723,12 @@ public:
   */
   int Compare( const ON_Interval& other ) const;
 
-  /*
+  /* 
   Description:
     Test a value t to see if it is inside the interval.
   Parameters:
     t - [in] value to test
-    bTestOpenInterval - [in]
+    bTestOpenInterval - [in] 
         If false, t is tested to see if it satisfies min <= t <= max.
         If true, t is tested to see if it satisfies min < t < max.
   Returns:
@@ -7745,7 +7740,7 @@ public:
     bool bTestOpenInterval = false
     ) const;
 
-  /*
+  /* 
   Description:
     Test an interval to see if it is contained in this interval.
   Parameters:
@@ -7758,7 +7753,7 @@ public:
     this->Min() <= other.Min() and other.Max() <= this->Max()
     and at least one of the inequalites is strict.
   */
-  bool Includes(
+  bool Includes( 
     const ON_Interval& other,
     bool bProperSubSet = false
     ) const;
@@ -7776,7 +7771,7 @@ public:
   void Swap();
 
   //////////
-  // If the intersection is not empty, then
+  // If the intersection is not empty, then 
   // intersection = [max(this.Min(),arg.Min()), min(this.Max(),arg.Max())]
   // Intersection() returns true if the intersection is not empty.
   // The interval [ON_UNSET_VALUE,ON_UNSET_VALUE] is considered to be
@@ -7787,14 +7782,14 @@ public:
          );
 
   //////////
-  // If the intersection is not empty, then
+  // If the intersection is not empty, then 
   // intersection = [max(argA.Min(),argB.Min()), min(argA.Max(),argB.Max())]
   // Intersection() returns true if the intersection is not empty.
   // The interval [ON_UNSET_VALUE,ON_UNSET_VALUE] is considered to be
   // the empty set interval.  The result of any intersection involving an
   // empty set interval or disjoint intervals is the empty set interval.
   bool Intersection( // this = intersection of two args
-         const ON_Interval&,
+         const ON_Interval&, 
          const ON_Interval&
          );
 
@@ -7826,7 +7821,7 @@ public:
   // union = [min(argA.Min(),argB.Min()), max(argA.Max(),argB.Max()),]
   // Union() returns true if the union is not empty.
   bool Union( // this = union of two args
-         const ON_Interval&,
+         const ON_Interval&, 
          const ON_Interval&
          );
 };
@@ -7958,7 +7953,7 @@ public:
 
   // These transform the point in place. The transformation matrix acts on
   // the left of the point; i.e., result = transformation*point
-  void Transform(
+  void Transform( 
         const ON_Xform&
         );
 
@@ -8100,7 +8095,7 @@ public:
 
   int MaximumCoordinateIndex() const;
   double MaximumCoordinate() const; // absolute value of maximum coordinate
-
+  
   int MinimumCoordinateIndex() const;
   double MinimumCoordinate() const; // absolute value of minimum coordinate
 
@@ -8110,17 +8105,17 @@ public:
 
   // These transform the point in place. The transformation matrix acts on
   // the left of the point; i.e., result = transformation*point
-  void Transform(
+  void Transform( 
         const ON_Xform&
         );
 
-  void Rotate(
+  void Rotate( 
         double angle,             // angle in radians
         const ON_3dVector& axis,  // axis of rotation
         const ON_3dPoint& center  // center of rotation
         );
 
-  void Rotate(
+  void Rotate( 
         double sin_angle,         // sin(angle)
         double cos_angle,         // cos(angle)
         const ON_3dVector& axis,  // axis of rotation
@@ -8145,7 +8140,7 @@ class ON_CLASS ON_4dPoint
 {
 public:
   double x, y, z, w;
-
+  
   // use implicit destructor, copy constructor
   ON_4dPoint();                       // x,y,z,w not initialized
   ON_4dPoint(double x,double y,double z,double w);
@@ -8194,7 +8189,7 @@ public:
   double operator*(const ON_4dPoint&) const;
   ON_4dPoint operator*(const ON_Xform&) const;
 
-  // projective comparison
+  // projective comparison 
   // (i.e., [x,y,z,w] == [c*x,c*y,c*z,c*w] is true for nonzero c)
   bool operator==(ON_4dPoint) const;
   bool operator!=(const ON_4dPoint&) const;
@@ -8231,7 +8226,7 @@ public:
 
   // These transform the point in place. The transformation matrix acts on
   // the left of the point; i.e., result = transformation*point
-  void Transform(
+  void Transform( 
         const ON_Xform&
         );
 };
@@ -8304,7 +8299,7 @@ public:
 
   double operator*(const ON_2dVector&) const; // inner (dot) product
   double operator*(const ON_2dPoint&) const; // inner (dot) product (point acting as vector)
-  double operator*(const ON_2fVector&) const; // inner (dot) product
+  double operator*(const ON_2fVector&) const; // inner (dot) product	
 
   ON_2dVector  operator*(int) const;
   ON_2dVector  operator/(int) const;
@@ -8390,12 +8385,12 @@ public:
          double*  // b
          ) const;
 
-  int IsParallelTo(
+  int IsParallelTo( 
         // returns  1: this and other vectors are parallel
         //         -1: this and other vectors are anti-parallel
         //          0: this and other vectors are not parallel
         //             or at least one of the vectors is zero
-        const ON_2dVector& other,                           // other vector
+        const ON_2dVector& other,                           // other vector     
         double angle_tolerance = ON_DEFAULT_ANGLE_TOLERANCE // optional angle tolerance (radians)
         ) const;
 
@@ -8403,7 +8398,7 @@ public:
         // returns true:  this and other vectors are perpendicular
         //         false: this and other vectors are not perpendicular
         //                or at least one of the vectors is zero
-        const ON_2dVector& other,                           // other vector
+        const ON_2dVector& other,                           // other vector     
         double angle_tolerance = ON_DEFAULT_ANGLE_TOLERANCE // optional angle tolerance (radians)
         ) const;
 
@@ -8434,28 +8429,28 @@ public:
   bool IsUnitVector() const;
 
   // set this vector to be perpendicular to another vector
-  bool PerpendicularTo( // Result is not unitized.
+  bool PerpendicularTo( // Result is not unitized. 
                         // returns false if input vector is zero
-        const ON_2dVector&
+        const ON_2dVector& 
         );
 
   // set this vector to be perpendicular to a line defined by 2 points
-  bool PerpendicularTo(
-        const ON_2dPoint&,
-        const ON_2dPoint&
+  bool PerpendicularTo( 
+        const ON_2dPoint&, 
+        const ON_2dPoint& 
         );
 
   // These transform the vector in place. The transformation matrix acts on
   // the left of the vector; i.e., result = transformation*vector
-  void Transform(
+  void Transform( 
         const ON_Xform& // can use ON_Xform here
         );
 
-  void Rotate(
+  void Rotate( 
         double angle            // angle in radians
         );
 
-  void Rotate(
+  void Rotate( 
         double sin_angle,       // sin(angle)
         double cos_angle        // cos(angle)
         );
@@ -8476,42 +8471,42 @@ ON_2dVector operator*(double, const ON_2dVector&);
 //
 
 ON_DECL
-double
-ON_DotProduct(
-    const ON_2dVector&,
-    const ON_2dVector&
+double 
+ON_DotProduct( 
+    const ON_2dVector&, 
+    const ON_2dVector& 
     );
 
 ON_DECL
-ON_3dVector
+ON_3dVector 
 ON_CrossProduct(
-    const ON_2dVector&,
-    const ON_2dVector&
+    const ON_2dVector&, 
+    const ON_2dVector& 
     );
 
 ON_DECL
-double
+double			 
 ON_WedgeProduct(		// signed area of the parallelagram.  Volume element.
-    const ON_2dVector& A, // returns A.x * B.y - A.y * B.x
-    const ON_2dVector& B
+    const ON_2dVector& A, // returns A.x * B.y - A.y * B.x 
+    const ON_2dVector& B 
     );
 
 ON_DECL
-bool
+bool 
 ON_IsOrthogonalFrame( // true if X, Y are nonzero and mutually perpendicular
     const ON_2dVector&, // X
     const ON_2dVector&  // Y
     );
 
 ON_DECL
-bool
+bool 
 ON_IsOrthonormalFrame( // true if X, Y are orthogonal and unit length
     const ON_2dVector&, // X
     const ON_2dVector&  // Y
     );
 
 ON_DECL
-bool
+bool 
 ON_IsRightHandFrame( // true if X, Y are orthonormal and right handed
     const ON_2dVector&, // X
     const ON_2dVector&  // Y
@@ -8535,7 +8530,7 @@ public:
   // Description:
   //   A index driven function to get unit axis vectors.
   // Parameters:
-  //   index - [in] 0 returns (1,0,0), 1 returns (0,1,0),
+  //   index - [in] 0 returns (1,0,0), 1 returns (0,1,0), 
   //                2 returns (0,0,1)
   // Returns:
   //   Unit 3d vector with vector[i] = (i==index)?1:0;
@@ -8566,7 +8561,7 @@ public:
   ON_3dVector& operator=(const ON_2dPoint&);
   ON_3dVector& operator=(const ON_3dPoint&);
   ON_3dVector& operator=(const double*); // vector = double[3] support
-
+  
   ON_3dVector& operator=(const ON_2fVector&);
   ON_3dVector& operator=(const ON_3fVector&);
   ON_3dVector& operator=(const ON_2fPoint&);
@@ -8667,12 +8662,12 @@ public:
          double*  // c
          ) const;
 
-  int IsParallelTo(
+  int IsParallelTo( 
         // returns  1: this and other vectors are parallel
         //         -1: this and other vectors are anti-parallel
         //          0: this and other vectors are not parallel
         //             or at least one of the vectors is zero
-        const ON_3dVector& other,                           // other vector
+        const ON_3dVector& other,                           // other vector     
         double angle_tolerance = ON_DEFAULT_ANGLE_TOLERANCE // optional angle tolerance (radians)
         ) const;
 
@@ -8680,7 +8675,7 @@ public:
         // returns true:  this and other vectors are perpendicular
         //         false: this and other vectors are not perpendicular
         //                or at least one of the vectors is zero
-        const ON_3dVector& other,                           // other vector
+        const ON_3dVector& other,                           // other vector     
         double angle_tolerance = ON_DEFAULT_ANGLE_TOLERANCE // optional angle tolerance (radians)
         ) const;
 
@@ -8714,32 +8709,32 @@ public:
   bool IsUnitVector() const;
 
   // set this vector to be perpendicular to another vector
-  bool PerpendicularTo( // Result is not unitized.
+  bool PerpendicularTo( // Result is not unitized. 
                         // returns false if input vector is zero
-        const ON_3dVector&
+        const ON_3dVector& 
         );
 
   // set this vector to be perpendicular to a plane defined by 3 points
   bool PerpendicularTo(
                // about 3 times slower than
-               //    ON_3dVector N = ON_CrossProduct(P1-P0,P2-P0);
+               //    ON_3dVector N = ON_CrossProduct(P1-P0,P2-P0); 
                //    N.Unitize();
                // returns false if points are coincident or colinear
-         const ON_3dPoint&, const ON_3dPoint&, const ON_3dPoint&
+         const ON_3dPoint&, const ON_3dPoint&, const ON_3dPoint& 
          );
 
   // These transform the vector in place. The transformation matrix acts on
   // the left of the vector; i.e., result = transformation*vector
-  void Transform(
+  void Transform( 
         const ON_Xform& // can use ON_Xform here
         );
 
-  void Rotate(
+  void Rotate( 
         double angle,           // angle in radians
         const ON_3dVector& axis // axis of rotation
         );
 
-  void Rotate(
+  void Rotate( 
         double sin_angle,        // sin(angle)
         double cos_angle,        // cos(angle)
         const ON_3dVector& axis  // axis of rotation
@@ -8832,8 +8827,8 @@ public:
       If not null, the range of values will be returned here.
   Returns:
     An array of Pcount values.  If the input parameter value was null,
-    then the array is allocated on the heap using onmalloc() and the
-    caller is responsible for calling onfree() when finished.  If the
+    then the array is allocated on the heap using onmalloc() and the 
+    caller is responsible for calling onfree() when finished.  If the 
     input is not valid, null is returned.
   */
   double* ValueAt(
@@ -8852,7 +8847,7 @@ public:
 
   /*
   Description:
-    This function calculates and evalutes points that
+    This function calculates and evalutes points that 
     would be exactly on the plane if double precision
     aritmetic were mathematically perfect and returns
     the largest value of the evaluations.
@@ -8895,7 +8890,7 @@ public:
     Get the minimum value of the plane equation
     on a bounding box.
   Parameters:
-    bbox - [in]
+    bbox - [in] 
   Returns:
     Minimum value of the plane equation on the bounding box.
   */
@@ -8906,7 +8901,7 @@ public:
     Get the maximum value of the plane equation
     on a bounding box.
   Parameters:
-    bbox - [in]
+    bbox - [in] 
   Returns:
     Maximum value of the plane equation on the bounding box.
   */
@@ -8970,8 +8965,8 @@ public:
     points - [in]
       coordinates of points
     stop_value - [in]
-      If stop_value is valid and not ON_UNSET_VALUE, then the
-      evaulation stops if a value > stop_value is found.
+      If stop_value is valid and not ON_UNSET_VALUE, then the 
+      evaulation stops if a value > stop_value is found. 
       If stop_value = ON_UNSET_VALUE, then stop_value is ignored.
   Returns:
     Maximum value of the plane equation on the point list.
@@ -8999,8 +8994,8 @@ public:
     points - [in]
       coordinates of points
     stop_value - [in]
-      If stop_value is valid and not ON_UNSET_VALUE, then the
-      evaulation stops if a value < stop_value is found.
+      If stop_value is valid and not ON_UNSET_VALUE, then the 
+      evaulation stops if a value < stop_value is found. 
       If stop_value = ON_UNSET_VALUE, then stop_value is ignored.
   Returns:
     Maximum value of the plane equation on the point list.
@@ -9016,7 +9011,7 @@ public:
 
   /*
   Description:
-    Get the maximum absolute value of the plane equation
+    Get the maximum absolute value of the plane equation 
     on a set of 3d points.
   Parameters:
     bRational - [in]
@@ -9030,7 +9025,7 @@ public:
       coordinates of points
     stop_value - [in]
       If stop_value >= 0.0, then the evaulation stops if an
-      absolute value > stop_value is found. If stop_value < 0.0
+      absolute value > stop_value is found. If stop_value < 0.0 
       or stop_value is invalid, then stop_value is ignored.
   Returns:
     Maximum value of the plane equation on the point list.
@@ -9051,12 +9046,12 @@ public:
     bezcrv - [in]
     s0 - [in]
     s1 - [in] the interval from s0 to s1 is tested (s0 < s1)
-    sample_count - [in] number of interior points to test.
+    sample_count - [in] number of interior points to test.  
                 Numbers like 1, 3, 7, 15, ... work best.
-    endpoint_tolerance - [in] If >= 0, then the end points are
-              tested to see if the distance from the endpoints
+    endpoint_tolerance - [in] If >= 0, then the end points are 
+              tested to see if the distance from the endpoints 
               is <= endpoint_tolerance.
-    interior_tolerance - [in] (>=0 and >=endpoint_tolerance)
+    interior_tolerance - [in] (>=0 and >=endpoint_tolerance) 
               This tolerance is used to test the interior sample points.
     smin - [put]  If not NULL, *smin = bezier parameter of nearest
                   test point.
@@ -9068,7 +9063,7 @@ public:
     False if at least one tested point failed the tolerance test.
     (The test terminates when the first failure is encountered.)
   */
-  bool IsNearerThan(
+  bool IsNearerThan( 
           const class ON_BezierCurve& bezcrv,
           double s0,
           double s1,
@@ -9078,7 +9073,7 @@ public:
           double* smin,
           double* smax
           ) const;
-
+  
   bool operator==(const ON_PlaneEquation&) const;
   bool operator!=(const ON_PlaneEquation&) const;
 
@@ -9100,37 +9095,37 @@ ON_3dVector operator*(double, const ON_3dVector&);
 //
 
 ON_DECL
-double
-ON_DotProduct(
-    const ON_3dVector&,
-    const ON_3dVector&
+double 
+ON_DotProduct( 
+    const ON_3dVector&, 
+    const ON_3dVector& 
     );
 
 
 ON_DECL
-ON_3dVector
+ON_3dVector 
 ON_CrossProduct(
-    const ON_3dVector&,
-    const ON_3dVector&
+    const ON_3dVector&, 
+    const ON_3dVector& 
     );
 
 ON_DECL
-ON_3dVector
+ON_3dVector 
 ON_CrossProduct( // 3d cross product for old fashioned arrays
     const double*, // array of 3d doubles
     const double*  // array of 3d doubles
     );
 
 ON_DECL
-double
-ON_TripleProduct(
+double 
+ON_TripleProduct( 
     const ON_3dVector&,
     const ON_3dVector&,
     const ON_3dVector&
     );
 
 ON_DECL
-double
+double 
 ON_TripleProduct(  // 3d triple product for old fashioned arrays
     const double*, // array of 3d doubles
     const double*, // array of 3d doubles
@@ -9138,27 +9133,27 @@ ON_TripleProduct(  // 3d triple product for old fashioned arrays
     );
 
 ON_DECL
-bool
+bool 
 ON_IsOrthogonalFrame( // true if X, Y, Z are nonzero and mutually perpendicular
     const ON_3dVector&, // X
     const ON_3dVector&, // Y
-    const ON_3dVector&  // Z
+    const ON_3dVector&  // Z 
     );
 
 ON_DECL
-bool
+bool 
 ON_IsOrthonormalFrame( // true if X, Y, Z are orthogonal and unit length
     const ON_3dVector&, // X
     const ON_3dVector&, // Y
-    const ON_3dVector&  // Z
+    const ON_3dVector&  // Z 
     );
 
 ON_DECL
-bool
+bool 
 ON_IsRightHandFrame( // true if X, Y, Z are orthonormal and right handed
     const ON_3dVector&, // X
     const ON_3dVector&, // Y
-    const ON_3dVector&  // Z
+    const ON_3dVector&  // Z 
     );
 
 ///////////////////////////////////////////////////////////////
@@ -9215,7 +9210,7 @@ public:
 // THIS SOFTWARE IS PROVIDED "AS IS" WITHOUT EXPRESS OR IMPLIED WARRANTY.
 // ALL IMPLIED WARRANTIES OF FITNESS FOR ANY PARTICULAR PURPOSE AND OF
 // MERCHANTABILITY ARE HEREBY DISCLAIMED.
-//
+//				
 // For complete openNURBS copyright information see <http://www.opennurbs.org>.
 //
 ////////////////////////////////////////////////////////////////
@@ -9349,7 +9344,7 @@ public:
 
   // These transform the point in place. The transformation matrix acts on
   // the left of the point; i.e., result = transformation*point
-  void Transform(
+  void Transform( 
         const ON_Xform&
         );
 
@@ -9483,17 +9478,17 @@ public:
 
   // These transform the point in place. The transformation matrix acts on
   // the left of the point; i.e., result = transformation*point
-  void Transform(
+  void Transform( 
         const ON_Xform&
         );
 
-  void Rotate(
+  void Rotate( 
         double,               // angle in radians
         const ON_3fVector&, // axis of rotation
         const ON_3fPoint&   // center of rotation
         );
 
-  void Rotate(
+  void Rotate( 
         double,               // sin(angle)
         double,               // cos(angle)
         const ON_3fVector&, // axis of rotation
@@ -9566,7 +9561,7 @@ public:
 
   float operator*(const ON_4fPoint&) const;
 
-  // projective comparison
+  // projective comparison 
   // (i.e., [x,y,z,w] == [c*x,c*y,c*z,c*w] is true for nonzero c)
   bool operator==(ON_4fPoint) const;
   bool operator!=(const ON_4fPoint&) const;
@@ -9588,7 +9583,7 @@ public:
 
   // These transform the point in place. The transformation matrix acts on
   // the left of the point; i.e., result = transformation*point
-  void Transform(
+  void Transform( 
         const ON_Xform&
         );
 };
@@ -9664,7 +9659,7 @@ public:
   float operator*(const ON_2fVector&) const; // inner (dot) product
   float operator*(const ON_2fPoint&) const; // inner (dot) product point acting as a vector
   double operator*(const ON_2dVector&) const; // inner (dot) product
-
+  
   ON_2fVector  operator*(int) const;
   ON_2fVector  operator/(int) const;
   ON_2fVector  operator*(float) const;
@@ -9729,12 +9724,12 @@ public:
          double*  // b
          ) const;
 
-  int IsParallelTo(
+  int IsParallelTo( 
         // returns  1: this and other vectors are parallel
         //         -1: this and other vectors are anti-parallel
         //          0: this and other vectors are not parallel
         //             or at least one of the vectors is zero
-        const ON_2fVector&,                 // other vector
+        const ON_2fVector&,                 // other vector     
         double = ON_DEFAULT_ANGLE_TOLERANCE // optional angle tolerance (radians)
         ) const;
 
@@ -9742,7 +9737,7 @@ public:
         // returns true:  this and other vectors are perpendicular
         //         false: this and other vectors are not perpendicular
         //                or at least one of the vectors is zero
-        const ON_2fVector&,                 // other vector
+        const ON_2fVector&,                 // other vector     
         double = ON_DEFAULT_ANGLE_TOLERANCE // optional angle tolerance (radians)
         ) const;
 
@@ -9770,15 +9765,15 @@ public:
   bool IsZero() const;
 
   // set this vector to be perpendicular to another vector
-  bool PerpendicularTo( // Result is not unitized.
+  bool PerpendicularTo( // Result is not unitized. 
                         // returns false if input vector is zero
-        const ON_2fVector&
+        const ON_2fVector& 
         );
 
   // set this vector to be perpendicular to a line defined by 2 points
-  bool PerpendicularTo(
-        const ON_2fPoint&,
-        const ON_2fPoint&
+  bool PerpendicularTo( 
+        const ON_2fPoint&, 
+        const ON_2fPoint& 
         );
 };
 
@@ -9797,35 +9792,35 @@ ON_2dVector operator*(double, const ON_2fVector&);
 //
 
 ON_DECL
-float
-ON_DotProduct(
-    const ON_2fVector&,
-    const ON_2fVector&
+float 
+ON_DotProduct( 
+    const ON_2fVector&, 
+    const ON_2fVector& 
     );
 
 ON_DECL
-ON_3fVector
+ON_3fVector 
 ON_CrossProduct(
-    const ON_2fVector&,
-    const ON_2fVector&
+    const ON_2fVector&, 
+    const ON_2fVector& 
     );
 
 ON_DECL
-bool
+bool 
 ON_IsOrthogonalFrame( // true if X, Y are nonzero and mutually perpendicular
     const ON_2fVector&, // X
     const ON_2fVector&  // Y
     );
 
 ON_DECL
-bool
+bool 
 ON_IsOrthonormalFrame( // true if X, Y are orthogonal and unit length
     const ON_2fVector&, // X
     const ON_2fVector&  // Y
     );
 
 ON_DECL
-bool
+bool 
 ON_IsRightHandFrame( // true if X, Y are orthonormal and right handed
     const ON_2fVector&, // X
     const ON_2fVector&  // Y
@@ -9890,7 +9885,7 @@ public:
   ON_3fVector& operator=(const ON_2dVector&);
   ON_3fVector& operator=(const ON_3dVector&);
   ON_3fVector& operator=(const double*); // point = double[3] support
-
+  
   ON_3fVector  operator-() const;
 
   ON_3fVector& operator*=(float);
@@ -9957,7 +9952,7 @@ public:
         // returns true:  this and other vectors are perpendicular
         //         false: this and other vectors are not perpendicular
         //                or at least one of the vectors is zero
-        const ON_3fVector&,                 // other vector
+        const ON_3fVector&,                 // other vector     
         double = ON_DEFAULT_ANGLE_TOLERANCE // optional angle tolerance (radians)
         ) const;
 
@@ -9987,23 +9982,23 @@ public:
   bool IsZero() const;
 
   // set this vector to be perpendicular to another vector
-  bool PerpendicularTo( // Result is not unitized.
+  bool PerpendicularTo( // Result is not unitized. 
                         // returns false if input vector is zero
-        const ON_3fVector&
+        const ON_3fVector& 
         );
 
   // These transform the vector in place. The transformation matrix acts on
   // the left of the vector; i.e., result = transformation*vector
-  void Transform(
+  void Transform( 
         const ON_Xform& // can use ON_Xform here
         );
 
-  void Rotate(
+  void Rotate( 
         double,             // angle in radians
         const ON_3fVector&  // axis of rotation
         );
 
-  void Rotate(
+  void Rotate( 
         double,             // sin(angle)
         double,             // cos(angle)
         const ON_3fVector&  // axis of rotation
@@ -10025,37 +10020,37 @@ ON_3dVector operator*(double, const ON_3fVector&);
 //
 
 ON_DECL
-float
-ON_DotProduct(
-    const ON_3fVector&,
-    const ON_3fVector&
+float 
+ON_DotProduct( 
+    const ON_3fVector&, 
+    const ON_3fVector& 
     );
 
 
 ON_DECL
-ON_3fVector
+ON_3fVector 
 ON_CrossProduct(
-    const ON_3fVector&,
-    const ON_3fVector&
+    const ON_3fVector&, 
+    const ON_3fVector& 
     );
 
 ON_DECL
-ON_3fVector
+ON_3fVector 
 ON_CrossProduct( // 3d cross product for old fashioned arrays
     const float*, // array of 3d floats
     const float*  // array of 3d floats
     );
 
 ON_DECL
-float
-ON_TripleProduct(
+float 
+ON_TripleProduct( 
     const ON_3fVector&,
     const ON_3fVector&,
     const ON_3fVector&
     );
 
 ON_DECL
-float
+float 
 ON_TripleProduct(  // 3d triple product for old fashioned arrays
     const float*, // array of 3d floats
     const float*, // array of 3d floats
@@ -10063,27 +10058,27 @@ ON_TripleProduct(  // 3d triple product for old fashioned arrays
     );
 
 ON_DECL
-bool
+bool 
 ON_IsOrthogonalFrame( // true if X, Y, Z are nonzero and mutually perpendicular
     const ON_3fVector&, // X
     const ON_3fVector&, // Y
-    const ON_3fVector&  // Z
+    const ON_3fVector&  // Z 
     );
 
 ON_DECL
-bool
+bool 
 ON_IsOrthonormalFrame( // true if X, Y, Z are orthogonal and unit length
     const ON_3fVector&, // X
     const ON_3fVector&, // Y
-    const ON_3fVector&  // Z
+    const ON_3fVector&  // Z 
     );
 
 ON_DECL
-bool
+bool 
 ON_IsRightHandFrame( // true if X, Y, Z are orthonormal and right handed
     const ON_3fVector&, // X
     const ON_3fVector&, // Y
-    const ON_3fVector&  // Z
+    const ON_3fVector&  // Z 
     );
 
 ///////////////////////////////////////////////////////////////
@@ -10115,7 +10110,7 @@ extern ON_EXTERN_DECL const ON_3fVector ON_fzaxis; // (0.0, 0.0, 1.0)
 // THIS SOFTWARE IS PROVIDED "AS IS" WITHOUT EXPRESS OR IMPLIED WARRANTY.
 // ALL IMPLIED WARRANTIES OF FITNESS FOR ANY PARTICULAR PURPOSE AND OF
 // MERCHANTABILITY ARE HEREBY DISCLAIMED.
-//
+//				
 // For complete openNURBS copyright information see <http://www.opennurbs.org>.
 //
 ////////////////////////////////////////////////////////////////
@@ -10146,7 +10141,7 @@ class ON_3fVectorArray;
 // construction, destruction, or copy operators.
 //
 // By default, ON_SimpleArray<> uses onrealloc() to manage
-// the dynamic array memory. If you want to use something
+// the dynamic array memory. If you want to use something 
 // besides onrealloc() to manage the array memory, then override
 // ON_SimpleArray::Realloc().
 
@@ -10169,7 +10164,7 @@ public:
   // Assignment operator
   virtual
   ON_SimpleArray<T>& operator=( const ON_SimpleArray<T>& );
-
+  
   // emergency bailout ///////////////////////////////////////////////////
   void EmergencyDestroy(void); // call only when memory used by this array
                                // may have become invalid for reasons beyond
@@ -10178,10 +10173,10 @@ public:
                                // ~ON_SimpleArray() to crash.
 
   // query ///////////////////////////////////////////////////////////////
-
+  
 	int Count() const;      // number of elements in array
   unsigned int UnsignedCount() const;
-
+	
 	int Capacity() const;  // capacity of array
 
   unsigned int SizeOfArray() const; // amount of memory in the m_a[] array
@@ -10197,9 +10192,9 @@ public:
   T& operator[]( ON__INT64 );
   T& operator[]( ON__UINT64 );
   const T& operator[]( int ) const;
-  const T& operator[]( unsigned int ) const;
+  const T& operator[]( unsigned int ) const;  
   const T& operator[]( ON__INT64 ) const;
-  const T& operator[]( ON__UINT64 ) const;
+  const T& operator[]( ON__UINT64 ) const;  
 
   operator T*();                     // The cast operators return a pointer
   operator const T*() const;         // to the array.  If Count() is zero,
@@ -10221,10 +10216,10 @@ public:
   T* Last();
   const T* Last() const;             // returns NULL if count = 0
 
-
+  
   // array operations ////////////////////////////////////////////////////
 
-  T& AppendNew();                    // Most efficient way to add a new element
+  T& AppendNew();                    // Most efficient way to add a new element 
                                      // to the array.  Increases count by 1.
 
   void Append( const T& );           // Append copy of element.
@@ -10255,19 +10250,19 @@ public:
 
   //////////
   // Search( e ) does a SLOW search of the array starting at array[0]
-  // and returns the index "i" of the first element that satisfies
-  // e == array[i]. (== is really memcmp()).  If the search is not
-  // successful, then Search() returns -1.  For Search(T) to work
+  // and returns the index "i" of the first element that satisfies 
+  // e == array[i]. (== is really memcmp()).  If the search is not 
+  // successful, then Search() returns -1.  For Search(T) to work 
   // correctly, T must be a simple type.  Use Search(p,compare())
   // for Ts that are structs/classes that contain pointers.  Search()
-  // is only suitable for performing infrequent searchs of small
+  // is only suitable for performing infrequent searchs of small 
   // arrays.  Sort the array and use BinarySearch() for performing
   // efficient searches.
   int Search( const T& ) const;
 
   //////////
   // Search( p, compare ) does a SLOW search of the array starting
-  // at array[0] and returns the index "i" of the first element
+  // at array[0] and returns the index "i" of the first element 
   // that satisfies  compare(p,&array[i])==0.  If the search is not
   // successful, then Search() returns -1.  Search() is only suitable
   // for performing infrequent searches of small arrays.  Sort the
@@ -10278,19 +10273,19 @@ public:
   //////////
   // BinarySearch( p, compare ) does a fast search of a sorted array
   // and returns the smallest index "i" of the element that satisifies
-  // 0==compare(p,&array[i]).
+  // 0==compare(p,&array[i]).  
   //
   // BinarySearch( p, compare, count ) does a fast search of the first
-  // count element sorted array and returns the smallest index "i" of
+  // count element sorted array and returns the smallest index "i" of 
   // the element that satisifies 0==compare(p,&array[i]).  The version
   // that takes a "count" is useful when elements are being appended
   // during a calculation and the appended elements are not sorted.
   //
-  // If the search is successful,
+  // If the search is successful, 
   // BinarySearch() returns the index of the element (>=0).
-  // If the search is not successful, BinarySearch() returns -1.
+  // If the search is not successful, BinarySearch() returns -1.  
   // Use QuickSort( compare ) or, in rare cases and after meaningful
-  // performance testing using optimzed release builds,
+  // performance testing using optimzed release builds, 
   // HeapSort( compare ) to sort the array.
 	// See Also: ON_CompareIncreasing<T> and ON_CompareDeccreasing<T>
   int BinarySearch( const T*, int (*)(const T*,const T*) ) const;
@@ -10308,43 +10303,43 @@ public:
 
   /*
   Description:
-    Sort() fills in the index[] array so that
-    array[index[i]] <= array[index[i+1]].
-    The array is not modified.
+    Sort() fills in the index[] array so that 
+    array[index[i]] <= array[index[i+1]].  
+    The array is not modified.  
 
   Parameters:
-    sort_algorithm - [in]
+    sort_algorithm - [in]  
       ON::quick_sort (best in general) or ON::heap_sort
       Use ON::heap_sort only if you have done extensive testing with
-      optimized release builds and are confident heap sort is
+      optimized release builds and are confident heap sort is 
       significantly faster.
     index - [out] an array of length Count() that is returned with
-        some permutation of (0,1,...,Count()-1).
+        some permutation of (0,1,...,Count()-1). 
     compare - [in] compare function compare(a,b,p) should return
         <0 if a<b, 0, if a==b, and >0 if a>b.
   Returns:
     true if successful
   */
-  bool Sort(
-    ON::sort_algorithm sort_algorithm,
+  bool Sort( 
+    ON::sort_algorithm sort_algorithm, 
     int* /* index[] */ ,
-    int (*)(const T*,const T*)
-    ) const;
+    int (*)(const T*,const T*) 
+    ) const; 
 
   /*
   Description:
-    Sort() fills in the index[] array so that
-    array[index[i]] <= array[index[i+1]].
-    The array is not modified.
+    Sort() fills in the index[] array so that 
+    array[index[i]] <= array[index[i+1]].  
+    The array is not modified.  
 
   Parameters:
-    sort_algorithm - [in]
+    sort_algorithm - [in]  
       ON::quick_sort (best in general) or ON::heap_sort
       Use ON::heap_sort only if you have done extensive testing with
-      optimized release builds and are confident heap sort is
+      optimized release builds and are confident heap sort is 
       significantly faster.
     index - [out] an array of length Count() that is returned with
-        some permutation of (0,1,...,Count()-1).
+        some permutation of (0,1,...,Count()-1). 
     compare - [in] compare function compare(a,b,p) should return
         <0 if a<b, 0, if a==b, and >0 if a>b.
     p - [in] pointer passed as third argument to compare.
@@ -10352,12 +10347,12 @@ public:
   Returns:
     true if successful
   */
-  bool Sort(
+  bool Sort( 
     ON::sort_algorithm sort_algorithm,
-    int*, // index[]
+    int*, // index[] 
     int (*)(const T*,const T*,void*), // int compare(const T*,const T*,void* p)
     void* // p
-    ) const;
+    ) const; 
 
   //////////
   // Permutes the array so that output[i] = input[index[i]].
@@ -10365,15 +10360,15 @@ public:
   bool Permute( const int* /*index[]*/ );
 
   //////////
-  // Zeros all array memory.
+  // Zeros all array memory. 
   // Count and capacity are not changed.
   void Zero();
 
   //////////
-  // Sets all bytes in array memory to value.
+  // Sets all bytes in array memory to value. 
   // Count and capacity are not changed.
-  void MemSet(unsigned char);
-
+  void MemSet(unsigned char); 
+  
   // memory managment ////////////////////////////////////////////////////
 
   void Reserve( int );    // increase capacity to at least the requested value
@@ -10381,33 +10376,33 @@ public:
   void Shrink();          // remove unused capacity
 
   void Destroy();         // onfree any memory and set count and capacity to zero
-
+    
   // low level memory managment //////////////////////////////////////////
 
   // By default, ON_SimpleArray<> uses onrealloc() to manage
-  // the dynamic array memory. If you want to use something
-  // besides onrealloc() to manage the array memory, then override
+  // the dynamic array memory. If you want to use something 
+  // besides onrealloc() to manage the array memory, then override 
   // Realloc(). The T* Realloc(ptr, capacity) should do the following:
   //
   // 1) If ptr and capacity are zero, return NULL.
-  // 2) If ptr is NULL, an capacity > 0, allocate a memory block of
+  // 2) If ptr is NULL, an capacity > 0, allocate a memory block of 
   //    capacity*sizeof(T) bytes and return a pointer to this block.
   //    If the allocation request fails, return NULL.
   // 3) If ptr is not NULL and capacity is 0, free the memory block
   //    pointed to by ptr and return NULL.
   // 4) If ptr is not NULL and capacity > 0, then reallocate the memory
-  //    block and return a pointer to the reallocated block.  If the
+  //    block and return a pointer to the reallocated block.  If the 
   //    reallocation request fails, return NULL.
   //
-  // NOTE WELL:
+  // NOTE WELL: 
   //    Microsoft's VC 6.0 realloc() contains a bug that can cause
   //    crashes and should be avoided. See MSDN Knowledge Base article
   //    ID Q225099 for more information.
   virtual
   T* Realloc(T*,int); // (re)allocated capacity*sizeof(T) bytes
 
-  T* Array();                         // The Array() function return the
-
+  T* Array();                         // The Array() function return the 
+  
   const T* Array() const;             // m_a pointer value.
 
   void SetCount( int );               // If value is <= Capacity(), then
@@ -10423,7 +10418,7 @@ public:
 
   /*
   Description:
-    Expert user tool to take charge of the memory used by
+    Expert user tool to take charge of the memory used by 
     the dyanmic array.
   Returns:
      A pointer to the array and zeros out this class.
@@ -10447,7 +10442,7 @@ public:
     int count [in]
     int capacity - [in]
        m_a is set to pointer, m_count is set to count, and m_capacity
-       is set to capacity.  It is critical that the pointer be one
+       is set to capacity.  It is critical that the pointer be one 
        returned by onmalloc(sz), where sz >= capacity*sizeof(T[0]).
   */
   void SetArray(T*, int, int);
@@ -10466,7 +10461,7 @@ protected:
 
 #if defined(ON_DLL_TEMPLATE)
 // This stuff is here because of a limitation in the way Microsoft
-// handles templates and DLLs.  See Microsoft's knowledge base
+// handles templates and DLLs.  See Microsoft's knowledge base 
 // article ID Q168958 for details.
 #pragma warning( push )
 #pragma warning( disable : 4231 )
@@ -10606,7 +10601,7 @@ public:
     const float* points
     );
 
-  // Description:
+  // Description: 
   //   Get 3d axis aligned bounding box.
   // Returns:
   //   3d bounding box of point list.
@@ -10617,13 +10612,13 @@ public:
   //   of the input box with the point list's bounding box.
   // Parameters:
   //   bbox - [in/out] 3d axis aligned bounding box
-  //   bGrowBox - [in] (default=false)
-  //     If true, then the union of the input bbox and the
-  //     point list's bounding box is returned in bbox.
+  //   bGrowBox - [in] (default=false) 
+  //     If true, then the union of the input bbox and the 
+  //     point list's bounding box is returned in bbox.  
   //     If false, the point list's bounding box is returned in bbox.
   // Returns:
   //   true if successful.
-  bool GetBoundingBox(
+  bool GetBoundingBox( 
     ON_BoundingBox& bbox,
     int bGrowBox = false
     ) const;
@@ -10633,8 +10628,8 @@ public:
   // Parameters:
   //   boxmin - [in/out] array of 3 doubles
   //   boxmax - [in/out] array of 3 doubles
-  //   bGrowBox - [in] (default=false)
-  //     If true, then the union of the input bounding box and the
+  //   bGrowBox - [in] (default=false) 
+  //     If true, then the union of the input bounding box and the 
   //     object's bounding box is returned.
   //     If false, the object's bounding box is returned.
   // Returns:
@@ -10650,19 +10645,19 @@ public:
     Get tight bounding box of the point list.
 	Parameters:
 		tight_bbox - [in/out] tight bounding box
-		bGrowBox -[in]	(default=false)
+		bGrowBox -[in]	(default=false)			
       If true and the input tight_bbox is valid, then returned
-      tight_bbox is the union of the input tight_bbox and the
+      tight_bbox is the union of the input tight_bbox and the 
       tight bounding box of the point list.
 		xform -[in] (default=NULL)
       If not NULL, the tight bounding box of the transformed
       point list is calculated.  The point list is not modified.
 	Returns:
-    True if the returned tight_bbox is set to a valid
+    True if the returned tight_bbox is set to a valid 
     bounding box.
   */
-	bool GetTightBoundingBox(
-			ON_BoundingBox& tight_bbox,
+	bool GetTightBoundingBox( 
+			ON_BoundingBox& tight_bbox, 
       int bGrowBox = false,
 			const ON_Xform* xform = 0
       ) const;
@@ -10673,8 +10668,8 @@ public:
   //   xform - [in] transformation matrix
   // Returns:
   //   true if successful.
-  bool Transform(
-    const ON_Xform& xform
+  bool Transform( 
+    const ON_Xform& xform 
     );
 
   // Description:
@@ -10755,7 +10750,7 @@ public:
     ON_GetClosestPointInPointList
     ON_PointCloud::GetClosestPoint
   */
-  bool GetClosestPoint(
+  bool GetClosestPoint( 
           ON_3dPoint P,
           int* closest_point_index,
           double maximum_distance = 0.0
@@ -10918,7 +10913,7 @@ public:
 // robust operator=().
 //
 // By default, ON_ClassArray<> uses onrealloc() to manage
-// the dynamic array memory. If you want to use something
+// the dynamic array memory. If you want to use something 
 // besides onrealloc() to manage the array memory, then override
 // ON_ClassArray::Realloc().  In practice this means that if your
 // class has members with back-pointers, then you cannot use
@@ -10929,7 +10924,7 @@ template <class T> class ON_ClassArray
 {
 public:
   // construction ////////////////////////////////////////////////////////
-  ON_ClassArray();
+  ON_ClassArray(); 
   ON_ClassArray( int ); // int = initial capacity
 
   // Copy constructor
@@ -10940,7 +10935,7 @@ public:
 
   // Assignment operator
   ON_ClassArray<T>& operator=( const ON_ClassArray<T>& );
-
+  
   // emergency bailout ///////////////////////////////////////////////////
   void EmergencyDestroy(void); // call only when memory used by this array
                                // may have become invalid for reasons beyond
@@ -10949,7 +10944,7 @@ public:
                                // ~ON_ClassArray() to crash.
 
   // query ///////////////////////////////////////////////////////////////
-
+  
 	int Count() const;      // number of elements in array
 	unsigned int UnsignedCount() const;
 
@@ -10966,9 +10961,9 @@ public:
   T& operator[]( ON__INT64 );
   T& operator[]( ON__UINT64 );
   const T& operator[]( int ) const;
-  const T& operator[]( unsigned int ) const;
+  const T& operator[]( unsigned int ) const;  
   const T& operator[]( ON__INT64 ) const;
-  const T& operator[]( ON__UINT64 ) const;
+  const T& operator[]( ON__UINT64 ) const;  
 
   operator T*();                     // The cast operators return a pointer
   operator const T*() const;         // to the array.  If Count() is zero,
@@ -10989,10 +10984,10 @@ public:
   T* Last();
   const T* Last() const;             // returns NULL if count = 0
 
-
+  
   // array operations ////////////////////////////////////////////////////
 
-  T& AppendNew();                    // Most efficient way to add a new class
+  T& AppendNew();                    // Most efficient way to add a new class 
                                      // to the array.  Increases count by 1.
 
   void Append( const T& );           // Append copy of element.
@@ -11021,7 +11016,7 @@ public:
 
   //////////
   // Search( p, compare ) does a SLOW search of the array starting
-  // at array[0] and returns the index "i" of the first element
+  // at array[0] and returns the index "i" of the first element 
   // that satisfies  compare(p,&array[i])==0.  If the search is not
   // successful, then Search() returns -1.  Search() is only suitable
   // for performing infrequent searches of small arrays.  Sort the
@@ -11034,16 +11029,16 @@ public:
   // 0==compare(p,&array[i]).
   //
   // BinarySearch( p, compare, count ) does a fast search of the first
-  // count element sorted array and returns the smallest index "i" of
+  // count element sorted array and returns the smallest index "i" of 
   // the element that satisifies 0==compare(p,&array[i]).  The version
   // that takes a "count" is useful when elements are being appended
   // during a calculation and the appended elements are not sorted.
   //
-  // If the search is successful,
+  // If the search is successful, 
   // BinarySearch() returns the index of the element (>=0).
   // If the search is not successful, BinarySearch() returns -1.
   // Use QuickSort( compare ) or, in rare cases and after meaningful
-  // performance testing using optimzed release builds,
+  // performance testing using optimzed release builds, 
   // HeapSort( compare ) to sort the array.
 	// See Also: ON_CompareIncreasing<T> and ON_CompareDeccreasing<T>
   int BinarySearch( const T*, int (*)(const T*,const T*) ) const;
@@ -11063,44 +11058,44 @@ public:
 
   /*
   Description:
-    Sort() fills in the index[] array so that
-    array[index[i]] <= array[index[i+1]].
-    The array is not modified.
+    Sort() fills in the index[] array so that 
+    array[index[i]] <= array[index[i+1]].  
+    The array is not modified.  
 
   Parameters:
-    sort_algorithm - [in]
+    sort_algorithm - [in]  
       ON::quick_sort (best in general) or ON::heap_sort
       Use ON::heap_sort only if you have done extensive testing with
-      optimized release builds and are confident heap sort is
+      optimized release builds and are confident heap sort is 
       significantly faster.
     index - [out] an array of length Count() that is returned with
-        some permutation of (0,1,...,Count()-1).
+        some permutation of (0,1,...,Count()-1). 
     compare - [in] compare function compare(a,b) should return
         <0 if a<b, 0, if a==b, and >0 if a>b.
 
   Returns:
     true if successful
   */
-  bool Sort(
-    ON::sort_algorithm sort_algorithm,
+  bool Sort( 
+    ON::sort_algorithm sort_algorithm, 
     int* /* index[] */ ,
     int (*)(const T*,const T*)
-    ) const;
+    ) const; 
 
   /*
   Description:
-    Sort() fills in the index[] array so that
-    array[index[i]] <= array[index[i+1]].
-    The array is not modified.
+    Sort() fills in the index[] array so that 
+    array[index[i]] <= array[index[i+1]].  
+    The array is not modified.  
 
   Parameters:
-    sort_algorithm - [in]
+    sort_algorithm - [in]  
       ON::quick_sort (best in general) or ON::heap_sort
       Use ON::heap_sort only if you have done extensive testing with
-      optimized release builds and are confident heap sort is
+      optimized release builds and are confident heap sort is 
       significantly faster.
     index - [out] an array of length Count() that is returned with
-        some permutation of (0,1,...,Count()-1).
+        some permutation of (0,1,...,Count()-1). 
     compare - [in] compare function compare(a,b,p) should return
         <0 if a<b, 0, if a==b, and >0 if a>b.
     p - [in] pointer passed as third argument to compare.
@@ -11108,12 +11103,12 @@ public:
   Returns:
     true if successful
   */
-  bool Sort(
+  bool Sort( 
     ON::sort_algorithm sort_algorithm,
-    int*, // index[]
+    int*, // index[] 
     int (*)(const T*,const T*,void*), // int compare(const T*,const T*,void* p)
     void* // p
-    ) const;
+    ) const; 
 
   //////////
   // Permutes the array so that output[i] = input[index[i]].
@@ -11133,33 +11128,33 @@ public:
   void Shrink();       // remove unused capacity
 
   void Destroy();      // onfree any memory and set count and capacity to zero
-
+    
   // low level memory managment ///////////////////////////////////////
 
   // By default, ON_ClassArray<> uses onrealloc() to manage
-  // the dynamic array memory. If you want to use something
-  // besides onrealloc() to manage the array memory, then override
+  // the dynamic array memory. If you want to use something 
+  // besides onrealloc() to manage the array memory, then override 
   // Realloc(). The T* Realloc(ptr, capacity) should do the following:
   //
   // 1) If ptr and capacity are zero, return NULL.
-  // 2) If ptr is NULL, an capacity > 0, allocate a memory block of
+  // 2) If ptr is NULL, an capacity > 0, allocate a memory block of 
   //    capacity*sizeof(T) bytes and return a pointer to this block.
   //    If the allocation request fails, return NULL.
   // 3) If ptr is not NULL and capacity is 0, free the memory block
   //    pointed to by ptr and return NULL.
   // 4) If ptr is not NULL and capacity > 0, then reallocate the memory
-  //    block and return a pointer to the reallocated block.  If the
+  //    block and return a pointer to the reallocated block.  If the 
   //    reallocation request fails, return NULL.
   //
-  // NOTE WELL:
+  // NOTE WELL: 
   //    Microsoft's VC 6.0 realloc() contains a bug that can cause
   //    crashes and should be avoided. See MSDN Knowledge Base article
   //    ID Q225099 for more information.
   virtual
   T* Realloc(T*,int); // (re)allocated capacity*sizeof(T) bytes
 
-  T* Array();                         // The Array() function return the
-
+  T* Array();                         // The Array() function return the 
+  
   const T* Array() const;             // m_a pointer value.
 
   void SetCount( int );               // If value is <= Capacity(), then
@@ -11198,10 +11193,10 @@ public:
     int count - [in]  0 <= count <= capacity
     int capacity - [in]
        m_a is set to pointer, m_count is set to count, and m_capacity
-       is set to capacity.  It is critical that the pointer be one
+       is set to capacity.  It is critical that the pointer be one 
        returned by onmalloc(sz), where sz >= capacity*sizeof(T[0]),
        and that the in-place operator new has been used to initialize
-       each element of the array.
+       each element of the array.  
   */
   void SetArray(T*, int, int);
 
@@ -11227,7 +11222,7 @@ Description:
 template <class T> class ON_ObjectArray : public ON_ClassArray<T>
 {
 public:
-  ON_ObjectArray();
+  ON_ObjectArray(); 
   ~ON_ObjectArray(); // override for struct member deallocation, etc.
   ON_ObjectArray( int ); // int = initial capacity
   ON_ObjectArray( const ON_ObjectArray<T>& );
@@ -11235,18 +11230,18 @@ public:
 
   ON__UINT32 DataCRC(ON__UINT32 current_remainder) const;
 
-  // virtual ON_ClassArray<T> override that
+  // virtual ON_ClassArray<T> override that 
   // calls MemoryRelocate on each element after
   // the reallocation.
   T* Realloc(T*,int);
 
-  // virtual ON_ClassArray<T> override that
+  // virtual ON_ClassArray<T> override that 
   // calls MemoryRelocate on each element after
   // the heap sort.
   // QuickSort() is generally the better choice.
   bool HeapSort( int (*)(const T*,const T*) );
 
-  // virtual ON_ClassArray<T> override that
+  // virtual ON_ClassArray<T> override that 
   // calls MemoryRelocate on each element after
   // the quick sort.
   bool QuickSort( int (*)(const T*,const T*) );
@@ -11259,21 +11254,21 @@ public:
   Description:
     Compares m_uuid[0] and ignores m_uuid[1]
   */
-  static
+  static 
   int CompareFirstUuid(const class ON_UuidPair*,const class ON_UuidPair*);
 
   /*
   Description:
     Compares m_uuid[1] and ignores m_uuid[0]
   */
-  static
+  static 
   int CompareSecondUuid(const class ON_UuidPair*,const class ON_UuidPair*);
 
   /*
   Description:
     Compares m_uuid[0] then m_uuid[1].
   */
-  static
+  static 
   int Compare(const class ON_UuidPair*,const class ON_UuidPair*);
 
   ON_UuidPair();
@@ -11283,7 +11278,7 @@ public:
 #if defined(ON_DLL_TEMPLATE)
 
 // This stuff is here because of a limitation in the way Microsoft
-// handles templates and DLLs.  See Microsoft's knowledge base
+// handles templates and DLLs.  See Microsoft's knowledge base 
 // article ID Q168958 for details.
 #pragma warning( push )
 #pragma warning( disable : 4231 )
@@ -11301,9 +11296,9 @@ ON_DLL_TEMPLATE template class ON_CLASS ON_ClassArray<ON_SimpleArray<int> >;
 
 /*
 Description:
-  The ON_UuidList class provides a tool to efficiently
-  maintain a list of uuids and determine if a uuid is
-  in the list. This class is based on the premise that
+  The ON_UuidList class provides a tool to efficiently 
+  maintain a list of uuids and determine if a uuid is 
+  in the list. This class is based on the premise that 
   there are no duplicate uuids in the list.
 */
 class ON_CLASS ON_UuidList : private ON_SimpleArray<ON_UUID>
@@ -11359,7 +11354,7 @@ public:
   Description:
     Makes the uuid list as efficent as possible in both search
     speed and memory usage.  Use Compact() when a uuid list
-    will be in use but is not likely to be modifed.  A list
+    will be in use but is not likely to be modifed.  A list 
     that has been compacted can still be modified.
   */
   void Compact();
@@ -11408,8 +11403,8 @@ public:
   Returns:
     true if write was successful.
   */
-  bool Write(
-    class ON_BinaryArchive& archive
+  bool Write( 
+    class ON_BinaryArchive& archive 
     ) const;
 
   /*
@@ -11420,8 +11415,8 @@ public:
   Returns:
     true if the read was successful.
   */
-  bool Read(
-    class ON_BinaryArchive& archive
+  bool Read( 
+    class ON_BinaryArchive& archive 
     );
 
   /*
@@ -11438,15 +11433,15 @@ public:
 
   /*
   Description:
-    This tool is used in rare situations when the object ids
+    This tool is used in rare situations when the object ids 
     stored in the uuid list need to be remapped.
   Parameters:
     uuid_remap - [in]
       Is it critical that uuid_remap[] be sorted with respect
       to ON_UuidPair::CompareFirstUuid.
   */
-  void RemapUuids(
-    const ON_SimpleArray<ON_UuidPair>& uuid_remap
+  void RemapUuids( 
+    const ON_SimpleArray<ON_UuidPair>& uuid_remap 
     );
 
 private:
@@ -11492,9 +11487,9 @@ public:
   Description:
     Adds a uuid-index pair to the list.
   Parameters:
-    uuid - [in] id to add.
+    uuid - [in] id to add.  
       This uuid cannot be ON_max_uuid because ON_max_uuid
-      is
+      is 
     bCheckForDupicates - [in] if true, then the uuid
        is not added if it is already in the list.
        If you are certain that the uuid is not in the list
@@ -11506,8 +11501,8 @@ public:
     because it is already in the collection.
   */
   bool AddUuidIndex(
-    ON_UUID uuid,
-    int index,
+    ON_UUID uuid, 
+    int index, 
     bool bCheckForDupicates=true);
 
   /*
@@ -11563,8 +11558,8 @@ public:
     change to the list, then calling ImproveSearchSpeed()
     will speed up the searches by culling removed objects
     and completely sorting the list so only a binary search
-    is required. You may edit the list at any time after
-    calling ImproveSearchSpeed().  If you are performing
+    is required. You may edit the list at any time after 
+    calling ImproveSearchSpeed().  If you are performing 
     a few searches between edits, then excessive calling
     of ImproveSearchSpeed() may actually decrease overall
     program performance.
@@ -11580,7 +11575,7 @@ private:
 /*
 Description:
   The ON_UuidPairList class provides a tool
-  to efficiently maintain a list of uuid pairs
+  to efficiently maintain a list of uuid pairs 
   and determine if a uuid is in the list.
   This class is based on the premise that there are
   no duplicate uuids in the list.
@@ -11629,8 +11624,8 @@ public:
     pair value is used to mark removed elements in the ON_UuidPairList[].
   */
   bool AddPair(
-    ON_UUID id1,
-    ON_UUID id2,
+    ON_UUID id1, 
+    ON_UUID id2, 
     bool bCheckForDupicates=true
     );
 
@@ -11702,8 +11697,8 @@ public:
     change to the list, then calling ImproveSearchSpeed()
     will speed up the searches by culling removed objects
     and completely sorting the list so only a binary search
-    is required. You may edit the list at any time after
-    calling ImproveSearchSpeed().  If you are performing
+    is required. You may edit the list at any time after 
+    calling ImproveSearchSpeed().  If you are performing 
     a few searches between edits, then excessive calling
     of ImproveSearchSpeed() may actually decrease overall
     program performance.
@@ -11749,7 +11744,7 @@ public:
   Description:
     Searches for an element with a matching i
     and returns its j value.  If no matching
-    element is found, then not_found_rc is returned.
+    element is found, then not_found_rc is returned. 
   Parameters:
     i - [in]
        value of i to search for
@@ -11758,8 +11753,8 @@ public:
   Returns:
     j value
   */
-  int FindIndex(
-          int i,
+  int FindIndex( 
+          int i, 
           int not_found_rc
           ) const;
 
@@ -11773,8 +11768,8 @@ public:
   Returns:
     True if and element it added.
   */
-  bool AddIndex(
-          int i,
+  bool AddIndex( 
+          int i, 
           int j
           );
 
@@ -11789,8 +11784,8 @@ public:
   Returns:
     True if and element exists and was set.
   */
-  bool SetIndex(
-          int i,
+  bool SetIndex( 
+          int i, 
           int j
           );
 
@@ -11802,8 +11797,8 @@ public:
     i - [in]
     j - [in]
   */
-  void SetOrAddIndex(
-          int i,
+  void SetOrAddIndex( 
+          int i, 
           int j
           );
 
@@ -11817,7 +11812,7 @@ public:
   Returns:
     True if the element was removed
   */
-  bool RemoveIndex(
+  bool RemoveIndex( 
           int i
           );
 
@@ -11827,25 +11822,25 @@ private:
   bool m_bSorted;
 };
 
-/*
+/* 
 Description:
 	Compare function for Sort and Search methods.
 Returns:
    -1 if *a < *b is true
     1 if *b < *a is true
-    0 if niether *a <*b nor *b<*a is true
+    0 if niether *a <*b nor *b<*a is true 
 Details:
 	Use this template functions to sort ON_SimpleArray and
   ON_ClassArray objects into increasing order.  The elements
   of the arrays must be a type with an operator < defined.
-	In particular it works with built in types like double,
+	In particular it works with built in types like double, 
   int and pointers.
 Example:
 
           ON_SimpleArray<int> A;
           A = ...;
           // Sort A in increasing order
-          A.QuickSort( ON_CompareIncreasing<double> );
+          A.QuickSort( ON_CompareIncreasing<double> );		
 
 See Also:
   ON_CompareDecreasing
@@ -11854,18 +11849,18 @@ template< class T>
 static
 int ON_CompareIncreasing( const T* a, const T* b);
 
-/*
+/* 
 Description:
 	Compare function for Sort and Search methods.
 Returns:
    -1 if *b < *a is true
     1 if *a < *b is true
-    0 if niether *a < *b nor *b < *a is true
+    0 if niether *a < *b nor *b < *a is true 
 Details:
 	Use this template functions to sort ON_SimpleArray and
   ON_ClassArray objects into decreasing order.  The elements
   of the arrays must be a type with an operator < defined.
-	In particular it works with built in types like double,
+	In particular it works with built in types like double, 
   int and pointers.
 Example:
 
@@ -11879,7 +11874,7 @@ Example:
           ON_ClassArray<C> A;
           A = ...;
           // Sort A in descrasing order
-          A.QuickSort( ON_CompareDecreasing<C> );
+          A.QuickSort( ON_CompareDecreasing<C> );		
 
 See Also:
   ON_CompareIncreasing
@@ -11906,7 +11901,7 @@ int ON_CompareDecreasing( const T* a, const T* b);
 // THIS SOFTWARE IS PROVIDED "AS IS" WITHOUT EXPRESS OR IMPLIED WARRANTY.
 // ALL IMPLIED WARRANTIES OF FITNESS FOR ANY PARTICULAR PURPOSE AND OF
 // MERCHANTABILITY ARE HEREBY DISCLAIMED.
-//
+//				
 // For complete openNURBS copyright information see <http://www.opennurbs.org>.
 //
 ////////////////////////////////////////////////////////////////
@@ -11925,12 +11920,12 @@ Parameters:
     x[] is an array of length x_count and represents the value
     x[0]*2^(8*(x_count-1)) + ... + x[x_count-2]*256 + x[x_count-1].
   base32_digits - [out]
-    When base32_digits is not a dynamic array, base32_digits[]
+    When base32_digits is not a dynamic array, base32_digits[] 
     must a be an array of length at least
-    ((8*x_count)/5) + (((8*x_count)%5)?1:0) or 1,
+    ((8*x_count)/5) + (((8*x_count)%5)?1:0) or 1, 
     whichever is greater.
 
-    The base32_digits[] array will be filled in with base32 digit
+    The base32_digits[] array will be filled in with base32 digit 
     values (0 to 31) so that the value
     b[0]*32^(b_count-1) + ... + b[b_count-2]*32 + b[b_count-1]
     is the same as that defined by the x[] array.
@@ -11950,7 +11945,7 @@ Description:
 Parameters:
   base32_digits - [in]
   base32_digit_count - [in]
-    base32_digits[] is an array of length base32_digit_count.
+    base32_digits[] is an array of length base32_digit_count. 
     Each element is in the range 0 to 31.
   sBase32 - [out]
     sBase32[] must be an array of length base32_digit_count+1 or 2,
@@ -11993,7 +11988,7 @@ int ON_CorrectBase32StringTypos( const char* sBase32, char* sBase32clean );
 
 /*
 Description:
-  Convert a null terminate string containing the 32 symbols
+  Convert a null terminate string containing the 32 symbols 
 
   0 1 2 3 4 5 6 7 8 9 A B C D E F G H J K M N P Q R T U V W X Y Z
 
@@ -12002,7 +11997,7 @@ Parameters:
   sBase32 - [in]
     String with base 32 digits
   base32_digits - [out]
-    base32_digits[] is an array of length strlen(sBase32).
+    base32_digits[] is an array of length strlen(sBase32). 
     The returned array, element will be in the range 0 to 31.
     sBase32[] must be an array of length base32_digit_count+1 or 2,
     whichever is greater. The string representation of the base 32
@@ -12032,7 +12027,7 @@ int ON_StringToBase32(const char* sBase32, unsigned char* base32_digits );
 // THIS SOFTWARE IS PROVIDED "AS IS" WITHOUT EXPRESS OR IMPLIED WARRANTY.
 // ALL IMPLIED WARRANTIES OF FITNESS FOR ANY PARTICULAR PURPOSE AND OF
 // MERCHANTABILITY ARE HEREBY DISCLAIMED.
-//
+//				
 // For complete openNURBS copyright information see <http://www.opennurbs.org>.
 //
 ////////////////////////////////////////////////////////////////
@@ -12085,7 +12080,7 @@ public:
 #if defined(ON_DLL_TEMPLATE)
 
 // This stuff is here because of a limitation in the way Microsoft
-// handles templates and DLLs.  See Microsoft's knowledge base
+// handles templates and DLLs.  See Microsoft's knowledge base 
 // article ID Q168958 for details.
 #pragma warning( push )
 #pragma warning( disable : 4231 )
@@ -12105,7 +12100,7 @@ ON_DLL_TEMPLATE template class ON_CLASS ON_ClassArray<ON_PlugInRef>;
 // THIS SOFTWARE IS PROVIDED "AS IS" WITHOUT EXPRESS OR IMPLIED WARRANTY.
 // ALL IMPLIED WARRANTIES OF FITNESS FOR ANY PARTICULAR PURPOSE AND OF
 // MERCHANTABILITY ARE HEREBY DISCLAIMED.
-//
+//				
 // For complete openNURBS copyright information see <http://www.opennurbs.org>.
 //
 ////////////////////////////////////////////////////////////////
@@ -12134,7 +12129,7 @@ public:
 
 
   // temporary - use ON_ClippingRegion - this function will be removed soon.
-  int IsVisible(
+  int IsVisible( 
     const ON_Xform& bbox2c
     ) const;
 
@@ -12153,17 +12148,17 @@ public:
     int, // y_index   0 = Min().y, 1 = Max().y
     int  // z_index   0 = Min().z, 1 = Max().z
     ) const;
-  bool GetCorners(
+  bool GetCorners( 
     ON_3dPointArray& box_corners // returns list of 8 corner points
     ) const;
-  bool GetCorners(
+  bool GetCorners( 
     ON_3dPoint box_corners[8] // returns list of 8 corner points
     ) const;
 
   bool IsValid() const; // empty boxes are not valid
-
+  
   void Dump(class ON_TextLog&) const;
-
+  
   /*
   Description:
     Test a bounding box to see if it is degenerate (flat)
@@ -12180,7 +12175,7 @@ public:
     3     box is a point (degenerate in three directions)
     4     box is not valid
   */
-  int IsDegenerate(
+  int IsDegenerate( 
     double tolerance = ON_UNSET_VALUE
     ) const;
 
@@ -12198,7 +12193,7 @@ public:
 
   // All of these Set() functions set or expand a box to enclose the points in the arguments
   // If bGrowBox is true, the existing box is expanded, otherwise it is only set to the current point list
-  bool Set(
+  bool Set(     
     int dim,
     int is_rat,
     int count,
@@ -12212,40 +12207,40 @@ public:
     int bGrowBox = false
     );
 
-  bool Set(
+  bool Set(     
     const ON_SimpleArray<ON_4dPoint>& point_array,
     int bGrowBox = false
     );
 
-  bool Set(
+  bool Set(     
     const ON_SimpleArray<ON_3dPoint>& point_array,
     int bGrowBox = false
     );
 
-  bool Set(
+  bool Set(     
     const ON_SimpleArray<ON_2dPoint>& point_array,
     int bGrowBox = false
     );
 
 	bool IsPointIn(
          const ON_3dPoint& test_point, // point to test
-         int bStrictlyIn = false
+         int bStrictlyIn = false 
                    // true to test for strict ( min < point < max )
                    // false to test for (min <= point <= max)
-                   //
+                   //       
          ) const;
 
   //////////
   // Point on or in the box that is closest to test_point.
   // If test_point is in or on the box, the test_point is returned.
-  ON_3dPoint ClosestPoint(
+  ON_3dPoint ClosestPoint( 
     const ON_3dPoint& test_point
     ) const;
 
 
   /*
   Description:
-    Quickly find a lower bound on the distance
+    Quickly find a lower bound on the distance 
     between the point and this bounding box.
   Parameters:
     P - [in]
@@ -12259,12 +12254,12 @@ public:
 
   /*
   Description:
-    Quickly find an upper bound on the distance
+    Quickly find an upper bound on the distance 
     between the point and this bounding box.
   Parameters:
     P - [in]
   Returns:
-    A distance that is greater than or equal to the
+    A distance that is greater than or equal to the 
     longest distance from the point P to this bounding box.
     Put another way, if Q is any point in this bounding box,
     then P.DistanceTo(Q) <= MaximumDistanceTo(bbox).
@@ -12274,7 +12269,7 @@ public:
 
   /*
   Description:
-    Quickly find a lower bound on the distance
+    Quickly find a lower bound on the distance 
     between this and the other bounding box.
   Parameters:
     other - [in]
@@ -12289,7 +12284,7 @@ public:
 
   /*
   Description:
-    Quickly find an upper bound on the distance
+    Quickly find an upper bound on the distance 
     between this and the other bounding box.
   Parameters:
     other - [in]
@@ -12304,7 +12299,7 @@ public:
 
   /*
   Description:
-    Quickly find a lower bound on the distance
+    Quickly find a lower bound on the distance 
     between the line segment and this bounding box.
   Parameters:
     line - [in]
@@ -12319,7 +12314,7 @@ public:
 
   /*
   Description:
-    Quickly find a tight lower bound on the distance
+    Quickly find a tight lower bound on the distance 
     between the plane and this bounding box.
   Parameters:
     plane - [in]
@@ -12335,12 +12330,12 @@ public:
 
   /*
   Description:
-    Quickly find an upper bound on the distance
+    Quickly find an upper bound on the distance 
     between the line segment and this bounding box.
   Parameters:
     line - [in]
   Returns:
-    A distance that is greater than or equal to the
+    A distance that is greater than or equal to the 
     longest distance from the line to this bounding box.
     Put another way, if Q is any point on the line
     and P is any point in this bounding box, then
@@ -12350,15 +12345,15 @@ public:
 
   /*
   Description:
-    Quickly find a tight upper bound on the distance
+    Quickly find a tight upper bound on the distance 
     between the plane and this bounding box.
   Parameters:
     plane - [in]
   Returns:
     A distance that is equal to the longest distance from
-    the plane to this bounding box.  Put another way,
-    if Q is any point on the plane and P is any point
-    in this bounding box, then
+    the plane to this bounding box.  Put another way, 
+    if Q is any point on the plane and P is any point 
+    in this bounding box, then 
     P.DistanceTo(Q) <= MaximumDistanceTo(bbox) and there
     is at least one point on the bounding box where the
     distance is equal to the returned value.
@@ -12375,10 +12370,10 @@ public:
     the point P to the bounding box is greater than d.
   Parameters:
     d - [in] distance (> 0.0)
-    P - [in]
+    P - [in] 
   Returns:
     True if if the shortest distance from the point P
-    to the bounding box is greater than d.
+    to the bounding box is greater than d. 
   */
   bool IsFartherThan( double d, const ON_3dPoint& P ) const;
 
@@ -12388,7 +12383,7 @@ public:
     to the bounding box is greater than d.
   Parameters:
     d - [in] distance (> 0.0)
-    line - [in]
+    line - [in] 
   Returns:
     True if the shortest distance from the line
     to the bounding box is greater than d. It is not the
@@ -12403,7 +12398,7 @@ public:
     to the bounding box is greater than d.
   Parameters:
     d - [in] distance (> 0.0)
-    plane - [in]
+    plane - [in] 
   Returns:
     True if the shortest distance from the plane
     to the bounding box is greater than d, and false
@@ -12417,7 +12412,7 @@ public:
     to the bounding box is greater than d.
   Parameters:
     d - [in] distance (> 0.0)
-    plane_equation - [in] (the first three coefficients
+    plane_equation - [in] (the first three coefficients 
                            are assumed to be a unit vector.
                            If not, adjust your d accordingly.)
   Returns:
@@ -12436,7 +12431,7 @@ public:
     other - [in] other bounding box
   Returns:
     True if if the shortest distance from this bounding
-    box to the other bounding box is greater than d.
+    box to the other bounding box is greater than d. 
   */
   bool IsFartherThan( double d, const ON_BoundingBox& other ) const;
 
@@ -12463,7 +12458,7 @@ public:
   // Remarks:
   //   The box is treated as a solid box.  If the intersection
   //   of the line segment, then 3 is returned.
-  int GetClosestPoint(
+  int GetClosestPoint( 
     const ON_Line&, // line
     ON_3dPoint&,    // box_point
     double*,        // t0
@@ -12474,7 +12469,7 @@ public:
   // Get points on bounding boxes that are closest to each other.
   // If the boxes intersect, then the point at the centroid of the
   // intersection is returned for both points.
-  bool GetClosestPoint(
+  bool GetClosestPoint( 
          const ON_BoundingBox&, // "other" bounding box
          ON_3dPoint&, // point on "this" box that is closest to "other" box
          ON_3dPoint&  // point on "other" box that is closest to "this" box
@@ -12482,19 +12477,19 @@ public:
 
   //////////
   // Point on the box that is farthest from the test_point.
-  ON_3dPoint FarPoint(
+  ON_3dPoint FarPoint( 
     const ON_3dPoint& // test_point
     ) const;
 
   //////////
   // Get points on bounding boxes that are farthest from each other.
-  bool GetFarPoint(
+  bool GetFarPoint( 
          const ON_BoundingBox&, // "other" bounding box
          ON_3dPoint&, // point on "this" box that is farthest from "other" box
          ON_3dPoint&  // point on "other" box that is farthest from "this" box
          )  const;
 
-  /*
+  /* 
   Description:
     Intersect this with other_bbox and save intersection in this.
   Parameters:
@@ -12511,11 +12506,11 @@ public:
          const ON_BoundingBox& other_bbox
          );
 
-  /*
+  /* 
   Description:
     Set "this" to the intersection of bbox_A and bbox_B.
   Parameters:
-    bbox_A - [in]
+    bbox_A - [in] 
     bbox_B - [in]
   Returns:
     True if the "this" is a non-empty valid bounding box.
@@ -12526,17 +12521,17 @@ public:
     the empty set, and false is returned.
   */
   bool Intersection( // this = intersection of two args
-         const ON_BoundingBox& bbox_A,
+         const ON_BoundingBox& bbox_A, 
          const ON_BoundingBox& bbox_B
          );
 
-	bool Intersection(				//Returns true when intersect is non-empty.
-				 const ON_Line&,		//Infinite Line segment to intersect with
+	bool Intersection(				//Returns true when intersect is non-empty. 
+				 const ON_Line&,		//Infinite Line segment to intersect with 
 				 double* =NULL ,			// t0  parameter of first intersection point
-				 double* =NULL       // t1  parameter of last intersection point (t0<=t1)
-				 ) const;
+				 double* =NULL       // t1  parameter of last intersection point (t0<=t1)   
+				 ) const;			 
 
-  /*
+  /* 
   Description:
     Test a box to see if it is contained in this box.
   Parameters:
@@ -12549,7 +12544,7 @@ public:
     If bProperSubSet is true, then the result is true when
 			the above condition is true and at least one of the inequalities is strict.
   */
-  bool Includes(
+  bool Includes( 
     const ON_BoundingBox& other,
     bool bProperSubSet = false
     ) const;
@@ -12565,11 +12560,11 @@ public:
          );
 
   bool Union( // this = union of two args
-         const ON_BoundingBox&,
+         const ON_BoundingBox&, 
          const ON_BoundingBox&
          );
-
-  /*
+                  
+  /* 
   Description:
     Test to see if "this" and other_bbox are disjoint (do not intersect).
   Parameters:
@@ -12592,7 +12587,7 @@ public:
 #if defined(ON_DLL_TEMPLATE)
 
 // This stuff is here because of a limitation in the way Microsoft
-// handles templates and DLLs.  See Microsoft's knowledge base
+// handles templates and DLLs.  See Microsoft's knowledge base 
 // article ID Q168958 for details.
 #pragma warning( push )
 #pragma warning( disable : 4231 )
@@ -12717,7 +12712,7 @@ double ON_BoundingBoxTolerance(
 
 /*
 Description:
-  Determine if an object is too large or too far
+  Determine if an object is too large or too far 
   from the origin for single precision coordinates
   to be useful.
 Parameters:
@@ -12730,13 +12725,13 @@ Parameters:
     null, then the identity transform is returned.
     If this function returns true and xform is not
     null, then the transform moves the region
-    contained in bbox to a location where single
+    contained in bbox to a location where single 
     precision coordinates will have enough
     information for the object to be useful.
 Returns:
   true:
     The region contained in bbox is too large
-    or too far from the origin for single
+    or too far from the origin for single 
     precision coordinates to be useful.
   false:
     A single precision object contained in bbox
@@ -12746,8 +12741,8 @@ ON_DECL
 bool ON_BeyondSinglePrecision( const ON_BoundingBox& bbox, ON_Xform* xform );
 
 ON_DECL
-bool ON_WorldBBoxIsInTightBBox(
-          const ON_BoundingBox& tight_bbox,
+bool ON_WorldBBoxIsInTightBBox( 
+          const ON_BoundingBox& tight_bbox, 
           const ON_BoundingBox& world_bbox,
           const ON_Xform* xform
           );
@@ -12763,7 +12758,7 @@ bool ON_WorldBBoxIsInTightBBox(
 // THIS SOFTWARE IS PROVIDED "AS IS" WITHOUT EXPRESS OR IMPLIED WARRANTY.
 // ALL IMPLIED WARRANTIES OF FITNESS FOR ANY PARTICULAR PURPOSE AND OF
 // MERCHANTABILITY ARE HEREBY DISCLAIMED.
-//
+//				
 // For complete openNURBS copyright information see <http://www.opennurbs.org>.
 //
 ////////////////////////////////////////////////////////////////
@@ -12778,7 +12773,7 @@ class ON_CLASS ON_Matrix
 {
 public:
   ON_Matrix();
-  ON_Matrix(
+  ON_Matrix( 
     int row_count,
     int col_count
      );
@@ -12832,7 +12827,7 @@ public:
   int MinCount() const; // smallest of row and column count
   int MaxCount() const; // largest of row and column count
 
-  void RowScale(int,double);
+  void RowScale(int,double); 
   void ColScale(int,double);
   void RowOp(int,double,int);
   void ColOp(int,double,int);
@@ -12888,7 +12883,7 @@ public:
 
   bool SwapRows( int, int ); // ints are row indices to swap
   bool SwapCols( int, int ); // ints are col indices to swap
-  bool Invert(
+  bool Invert( 
           double // zero tolerance
           );
 
@@ -12951,7 +12946,7 @@ public:
     double,  // zero_tolerance
     double&, // determinant
     double&  // pivot
-    );
+    ); 
 
   // Description:
   //   Row reduce a matrix as the first step in solving M*X=B where
@@ -12963,7 +12958,7 @@ public:
   //   B - [in/out] an array of m_row_count values that is row reduced
   //       with the matrix.
   //   determinant - [out] value of determinant is returned here.
-  //   pivot - [out] If not NULL, then the value of the smallest
+  //   pivot - [out] If not NULL, then the value of the smallest 
   //       pivot is returned here
   // Returns:
   //   Rank of the matrix.
@@ -12977,13 +12972,13 @@ public:
   //   ON_Matrix M(m,n) = ...;
   //   M.RowReduce(ON_ZERO_TOLERANCE,B); // modifies M and B
   //   M.BackSolve(m,B,X); // solution is in X
-  // See Also:
+  // See Also: 
   //   ON_Matrix::BackSolve
   int RowReduce(
     double,        // zero_tolerance
     double*,       // B
     double* = NULL // pivot
-    );
+    ); 
 
   // Description:
   //   Row reduce a matrix as the first step in solving M*X=B where
@@ -12992,23 +12987,23 @@ public:
   //   zero_tolerance - [in] (>=0.0) zero tolerance for pivot test
   //       If the absolute value of a pivot is <= zero_tolerance,
   //       then the pivot is assumed to be zero.
-  //   B - [in/out] an array of m_row_count 3d points that is
+  //   B - [in/out] an array of m_row_count 3d points that is 
   //       row reduced with the matrix.
   //   determinant - [out] value of determinant is returned here.
-  //   pivot - [out] If not NULL, then the value of the smallest
+  //   pivot - [out] If not NULL, then the value of the smallest 
   //       pivot is returned here
   // Returns:
   //   Rank of the matrix.
   // Remarks:
   //   The matrix itself is row reduced so that the result is
   //   an upper triangular matrix with 1's on the diagonal.
-  // See Also:
+  // See Also: 
   //   ON_Matrix::BackSolve
   int RowReduce(
     double,        // zero_tolerance
     ON_3dPoint*,   // B
     double* = NULL // pivot
-    );
+    ); 
 
   // Description:
   //   Row reduce a matrix as the first step in solving M*X=B where
@@ -13022,16 +13017,16 @@ public:
   //   pt - [in/out] array of m_row_count*pt_stride values.
   //        The i-th point is
   //        (pt[i*pt_stride],...,pt[i*pt_stride+pt_dim-1]).
-  //        This array of points is row reduced along with the
+  //        This array of points is row reduced along with the 
   //        matrix.
-  //   pivot - [out] If not NULL, then the value of the smallest
+  //   pivot - [out] If not NULL, then the value of the smallest 
   //       pivot is returned here
   // Returns:
   //   Rank of the matrix.
   // Remarks:
   //   The matrix itself is row reduced so that the result is
   //   an upper triangular matrix with 1's on the diagonal.
-  // See Also:
+  // See Also: 
   //   ON_Matrix::BackSolve
   int RowReduce( // returns rank
     double,      // zero_tolerance
@@ -13039,7 +13034,7 @@ public:
     int,         // pt_stride
     double*,     // pt
     double* = NULL // pivot
-    );
+    ); 
 
   // Description:
   //   Solve M*X=B where M is upper triangular with a unit diagonal and
@@ -13053,7 +13048,7 @@ public:
   //   B - [in] array of length Bsize.
   //   X - [out] array of length m_col_count.  Solutions returned here.
   // Remarks:
-  //   Actual values M[i][j] with i <= j are ignored.
+  //   Actual values M[i][j] with i <= j are ignored. 
   //   M[i][i] is assumed to be one and M[i][j] i<j is assumed to be zero.
   //   For square M, B and X can point to the same memory.
   // See Also:
@@ -13077,7 +13072,7 @@ public:
   //   B - [in] array of length Bsize.
   //   X - [out] array of length m_col_count.  Solutions returned here.
   // Remarks:
-  //   Actual values M[i][j] with i <= j are ignored.
+  //   Actual values M[i][j] with i <= j are ignored. 
   //   M[i][i] is assumed to be one and M[i][j] i<j is assumed to be zero.
   //   For square M, B and X can point to the same memory.
   // See Also:
@@ -13108,7 +13103,7 @@ public:
   //        The i-th X point is
   //        (Xpt[i*Xpt_stride],...,Xpt[i*Xpt_stride+pt_dim-1]).
   // Remarks:
-  //   Actual values M[i][j] with i <= j are ignored.
+  //   Actual values M[i][j] with i <= j are ignored. 
   //   M[i][i] is assumed to be one and M[i][j] i<j is assumed to be zero.
   //   For square M, B and X can point to the same memory.
   // See Also:
@@ -13137,7 +13132,7 @@ private:
   int m_row_count;
   int m_col_count;
   // m_rowmem[i][j] = row i+m_row_offset and column j+m_col_offset.
-  ON_SimpleArray<double*> m_rowmem;
+  ON_SimpleArray<double*> m_rowmem; 
 	double** m_Mmem; // used by Create(row_count,col_count,user_memory,true);
 	int   m_row_offset; // = ri0 when sub-matrix constructor is used
 	int   m_col_offset; // = ci0 when sub-matrix constructor is used
@@ -13170,7 +13165,7 @@ Parameters:
     null, heap storage will be allocated using onmalloc()
     and the calling function must call onfree(U).  If the input
     value of U is not null, U[i] must point to an array of col_count
-    doubles.
+    doubles.  
   W - [out]
     If the input value W is null, then heap storage will be allocated
     using onmalloc() and the calling function must call onfree(W).
@@ -13228,18 +13223,18 @@ Parameters:
 Remarks:
   If the singular value decomposition were mathematically perfect, then
   this function would be:
-    for (i = 0; i < count; i++)
+    for (i = 0; i < count; i++) 
       invW[i] = (W[i] != 0.0) ? 1.0/W[i] : 0.0;
   Because the double precision arithmetic is not mathematically perfect,
   very small values of W[i] may well be zero and this function makes
-  a reasonable guess as to when W[i] should be treated as zero.
+  a reasonable guess as to when W[i] should be treated as zero.  
 Returns:
   Number of non-zero elements in invW, which, in a mathematically perfect
   situation, is the rank of Diag(W).
 */
 ON_DECL
 int ON_InvertSVDW(
-  int count,
+  int count, 
   const double* W,
   double*& invW
   );
@@ -13309,9 +13304,9 @@ Example:
           if ( n == X.Count() )
           {
             ... use solution
-          }
+          }  
 Returns:
-  True if input is valid and X[] was calculated.
+  True if input is valid and X[] was calculated. 
   False if input is not valid.
 */
 ON_DECL
@@ -13324,7 +13319,7 @@ bool ON_SolveSVD(
   const double* B,
   double*& X
   );
-
+  
 
 /*
 Description:
@@ -13350,13 +13345,13 @@ Returns:
   If C = input value of A, then B*C = (I,*)
 */
 ON_DECL
-int ON_RowReduce(
-          int row_count,
+int ON_RowReduce( 
+          int row_count, 
           int col_count,
           double zero_pivot,
-          double** A,
-          double** B,
-          double pivots[2]
+          double** A, 
+          double** B, 
+          double pivots[2] 
           );
 
 #endif
@@ -13370,7 +13365,7 @@ int ON_RowReduce(
 // THIS SOFTWARE IS PROVIDED "AS IS" WITHOUT EXPRESS OR IMPLIED WARRANTY.
 // ALL IMPLIED WARRANTIES OF FITNESS FOR ANY PARTICULAR PURPOSE AND OF
 // MERCHANTABILITY ARE HEREBY DISCLAIMED.
-//
+//				
 // For complete openNURBS copyright information see <http://www.opennurbs.org>.
 //
 ////////////////////////////////////////////////////////////////
@@ -13390,7 +13385,7 @@ class ON_Matrix;
 class ON_CLASS ON_Xform
 {
 public:
-  double m_xform[4][4]; // [i][j] = row i, column j.  I.e.,
+  double m_xform[4][4]; // [i][j] = row i, column j.  I.e., 
                         //
                         //           [0][0] [0][1] [0][2] [0][3]
                         //           [1][0] [1][1] [1][2] [1][3]
@@ -13409,23 +13404,23 @@ public:
   ON_Xform( double[4][4] );       // from standard double m[4][4]
   ON_Xform( float[4][4] );        // from standard float m[4][4]
 #endif
-
+  
   ON_Xform( const double[4][4] ); // from standard double m[4][4]
   ON_Xform( const float[4][4] );  // from standard float m[4][4]
-
+  
   ON_Xform( const double* );      // from array of 16 doubles (row0,row1,row2,row3)
   ON_Xform( const float* );       // from array of 16 floats (row0,row1,row2,row3)
-
+  
   ON_Xform( const ON_Matrix& ); // from upper left 4x4 of an
                                     // arbitrary matrix.  Any missing
-                                    // rows/columns are set to identity.
-	ON_Xform(const ON_3dPoint& P,	// as a frame.
-						const ON_3dVector& X,
-						const ON_3dVector& Y,
-						const ON_3dVector& Z);
+                                    // rows/columns are set to identity. 
+	ON_Xform(const ON_3dPoint& P,	// as a frame. 
+						const ON_3dVector& X,	
+						const ON_3dVector& Y,	
+						const ON_3dVector& Z); 
 
   // use implicit operator=(const ON_3dVector&), operator==
-
+  
   double* operator[](int);
   const double* operator[](int) const;
 
@@ -13442,10 +13437,10 @@ public:
   ON_2dPoint operator*( const ON_2dPoint& ) const;
   ON_3dPoint operator*( const ON_3dPoint& ) const;
   ON_4dPoint operator*( const ON_4dPoint& ) const;
-
+  
   ON_2dVector operator*( const ON_2dVector& ) const;
   ON_3dVector operator*( const ON_3dVector& ) const;
-
+  
   ON_Xform operator*( const ON_Xform& /*rhs*/ ) const;
   ON_Xform operator+( const ON_Xform& ) const;
   ON_Xform operator-( const ON_Xform& /*rhs*/ ) const;
@@ -13474,7 +13469,7 @@ public:
     If the matrix contains a nan, false is returned.
   */
   bool IsIdentity( double zero_tolerance = 0.0) const;
-
+  
   /*
   Returns:
     true if the matrix is valid and is not the identity transformation
@@ -13484,7 +13479,7 @@ public:
     If the matrix contains a nan, false is returned.
   */
   bool IsNotIdentity( double zero_tolerance = 0.0) const;
-
+  
   /*
   Returns:
     true if matrix is a pure translation
@@ -13498,7 +13493,7 @@ public:
     The test for one is fabs(x-1) <= zero_tolerance.
   */
   bool IsTranslation( double zero_tolerance = 0.0) const;
-
+  
   /*
   Returns:
     true if matrix is the zero transformation
@@ -13524,11 +13519,11 @@ public:
 
   int Compare( const ON_Xform& other ) const;
 
-
+  
   // matrix operations
   void Transpose(); // transposes 4x4 matrix
 
-  int
+  int 
   Rank( // returns 0 to 4
     double* = NULL // If not NULL, returns minimum pivot
   ) const;
@@ -13540,7 +13535,7 @@ public:
 
   bool
   Invert( // If matrix is non-singular, returns true,
-          // otherwise returns false and sets matrix to
+          // otherwise returns false and sets matrix to 
           // pseudo inverse.
     double* = NULL // If not NULL, returns minimum pivot
   );
@@ -13576,10 +13571,10 @@ public:
     needs to be recalculated, then two transforms are required
     to recalcalculate the texture mapping.
   Parameters:
-    P_xform - [out]
+    P_xform - [out] 
       Transform to apply to points before applying the
       texture mapping transformation.
-    N_xform - [out]
+    N_xform - [out] 
       Transform to apply to surface normals before applying
       the texture mapping transformation.
   Returns:
@@ -13635,7 +13630,7 @@ public:
   void Identity();
 
   // diagonal 3x3 with bottom row = 0,0,0,1
-  void Diagonal(double);
+  void Diagonal(double); 
 
   /*
   Description:
@@ -13649,7 +13644,7 @@ public:
   Remarks:
     The diagonal is (x_scale_factor, y_scale_factor, z_scale_factor, 1)
   */
-  void Scale(
+  void Scale( 
     double x_scale_factor,
     double y_scale_factor,
     double z_scale_factor
@@ -13665,7 +13660,7 @@ public:
   Remarks:
     The diagonal is (scale_vector.x, scale_vector.y, scale_vector.z, 1)
   */
-  void Scale(
+  void Scale( 
     const ON_3dVector& scale_vector
     );
 
@@ -13719,12 +13714,12 @@ public:
     );
 
   // Right column is (d.x, d.y,d.z, 1).
-  void Translation(
+  void Translation( 
     const ON_3dVector& // d
     );
 
   // Right column is (dx, dy, dz, 1).
-  void Translation(
+  void Translation( 
     double, // dx
     double, // dy
     double  // dz
@@ -13741,7 +13736,7 @@ public:
     const ON_Plane& plane
     );
 
-  // Description:
+  // Description: 
   //   The Rotation() function is overloaded and provides several
   //   ways to compute a rotation transformation.  A positive
   //   rotation angle indicates a counter-clockwise (right hand rule)
@@ -13753,26 +13748,26 @@ public:
   //   rotation_axis - 3d unit axis of rotation
   //   rotation_center - 3d center of rotation
   //
-  // Remarks:
-  //   In the overloads that take frames, the frames should
-  //   be right hand orthonormal frames
-  //   (unit vectors with Z = X x Y).
+  // Remarks: 
+  //   In the overloads that take frames, the frames should 
+  //   be right hand orthonormal frames 
+  //   (unit vectors with Z = X x Y).  
   //   The resulting rotation fixes
-  //   the origin (0,0,0), maps initial X to
+  //   the origin (0,0,0), maps initial X to 
   //   final X, initial Y to final Y, and initial Z to final Z.
-  //
-  //   In the overload that takes frames with center points,
-  //   if the initial and final center are equal, then that
-  //   center point is the fixed point of the rotation.  If
+  //  
+  //   In the overload that takes frames with center points, 
+  //   if the initial and final center are equal, then that 
+  //   center point is the fixed point of the rotation.  If 
   //   the initial and final point differ, then the resulting
   //   transform is the composition of a rotation fixing P0
-  //   and translation from P0 to P1.  The resulting
+  //   and translation from P0 to P1.  The resulting 
   //   transformation maps P0 to P1, P0+X0 to P1+X1, ...
   //
   //   The rotation transformations that map frames to frames
   //   are not the same as the change of basis transformations
   //   for those frames.  See ON_Xform::ChangeBasis().
-  //
+  //   
   void Rotation(
     double sin_angle,
     double cos_angle,
@@ -13793,7 +13788,7 @@ public:
   /*
   Description:
     Calculate the minimal transformation that rotates
-    start_dir to end_dir while fixing rotation_center.
+    start_dir to end_dir while fixing rotation_center.    
   */
   void Rotation(
     ON_3dVector start_dir,
@@ -13809,7 +13804,7 @@ public:
   //   Y1 - final frame Y
   //   Z1 - final frame Z
   //
-  void Rotation(
+  void Rotation( 
     const ON_3dVector& X0,
     const ON_3dVector& Y0,
     const ON_3dVector& Z0,
@@ -13827,7 +13822,7 @@ public:
   //   X1 - final frame X
   //   Y1 - final frame Y
   //   Z1 - final frame Z
-  void Rotation(
+  void Rotation( 
     const ON_3dPoint& P0,
     const ON_3dVector& X0,
     const ON_3dVector& Y0,
@@ -13845,7 +13840,7 @@ public:
     plane0 - [in]
     plane1 - [in]
   */
-  void Rotation(
+  void Rotation( 
     const ON_Plane& plane0,
     const ON_Plane& plane1
     );
@@ -13866,7 +13861,7 @@ public:
     ON_3dVector normal_to_mirror_plane
     );
 
-  // Description: The ChangeBasis() function is overloaded
+  // Description: The ChangeBasis() function is overloaded 
   //   and provides several
   //   ways to compute a change of basis transformation.
   //
@@ -13879,19 +13874,19 @@ public:
   //   true    success
   //   false   vectors for initial frame are not a basis
   //
-  // Remarks:
+  // Remarks: 
   //   If you have points defined with respect to planes, the
   //   version of ChangeBasis() that takes two planes computes
-  //   the transformation to change coordinates from one plane to
+  //   the transformation to change coordinates from one plane to 
   //   another.  The predefined world plane ON_world_plane can
   //   be used as an argument.
   //
-  //   If P = plane0.Evaluate( a0,b0,c0 ) and
+  //   If P = plane0.Evaluate( a0,b0,c0 ) and 
   //
   //   (a1,b1,c1) = ChangeBasis(plane0,plane1)*ON_3dPoint(a0,b0,c0),
   //
   //   then P = plane1.Evaluate( a1, b1, c1 )
-  //
+  //          
   //   The version of ChangeBasis() that takes six vectors
   //   maps (a0,b0,c0) to (a1,b1,c1) where
   //   a0*X0 + b0*Y0 + c0*Z0 = a1*X1 + b1*Y1 + c1*Z1
@@ -13904,7 +13899,7 @@ public:
   //   The change of basis transformation is not the same as
   //   the rotation transformation that rotates one orthonormal
   //   frame to another.  See ON_Xform::Rotation().
-  bool ChangeBasis(
+  bool ChangeBasis( 
     const ON_Plane& plane0,
     const ON_Plane& plane1
     );
@@ -13923,7 +13918,7 @@ public:
   //   are often confused.  This is a change of basis transformation.
   //   If Q = a0*X0 + b0*Y0 + c0*Z0 = a1*X1 + b1*Y1 + c1*Z1
   //   then this transform will map the point (a0,b0,c0) to (a1,b1,c1)
-  bool ChangeBasis(
+  bool ChangeBasis( 
     const ON_3dVector& X0,
     const ON_3dVector& Y0,
     const ON_3dVector& Z0,
@@ -13946,7 +13941,7 @@ public:
   //   are often confused.  This is a change of basis transformation.
   //   If Q = P0 + a0*X0 + b0*Y0 + c0*Z0 = P1 + a1*X1 + b1*Y1 + c1*Z1
   //   then this transform will map the point (a0,b0,c0) to (a1,b1,c1)
-  bool ChangeBasis(
+  bool ChangeBasis( 
     const ON_3dPoint& P0,
     const ON_3dVector& X0,
     const ON_3dVector& Y0,
@@ -13958,13 +13953,13 @@ public:
     );
 
   // standard viewing transformations
-  void WorldToCamera(
+  void WorldToCamera( 
          const ON_3dPoint&,  // CameraLocation
          const ON_3dVector&, // unit CameraX vector (right)
          const ON_3dVector&, // unit CameraY vector (up)
          const ON_3dVector&  // unit CameraZ vector (from screen to camera)
          );
-  void CameraToWorld(
+  void CameraToWorld( 
          const ON_3dPoint&,  // CameraLocation
          const ON_3dVector&, // unit CameraX vector (right)
          const ON_3dVector&, // unit CameraY vector (up)
@@ -13978,21 +13973,21 @@ public:
       );
 
   // maps -1 <= x,y,z <= 1 box to viewport frustum
-  bool ClipToCamera(
+  bool ClipToCamera( 
       int, // true for perspective, false for orthographic
       double, double, // left != right (usually left < right )
       double, double, // bottom != top (usually bottom < top )
       double, double  // near != far an bot are non-zero (usually 0 < near < far )
       );
 
-  // Computes transform that maps the clipping box
+  // Computes transform that maps the clipping box 
   //
-  //           -1<x<1,-1<y<1,-1<z<1
+  //           -1<x<1,-1<y<1,-1<z<1 
   //
   // to the screen box
   //
   //          (left,right) X (bottom,top) X (near,far)
-  bool ClipToScreen(
+  bool ClipToScreen(                           
       double, // left
       double, // right
       double, // bottom
@@ -14004,10 +13999,10 @@ public:
   // Computes transform that maps the screen box
   //
   //          (left,right) X (bottom,top) X (near,far)
+  //  
+  // to the clipping box 
   //
-  // to the clipping box
-  //
-  //           -1<x<1,-1<y<1,-1<z<1
+  //           -1<x<1,-1<y<1,-1<z<1 
   bool ScreenToClip(
       double, // left
       double, // right
@@ -14024,8 +14019,8 @@ public:
   // Parameters:
   //   point - [in] 4d homogeneous clipping coordinate point
   //
-  // Returns:
-  //  @table
+  // Returns:  
+  //  @table  
   //   bit      point location
   //   1        x/w < -1
   //   2        x/w > +1
@@ -14041,7 +14036,7 @@ public:
   // Parameters:
   //   count - [in] number of 4d points
   //   stride - [in] (>=4)
-  //   points - [in] 4d clipping coordinate points
+  //   points - [in] 4d clipping coordinate points 
   //            (array of stride*count doubles)
   //   bTestZ - [in] (default=true) if false, do not test "z" coordinate
   //
@@ -14052,7 +14047,7 @@ public:
     ON_BOOL32 = true // bTeztZ
     ) const;
 
-  // Description:
+  // Description: 
   //   Computes 3d point clipping flags and
   //   returns an int with bits set to indicate if the point
   //   is outside of the clipping box.
@@ -14060,8 +14055,8 @@ public:
   // Parameters:
   //   point - [in] 3d clipping coordinate point
   //
-  // Returns:
-  //  @table
+  // Returns:  
+  //  @table  
   //   bit      point location
   //   1        x < -1
   //   2        x > +1
@@ -14081,7 +14076,7 @@ public:
   //
   int ClipFlag3d(
     int, // count
-    int, // stride
+    int, // stride 
     const double*, // points
     ON_BOOL32 = true // bTestZ
     ) const;
@@ -14094,8 +14089,8 @@ public:
   //   boxmin - [in] 3d boxmin corner
   //   boxmax - [in] 3d boxmax corner
   //
-  // Returns:
-  //  @table
+  // Returns:  
+  //  @table  
   //   bit      box location
   //   1        boxmax x < -1
   //   2        boxmin x > +1
@@ -14131,16 +14126,16 @@ public:
   ON_ClippingRegion();
 
   // The transformation m_xform transforms the view frustum,
-  // in object coordinates to the (-1,+1)^3 clipping
+  // in object coordinates to the (-1,+1)^3 clipping 
   // coordinate box.
   ON_Xform m_xform;
 
   /*
   Parameters:
-    clip_plane_tolerance - [in]
-      3d world coordinates tolerance to use when testing
+    clip_plane_tolerance - [in]  
+      3d world coordinates tolerance to use when testing 
       objects to see if the planes in m_clip_plane[] hide
-      the objects.
+      the objects.      
   Remarks:
     The constructor sets this value to zero.  Rhino uses
     values around 1e-5.
@@ -14149,9 +14144,9 @@ public:
 
   /*
   Returns:
-    3d world coordinates tolerance to use when testing
+    3d world coordinates tolerance to use when testing 
     objects to see if the planes in m_clip_plane[] hide
-    the objects.
+    the objects.      
   Remarks:
     The constructor sets this value to zero.  Rhino uses
     values around 1e-5.
@@ -14169,14 +14164,14 @@ public:
   };
 
   // Up to 25 additional clipping planes in object coordinates.
-  // The convex region that is the intersection of the positive
+  // The convex region that is the intersection of the positive 
   // side of these planes is the active region.
   int m_clip_plane_count; // (0 <= m_clip_plane_count <= max_clip_plane_count)
 
 private:
   // The "float" should be a double, but that can't happen
   // until V6 because it will brake the SDK.  Use the
-  // SetClipPlaneTolerance() and ClipPlaneTolerance()
+  // SetClipPlaneTolerance() and ClipPlaneTolerance() 
   // functions to set and get this value.
   float m_clip_plane_tolerance;
 
@@ -14205,22 +14200,22 @@ public:
     2 = The entire convex hull of the tested points is in the
         view frustum.
   */
-  int InViewFrustum(
+  int InViewFrustum( 
     ON_3dPoint P
     ) const;
-  int InViewFrustum(
+  int InViewFrustum( 
     const ON_BoundingBox& bbox
     ) const;
-  int InViewFrustum(
-    int count,
+  int InViewFrustum( 
+    int count, 
     const ON_3fPoint* p
     ) const;
-  int InViewFrustum(
-    int count,
+  int InViewFrustum( 
+    int count, 
     const ON_3dPoint* p
     ) const;
-  int InViewFrustum(
-    int count,
+  int InViewFrustum( 
+    int count, 
     const ON_4dPoint* p
     ) const;
 
@@ -14246,22 +14241,22 @@ public:
     2 = The entire convex hull of the tested points is in the
         clip plane region.
   */
-  int InClipPlaneRegion(
+  int InClipPlaneRegion( 
     ON_3dPoint P
     ) const;
-  int InClipPlaneRegion(
+  int InClipPlaneRegion( 
     const ON_BoundingBox& bbox
     ) const;
-  int InClipPlaneRegion(
-    int count,
+  int InClipPlaneRegion( 
+    int count, 
     const ON_3fPoint* p
     ) const;
-  int InClipPlaneRegion(
-    int count,
+  int InClipPlaneRegion( 
+    int count, 
     const ON_3dPoint* p
     ) const;
-  int InClipPlaneRegion(
-    int count,
+  int InClipPlaneRegion( 
+    int count, 
     const ON_4dPoint* p
     ) const;
 
@@ -14282,22 +14277,22 @@ public:
     1 = a portion of the object is in the region
     2 = entire object is in clipping region
   */
-  int IsVisible(
+  int IsVisible( 
     ON_3dPoint P
     ) const;
-  int IsVisible(
+  int IsVisible( 
     const ON_BoundingBox& bbox
     ) const;
-  int IsVisible(
-    int count,
+  int IsVisible( 
+    int count, 
     const ON_3fPoint* p
     ) const;
-  int IsVisible(
-    int count,
+  int IsVisible( 
+    int count, 
     const ON_3dPoint* p
     ) const;
-  int IsVisible(
-    int count,
+  int IsVisible( 
+    int count, 
     const ON_4dPoint* p
     ) const;
 
@@ -14312,7 +14307,7 @@ public:
           be transformed.  In all other cases, the output
           points are transformed by m_xform.
     pflags - [out]
-          0 when the point is in the visible region.
+          0 when the point is in the visible region.  
           Otherwise the bits are set to indicate which planes clip the
           intput point.
           0x01 left of the view frusturm
@@ -14349,7 +14344,7 @@ public:
     P - [in] point ot transform
     Q - [out] transformed point
   Returns:
-    0 when the point is in the visible region.
+    0 when the point is in the visible region.  
     Otherwise the bits are set to indicate which planes clip the
     intput point.
     0x01 left of the view frusturm
@@ -14367,15 +14362,15 @@ public:
     0x80000000 transformation created a non-positive weight
   */
   unsigned int TransformPoint(
-                     const ON_4dPoint& P,
+                     const ON_4dPoint& P, 
                      ON_4dPoint& Q
                      ) const;
   unsigned int TransformPoint(
-                     const ON_3dPoint& P,
+                     const ON_3dPoint& P, 
                      ON_3dPoint& Q
                      ) const;
   unsigned int TransformPoint(
-                     const ON_3fPoint& P,
+                     const ON_3fPoint& P, 
                      ON_3dPoint& Q
                      ) const;
 
@@ -14392,11 +14387,11 @@ public:
     True if some portion of the line is visible and
     0.0 <= *t0 <= *t1 <= 1.0.
   */
-  bool GetLineClipPlaneParamters(
-         ON_4dPoint P0,
-         ON_4dPoint P1,
-         double* t0,
-         double* t1
+  bool GetLineClipPlaneParamters( 
+         ON_4dPoint P0, 
+         ON_4dPoint P1, 
+         double* t0, 
+         double* t1 
          ) const;
 
 };
@@ -14418,7 +14413,7 @@ public:
   /*
   Descrption:
     Creates a cylindrical localizer.
-    If d = distance from the point to the line,
+    If d = distance from the point to the line, 
     then the localizer has the following behavior:
 
     point distance                localizer value
@@ -14433,14 +14428,14 @@ public:
     D - [in] cylinder axis direction
     r0 - [in]
     r1 - [in]
-      r0 and r1 are radii that control where the localizer is nonzero.
-      Both r0 and r1 must be postive and the cannot be equal.
-      If 0 < r0 < r1, then the localizer is zero for points
+      r0 and r1 are radii that control where the localizer is nonzero.  
+      Both r0 and r1 must be postive and the cannot be equal.  
+      If 0 < r0 < r1, then the localizer is zero for points 
       inside the cylinder of radius r0 and one for points outside
       the cylinder of radius r1.
-      If 0 < r1 < r0, then the localizer is one for points
+      If 0 < r1 < r0, then the localizer is one for points 
       inside the cylinder of radius r1 and zero for points outside
-      the cylinder of radius r0.
+      the cylinder of radius r0.      
 
   Returns:
     True if the input is value and the localizer is initialized.
@@ -14465,7 +14460,7 @@ public:
     N - [in] normal to plane
     h0 - [in]
     h1 - [in]
-      h0 and h1 are signed distances that control where the
+      h0 and h1 are signed distances that control where the 
       localizer is nonzero.
 
   Returns:
@@ -14476,7 +14471,7 @@ public:
   /*
   Descrption:
     Creates a spherical localizer.
-    If d = distance from the point to the center of the sphere,
+    If d = distance from the point to the center of the sphere, 
     then the localizer has the following behavior:
 
     point distance                localizer value
@@ -14490,14 +14485,14 @@ public:
     P - [in] center of sphere
     r0 - [in]
     r1 - [in]
-      r0 and r1 are radii that control where the localizer is nonzero.
-      Both r0 and r1 must be postive and the cannot be equal.
-      If 0 < r0 < r1, then the localizer is zero for points
+      r0 and r1 are radii that control where the localizer is nonzero.  
+      Both r0 and r1 must be postive and the cannot be equal.  
+      If 0 < r0 < r1, then the localizer is zero for points 
       inside the cylinder of radius r0 and one for points outside
       the cylinder of radius r1.
-      If 0 < r1 < r0, then the localizer is one for points
+      If 0 < r1 < r0, then the localizer is one for points 
       inside the cylinder of radius r1 and zero for points outside
-      the cylinder of radius r0.
+      the cylinder of radius r0.      
 
   Returns:
     True if the input is value and the localizer is initialized.
@@ -14564,7 +14559,7 @@ public:
   Returns:
     The default always returns false.  If you override
     this function, then return true when every point
-    in the bounding box is fixed by the morph.
+    in the bounding box is fixed by the morph.  
   */
   virtual
   bool IsIdentity( const ON_BoundingBox& bbox ) const;
@@ -14577,7 +14572,7 @@ public:
   Returns:
     3d fitting tolerance.
   Remarks:
-    The default is 0.0 and any value <= 0.0 is
+    The default is 0.0 and any value <= 0.0 is 
     ignored by morphing functions.
     The value returned by Tolerance() does not
     affect the way meshes and points are morphed.
@@ -14589,7 +14584,7 @@ public:
     Set the 3d fitting tolerance used when morphing
     surfaces and breps.
   Parameters:
-    tolerance - [in] values < 0.0 are treated as 0.0.
+    tolerance - [in] values < 0.0 are treated as 0.0.                     
   */
   void SetTolerance(
           double tolerance
@@ -14614,14 +14609,14 @@ public:
   Parameters:
     bQuickPreview - [in]
   */
-  void SetQuickPreview(
-          bool bQuickPreview
+  void SetQuickPreview( 
+          bool bQuickPreview 
           );
 
   /*
   Returns:
     True if the morph should be done in a way that
-    preserves the structure of the geometry.
+    preserves the structure of the geometry.  
     In particular, for NURBS objects, true
     means that only the control points are moved.
   Remarks:
@@ -14637,7 +14632,7 @@ public:
   Parameters:
     bPreserveStructure - [in]
   */
-  void SetPreserveStructure(
+  void SetPreserveStructure( 
           bool bPreserveStructure
           );
 
@@ -14650,7 +14645,7 @@ private:
 #if defined(ON_DLL_TEMPLATE)
 
 // This stuff is here because of a limitation in the way Microsoft
-// handles templates and DLLs.  See Microsoft's knowledge base
+// handles templates and DLLs.  See Microsoft's knowledge base 
 // article ID Q168958 for details.
 #pragma warning( push )
 #pragma warning( disable : 4231 )
@@ -14670,7 +14665,7 @@ ON_DLL_TEMPLATE template class ON_CLASS ON_ClassArray<ON_Localizer>;
 // THIS SOFTWARE IS PROVIDED "AS IS" WITHOUT EXPRESS OR IMPLIED WARRANTY.
 // ALL IMPLIED WARRANTIES OF FITNESS FOR ANY PARTICULAR PURPOSE AND OF
 // MERCHANTABILITY ARE HEREBY DISCLAIMED.
-//
+//				
 // For complete openNURBS copyright information see <http://www.opennurbs.org>.
 //
 ////////////////////////////////////////////////////////////////
@@ -14681,8 +14676,8 @@ ON_DLL_TEMPLATE template class ON_CLASS ON_ClassArray<ON_Localizer>;
 
 /*
 Description:
-  Use ON_Workspace classes on the stack to efficiently get
-  and automatically clean up workspace memory and scratch
+  Use ON_Workspace classes on the stack to efficiently get 
+  and automatically clean up workspace memory and scratch 
   files.
 */
 class ON_CLASS ON_Workspace
@@ -14693,7 +14688,7 @@ public:
     ON_Workspace classes should be on the stack
     or as members on classes that are never copied.
     The destructor frees memory that was allocated by
-    ON_Workspace::GetMemory and closes files that were
+    ON_Workspace::GetMemory and closes files that were 
     opened with ON_Workspace::OpenFile.
   */
   ON_Workspace();
@@ -14701,7 +14696,7 @@ public:
   /*
   Description:
     The destructor frees memory that was allocated by
-    ON_Workspace::GetMemory and closes files that were
+    ON_Workspace::GetMemory and closes files that were 
     opened with ON_Workspace::OpenFile.
   */
   ~ON_Workspace();
@@ -14710,7 +14705,7 @@ public:
   /*
   Description:
     The destructor frees memory that was allocated by
-    ON_Workspace::GetMemory and closes files that were
+    ON_Workspace::GetMemory and closes files that were 
     opened with ON_Workspace::OpenFile.  The workspace
     can be used again after calling destroy.
   */
@@ -14718,13 +14713,13 @@ public:
 
   /*
   Description:
-    Gets a block of heap memory that will be freed by
+    Gets a block of heap memory that will be freed by 
     ~ON_Workspace. The intent of ON_Workspace::GetMemory
-    is to provide an easy way to get blocks of scratch
-    memory without having to worry about cleaning up
+    is to provide an easy way to get blocks of scratch 
+    memory without having to worry about cleaning up 
     before returning.
   Parameters:
-    sz - [in] (>0) size of memory block in bytes.
+    sz - [in] (>0) size of memory block in bytes. 
               If sz <= 0, then NULL is returned.
   Returns:
     A pointer to the memory block.
@@ -14798,7 +14793,7 @@ public:
     A pointer to the array of doubles.
   Remarks.
     This is a simple helper function so you don't have to
-    mess around with (double*) casts and sizeof(double)s
+    mess around with (double*) casts and sizeof(double)s 
     in a call to GetMemory().  It is exactly like calling
     (double*)GetMemory(count*sizeof(double));
   See Also:
@@ -14828,7 +14823,7 @@ public:
   /*
   Description:
     Gets an array of ON_3dPoints that will be freed by ~ON_Workspace.
-    The intent of ON_Workspace::GetPointMemory is to
+    The intent of ON_Workspace::GetPointMemory is to 
     provide an easy way to get scratch point arrays without
     having to worry about cleaning up before returning.
   Parameters:
@@ -14851,7 +14846,7 @@ public:
   /*
   Description:
     Gets an array of ON_3dVectors that will be freed by ~ON_Workspace.
-    The intent of ON_Workspace::GetVectorMemory is to
+    The intent of ON_Workspace::GetVectorMemory is to 
     provide an easy way to get scratch Vector arrays without
     having to worry about cleaning up before returning.
   Parameters:
@@ -14878,9 +14873,9 @@ public:
   Parameters:
     ptr - [in] pointer returned by an earlier call to
                GetMemory or GrowMemory.
-    sz - [in] (>0) size of memory block in bytes.
+    sz - [in] (>0) size of memory block in bytes. 
               If sz <= 0, then NULL is returned.
-              If ptr is not NULL and was not allocated by an
+              If ptr is not NULL and was not allocated by an 
               earlier call to GetMemory or GrowMemory, then
               NULL is returned.
   Returns:
@@ -15003,11 +14998,11 @@ public:
 
   /*
   Description:
-    Calling the KeepMemory() function with a pointer
-    returned from one of the Get...() or Grow...() calls
+    Calling the KeepMemory() function with a pointer 
+    returned from one of the Get...() or Grow...() calls 
     keeps the workspace destructor from freeing the memory.
     After calling KeepMemory(), you can no longer use
-    Grow...() on the pointer.  The caller is responsible
+    Grow...() on the pointer.  The caller is responsible 
     for using onfree() to release the memory when it is no
     longer needed.
   Parameters:
@@ -15028,7 +15023,7 @@ public:
     Calling KeepAllMemory() has the same effect as calling
     KeepMemory(p) for every active allocation in the workspace.
     After calling KeepAllMemory(), you can no longer use
-    Grow...() on the pointers and you are responsible
+    Grow...() on the pointers and you are responsible 
     for using onfree() to release the memory when it is no
     longer needed.
   See Also:
@@ -15055,7 +15050,7 @@ public:
     ON::OpenFile
   */
   FILE* OpenFile(
-          const char* filename,
+          const char* filename, 
           const char* filemode
           );
 
@@ -15076,7 +15071,7 @@ public:
     ON::OpenFile
   */
   FILE* OpenFile(
-          const wchar_t* filename,
+          const wchar_t* filename, 
           const wchar_t* filemode
           );
 
@@ -15123,7 +15118,7 @@ private:
 // THIS SOFTWARE IS PROVIDED "AS IS" WITHOUT EXPRESS OR IMPLIED WARRANTY.
 // ALL IMPLIED WARRANTIES OF FITNESS FOR ANY PARTICULAR PURPOSE AND OF
 // MERCHANTABILITY ARE HEREBY DISCLAIMED.
-//
+//				
 // For complete openNURBS copyright information see <http://www.opennurbs.org>.
 //
 ////////////////////////////////////////////////////////////////
@@ -15277,12 +15272,12 @@ public:
        one of equation[0], equation[1], or equation[2]
        being non-zero.
   Remarks:
-    points on the plane will satisfy
+    points on the plane will satisfy 
     x*equation[0] +y*equation[1] + z*equation[2] + equation[3] = 0
   Returns:
     true if valid plane is created.
   */
-  bool CreateFromEquation(
+  bool CreateFromEquation( 
     const double equation[4]
     );
 
@@ -15327,7 +15322,7 @@ public:
     origin - [in] the new origin
   */
   void SetOrigin( const ON_3dPoint& origin );
-
+  
   /*
   Description:
     Evaluate a point on the plane
@@ -15367,7 +15362,7 @@ public:
            e.g., line(t) = plane(t,c)
         1: first parameter is constant and second parameter varies
            e.g., line(t) = plane(c,t)
-    c - [in] value of constant parameter
+    c - [in] value of constant parameter 
   Returns:
     iso-parametric line
   */
@@ -15389,7 +15384,7 @@ public:
     If the point is below the plane the distance is < 0.
     The zaxis determines the plane's orientation.
   */
-  double DistanceTo(
+  double DistanceTo( 
         const ON_3dPoint& point
         ) const;
 
@@ -15399,7 +15394,7 @@ public:
 				   const ON_BoundingBox&, // Box
 
            //output
-				   double* min,    // min signed dist from plane to box
+				   double* min,    // min signed dist from plane to box 
            double* max     //max signed dist from plane to box
            ) const;
 
@@ -15411,7 +15406,7 @@ public:
     true if successful.  false if zaxis is zero.
   Remarks:
     If you modify a plane's origin or zaxis, call UpdateEquation()
-    to set equation[].
+    to set equation[]. 
   */
   bool UpdateEquation();
 
@@ -15420,13 +15415,13 @@ public:
     Get point on plane that is closest to a given point.
   Parameters:
     world_point - [in] 3d point
-    u - [out]
+    u - [out] 
     v - [out] The point ON_Plane::PointAt(*u,*v) is the point
               on the plane that is closest to world_point.
   Returns:
     true if successful.
   */
-  bool ClosestPointTo(
+  bool ClosestPointTo( 
          ON_3dPoint world_point,
          double* u,
          double* v
@@ -15440,7 +15435,7 @@ public:
   Returns:
     A 3d point on the plane that is closest to world_point.
   */
-  ON_3dPoint ClosestPointTo(
+  ON_3dPoint ClosestPointTo( 
          ON_3dPoint point
          ) const;
 
@@ -15454,7 +15449,7 @@ public:
   Returns:
     true if successful
   */
-  bool Transform(
+  bool Transform( 
         const ON_Xform& xform
         );
 
@@ -15558,9 +15553,9 @@ public:
   */
   bool Flip();
 
-// world plane coordinate system ON_Plane(ON_origin, ON_xaxis, ON_yaxis);
+// world plane coordinate system ON_Plane(ON_origin, ON_xaxis, ON_yaxis); 
 	const static
-	ON_Plane World_xy;
+	ON_Plane World_xy;	
 
 public:
   // origin of plane
@@ -15620,7 +15615,7 @@ public:
 #if defined(ON_DLL_TEMPLATE)
 
 // This stuff is here because of a limitation in the way Microsoft
-// handles templates and DLLs.  See Microsoft's knowledge base
+// handles templates and DLLs.  See Microsoft's knowledge base 
 // article ID Q168958 for details.
 #pragma warning( push )
 #pragma warning( disable : 4231 )
@@ -15644,7 +15639,7 @@ Parameters:
     but is too slow for hundreds of points.
   hull -[out]
     Equations of the sides of the convex hull are appended to
-    this list.
+    this list.  
     A point P is inside the hull if hull[i].ValueAt(P) <= 0 for
     every plane equation.
 Returns:
@@ -15655,9 +15650,9 @@ Returns:
   If >= 4, then the points are in a 3d convex hull.
 */
 ON_DECL
-int ON_Get3dConvexHull(
-          const ON_SimpleArray<ON_3dPoint> & points,
-          ON_SimpleArray<ON_PlaneEquation> & hull
+int ON_Get3dConvexHull( 
+          const ON_SimpleArray<ON_3dPoint> & points, 
+          ON_SimpleArray<ON_PlaneEquation> & hull 
           );
 
 #endif
@@ -15671,7 +15666,7 @@ int ON_Get3dConvexHull(
 // THIS SOFTWARE IS PROVIDED "AS IS" WITHOUT EXPRESS OR IMPLIED WARRANTY.
 // ALL IMPLIED WARRANTIES OF FITNESS FOR ANY PARTICULAR PURPOSE AND OF
 // MERCHANTABILITY ARE HEREBY DISCLAIMED.
-//
+//				
 // For complete openNURBS copyright information see <http://www.opennurbs.org>.
 //
 ////////////////////////////////////////////////////////////////
@@ -15684,14 +15679,14 @@ class ON_NurbsCurve;
 
 /*
 Description:
-	ON_Circle is a circle in 3d.  The cirle is represented by a radius and an
+	ON_Circle is a circle in 3d.  The cirle is represented by a radius and an 
 	orthonormal frame	of the plane containing the circle, with origin at the center.
 
 	An Is_Valid() circle has positive radius and an Is_ Valid() plane defining the frame.
-
-	The circle is parameterized by radians from 0 to 2 Pi given by
-     t -> center + cos(t)*radius*xaxis + sin(t)*radius*yaxis
-	where center, xaxis and yaxis define the orthonormal frame of the circle's plane.
+	
+	The circle is parameterized by radians from 0 to 2 Pi given by 
+     t -> center + cos(t)*radius*xaxis + sin(t)*radius*yaxis	
+	where center, xaxis and yaxis define the orthonormal frame of the circle's plane.  
 */
 class ON_CLASS ON_Circle
 {
@@ -15778,7 +15773,7 @@ public:
     const ON_3dPoint& R
     );
 
-  // Create a circle from two 2d points and a
+  // Create a circle from two 2d points and a 
   // tangent at the first point.
   // The start/end of the circle is at point P.
   bool Create(
@@ -15787,7 +15782,7 @@ public:
     const ON_2dPoint& Q
     );
 
-  // Create a circle from two 3d points and a
+  // Create a circle from two 3d points and a 
   // tangent at the first point.
   // The start/end of the circle is at point P.
   bool Create(
@@ -15817,9 +15812,9 @@ public:
     Get tight bounding box.
 	Parameters:
 		tight_bbox - [in/out] tight bounding box
-		bGrowBox -[in]	(default=false)
+		bGrowBox -[in]	(default=false)			
       If true and the input tight_bbox is valid, then returned
-      tight_bbox is the union of the input tight_bbox and the
+      tight_bbox is the union of the input tight_bbox and the 
       arc's tight bounding box.
 		xform -[in] (default=NULL)
       If not NULL, the tight bounding box of the transformed
@@ -15827,8 +15822,8 @@ public:
 	Returns:
     True if a valid tight_bbox is returned.
   */
-	bool GetTightBoundingBox(
-			ON_BoundingBox& tight_bbox,
+	bool GetTightBoundingBox( 
+			ON_BoundingBox& tight_bbox, 
       int bGrowBox = false,
 			const ON_Xform* xform = 0
       ) const;
@@ -15837,10 +15832,10 @@ public:
 
   // Circles use trigonometric parameterization
   // t -> center + cos(t)*radius*xaxis + sin(t)*radius*yaxis
-  ON_3dPoint PointAt(
+  ON_3dPoint PointAt( 
     double // evaluation parameter
     ) const;
-  ON_3dVector DerivativeAt(
+  ON_3dVector DerivativeAt( 
     int,   // derivative (>=0)
     double // evaluation parameter
     ) const;
@@ -15848,13 +15843,13 @@ public:
   ON_3dVector TangentAt(double) const;
 
   // returns parameters of point on circle that is closest to given point
-  bool ClosestPointTo(
-         const ON_3dPoint& point,
+  bool ClosestPointTo( 
+         const ON_3dPoint& point, 
          double* t
          ) const;
 
   // returns point on circle that is closest to given point
-  ON_3dPoint ClosestPointTo(
+  ON_3dPoint ClosestPointTo( 
          const ON_3dPoint& point
          ) const;
 
@@ -15902,13 +15897,13 @@ public:
   //   2 for success, 0 for failure
   // Remarks:
   //   Note that the parameterization of NURBS curve
-  //   does not match  circle's transcendental paramaterization.
+  //   does not match  circle's transcendental paramaterization.  
   //   Use ON_Circle::GetRadianFromNurbFormParameter() and
-  //   ON_Circle::GetParameterFromRadian() to convert between
+  //   ON_Circle::GetParameterFromRadian() to convert between 
   //   the NURBS curve parameter and the transcendental parameter.
   int GetNurbForm(
         ON_NurbsCurve& nurbs_curve
-        ) const;
+        ) const; 
 
   /*
   Description:
@@ -15931,7 +15926,7 @@ public:
 
   Remarks:
     The NURBS curve parameter is with respect to the NURBS curve
-    created by ON_Circle::GetNurbForm.  At nurbs parameter values of
+    created by ON_Circle::GetNurbForm.  At nurbs parameter values of 
     0.0, 0.5*ON_PI, ON_PI, 1.5*ON_PI, and 2.0*ON_PI, the nurbs
     parameter and radian parameter are the same.  At all other
     values the nurbs and radian parameter values are different.
@@ -15964,7 +15959,7 @@ public:
 
   Remarks:
     The NURBS curve parameter is with respect to the NURBS curve
-    created by ON_Circle::GetNurbForm.  At radian values of
+    created by ON_Circle::GetNurbForm.  At radian values of 
     0.0, 0.5*ON_PI, ON_PI, 1.5*ON_PI, and 2.0*ON_PI, the nurbs
     parameter and radian parameter are the same.  At all other
     values the nurbs and radian parameter values are different.
@@ -15978,7 +15973,7 @@ public:
 
 public:
   // circle is in the plane with center at plane.m_origin.
-  ON_Plane   plane;
+  ON_Plane   plane;  
   double     radius;   // radius
   //ON_3dPoint m_point[3]; // 3 points on the circle
 };
@@ -15996,7 +15991,7 @@ public:
 // THIS SOFTWARE IS PROVIDED "AS IS" WITHOUT EXPRESS OR IMPLIED WARRANTY.
 // ALL IMPLIED WARRANTIES OF FITNESS FOR ANY PARTICULAR PURPOSE AND OF
 // MERCHANTABILITY ARE HEREBY DISCLAIMED.
-//
+//				
 // For complete openNURBS copyright information see <http://www.opennurbs.org>.
 //
 ////////////////////////////////////////////////////////////////
@@ -16040,9 +16035,9 @@ public:
 
   ON_BOOL32 IsCircle() const; // returns true is ellipse is a circle
 
-  double Radius(
+  double Radius( 
     int // 0 = x axis radius, 1 = y axis radius
-    ) const;
+    ) const; 
   const ON_3dPoint& Center() const;
   const ON_3dVector& Normal() const;
   const ON_Plane& Plane() const; // plane containing ellipse
@@ -16059,7 +16054,7 @@ public:
   // t -> plane.origin + cos(t)*radius[0]*plane.xaxis + sin(t)*radius[1]*plane.yaxis
   // evaluate parameters and return point
   ON_3dPoint  PointAt( double ) const;
-  ON_3dVector DerivativeAt(
+  ON_3dVector DerivativeAt( 
                  int, // desired derivative ( >= 0 )
                  double // parameter
                  ) const;
@@ -16068,13 +16063,13 @@ public:
   ON_3dVector CurvatureAt( double ) const;  // returns curvature vector
 
   // returns parameters of point on ellipse that is closest to given point
-  ON_BOOL32 ClosestPointTo(
-         const ON_3dPoint&,
+  ON_BOOL32 ClosestPointTo( 
+         const ON_3dPoint&, 
          double*
          ) const;
   // returns point on ellipse that is closest to given point
-  ON_3dPoint ClosestPointTo(
-         const ON_3dPoint&
+  ON_3dPoint ClosestPointTo( 
+         const ON_3dPoint& 
          ) const;
 
   // evaluate ellipse's implicit equation in plane
@@ -16114,7 +16109,7 @@ public:
 
 public: // members left public
   // The center of the ellipse is at the plane's origin.  The axes of the
-  // ellipse are the plane's x and y axes. The equation of the ellipse
+  // ellipse are the plane's x and y axes. The equation of the ellipse 
   // with respect to the plane is (x/m_r[0])^2 + (y/m_r[1])^2 = 1;
   ON_Plane plane;
   double radius[2]; // radii for x and y axes (both must be > 0)
@@ -16130,7 +16125,7 @@ public: // members left public
 // THIS SOFTWARE IS PROVIDED "AS IS" WITHOUT EXPRESS OR IMPLIED WARRANTY.
 // ALL IMPLIED WARRANTIES OF FITNESS FOR ANY PARTICULAR PURPOSE AND OF
 // MERCHANTABILITY ARE HEREBY DISCLAIMED.
-//
+//				
 // For complete openNURBS copyright information see <http://www.opennurbs.org>.
 //
 ////////////////////////////////////////////////////////////////
@@ -16145,7 +16140,7 @@ class ON_CLASS ON_X_EVENT
 {
   // NO VIRTUAL FUNCTIONS IN THIS CLASS
 public:
-
+  
   // Default construction sets everything to zero.
   ON_X_EVENT();
 
@@ -16153,7 +16148,7 @@ public:
 
   /*
   Description:
-    Compares intersection events and sorts them in the
+    Compares intersection events and sorts them in the 
     canonical order.
   Returns:
     @untitled table
@@ -16175,13 +16170,13 @@ public:
   Parameters:
     text_log - [in] If not null and an error is found, then a description
                     of the error is printed to text_log.
-    intersection_tolerance - [in]
+    intersection_tolerance - [in] 
          0.0 or value used in intersection calculation.
-    overlap_tolerance - [in]
+    overlap_tolerance - [in] 
          0.0 or value used in intersection calculation.
-    curveA - [in]
+    curveA - [in] 
          NULL or curveA passed to intersection calculation.
-    curveA_domain - [in]
+    curveA_domain - [in] 
          NULL or curveA domain used in intersection calculation.
     curveB - [in]
          NULL or curveB passed to intersection calculation.
@@ -16213,7 +16208,7 @@ public:
   /*
   Description:
     Expert user tool to copy portions of the itersection
-    event information from one event to another.
+    event information from one event to another.  
     If src.m_type is ON_X_EVENT::csx_*, then the
     m_b[] and m_nodeB_t[] values are treated as
     surface parameters, otherwise the values are
@@ -16225,17 +16220,17 @@ public:
     dst - [out]
     dst_end - [in] 0 or 1 (m_A[] destination index)
   */
-  static
+  static 
   void CopyEventPart(
-        const ON_X_EVENT& src,
+        const ON_X_EVENT& src, 
         int src_end,
-        ON_X_EVENT& dst,
-        int dst_end
+        ON_X_EVENT& dst, 
+        int dst_end 
         );
 
   /*
   Description:
-    Expert user tool to cleanup a list of intersection
+    Expert user tool to cleanup a list of intersection 
     events.
   Parameters:
     event_tolerance - [in] If the distance between
@@ -16312,11 +16307,11 @@ public:
     True if sections overlap.
   */
   static
-  bool IsValidCurveCurveOverlap(
+  bool IsValidCurveCurveOverlap( 
         ON_Interval curveA_domain,
         int sample_count,
         double overlap_tolerance,
-        const class ON_CurveTreeNode* cnodeA,
+        const class ON_CurveTreeNode* cnodeA, 
         const class ON_CurveTreeNode* cnodeB,
         const ON_Interval* curveB_domain = 0
         );
@@ -16335,8 +16330,8 @@ public:
   Returns:
     True if curve lies on the plane
   */
-  static
-  bool IsValidCurvePlaneOverlap(
+  static 
+  bool IsValidCurvePlaneOverlap( 
         ON_Interval curveA_domain,
         int sample_count,
         double endpoint_tolerance,
@@ -16360,12 +16355,12 @@ public:
   Returns:
     True if sections overlap.
   */
-  static
-  bool IsValidCurveSurfaceOverlap(
+  static 
+  bool IsValidCurveSurfaceOverlap( 
         ON_Interval curveA_domain,
         int sample_count,
         double overlap_tolerance,
-        const class ON_CurveTreeNode* cnodeA,
+        const class ON_CurveTreeNode* cnodeA, 
         const class ON_SurfaceTreeNode* snodeB,
         const ON_Interval* surfaceB_udomain = 0,
         const ON_Interval* surfaceB_vdomain = 0
@@ -16421,7 +16416,7 @@ public:
 
 
   enum TYPE
-  {
+  { 
     no_x_event  =  0,
 
     // Two valid event types for curve-curve intersections
@@ -16434,14 +16429,14 @@ public:
   };
 
   // Event directions for use in the m_dirA[] and m_dirB[]
-  // fields. The "x_from_*" values are used to report the
-  // behavior of the curve as it enters the intersection
-  // event. The "x_to_*" values are used to report the
+  // fields. The "x_from_*" values are used to report the 
+  // behavior of the curve as it enters the intersection 
+  // event. The "x_to_*" values are used to report the 
   // behavior of the curve as it leaves the intersection
   // event.
   enum DIRECTION
-  {
-    no_x_dir       = 0,
+  { 
+    no_x_dir       = 0, 
 
     at_end_dir     = 1, // event is at the start/end/side of object's
                         // parameter space
@@ -16456,7 +16451,7 @@ public:
   };
 
   // This field is a scratch field for users.
-  // The constructor sets it to zero and the
+  // The constructor sets it to zero and the 
   // intersectors never use it.
   ON_U m_user;
 
@@ -16469,13 +16464,13 @@ public:
   ON_3dPoint m_B[2]; // intersection points on second curve or surface
   double m_a[2];     // intersection parameters on first curve
   double m_b[4];     // intersection parameters on second curve or surface
-
+  
   // There are cases when it is valuable to have direction
   // flags on intersection events.  The m_dirA[] and m_dirB[]
   // fields provide a place to store these flags.  Because this
   // information is rarely used, it is not computed by the
   // intersection routines.  You can use
-  //   ON_SetCurveCurveIntersectionDir
+  //   ON_SetCurveCurveIntersectionDir 
   // or
   //   ON_SetCurveSurfaceIntersectionDir
   // to fill in these fields.
@@ -16484,7 +16479,7 @@ public:
 
   // tree nodes where the intersection events occured.
   const class ON_CurveTreeNode* m_cnodeA[2];
-  double m_nodeA_t[2]; // nodeA bezier paramters corresponding to a[] values
+  double m_nodeA_t[2]; // nodeA bezier paramters corresponding to a[] values 
   const class ON_CurveTreeNode* m_cnodeB[2];
   const class ON_SurfaceTreeNode* m_snodeB[2];
   double m_nodeB_t[4]; // nodeB bezier paramters corresponding to b[] values.
@@ -16519,7 +16514,7 @@ public:
       cnodeB[0] = pointer to second curve's tree node for start point
       cnodeB[1] = pointer to second curve's tree node for end point
       snodeB[0] = snodeB[1] = 0
-
+   
    csx_point events:
       a[0] = a[1] = curve parameter
       A[0] = A[1] = intersection point on curve
@@ -16549,7 +16544,7 @@ public:
 /*
 Description:
   Sets ON_X_EVENT m_dirA[] and m_dirB[] flags for in intersection
-  of coplanar curves.  For each  m_dirA[]/m_dirB[] flag that is
+  of coplanar curves.  For each  m_dirA[]/m_dirB[] flag that is 
   set to ON_X_EVENT, the curve geometry at the itersection is
   examined to set the flags.
 Parameters:
@@ -16579,8 +16574,8 @@ bool ON_SetCurveCurveIntersectionDir(
 /*
 Description:
   Sets ON_X_EVENT m_dirA[] and m_dirB[] flags for a curve surface
-  intersection.  For each  m_dirA[]/m_dirB[] flag that is
-  set to ON_X_EVENT, the curve and surface geometry at the
+  intersection.  For each  m_dirA[]/m_dirB[] flag that is 
+  set to ON_X_EVENT, the curve and surface geometry at the 
   itersection is examined to set the flags.
 Parameters:
   xcount - [in] number of intersection events
@@ -16626,13 +16621,13 @@ public:
   Parameters:
     text_log - [in] If not null and an error is found, then a description
                     of the error is printed to text_log.
-    intersection_tolerance - [in]
+    intersection_tolerance - [in] 
          0.0 or value used in intersection calculation.
-    overlap_tolerance - [in]
+    overlap_tolerance - [in] 
          0.0 or value used in intersection calculation.
-    fitting_tolerance - [in]
+    fitting_tolerance - [in] 
          0.0 or value used in intersection calculation.
-    surfaceA - [in]
+    surfaceA - [in] 
          NULL or surfaceA passed to intersection calculation.
     surfaceA_domain0 - [in]
          NULL or surfaceA "u" domain used in intersection calculation.
@@ -16685,7 +16680,7 @@ public:
   Parameters:
     tiny_tolerance - [in]
   Returns:
-    True if
+    True if 
     m_type is ssx_transverse_point or ssx_tangent_point,
     or,
     m_type is ssx_transverse, ssx_tangent or ssx_overlap
@@ -16710,7 +16705,7 @@ public:
   bool IsOverlapEvent() const;
 
   // This field is a scratch field for users.
-  // The constructor sets it to zero and the
+  // The constructor sets it to zero and the 
   // intersectors never use it.
   ON_U m_user;
 
@@ -16728,14 +16723,14 @@ public:
   TYPE m_type;
 
   // If m_type = ssx_transverse, ssx_tangent, or ssx_overlap,
-  // then the intersection curves are returned here.
+  // then the intersection curves are returned here.  
   // In all cases the 3 curves are compatibly oriented.
   // For ssx_transverse events, the 3d curve direction
   // agrees with SurfaceNormalB x SurfaceNormalA
   // For ssx_tangent events, the orientation is random.
   // For ssx_overlap events, the overlap is to the left of
   // m_curveA.  These curves are deleted by ~ON_SSX_EVENT().
-  // If you want to harvest a curve for long term use, set
+  // If you want to harvest a curve for long term use, set 
   // the pointer to NULL.
   ON_Curve* m_curveA;  // 2d surface A parameter space curve
   ON_Curve* m_curveB;  // 2d surface B parameter space curve
@@ -16759,7 +16754,7 @@ public:
 // THIS SOFTWARE IS PROVIDED "AS IS" WITHOUT EXPRESS OR IMPLIED WARRANTY.
 // ALL IMPLIED WARRANTIES OF FITNESS FOR ANY PARTICULAR PURPOSE AND OF
 // MERCHANTABILITY ARE HEREBY DISCLAIMED.
-//
+//				
 // For complete openNURBS copyright information see <http://www.opennurbs.org>.
 //
 ////////////////////////////////////////////////////////////////
@@ -16794,13 +16789,13 @@ public:
   //   end - [in] point at end of line segment
   // Returns:
   //   true if start and end are distinct points.
-  bool Create(
-    const ON_3dPoint& start,
+  bool Create( 
+    const ON_3dPoint& start, 
     const ON_3dPoint& end
     );
 
   /*
-  Description:
+  Description: 
     Get line's 3d axis aligned bounding box.
   Returns:
     3d bounding box.
@@ -16813,9 +16808,9 @@ public:
     union of the input box with the object's bounding box.
   Parameters:
     bbox - [in/out] 3d axis aligned bounding box
-    bGrowBox - [in] (default=false)
-      If true, then the union of the input bbox and the
-      object's bounding box is returned in bbox.
+    bGrowBox - [in] (default=false) 
+      If true, then the union of the input bbox and the 
+      object's bounding box is returned in bbox.  
       If false, the object's bounding box is returned in bbox.
   Returns:
     true if object has bounding box and calculation was successful.
@@ -16830,9 +16825,9 @@ public:
     Get tight bounding box.
 	Parameters:
 		tight_bbox - [in/out] tight bounding box
-		bGrowBox -[in]	(default=false)
+		bGrowBox -[in]	(default=false)			
       If true and the input tight_bbox is valid, then returned
-      tight_bbox is the union of the input tight_bbox and the
+      tight_bbox is the union of the input tight_bbox and the 
       line's tight bounding box.
 		xform -[in] (default=NULL)
       If not NULL, the tight bounding box of the transformed
@@ -16840,8 +16835,8 @@ public:
 	Returns:
     True if a valid tight_bbox is returned.
   */
-	bool GetTightBoundingBox(
-			ON_BoundingBox& tight_bbox,
+	bool GetTightBoundingBox( 
+			ON_BoundingBox& tight_bbox, 
       int bGrowBox = false,
 			const ON_Xform* xform = 0
       ) const;
@@ -16890,8 +16885,8 @@ public:
     ON_Line::Direction
     ON_Line::Tangent
   */
-  ON_3dPoint PointAt(
-    double t
+  ON_3dPoint PointAt( 
+    double t 
     ) const;
 
   /*
@@ -16900,13 +16895,13 @@ public:
     closest to the test_point.
   Parameters:
     test_point - [in]
-    t - [out] line.PointAt(*t) is the point on the line
+    t - [out] line.PointAt(*t) is the point on the line 
               that is closest to test_point.
   Returns:
     true if successful.
   */
-  bool ClosestPointTo(
-    const ON_3dPoint& test_point,
+  bool ClosestPointTo( 
+    const ON_3dPoint& test_point, 
     double* t
     ) const;
 
@@ -16919,7 +16914,7 @@ public:
   Returns:
     The point on the line that is closest to test_point.
   */
-  ON_3dPoint ClosestPointTo(
+  ON_3dPoint ClosestPointTo( 
     const ON_3dPoint& test_point
     ) const;
 
@@ -16947,8 +16942,8 @@ public:
     P - [in]
     L - [in] (another finite chord)
   Returns:
-    A value d such that if Q is any point on
-    this line and P is any point on the other object,
+    A value d such that if Q is any point on 
+    this line and P is any point on the other object, 
     then d <= Q.DistanceTo(P).
   */
   double MinimumDistanceTo( const ON_3dPoint& P ) const;
@@ -16975,8 +16970,8 @@ public:
     this line to the other object is greater than d.
   Parameters:
     d - [in] distance (> 0.0)
-    P - [in]
-    L - [in]
+    P - [in] 
+    L - [in] 
   Returns:
     True if if the shortest distance from this line
     to the other object is greater than d.
@@ -16991,7 +16986,7 @@ public:
   //   Reverse line by swapping from and to.
   void Reverse();
 
-  bool Transform(
+  bool Transform( 
     const ON_Xform& xform
     );
 
@@ -17066,7 +17061,7 @@ public:
 // THIS SOFTWARE IS PROVIDED "AS IS" WITHOUT EXPRESS OR IMPLIED WARRANTY.
 // ALL IMPLIED WARRANTIES OF FITNESS FOR ANY PARTICULAR PURPOSE AND OF
 // MERCHANTABILITY ARE HEREBY DISCLAIMED.
-//
+//				
 // For complete openNURBS copyright information see <http://www.opennurbs.org>.
 //
 ////////////////////////////////////////////////////////////////
@@ -17119,7 +17114,7 @@ public:
   //   other_radius.
   // Parameters:
   //   circle - [in] circle star polygon starts on
-  //   other_radius - [in] radius of other circle
+  //   other_radius - [in] radius of other circle 
   //   corner_count - [in] (>=3) number of corners on circle
   //      There will be 2*corner_count sides and 2*corner_count
   //      vertices.
@@ -17144,7 +17139,7 @@ public:
   // See Also:
   //   ON_Polyline::Clean.
   bool IsValid(
-    double tolerance = 0.0
+    double tolerance = 0.0 
     ) const;
 
   // Description:
@@ -17156,8 +17151,8 @@ public:
   // Remarks:
   //   If the distance between points polyline[i] and polyline[i+1]
   //   is <= tolerance, then the point with index (i+1) is removed.
-  int Clean(
-    double tolerance = 0.0
+  int Clean( 
+    double tolerance = 0.0 
     );
 
   // Returns:
@@ -17176,7 +17171,7 @@ public:
   //   point in the polyline whose distance from the start and end
   //   points is > tolerance.
   bool IsClosed(
-    double tolerance = 0.0
+    double tolerance = 0.0 
     ) const;
 
 
@@ -17219,7 +17214,7 @@ public:
   ON_3dVector TangentAt( double t ) const;
 
   // Description:
-  //   Find a point on the polyline that is closest
+  //   Find a point on the polyline that is closest 
   //   to test_point.
   // Parameters:
   //   test_point - [in]
@@ -17228,13 +17223,13 @@ public:
   //             exist, then the smallest solution is returned.
   // Returns:
   //   true if successful.
-  bool ClosestPointTo(
-        const ON_3dPoint& test_point,
+  bool ClosestPointTo( 
+        const ON_3dPoint& test_point, 
         double* t
         ) const;
 
   // Description:
-  //   Find a point on the polyline that is closest
+  //   Find a point on the polyline that is closest 
   //   to test_point.
   // Parameters:
   //   test_point - [in]
@@ -17250,21 +17245,21 @@ public:
   //   ClosestPointTo( ON_3dPoint(0,0,0), &t, 3, 6 );
   // Returns:
   //   true if successful.
-  bool ClosestPointTo(
-        const ON_3dPoint& test_point,
-        double* t,
+  bool ClosestPointTo( 
+        const ON_3dPoint& test_point, 
+        double* t, 
         int segment_index0, // index of segment where search begins
         int segment_index1 // index + 1 of segment where search stops
         ) const;
 
   // Description:
-  //   Find a point on the polyline that is closest
+  //   Find a point on the polyline that is closest 
   //   to test_point.
   // Parameters:
   //   test_point - [in]
   // Returns:
   //   point on polyline.
-  ON_3dPoint ClosestPointTo(
+  ON_3dPoint ClosestPointTo( 
        const ON_3dPoint& test_point
     ) const;
 
@@ -17281,7 +17276,7 @@ public:
 // THIS SOFTWARE IS PROVIDED "AS IS" WITHOUT EXPRESS OR IMPLIED WARRANTY.
 // ALL IMPLIED WARRANTIES OF FITNESS FOR ANY PARTICULAR PURPOSE AND OF
 // MERCHANTABILITY ARE HEREBY DISCLAIMED.
-//
+//				
 // For complete openNURBS copyright information see <http://www.opennurbs.org>.
 //
 ////////////////////////////////////////////////////////////////
@@ -17333,10 +17328,10 @@ public:
   const ON_3dVector& Axis() const;
   const ON_3dPoint& Center() const;
   double Height() const; // returns 0 for infinite cylinder
-  ON_Circle CircleAt(
+  ON_Circle CircleAt( 
         double // linear parameter
         ) const;
-  ON_Line LineAt(
+  ON_Line LineAt( 
         double // angular parameter
         ) const;
 
@@ -17351,14 +17346,14 @@ public:
     ) const;
 
   // returns parameters of point on cylinder that is closest to given point
-  bool ClosestPointTo(
-         ON_3dPoint,
+  bool ClosestPointTo( 
+         ON_3dPoint, 
          double*, // angular parameter [0,2pi]
          double*  // linear parameter (height from base circle's plane)
          ) const;
   // returns point on cylinder that is closest to given point
-  ON_3dPoint ClosestPointTo(
-         ON_3dPoint
+  ON_3dPoint ClosestPointTo( 
+         ON_3dPoint 
          ) const;
 
   // For intersections see ON_Intersect();
@@ -17400,7 +17395,7 @@ public:
   Parameters:
     srf - [in] if not NULL, then this srf is used.
   Result:
-    A surface of revolution or NULL if the cylinder is not
+    A surface of revolution or NULL if the cylinder is not 
     valid or is infinite.
   */
   ON_RevSurface* RevSurfaceForm( ON_RevSurface* srf = NULL ) const;
@@ -17409,14 +17404,14 @@ public: // members left public
   // base circle
   ON_Circle  circle;
 
-
+  
   // If height[0] = height[1], the cylinder is infinite,
   // Otherwise, height[0] < height[1] and the center of
-  // the "bottom" cap is
+  // the "bottom" cap is 
   //
   //          circle.plane.origin + height[0]*circle.plane.zaxis,
   //
-  // and the center of the top cap is
+  // and the center of the top cap is 
   //
   //          circle.plane.origin + height[1]*circle.plane.zaxis.
   double height[2];
@@ -17433,7 +17428,7 @@ public: // members left public
 // THIS SOFTWARE IS PROVIDED "AS IS" WITHOUT EXPRESS OR IMPLIED WARRANTY.
 // ALL IMPLIED WARRANTIES OF FITNESS FOR ANY PARTICULAR PURPOSE AND OF
 // MERCHANTABILITY ARE HEREBY DISCLAIMED.
-//
+//				
 // For complete openNURBS copyright information see <http://www.opennurbs.org>.
 //
 ////////////////////////////////////////////////////////////////
@@ -17499,7 +17494,7 @@ public:
   const ON_3dVector& Axis() const;
 
   // Returns:
-  //   The angle (in radians) between the axis and the
+  //   The angle (in radians) between the axis and the 
   //   side of the cone.
   //   The angle and the height have the same sign.
   double AngleInRadians() const;
@@ -17507,7 +17502,7 @@ public:
   // Returns:
   //   The angle Iin degrees) between the axis and the side.
   //   The angle and the height have the same sign.
-  double AngleInDegrees() const;
+  double AngleInDegrees() const;           
 
   // evaluate parameters and return point
   // Parameters:
@@ -17533,7 +17528,7 @@ public:
   //   Get iso curve circle at a specified height.
   // Parameters:
   //   height_parameter - [in] 0 = apex, height = base
-  ON_Circle CircleAt(
+  ON_Circle CircleAt( 
     double height_parameter
     ) const;
 
@@ -17541,20 +17536,20 @@ public:
   //   Get iso curve line segment at a specified angle.
   // Parameters:
   //   radial_parameter - [in] (in radians) 0.0 to 2.0*ON_PI
-  ON_Line LineAt(
-    double radial_parameter
+  ON_Line LineAt( 
+    double radial_parameter 
     ) const;
 
   // returns parameters of point on cone that is closest to given point
-  bool ClosestPointTo(
-          ON_3dPoint point,
+  bool ClosestPointTo( 
+          ON_3dPoint point, 
           double* radial_parameter,
           double* height_parameter
          ) const;
 
   // returns point on cone that is closest to given point
-  ON_3dPoint ClosestPointTo(
-         ON_3dPoint
+  ON_3dPoint ClosestPointTo( 
+         ON_3dPoint 
          ) const;
 
   ON_BOOL32 Transform( const ON_Xform& );
@@ -17596,7 +17591,7 @@ public:
   Parameters:
     srf - [in] if not NULL, then this srf is used.
   Result:
-    A surface of revolution or NULL if the cylinder is not
+    A surface of revolution or NULL if the cylinder is not 
     valid or is infinite.
   */
   ON_RevSurface* RevSurfaceForm( ON_RevSurface* srf = NULL ) const;
@@ -17618,7 +17613,7 @@ public:
 // THIS SOFTWARE IS PROVIDED "AS IS" WITHOUT EXPRESS OR IMPLIED WARRANTY.
 // ALL IMPLIED WARRANTIES OF FITNESS FOR ANY PARTICULAR PURPOSE AND OF
 // MERCHANTABILITY ARE HEREBY DISCLAIMED.
-//
+//				
 // For complete openNURBS copyright information see <http://www.opennurbs.org>.
 //
 ////////////////////////////////////////////////////////////////
@@ -17632,7 +17627,7 @@ class ON_RevSurface;
 class ON_CLASS ON_Sphere
 {
 public:
-
+  
   ON_Plane plane; // equitorial plane
   double radius;  // > 0
 
@@ -17656,26 +17651,26 @@ public:
   double Radius() const;
 
   ON_3dPoint PointAt(
-    double longitude_radians,
+    double longitude_radians, 
     double latitude_radians
     ) const;   // longitude [0,2pi], latitude [-pi/2,pi/2] in radians
 
   ON_3dVector NormalAt(
-    double longitude_radians,
+    double longitude_radians, 
     double latitude_radians
     ) const;   // longitude [0,2pi], latitude [-pi/2,pi/2] in radians
 
   ON_BoundingBox BoundingBox() const;
 
   // returns parameters of point on sphere that is closest to given point
-  bool ClosestPointTo(
-         ON_3dPoint test_point,
+  bool ClosestPointTo( 
+         ON_3dPoint test_point, 
          double* longitude_radians, // longitude  [0,2pi)
          double* latitude_radians // latitude   [-pi/2,pi/2]
          ) const;
 
   // returns point on sphere that is closest to given point
-  ON_3dPoint ClosestPointTo(
+  ON_3dPoint ClosestPointTo( 
          ON_3dPoint test_point
          ) const;
 
@@ -17721,9 +17716,9 @@ public:
     Creates a surface of revolution definition of the sphere.
   Parameters:
     bArcLengthParameterization - [in]
-      true:
+      true: 
         The domain will be set to (0,radius*2*pi)x(-radius*pi/2,radius*pi/2)
-      false:
+      false: 
         The domain will be set to (0,2*pi)x(-pi/2,pi/2)
     srf - [in]
       if not NULL, then this srf is used.
@@ -17745,7 +17740,7 @@ public:
 // THIS SOFTWARE IS PROVIDED "AS IS" WITHOUT EXPRESS OR IMPLIED WARRANTY.
 // ALL IMPLIED WARRANTIES OF FITNESS FOR ANY PARTICULAR PURPOSE AND OF
 // MERCHANTABILITY ARE HEREBY DISCLAIMED.
-//
+//				
 // For complete openNURBS copyright information see <http://www.opennurbs.org>.
 //
 ////////////////////////////////////////////////////////////////
@@ -17757,7 +17752,7 @@ public:
 class ON_CLASS ON_Box
 {
 public:
-  ON_Plane plane;
+  ON_Plane plane; 
   // intervals are finite and increasing when the box is valid
   ON_Interval dx;
   ON_Interval dy;
@@ -17779,21 +17774,21 @@ public:
 
   ON_BoundingBox BoundingBox() const;
 
-  ON_3dPoint PointAt(
-          double r,
-          double s,
-          double t
+  ON_3dPoint PointAt( 
+          double r, 
+          double s, 
+          double t 
           ) const;
 
-  bool ClosestPointTo(
-          ON_3dPoint point,
-          double* r,
-          double* s,
-          double* t
+  bool ClosestPointTo( 
+          ON_3dPoint point, 
+          double* r, 
+          double* s, 
+          double* t 
           ) const;
 
   // returns point on box that is closest to given point
-  ON_3dPoint ClosestPointTo(
+  ON_3dPoint ClosestPointTo( 
          ON_3dPoint test_point
          ) const;
 
@@ -17845,7 +17840,7 @@ public:
     3     box is a point (degenerate in three directions)
     4     box is not valid
   */
-  int IsDegenerate(
+  int IsDegenerate( 
     double tolerance = ON_UNSET_VALUE
     ) const;
 
@@ -17865,7 +17860,7 @@ public:
 // THIS SOFTWARE IS PROVIDED "AS IS" WITHOUT EXPRESS OR IMPLIED WARRANTY.
 // ALL IMPLIED WARRANTIES OF FITNESS FOR ANY PARTICULAR PURPOSE AND OF
 // MERCHANTABILITY ARE HEREBY DISCLAIMED.
-//
+//				
 // For complete openNURBS copyright information see <http://www.opennurbs.org>.
 //
 ////////////////////////////////////////////////////////////////
@@ -17946,7 +17941,7 @@ public:
   Parameteters:
     major_angle_radians - [in]
   Returns:
-    A circle with radius = minor_radis,
+    A circle with radius = minor_radis, 
     center = major_circle.PointAt(major_angle_radians), and
     starting point PointAt( major_angle_radians, 0.0 ).
   See Also:
@@ -17964,7 +17959,7 @@ public:
   Parameteters:
     major_angle_degrees - [in]
   Returns:
-    A circle with radius = minor_radis,
+    A circle with radius = minor_radis, 
     center = major_circle.PointAt(major_angle_degrees*ON_PI/180.0), and
     starting point PointAt( major_angle_degrees*ON_PI/180.0, 0.0 ).
   See Also:
@@ -17981,24 +17976,24 @@ public:
   double MinorRadius() const;
 
   ON_3dPoint PointAt(
-    double major_angle_radians,
+    double major_angle_radians, 
     double minor_angle_radians
     ) const;
 
   ON_3dVector NormalAt(
-    double major_angle_radians,
+    double major_angle_radians, 
     double minor_angle_radians
     ) const;
 
   // returns parameters of point on torus that is closest to test_point.
-  ON_BOOL32 ClosestPointTo(
-         ON_3dPoint test_point,
-         double* major_angle_radians,
+  ON_BOOL32 ClosestPointTo( 
+         ON_3dPoint test_point, 
+         double* major_angle_radians, 
          double* minor_angle_radians
          ) const;
 
   // returns point on torus that is closest to test_point
-  ON_3dPoint ClosestPointTo(
+  ON_3dPoint ClosestPointTo( 
          ON_3dPoint test_point
          ) const;
 
@@ -18059,7 +18054,7 @@ public:
 // THIS SOFTWARE IS PROVIDED "AS IS" WITHOUT EXPRESS OR IMPLIED WARRANTY.
 // ALL IMPLIED WARRANTIES OF FITNESS FOR ANY PARTICULAR PURPOSE AND OF
 // MERCHANTABILITY ARE HEREBY DISCLAIMED.
-//
+//				
 // For complete openNURBS copyright information see <http://www.opennurbs.org>.
 //
 ////////////////////////////////////////////////////////////////
@@ -18105,7 +18100,7 @@ public:
   ON_PolynomialCurve& operator=(const ON_BezierCurve&);
 
   // Description:
-  //   Initializes fields and allocates the m_cv array.
+  //   Initializes fields and allocates the m_cv array. 
   // Parameters:
   //   dim - [in] dimension of the curve
   //   bIsRational - [in] true if rational
@@ -18181,7 +18176,7 @@ public:
   void Destroy();
 
   ON_BOOL32 Evaluate(          // returns false if unable to evaluate
-         double s,
+         double s, 
          double t,        // evaluation parameter
          int der_count,   // number of derivatives (>=0)
          int v_stride,    // array stride (>=Dimension())
@@ -18263,9 +18258,9 @@ public:
   // Returns:
   //   true if successful
   // Remarks:
-  //   The result has order = points.Count() and the loft uses the
+  //   The result has order = points.Count() and the loft uses the 
   //   uniform parameterizaton curve( i/(points.Count()-1) ) = points[i].
-  bool Loft(
+  bool Loft( 
     const ON_3dPointArray& points
     );
 
@@ -18281,7 +18276,7 @@ public:
   // Returns:
   //   true if successful
   // Remarks:
-  //   The result has order = points.Count() and the loft uses the
+  //   The result has order = points.Count() and the loft uses the 
   //   parameterizaton curve( t[i] ) = points[i].
   bool Loft(
     int pt_dim,
@@ -18317,7 +18312,7 @@ public:
   //   bbox - [out] axis aligned bounding box returned here.
   //   bGrowBox - [in] if true, input bbox must be a valid
   //      bounding box and this box is enlarged to
-  //      be the union of the input box and the
+  //      be the union of the input box and the 
   //      bezier's bounding box.
   // Returns:
   //   true if successful.
@@ -18337,19 +18332,19 @@ public:
     Get tight bounding box of the bezier.
 	Parameters:
 		tight_bbox - [in/out] tight bounding box
-		bGrowBox -[in]	(default=false)
+		bGrowBox -[in]	(default=false)			
       If true and the input tight_bbox is valid, then returned
-      tight_bbox is the union of the input tight_bbox and the
+      tight_bbox is the union of the input tight_bbox and the 
       tight bounding box of the bezier curve.
 		xform -[in] (default=NULL)
       If not NULL, the tight bounding box of the transformed
       bezier is calculated.  The bezier curve is not modified.
 	Returns:
-    True if the returned tight_bbox is set to a valid
+    True if the returned tight_bbox is set to a valid 
     bounding box.
   */
-	bool GetTightBoundingBox(
-			ON_BoundingBox& tight_bbox,
+	bool GetTightBoundingBox( 
+			ON_BoundingBox& tight_bbox, 
       int bGrowBox = false,
 			const ON_Xform* xform = 0
       ) const;
@@ -18361,7 +18356,7 @@ public:
   // Returns:
   //   true if successful.  false if bezier is invalid
   //   and cannot be transformed.
-  bool Transform(
+  bool Transform( 
          const ON_Xform& xform
          );
 
@@ -18411,7 +18406,7 @@ public:
   //   true if bezier curve successfully translated
   // Remarks:
   //   Uses ON_BezierCurve::Transform() function to calculate the result.
-  bool Translate(
+  bool Translate( 
     const ON_3dVector& translation_vector
     );
 
@@ -18424,7 +18419,7 @@ public:
   //   true if bezier curve successfully scaled
   // Remarks:
   //   Uses ON_BezierCurve::Transform() function to calculate the result.
-  bool Scale(
+  bool Scale( 
     double scale_factor
     );
 
@@ -18443,8 +18438,8 @@ public:
   //   t - [in] evaluation parameter
   // Returns:
   //   Point (location of curve at the parameter t).
-  ON_3dPoint  PointAt(
-                double t
+  ON_3dPoint  PointAt( 
+                double t 
                 ) const;
 
   // Description:
@@ -18458,7 +18453,7 @@ public:
   // See Also:
   //   ON_Curve::Ev1Der
   ON_3dVector DerivativeAt(
-                double t
+                double t 
                 ) const;
 
   // Description:
@@ -18472,7 +18467,7 @@ public:
   // See Also:
   //   ON_Curve::EvTangent
   ON_3dVector TangentAt(
-                double t
+                double t 
                 ) const;
 
   // Description:
@@ -18595,14 +18590,14 @@ public:
   //       The domain is [0,1].
   // Returns:
   //   true if successful
-  bool GetNurbForm(
+  bool GetNurbForm( 
     ON_NurbsCurve& nurbs_curve
     ) const;
 
   // Returns:
   //   true if bezier is rational.
   bool IsRational() const;
-
+  
   // Returns:
   //   Number of doubles per control vertex.
   //   (= IsRational() ? Dim()+1 : Dim())
@@ -18612,11 +18607,11 @@ public:
   //   Number of control vertices in the bezier.
   //   This is always the same as the order of the bezier.
   int CVCount() const;
-
+  
   // Returns:
   //   Order of the bezier. (order=degree+1)
   int Order() const;        // order = degree + 1
-
+	
   // Returns:
   //   Degree of the bezier. (degree=order-1)
   int Degree() const;
@@ -18625,17 +18620,17 @@ public:
   Description:
     Expert user function to get a pointer to control vertex
     memory.  If you are not an expert user, please use
-    ON_BezierCurve::GetCV( ON_3dPoint& ) or
+    ON_BezierCurve::GetCV( ON_3dPoint& ) or 
     ON_BezierCurve::GetCV( ON_4dPoint& ).
   Parameters:
     cv_index - [in] (0 <= cv_index < m_order)
   Returns:
     Pointer to control vertex.
   Remarks:
-    If the Bezier curve is rational, the format of the
+    If the Bezier curve is rational, the format of the 
     returned array is a homogeneos rational point with
-    length m_dim+1.  If the Bezier curve is not rational,
-    the format of the returned array is a nonrational
+    length m_dim+1.  If the Bezier curve is not rational, 
+    the format of the returned array is a nonrational 
     euclidean point with length m_dim.
   See Also
     ON_BezierCurve::CVStyle
@@ -18688,7 +18683,7 @@ public:
   //   cv_index - [in] control vertex index (0 <= cv_index < m_order)
   //   pointstyle - [in] specifes what kind of values are passed
   //      in the cv array.
-  //        ON::not_rational
+  //        ON::not_rational 
   //          cv[] is an array of length m_dim that defines
   //          a euclidean (world coordinate) point
   //        ON::homogeneous_rational
@@ -18696,11 +18691,11 @@ public:
   //          a rational homogeneous point.
   //        ON::euclidean_rational
   //          cv[] is an array of length (m_dim+1).  The first
-  //          m_dim values define the euclidean (world coordinate)
+  //          m_dim values define the euclidean (world coordinate) 
   //          location of the point.  cv[m_dim] is the weight
   //        ON::intrinsic_point_style
   //          If m_is_rat is true, cv[] has ON::homogeneous_rational
-  //          point style.  If m_is_rat is false, cv[] has
+  //          point style.  If m_is_rat is false, cv[] has 
   //          ON::not_rational point style.
   //   cv - [in] array with control vertex value.
   // Returns:
@@ -18749,7 +18744,7 @@ public:
   // Parameters:
   //   cv_index - [in] control vertex index (0 <= cv_index < m_order)
   //   pointstyle - [in] specifes what kind of values to get
-  //        ON::not_rational
+  //        ON::not_rational 
   //          cv[] is an array of length m_dim that defines
   //          a euclidean (world coordinate) point
   //        ON::homogeneous_rational
@@ -18757,11 +18752,11 @@ public:
   //          a rational homogeneous point.
   //        ON::euclidean_rational
   //          cv[] is an array of length (m_dim+1).  The first
-  //          m_dim values define the euclidean (world coordinate)
+  //          m_dim values define the euclidean (world coordinate) 
   //          location of the point.  cv[m_dim] is the weight
   //        ON::intrinsic_point_style
   //          If m_is_rat is true, cv[] has ON::homogeneous_rational
-  //          point style.  If m_is_rat is false, cv[] has
+  //          point style.  If m_is_rat is false, cv[] has 
   //          ON::not_rational point style.
   //   cv - [out] array with control vertex value.
   // Returns:
@@ -18800,7 +18795,7 @@ public:
 
   // Description:
   //   Zeros control vertices and, if rational, sets weights to 1.
-  bool ZeroCVs();
+  bool ZeroCVs(); 
 
   // Description:
   //   Make beizer rational.
@@ -18852,8 +18847,8 @@ public:
     );
 
   // Description:
-  //   Trims (or extends) the bezier so the bezier so that the
-  //   result starts bezier(interval[0]) and ends at
+  //   Trims (or extends) the bezier so the bezier so that the 
+  //   result starts bezier(interval[0]) and ends at 
   //   bezier(interval[1]) (Evaluation performed on input bezier.)
   // Parameters:
   //   interval -[in]
@@ -18861,8 +18856,8 @@ public:
   //   An interval of [0,1] leaves the bezier unchanged.  An
   //   interval of [0.5,1] would trim away the left half.  An
   //   interval of [0.0,2.0] would extend the right end.
-  bool Trim(
-    const ON_Interval& interval
+  bool Trim( 
+    const ON_Interval& interval 
     );
 
   // Description:
@@ -18872,14 +18867,14 @@ public:
   // Parameters:
   //   t - [in] (0 < t < 1 ) parameter to split at
   //   left_side - [out]
-  //   right_side - [out]
+  //   right_side - [out]  
   // Example:
   //       ON_BezierCurve crv = ...;
   //       ON_BezierCurve right_side;
   //       crv.Split( 0.5, crv, right_side );
   //   would split crv at the 1/2, put the left side in crv,
   //   and return the right side in right_side.
-  bool Split(
+  bool Split( 
          double t,
          ON_BezierCurve& left_side,
          ON_BezierCurve& right_side
@@ -18906,18 +18901,18 @@ public:
 
           t ->  c*t / ( (c-1)*t + 1 )
 
-    Note that lambda(0) = 0, lambda(1) = 1, lambda'(t) > 0,
+    Note that lambda(0) = 0, lambda(1) = 1, lambda'(t) > 0, 
     lambda'(0) = c and lambda'(1) = 1/c.
 
-    If the input Bezier has control vertices {B_0, ..., B_d}, then the
-    output Bezier has control vertices
+    If the input Bezier has control vertices {B_0, ..., B_d}, then the 
+    output Bezier has control vertices 
 
           (B_0, ... c^i * B_i, ..., c^d * B_d).
 
     To derive this formula, simply compute the i-th Bernstein polynomial
     composed with lambda().
 
-    The inverse parameterization is given by 1/c.  That is, the
+    The inverse parameterization is given by 1/c.  That is, the 
     cumulative effect of the two calls
 
           Reparameterize(c)
@@ -18936,7 +18931,7 @@ public:
 
   /*
   Description:
-    Scale a rational Bezier's control vertices to set a weight to a
+    Scale a rational Bezier's control vertices to set a weight to a 
     specified value.
   Parameters:
     i - [in] (0 <= i < order)
@@ -18950,14 +18945,14 @@ public:
     ON_Bezier::Reparameterize
     ON_Bezier::ChangeWeights
   */
-  bool ScaleConrolPoints(
-          int i,
+  bool ScaleConrolPoints( 
+          int i, 
           double w
           );
 
   /*
   Description:
-    Use a combination of scaling and reparameterization to set two
+    Use a combination of scaling and reparameterization to set two 
     rational Bezier weights to specified values.
   Parameters:
     i0 - [in] control point index (0 <= i0 < order, i0 != i1)
@@ -18968,9 +18963,9 @@ public:
     True if successful.  The returned bezier has the same locus but
     probably has a different parameterization.
   Remarks:
-    The i0-th cv will have weight w0 and the i1-rst cv will have
-    weight w1.  If v0 and v1 are the cv's input weights,
-    then  v0, v1, w0 and w1 must all be nonzero, and w0*v0
+    The i0-th cv will have weight w0 and the i1-rst cv will have 
+    weight w1.  If v0 and v1 are the cv's input weights, 
+    then  v0, v1, w0 and w1 must all be nonzero, and w0*v0 
     and w1*v1 must have the same sign.
 
     The equations
@@ -18978,24 +18973,24 @@ public:
           s * r^i0 = w0/v0
           s * r^i1 = w1/v1
 
-    determine the scaling and reparameterization necessary to
-    change v0,v1 to w0,w1.
+    determine the scaling and reparameterization necessary to 
+    change v0,v1 to w0,w1. 
 
-    If the input Bezier has control vertices
-
+    If the input Bezier has control vertices 
+    
           (B_0, ..., B_d),
 
-    then the output Bezier has control vertices
-
+    then the output Bezier has control vertices 
+    
           (s*B_0, ... s*r^i * B_i, ..., s*r^d * B_d).
   See Also:
     ON_Bezier::Reparameterize
     ON_Bezier::ScaleConrolPoints
   */
   bool ChangeWeights(
-          int i0,
-          double w0,
-          int i1,
+          int i0, 
+          double w0, 
+          int i1, 
           double w1
           );
 
@@ -19026,7 +19021,7 @@ public:
     find multiple closest points, make a curve tree and use it.
     See the ON_BezierCurve::GetClosestPoint code for an example.
   */
-  bool GetClosestPoint(
+  bool GetClosestPoint( 
           ON_3dPoint P,
           double* t,
           double maximum_distance = 0.0,
@@ -19051,7 +19046,7 @@ public:
   Returns:
     True if a point is found.
   */
-  bool GetLocalClosestPoint(
+  bool GetLocalClosestPoint( 
           ON_3dPoint P,
           double seed_parameter,
           double* t,
@@ -19074,7 +19069,7 @@ public:
     True if something is returned in (t,u,v).  Check
     answer.
   */
-  bool GetLocalCurveIntersection(
+  bool GetLocalCurveIntersection( 
           const ON_BezierCurve* other_bezcrv,
           double this_seed_t,
           double other_seed_t,
@@ -19088,13 +19083,13 @@ public:
   Description:
     Find bezier self intersection points.
   Parameters:
-    x - [out]
+    x - [out] 
        Intersection events are appended to this array.
     intersection_tolerance - [in]
   Returns:
     Number of intersection events appended to x.
   */
-  int IntersectSelf(
+  int IntersectSelf( 
           ON_SimpleArray<ON_X_EVENT>& x,
           double intersection_tolerance = 0.0
           ) const;
@@ -19109,11 +19104,11 @@ public:
       on this curve to curveB is <= intersection tolerance,
       then the point will be part of an intersection event.
       If the input intersection_tolerance <= 0.0, then 0.001 is used.
-    overlap_tolerance - [in] If t1 and t2 are parameters of this
-      curve's intersection events and the distance from curve(t) to
+    overlap_tolerance - [in] If t1 and t2 are parameters of this 
+      curve's intersection events and the distance from curve(t) to 
       curveB is <= overlap_tolerance for every t1 <= t <= t2,
       then the event will be returened as an overlap event.
-      If the input overlap_tolerance <= 0.0, then
+      If the input overlap_tolerance <= 0.0, then 
       intersection_tolerance*2.0 is used.
     curveA_domain - [in] optional restriction on this bezier's domain
     curveB_domain - [in] optional restriction on bezierB domain
@@ -19124,7 +19119,7 @@ public:
     you should create curve trees and intersect them.
     See the IntersectBezierCurve code for an example.
   */
-  int IntersectCurve(
+  int IntersectCurve( 
           const ON_BezierCurve* bezierB,
           ON_SimpleArray<ON_X_EVENT>& x,
           double intersection_tolerance = 0.0,
@@ -19151,7 +19146,7 @@ public:
     True if something is returned in (t,u,v).  Check
     answer.
   */
-  bool GetLocalSurfaceIntersection(
+  bool GetLocalSurfaceIntersection( 
           const ON_BezierSurface* bezsrf,
           double seed_t,
           double seed_u,
@@ -19179,7 +19174,7 @@ public:
       intersection events and the distance from curve(t) to the
       surface is <= overlap_tolerance for every t1 <= t <= t2,
       then the event will be returened as an overlap event.
-      If the input overlap_tolerance <= 0.0, then
+      If the input overlap_tolerance <= 0.0, then 
       intersection_tolerance*2.0 is used.
     curveA_domain - [in] optional restriction on this curve's domain
     surfaceB_udomain - [in] optional restriction on surfaceB u domain
@@ -19188,11 +19183,11 @@ public:
     Number of intersection events appended to x.
   Remarks:
     If you are performing more than one intersection,
-    you should create curve and surface trees and
+    you should create curve and surface trees and 
     intersect them. See the IntersectBezierSurface code
     for an example.
   */
-  int IntersectSurface(
+  int IntersectSurface( 
           const ON_BezierSurface* bezsrfB,
           ON_SimpleArray<ON_X_EVENT>& x,
           double intersection_tolerance = 0.0,
@@ -19295,9 +19290,9 @@ public:
   Returns:
     True if successful.
   */
-  bool Loft(
-    int count,
-    const ON_BezierCurve* const* curve_list
+  bool Loft( 
+    int count, 
+    const ON_BezierCurve* const* curve_list 
     );
 
   bool GetBBox(        // returns true if successful
@@ -19313,7 +19308,7 @@ public:
 
   ON_BoundingBox BoundingBox() const;
 
-  bool Transform(
+  bool Transform( 
          const ON_Xform&
          );
 
@@ -19363,7 +19358,7 @@ public:
   //   true if bezier surface successfully translated
   // Remarks:
   //   Uses ON_BezierSurface::Transform() function to calculate the result.
-  bool Translate(
+  bool Translate( 
     const ON_3dVector& translation_vector
     );
 
@@ -19376,7 +19371,7 @@ public:
   //   true if bezier surface successfully scaled
   // Remarks:
   //   Uses ON_BezierSurface::Transform() function to calculate the result.
-  bool Scale(
+  bool Scale( 
     double scale_factor
     );
 
@@ -19386,7 +19381,7 @@ public:
 
   bool Reverse( int );  // reverse parameterizatrion
                         // Domain changes from [a,b] to [-b,-a]
-
+  
   bool Transpose(); // transpose surface parameterization (swap "s" and "t")
 
   bool Evaluate( // returns false if unable to evaluate
@@ -19401,14 +19396,14 @@ public:
   bool GetNurbForm( ON_NurbsSurface& ) const;
 
   bool IsRational() const;  // true if NURBS curve is rational
-
-  int CVSize() const;       // number of doubles per control vertex
+  
+  int CVSize() const;       // number of doubles per control vertex 
                 // = IsRational() ? Dim()+1 : Dim()
-
+  
   int Order(        // order = degree + 1
         int // dir
         ) const;
-
+	
   int Degree(       // degree = order - 1
         int // dir
         ) const;
@@ -19417,7 +19412,7 @@ public:
   Description:
     Expert user function to get a pointer to control vertex
     memory.  If you are not an expert user, please use
-    ON_BezierSurface::GetCV( ON_3dPoint& ) or
+    ON_BezierSurface::GetCV( ON_3dPoint& ) or 
     ON_BezierSurface::GetCV( ON_4dPoint& ).
   Parameters:
     cv_index0 - [in] (0 <= cv_index0 < m_order[0])
@@ -19425,10 +19420,10 @@ public:
   Returns:
     Pointer to control vertex.
   Remarks:
-    If the Bezier surface is rational, the format of the
+    If the Bezier surface is rational, the format of the 
     returned array is a homogeneos rational point with
-    length m_dim+1.  If the Bezier surface is not rational,
-    the format of the returned array is a nonrational
+    length m_dim+1.  If the Bezier surface is not rational, 
+    the format of the returned array is a nonrational 
     euclidean point with length m_dim.
   See Also
     ON_BezierSurface::CVStyle
@@ -19502,7 +19497,7 @@ public:
 
   bool MakeNonRational();
 
-  bool Split(
+  bool Split( 
          int, // 0 split at "u"=t, 1= split at "v"=t
          double, // t = splitting parameter must 0 < t < 1
          ON_BezierSurface&, // west/south side returned here (can pass *this)
@@ -19514,7 +19509,7 @@ public:
        const ON_Interval& domain
        );
 
-	// returns the isocurve.
+	// returns the isocurve.  
 	ON_BezierCurve* IsoCurve(
 		   int dir,    // 0 first parameter varies and second parameter is constant
                    //   e.g., point on IsoCurve(0,c) at t is srf(t,c)
@@ -19528,7 +19523,7 @@ public:
          int        // side of parameter space to test
                    // 0 = south, 1 = east, 2 = north, 3 = west
          ) const;
-
+ 
 
   /////////////////////////////////////////////////////////////////
   // Tools for managing CV and knot memory
@@ -19625,7 +19620,7 @@ public:
   int     m_dim;           // >= 1
   int     m_is_rat;        // 0 = no, 1 = yes
   int     m_order[2];      // order = degree+1 >= 2
-  int     m_cv_stride[2];
+  int     m_cv_stride[2];  
   double* m_cv;
   int     m_cv_capacity;   // if 0, then destructor does not free m_cv
 #if 8 == ON_SIZEOF_POINTER
@@ -19663,7 +19658,7 @@ public:
     order1 - [in]
     order2 - [in]
   */
-  ON_BezierCage(
+  ON_BezierCage( 
     const ON_BoundingBox& bbox,
     int order0,
     int order1,
@@ -19697,7 +19692,7 @@ public:
     order1 - [in]
     order2 - [in]
   */
-  ON_BezierCage(
+  ON_BezierCage( 
     const ON_3dPoint* box_corners,
     int order0,
     int order1,
@@ -19858,10 +19853,10 @@ public:
   bool GetBBox(
          double* boxmin,
          double* boxmax,
-         int bGrowBox = false
+         int bGrowBox = false 
          ) const;
 
-  bool Transform(
+  bool Transform( 
          const ON_Xform& xform
          );
 
@@ -19911,7 +19906,7 @@ public:
   //   true if bezier surface successfully translated
   // Remarks:
   //   Uses ON_BezierCage::Transform() function to calculate the result.
-  bool Translate(
+  bool Translate( 
     const ON_3dVector& translation_vector
     );
 
@@ -19924,7 +19919,7 @@ public:
   //   true if bezier surface successfully scaled
   // Remarks:
   //   Uses ON_BezierCage::Transform() function to calculate the result.
-  bool Scale(
+  bool Scale( 
     double scale_factor
     );
 
@@ -19933,9 +19928,9 @@ public:
     ) const;
 
   // returns false if unable to evaluate
-  bool Evaluate(
-         double r,
-         double s,
+  bool Evaluate( 
+         double r, 
+         double s, 
          double t,
          int der_count,
          int v_stride,
@@ -19951,8 +19946,8 @@ public:
     Value of the bezier volume map at (r,s,t).
   */
   ON_3dPoint PointAt(
-         double r,
-         double s,
+         double r, 
+         double s, 
          double t
          ) const;
 
@@ -19969,19 +19964,19 @@ public:
          ) const;
 
   bool IsRational() const;  // true if NURBS curve is rational
-
+  
   bool IsSingular( // true if surface side is collapsed to a point
         int        // side of parameter space to test
                    // 0 = south, 1 = east, 2 = north, 3 = west
         ) const;
 
-  int CVSize() const;       // number of doubles per control vertex
+  int CVSize() const;       // number of doubles per control vertex 
                 // = IsRational() ? Dim()+1 : Dim()
-
+  
   int Order(        // order = degree + 1
         int // dir
         ) const;
-
+	
   int Degree(       // degree = order - 1
         int // dir
         ) const;
@@ -19990,7 +19985,7 @@ public:
   Description:
     Expert user function to get a pointer to control vertex
     memory.  If you are not an expert user, please use
-    ON_BezierCage::GetCV( ON_3dPoint& ) or
+    ON_BezierCage::GetCV( ON_3dPoint& ) or 
     ON_BezierCage::GetCV( ON_4dPoint& ).
   Parameters:
     cv_index0 - [in] (0 <= cv_index0 < m_order[0])
@@ -19998,10 +19993,10 @@ public:
   Returns:
     Pointer to control vertex.
   Remarks:
-    If the Bezier surface is rational, the format of the
+    If the Bezier surface is rational, the format of the 
     returned array is a homogeneos rational point with
-    length m_dim+1.  If the Bezier surface is not rational,
-    the format of the returned array is a nonrational
+    length m_dim+1.  If the Bezier surface is not rational, 
+    the format of the returned array is a nonrational 
     euclidean point with length m_dim.
   See Also
     ON_BezierCage::CVStyle
@@ -20138,14 +20133,14 @@ public:
   Description:
     Create a Bezier volume.
   Parameters:
-    P0 - [in]
-    P1 - [in]
-    P2 - [in]
-    P3 - [in]
+    P0 - [in] 
+    P1 - [in] 
+    P2 - [in] 
+    P3 - [in] 
          P0,P1,P2,P3 defines a parallepiped in world space. The morph
          maps this parallepiped to the (0,1)x(0,1)x(0,1) unit cube
          and then applies the BezierCage map.
-
+              
 
              ______________
             |\             |\
@@ -20165,7 +20160,7 @@ public:
     point_countX - [in]
     point_countY - [in]
     point_countZ - [in]
-      Number of control points in the bezier volume map.  The
+      Number of control points in the bezier volume map.  The 
       bezier volume in the returned morph is the identity map
       which can be modified as needed.
   Returns:
@@ -20174,7 +20169,7 @@ public:
     ON_BezierCage::SetBezierCage
     ON_BezierCage::SetXform
   */
-  bool Create(
+  bool Create( 
     ON_3dPoint P0,
     ON_3dPoint P1,
     ON_3dPoint P2,
@@ -20210,7 +20205,7 @@ public:
       to world space.
   Returns
     True if current transformation matrix and input
-    bezier volume are valid.  In all cases, the
+    bezier volume are valid.  In all cases, the 
     morph's m_rst2xyz member is set.
   See Also:
     ON_BezierCage::Create
@@ -20248,7 +20243,7 @@ private:
 #if defined(ON_DLL_TEMPLATE)
 
 // This stuff is here because of a limitation in the way Microsoft
-// handles templates and DLLs.  See Microsoft's knowledge base
+// handles templates and DLLs.  See Microsoft's knowledge base 
 // article ID Q168958 for details.
 #pragma warning( push )
 #pragma warning( disable : 4231 )
@@ -20276,7 +20271,7 @@ ON_DLL_TEMPLATE template class ON_CLASS ON_SimpleArray<ON_BezierCageMorph*>;
 // THIS SOFTWARE IS PROVIDED "AS IS" WITHOUT EXPRESS OR IMPLIED WARRANTY.
 // ALL IMPLIED WARRANTIES OF FITNESS FOR ANY PARTICULAR PURPOSE AND OF
 // MERCHANTABILITY ARE HEREBY DISCLAIMED.
-//
+//				
 // For complete openNURBS copyright information see <http://www.opennurbs.org>.
 //
 ////////////////////////////////////////////////////////////////
@@ -20342,7 +20337,7 @@ public:
 
   /*
   Description:
-    Calculates the total sum.
+    Calculates the total sum.   
   Parameters:
     error_estimate - [out] if not NULL, the returned value of
        *error_estimate is an estimate of the error in the sum.
@@ -20368,20 +20363,20 @@ private:
     sum3_max_count=1024
   };
   double m_sum_err;
-  double m_pos_sum;
-  double m_neg_sum;
-
+  double m_pos_sum;     
+  double m_neg_sum;  
+  
   int m_zero_count; // number of zeros added
   int m_pos_count; // number of positive numbers added
   int m_neg_count; // number of negative numbers added
-
+  
   int m_pos_sum1_count;
   int m_pos_sum2_count;
   int m_pos_sum3_count;
   double m_pos_sum1[sum1_max_count];
   double m_pos_sum2[sum2_max_count];
   double m_pos_sum3[sum3_max_count];
-
+  
   int m_neg_sum1_count;
   int m_neg_sum2_count;
   int m_neg_sum3_count;
@@ -20418,13 +20413,13 @@ public:
     domain - [in] If not NULL, then this is an array
                   of parameter_count increasing intervals
                   that defines the domain of the function.
-    periodic - [in] if not NULL, then this is an array of
+    periodic - [in] if not NULL, then this is an array of 
                 parameter_count bools where b[i] is true if
-                the i-th parameter is periodic.  Valid
+                the i-th parameter is periodic.  Valid 
                 increasing finite domains must be specificed
                 when this parameter is not NULL.
   */
-  ON_Evaluator(
+  ON_Evaluator( 
     int parameter_count,
     int value_count,
     const ON_Interval* domain,
@@ -20432,7 +20427,7 @@ public:
     );
 
   virtual ~ON_Evaluator();
-
+  
   /*
   Description:
     Evaluate the function that takes m_parameter_count parameters
@@ -20449,7 +20444,7 @@ public:
                      jacobian is allocated, you just need to fill
                      in the answers.
   Example:
-    If f(u,v) = square of the distance from a fixed point P to a
+    If f(u,v) = square of the distance from a fixed point P to a 
     surface evaluated at (u,v), then
 
           values[0] = (S-P)o(S-P)
@@ -20482,7 +20477,7 @@ public:
 
   /*
   Description:
-    OPTIONAL ability to evaluate the hessian in the case when
+    OPTIONAL ability to evaluate the hessian in the case when 
     m_value_count is one.  If your function has more that
     one value or it is not feasable to evaluate the hessian,
     then do not override this function.  The default implementation
@@ -20495,7 +20490,7 @@ public:
                      the first partial of the function with respect to
                      the i-th parameter.
     hessian - [out] The hessian of the function. This is an
-                    m_parameter_count x m_parameter_count
+                    m_parameter_count x m_parameter_count 
                     symmetric matrix: hessian[i][j] is the
                     second partial of the function with respect
                     to the i-th and j-th parameters.  The evaluator
@@ -20516,7 +20511,7 @@ public:
        double* gradient,
        double** hessian
        );
-
+  
   // Number of the function's input parameters. This number
   // is >= 1 and is specified in the constructor.
   const int m_parameter_count;
@@ -20542,8 +20537,8 @@ public:
     If a function has a periodic parameter, then the m_domain
     interval for that parameter is the fundamental domain and
     the m_bPeriodicParameter bool for that parameter is true.
-    A parameter is periodic if, and only if,
-    m_domain.Count() == m_parameter_count, and
+    A parameter is periodic if, and only if, 
+    m_domain.Count() == m_parameter_count, and 
     m_bPeriodicParameter.Count() == m_parameter_count, and
     m_bPeriodicParameter[parameter_index] is true.
   Returns:
@@ -20558,8 +20553,8 @@ public:
     If a function has a periodic parameter, then the m_domain
     interval for that parameter is the fundamental domain and
     the m_bPeriodicParameter bool for that parameter is true.
-    A parameter is periodic if, and only if,
-    m_domain.Count() == m_parameter_count, and
+    A parameter is periodic if, and only if, 
+    m_domain.Count() == m_parameter_count, and 
     m_bPeriodicParameter.Count() == m_parameter_count, and
     m_bPeriodicParameter[parameter_index] is true.
   Returns:
@@ -20572,14 +20567,14 @@ public:
 
 
   // If the function has a finite domain or periodic
-  // parameters, then m_domain[] is an array of
+  // parameters, then m_domain[] is an array of 
   // m_parameter_count finite increasing intervals.
   ON_SimpleArray<ON_Interval> m_domain;
 
-  // If the function has periodic parameters, then
+  // If the function has periodic parameters, then 
   // m_bPeriodicParameter[] is an array of m_parameter_count
   // bools.  If m_bPeriodicParameter[i] is true, then
-  // the i-th parameter is periodic and m_domain[i] is
+  // the i-th parameter is periodic and m_domain[i] is 
   // the fundamental domain for that parameter.
   ON_SimpleArray<bool> m_bPeriodicParameter;
 
@@ -20637,7 +20632,7 @@ private:
 
 // Returns true if x is a finite double.  Specifically,
 // _finite returns a nonzero value (true) if its argument x
-// is not infinite, that is, if -INF < x < +INF.
+// is not infinite, that is, if -INF < x < +INF. 
 // It returns 0 (false) if the argument is infinite or a NaN.
 //
 // If you are trying to compile opennurbs on a platform
@@ -20668,7 +20663,7 @@ float ON_ArrayDotProduct( // returns AoB
           );
 
 ON_DECL
-void   ON_ArrayScale(
+void   ON_ArrayScale( 
           int,           // size of arrays (can be zero)
           float,        // a
           const float*, // A[]
@@ -20676,7 +20671,7 @@ void   ON_ArrayScale(
           );
 
 ON_DECL
-void   ON_Array_aA_plus_B(
+void   ON_Array_aA_plus_B( 
           int,           // size of arrays (can be zero)
           float,        // a
           const float*, // A[]
@@ -20726,7 +20721,7 @@ double ON_ArrayDistanceSquared( // returns (A-B)o(A-B)
           );
 
 ON_DECL
-void   ON_ArrayScale(
+void   ON_ArrayScale( 
           int,           // size of arrays (can be zero)
           double,        // a
           const double*, // A[]
@@ -20734,7 +20729,7 @@ void   ON_ArrayScale(
           );
 
 ON_DECL
-void   ON_Array_aA_plus_B(
+void   ON_Array_aA_plus_B( 
           int,           // size of arrays (can be zero)
           double,        // a
           const double*, // A[]
@@ -20754,7 +20749,7 @@ int    ON_SearchMonotoneArray( // find a value in an increasing array
           );
 
 
-/*
+/* 
 Description:
   Compute a binomial coefficient.
 Parameters:
@@ -20766,23 +20761,23 @@ See Also:
   ON_TrinomialCoefficient()
 Remarks:
   If (i+j) <= 52, this function is fast and returns the exact
-  value of the binomial coefficient.
+  value of the binomial coefficient.  
 
   For (i+j) > 52, the coefficient is computed recursively using
   the formula  bc(i,j) = bc(i-1,j) + bc(i,j-1).
   For (i+j) much larger than 60, this is inefficient.
   If you need binomial coefficients for large i and j, then you
-  should probably be using something like Stirling's Formula.
+  should probably be using something like Stirling's Formula.  
   (Look up "Stirling" or "Gamma function" in a calculus book.)
 */
 ON_DECL
-double ON_BinomialCoefficient(
+double ON_BinomialCoefficient( 
           int i,
           int j
           );
 
 
-/*
+/* 
 Description:
   Compute a trinomial coefficient.
 Parameters:
@@ -20801,10 +20796,10 @@ Remarks:
           i! j! k!      i! (j+k)!      j! k!
 
                       = ON_BinomialCoefficient(i,j+k)*ON_BinomialCoefficient(j,k)
-
+  
 */
 ON_DECL
-double ON_TrinomialCoefficient(
+double ON_TrinomialCoefficient( 
           int i,
           int j,
           int k
@@ -20912,7 +20907,7 @@ ON_BOOL32 ON_ReversePointGrid(
         );
 
 ON_DECL
-bool ON_SwapPointListCoordinates(
+bool ON_SwapPointListCoordinates( 
         int, // count
         int, // stride
         float*,
@@ -20920,7 +20915,7 @@ bool ON_SwapPointListCoordinates(
         );
 
 ON_DECL
-bool ON_SwapPointListCoordinates(
+bool ON_SwapPointListCoordinates( 
         int, // count
         int, // stride
         double*,
@@ -20994,7 +20989,7 @@ Parameters:
     point coordinates
 Returns:
   True if the input is valid and for each coordinate pair,
-  |a-b| <= ON_ZERO_TOLERANCE
+  |a-b| <= ON_ZERO_TOLERANCE 
   or |a-b| <= (fabs(a)+fabs(b))*ON_RELATIVE_TOLERANCE.
   False otherwise.
 */
@@ -21037,7 +21032,7 @@ bool ON_PointsAreCoincident(
     );
 
 ON_DECL
-int ON_ComparePoint( // returns
+int ON_ComparePoint( // returns 
                               // -1: first < second
                               //  0: first == second
                               // +1: first > second
@@ -21048,7 +21043,7 @@ int ON_ComparePoint( // returns
           );
 
 ON_DECL
-int ON_ComparePointList( // returns
+int ON_ComparePointList( // returns 
                               // -1: first < second
                               //  0: first == second
                               // +1: first > second
@@ -21106,14 +21101,14 @@ ON_BOOL32 ON_SolveTriDiagonal( // solve TriDiagMatrix( a,b,c )*X = d
         );
 
 // returns rank - if rank != 2, system is under determined
-// If rank = 2, then solution to
+// If rank = 2, then solution to 
 //
-//          a00*x0 + a01*x1 = b0,
-//          a10*x0 + a11*x1 = b1
+//          a00*x0 + a01*x1 = b0, 
+//          a10*x0 + a11*x1 = b1 
 //
 // is returned
 ON_DECL
-int ON_Solve2x2(
+int ON_Solve2x2( 
         double, double,   // a00 a01 = first row of 2x2 matrix
         double, double,   // a10 a11 = second row of 2x2 matrix
         double, double,   // b0 b1
@@ -21140,7 +21135,7 @@ int ON_Solve2x2(
 //   pivot_ratio - [out]
 //
 // Returns:
-//   rank of the system.
+//   rank of the system.  
 //   If rank != 2, system is under determined
 //   If rank = 2, then the solution is
 //
@@ -21148,7 +21143,7 @@ int ON_Solve2x2(
 //         + (*error)*((col0 X col1)/|col0 X col1|)
 //         = (d0,d1,d2).
 ON_DECL
-int ON_Solve3x2(
+int ON_Solve3x2( 
         const double[3], // col0
         const double[3], // col1
         double,  // d0
@@ -21160,9 +21155,9 @@ int ON_Solve3x2(
         double*  // pivot_ratio
         );
 
-/*
+/* 
 Description:
-  Use Gauss-Jordan elimination with full pivoting to solve
+  Use Gauss-Jordan elimination with full pivoting to solve 
   a system of 3 linear equations and 3 unknowns(x,y,z)
 
         x*row0[0] + y*row0[1] + z*row0[2] = d0
@@ -21173,16 +21168,16 @@ Parameters:
     row0 - [in] first row of 3x3 matrix
     row1 - [in] second row of 3x3 matrix
     row2 - [in] third row of 3x3 matrix
-    d0 - [in]
-    d1 - [in]
+    d0 - [in] 
+    d1 - [in] 
     d2 - [in] (d0,d1,d2) right hand column of system
     x_addr - [in] first unknown
     y_addr - [in] second unknown
     z_addr - [in] third unknown
-    pivot_ratio - [out] if not NULL, the pivot ration is
+    pivot_ratio - [out] if not NULL, the pivot ration is 
          returned here.  If the pivot ratio is "small",
-         then the matrix may be singular or ill
-         conditioned. You should test the results
+         then the matrix may be singular or ill 
+         conditioned. You should test the results 
          before you use them.  "Small" depends on the
          precision of the input coefficients and the
          use of the solution.  If you can't figure out
@@ -21192,7 +21187,7 @@ Parameters:
 Returns:
     The rank of the 3x3 matrix (0,1,2, or 3)
     If ON_Solve3x3() is successful (returns 3), then
-    the solution is returned in
+    the solution is returned in 
     (*x_addr, *y_addr, *z_addr)
     and *pivot_ratio = min(|pivots|)/max(|pivots|).
     If the return code is < 3, then (0,0,0) is returned
@@ -21204,22 +21199,22 @@ See Also:
   ON_Solve4x4
 */
 ON_DECL
-int ON_Solve3x3(
-        const double row0[3],
-        const double row1[3],
+int ON_Solve3x3( 
+        const double row0[3], 
+        const double row1[3], 
         const double row2[3],
-        double d0,
-        double d1,
+        double d0, 
+        double d1, 
         double d2,
-        double* x_addr,
-        double* y_addr,
+        double* x_addr, 
+        double* y_addr, 
         double* z_addr,
         double* pivot_ratio
         );
 
-/*
+/* 
 Description:
-  Use Gauss-Jordan elimination with full pivoting to solve
+  Use Gauss-Jordan elimination with full pivoting to solve 
   a system of 4 linear equations and 4 unknowns(x,y,z,w)
 
         x*row0[0] + y*row0[1] + z*row0[2] + w*row0[3] = d0
@@ -21232,18 +21227,18 @@ Parameters:
     row1 - [in] second row of 4x4 matrix
     row2 - [in] third row of 4x4 matrix
     row3 - [in] forth row of 4x4 matrix
-    d0 - [in]
-    d1 - [in]
-    d2 - [in]
+    d0 - [in] 
+    d1 - [in] 
+    d2 - [in] 
     d3 - [in] (d0,d1,d2,d3) right hand column of system
     x_addr - [in] first unknown
     y_addr - [in] second unknown
     z_addr - [in] third unknown
     w_addr - [in] forth unknown
-    pivot_ratio - [out] if not NULL, the pivot ration is
+    pivot_ratio - [out] if not NULL, the pivot ration is 
          returned here.  If the pivot ratio is "small",
-         then the matrix may be singular or ill
-         conditioned. You should test the results
+         then the matrix may be singular or ill 
+         conditioned. You should test the results 
          before you use them.  "Small" depends on the
          precision of the input coefficients and the
          use of the solution.  If you can't figure out
@@ -21253,7 +21248,7 @@ Parameters:
 Returns:
     The rank of the 4x4 matrix (0,1,2,3, or 4)
     If ON_Solve4x4() is successful (returns 4), then
-    the solution is returned in
+    the solution is returned in 
     (*x_addr, *y_addr, *z_addr, *w_addr)
     and *pivot_ratio = min(|pivots|)/max(|pivots|).
     If the return code is < 4, then, it a solution exists,
@@ -21268,24 +21263,24 @@ See Also:
 ON_DECL
 int
 ON_Solve4x4(
-          const double row0[4],
-          const double row1[4],
-          const double row2[4],
+          const double row0[4], 
+          const double row1[4], 
+          const double row2[4],  
           const double row3[4],
-          double d0,
-          double d1,
-          double d2,
+          double d0, 
+          double d1, 
+          double d2, 
           double d3,
-          double* x_addr,
-          double* y_addr,
-          double* z_addr,
+          double* x_addr, 
+          double* y_addr, 
+          double* z_addr, 
           double* w_addr,
           double* pivot_ratio
           );
 
 /*
 Description:
-  Use Gauss-Jordan elimination to find a numerical
+  Use Gauss-Jordan elimination to find a numerical 
   solution to M*X = B where M is a n x n matrix,
   B is a known n-dimensional vector and X is
   an unknown.
@@ -21344,7 +21339,7 @@ double ON_SolveNxN(bool bFullPivot, bool bNormalize, int n, double* M[], double 
 
 // return false if determinant is (nearly) singular
 ON_DECL
-ON_BOOL32 ON_EvJacobian(
+ON_BOOL32 ON_EvJacobian( 
         double, // ds o ds
         double, // ds o dt
         double, // dt o dt
@@ -21406,7 +21401,7 @@ ON_BOOL32 ON_EvNormalPartials(
         );
 
 ON_DECL
-ON_BOOL32
+ON_BOOL32 
 ON_Pullback3dVector( // use to pull 3d vector back to surface parameter space
       const ON_3dVector&,   // 3d vector
       double,              // signed distance from vector location to closet point on surface
@@ -21420,10 +21415,10 @@ ON_Pullback3dVector( // use to pull 3d vector back to surface parameter space
       );
 
 ON_DECL
-ON_BOOL32
+ON_BOOL32 
 ON_GetParameterTolerance(
         double,   // t0      domain
-        double,   // t1
+        double,   // t1 
         double,   // t       parameter in domain
         double*,  // tminus  parameter tolerance (tminus, tplus) returned here
         double*   // tplus
@@ -21456,7 +21451,7 @@ ON_BOOL32 ON_EvCurvature(
         );
 
 ON_DECL
-ON_BOOL32 ON_EvPrincipalCurvatures(
+ON_BOOL32 ON_EvPrincipalCurvatures( 
         const ON_3dVector&, // Ds,
         const ON_3dVector&, // Dt,
         const ON_3dVector&, // Dss,
@@ -21473,7 +21468,7 @@ ON_BOOL32 ON_EvPrincipalCurvatures(
         );
 
 ON_DECL
-ON_BOOL32 ON_EvPrincipalCurvatures(
+ON_BOOL32 ON_EvPrincipalCurvatures( 
         const ON_3dVector&, // Ds,
         const ON_3dVector&, // Dt,
         double l, // Dss*N Second fundamental form coefficients
@@ -21491,7 +21486,7 @@ ON_BOOL32 ON_EvPrincipalCurvatures(
 
 /*
 Description:
-  Evaluate sectional curvature from surface derivatives and
+  Evaluate sectional curvature from surface derivatives and 
   section plane normal.
 Parameters:
   S10, S01 - [in]
@@ -21510,19 +21505,19 @@ Returns:
   which case the K is set to zero.
 */
 ON_DECL
-bool ON_EvSectionalCurvature(
-    const ON_3dVector& S10,
+bool ON_EvSectionalCurvature( 
+    const ON_3dVector& S10, 
     const ON_3dVector& S01,
-    const ON_3dVector& S20,
-    const ON_3dVector& S11,
+    const ON_3dVector& S20, 
+    const ON_3dVector& S11, 
     const ON_3dVector& S02,
     const ON_3dVector& planeNormal,
-    ON_3dVector& K
+    ON_3dVector& K 
     );
 
 
 ON_DECL
-ON_3dVector ON_NormalCurvature(
+ON_3dVector ON_NormalCurvature( 
         const ON_3dVector&, // surface 1rst partial (Ds)
         const ON_3dVector&, // surface 1rst partial (Dt)
         const ON_3dVector&, // surface 1rst partial (Dss)
@@ -21562,7 +21557,7 @@ Parameters:
     When in doubt, use ON_ZERO_CURVATURE_TOLERANCE.
   radius_tolerance - [in]
     If radius_tolerance >= 0.0 and the difference between the
-    radii of curvature is >= radius_tolerance, then true
+    radii of curvature is >= radius_tolerance, then true 
     is returned.
   relative_tolerance - [in]
     If relative_tolerance > 0 and
@@ -21578,13 +21573,13 @@ Parameters:
 Returns:
   False if the curvatures should be considered G2.
   True if the curvatures are different enough that the curve should be
-  considered not G2.
-  In addition to the tests described under the curvature_tolerance and
+  considered not G2.  
+  In addition to the tests described under the curvature_tolerance and 
   radius_tolerance checks, other hurestic tests are used.
 */
 ON_DECL
-bool ON_IsCurvatureDiscontinuity(
-  const ON_3dVector Km,
+bool ON_IsCurvatureDiscontinuity( 
+  const ON_3dVector Km, 
   const ON_3dVector Kp,
   double cos_angle_tolerance,
   double curvature_tolerance,
@@ -21594,8 +21589,8 @@ bool ON_IsCurvatureDiscontinuity(
   );
 
 ON_DECL
-bool ON_IsCurvatureDiscontinuity(
-  const ON_3dVector Km,
+bool ON_IsCurvatureDiscontinuity( 
+  const ON_3dVector Km, 
   const ON_3dVector Kp,
   double cos_angle_tolerance,
   double curvature_tolerance,
@@ -21620,7 +21615,7 @@ Returns:
 */
 ON_DECL
 bool ON_IsG2CurvatureContinuous(
-  const ON_3dVector Km,
+  const ON_3dVector Km, 
   const ON_3dVector Kp,
   double cos_angle_tolerance,
   double curvature_tolerance
@@ -21642,7 +21637,7 @@ Returns:
 */
 ON_DECL
 bool ON_IsGsmoothCurvatureContinuous(
-  const ON_3dVector Km,
+  const ON_3dVector Km, 
   const ON_3dVector Kp,
   double cos_angle_tolerance,
   double curvature_tolerance
@@ -21668,14 +21663,14 @@ Parameters:
       greater than d2_tolerance, then the curve is not C2.
   cos_angle_tolerance - [in] default = cos(1 degree) Used only when
       c is ON::G1_continuous or ON::G2_continuous.  If the cosine
-      of the angle between two tangent vectors
+      of the angle between two tangent vectors 
       is <= cos_angle_tolerance, then a G1 discontinuity is reported.
   curvature_tolerance - [in] (default = ON_SQRT_EPSILON) Used only when
       c is ON::G2_continuous.  If K0 and K1 are curvatures evaluated
       from above and below and |K0 - K1| > curvature_tolerance,
       then a curvature discontinuity is reported.
 Returns:
-  true if the curve has at least the c type continuity at
+  true if the curve has at least the c type continuity at 
   the parameter t.
 */
 ON_DECL
@@ -21696,7 +21691,7 @@ ON_BOOL32 ON_IsContinuous(
 
 
 ON_DECL
-bool ON_TuneupEvaluationParameter(
+bool ON_TuneupEvaluationParameter( 
    int side,
    double s0, double s1, // segment domain
    double *s             // segment parameter
@@ -21713,9 +21708,9 @@ ON_DECL
 int ON_Compare4dex( const ON_4dex* a, const ON_4dex* b);
 
 ON_DECL
-const ON_2dex* ON_BinarySearch2dexArray(
-          int key_i,
-          const ON_2dex* base,
+const ON_2dex* ON_BinarySearch2dexArray( 
+          int key_i, 
+          const ON_2dex* base, 
           size_t nel
           );
 
@@ -21726,9 +21721,9 @@ const ON_2dex* ON_BinarySearch2dexArray(
 
 // returns closest points between the two infinite lines
 ON_DECL
-bool ON_Intersect(
-          const ON_Line&,
-          const ON_Line&,
+bool ON_Intersect( 
+          const ON_Line&, 
+          const ON_Line&, 
           double*, // parameter on first line
           double*  // parameter on second line
           );
@@ -21738,29 +21733,29 @@ bool ON_Intersect(
 // segment between line.m_point[0] and line.m_point[1]
 // does not intersect the plane
 ON_DECL
-bool ON_Intersect(
-          const ON_Line&,
-          const ON_Plane&,
+bool ON_Intersect( 
+          const ON_Line&, 
+          const ON_Plane&, 
           double* // parameter on line
           );
 
 ON_DECL
-bool ON_Intersect(
-        const ON_Plane&,
-        const ON_Plane&,
+bool ON_Intersect( 
+        const ON_Plane&, 
+        const ON_Plane&, 
         ON_Line& // intersection line is returned here
         );
 
 ON_DECL
-bool ON_Intersect(
-        const ON_Plane&,
-        const ON_Plane&,
+bool ON_Intersect( 
+        const ON_Plane&, 
+        const ON_Plane&, 
         const ON_Plane&,
         ON_3dPoint& // intersection point is returned here
         );
 
-// returns 0 = no intersections,
-// 1 = intersection = single point,
+// returns 0 = no intersections, 
+// 1 = intersection = single point, 
 // 2 = intersection = circle
 // If 0 is returned, returned circle has radius=0
 // and center = point on sphere closest to plane.
@@ -21768,36 +21763,36 @@ bool ON_Intersect(
 // point and returned circle has radius=0
 // and center = intersection point on sphere.
 ON_DECL
-int ON_Intersect(
+int ON_Intersect( 
                  const ON_Plane&, const ON_Sphere&, ON_Circle&
                   );
 
-// Intersects an infinte line and sphere and returns
-// 0 = no intersections,
-// 1 = one intersection,
+// Intersects an infinte line and sphere and returns 
+// 0 = no intersections, 
+// 1 = one intersection, 
 // 2 = 2 intersections
-// If 0 is returned, first point is point
+// If 0 is returned, first point is point 
 // on line closest to sphere and 2nd point is the point
 // on the sphere closest to the line.
 // If 1 is returned, first point is obtained by evaluating
 // the line and the second point is obtained by evaluating
 // the sphere.
 ON_DECL
-int ON_Intersect(
-        const ON_Line&,
+int ON_Intersect(                  
+        const ON_Line&, 
         const ON_Sphere&,
-        ON_3dPoint&,
+        ON_3dPoint&, 
         ON_3dPoint& // intersection point(s) returned here
         );
 
 
-// Intersects an infinte line and cylinder and returns
-// 0 = no intersections,
-// 1 = one intersection,
+// Intersects an infinte line and cylinder and returns 
+// 0 = no intersections, 
+// 1 = one intersection, 
 // 2 = 2 intersections
 // 3 = line lies on cylinder
 //
-// If 0 is returned, first point is point
+// If 0 is returned, first point is point 
 // on line closest to cylinder and 2nd point is the point
 // on the cylinder closest to the line.
 // If 1 is returned, first point is obtained by evaluating
@@ -21807,7 +21802,7 @@ int ON_Intersect(
 // The value of cylinder.IsFinite() determines if the
 // intersection is performed on the finite or infinite cylinder.
 ON_DECL
-int ON_Intersect(
+int ON_Intersect( 
       const ON_Line&, // [in]
       const ON_Cylinder&, // [in]
       ON_3dPoint&, // [out] first intersection point
@@ -21829,8 +21824,8 @@ int ON_Intersect(
 //   2     Two intersections at line.PointAt(*line_t0)
 //         and line.PointAt(*line_t1).
 ON_DECL
-int ON_Intersect(
-                  const ON_Line& line,
+int ON_Intersect( 
+                  const ON_Line& line, 
                   const ON_Circle& circle,
                   double* line_t0,
                   ON_3dPoint& circle_point0,
@@ -21855,8 +21850,8 @@ int ON_Intersect(
 //   2     Two intersections at line.PointAt(*line_t0)
 //         and line.PointAt(*line_t1).
 ON_DECL
-int ON_Intersect(
-                  const ON_Line& line,
+int ON_Intersect( 
+                  const ON_Line& line, 
                   const ON_Arc& arc,
                   double* line_t0,
                   ON_3dPoint& arc_point0,
@@ -21869,7 +21864,7 @@ int ON_Intersect(
 // Parameters:
 //   plane - [in]
 //   circle - [in]
-//   point0 - [out] first intersection point
+//   point0 - [out] first intersection point 
 //   point1 - [out] second intersection point
 // Returns:
 //   0     No intersection
@@ -21878,8 +21873,8 @@ int ON_Intersect(
 //         and point1.
 //	 3		 Circle lies on plane
 ON_DECL
-int ON_Intersect(
-                  const ON_Plane& plane,
+int ON_Intersect( 
+                  const ON_Plane& plane, 
                   const ON_Circle& circle,
                   ON_3dPoint& point0,
                   ON_3dPoint& point1
@@ -21890,7 +21885,7 @@ int ON_Intersect(
 // Parameters:
 //   plane - [in]
 //   arc - [in]
-//   point0 - [out] first intersection point
+//   point0 - [out] first intersection point 
 //   point1 - [out] second intersection point
 // Returns:
 //   0     No intersection
@@ -21899,8 +21894,8 @@ int ON_Intersect(
 //         and point1.
 //	 3		 Arc lies on plane
 ON_DECL
-int ON_Intersect(
-                  const ON_Plane& plane,
+int ON_Intersect( 
+                  const ON_Plane& plane, 
                   const ON_Arc& arc,
                   ON_3dPoint& point0,
                   ON_3dPoint& point1
@@ -21946,7 +21941,7 @@ Parameters:
     v[] is an array of length (der_count+1)*v_stride.
     The input v[] array contains  derivatives of the numerator and
     denominator	functions in the order (X, W), (Xt, Wt), (Xtt, Wtt), ...
-    In general, the (dim+1) coordinates of the d-th derivative
+    In general, the (dim+1) coordinates of the d-th derivative 
     are in (v[n],...,v[n+dim]) where n = d*v_stride.
     In the output v[] array the derivatives of X are replaced with
     the derivatives of F and the derivatives of W are divided by
@@ -21958,11 +21953,11 @@ See Also:
   ON_EvaluateQuotientRule3
 */
 ON_DECL
-bool ON_EvaluateQuotientRule(
-          int dim,
+bool ON_EvaluateQuotientRule( 
+          int dim, 
           int der_count,
-          int v_stride,
-          double *v
+          int v_stride, 
+          double *v 
           );
 
 /*
@@ -21990,11 +21985,11 @@ See Also:
   ON_EvaluateQuotientRule3
 */
 ON_DECL
-bool ON_EvaluateQuotientRule2(
-          int dim,
-          int der_count,
-          int v_stride,
-          double *v
+bool ON_EvaluateQuotientRule2( 
+          int dim, 
+          int der_count, 
+          int v_stride, 
+          double *v 
           );
 
 /*
@@ -22007,14 +22002,14 @@ Parameters:
   der_count - [in] number of derivative (>=0)
   v_stride - [in] (>= dim+1)
   v - [in/out]
-    v[] is an array of length
+    v[] is an array of length 
     v_stride*(der_count+1)*(der_count+2)*(der_count+3)/6.
     The input v[] array contains  derivatives of the numerator and
     denominator	functions in the order (X, W), (Xr, Wr), (Xs, Ws),
-    (Xt, Wt), (Xrr, Wrr), (Xrs, Wrs), (Xrt, Wrt), (Xss, Wss),
+    (Xt, Wt), (Xrr, Wrr), (Xrs, Wrs), (Xrt, Wrt), (Xss, Wss), 
     (Xst, Wst), (Xtt, Wtt), ...
-    In general, the (dim+1) coordinates of the derivative
-    (Dr^i Ds^j Dt^k, i+j+k=d) are at v[n], ..., v[n+dim] where
+    In general, the (dim+1) coordinates of the derivative 
+    (Dr^i Ds^j Dt^k, i+j+k=d) are at v[n], ..., v[n+dim] where 
     n = v_stride*( d*(d+1)*(d+2)/6  +  (d-i)*(d-i+1)/2  +  k ).
     In the output v[] array the derivatives of X are replaced with
     the derivatives of F and the derivatives of W are divided by
@@ -22026,11 +22021,11 @@ See Also:
   ON_EvaluateQuotientRule2
 */
 ON_DECL
-bool ON_EvaluateQuotientRule3(
-          int dim,
-          int der_count,
+bool ON_EvaluateQuotientRule3( 
+          int dim, 
+          int der_count, 
           int v_stride,
-          double *v
+          double *v 
           );
 
 ON_DECL
@@ -22058,7 +22053,7 @@ Returns:
   is undefined.
 */
 ON_DECL
-bool ON_GetClosestPointInPointList(
+bool ON_GetClosestPointInPointList( 
           int point_count,
           const ON_3dPoint* point_list,
           ON_3dPoint P,
@@ -22108,10 +22103,10 @@ Remarks:
   performed.
 */
 ON_DECL
-double ON_TestMathFunction(
-        int function_index,
-        double x,
-        double y
+double ON_TestMathFunction( 
+        int function_index, 
+        double x, 
+        double y 
         );
 
 // If performance is important, then
@@ -22147,17 +22142,17 @@ ON_DECL int ON_Round(double x);
 
 /*
 Description:
-  Find the equation of the parabola, ellipse or hyperbola
+  Find the equation of the parabola, ellipse or hyperbola 
   (non-degenerate conic) that passes through six distinct points.
 Parameters:
-  stride - [in] (>=2)
+  stride - [in] (>=2) 
     points array stride
-  points2d - [in] (>=2)
+  points2d - [in] (>=2) 
     i-th point is (points[i*stride],points[i*stride+1])
   conic - [out]
     Coefficients of the conic equation.
     The points on the conic satisfy the equation
-      0 = conic[0]*x^2 + conic[1]*xy + conic[2]*y^2
+      0 = conic[0]*x^2 + conic[1]*xy + conic[2]*y^2 
         + conic[3]*x + conic[4]*y + conic[5]
   max_pivot - [out] (can be null)
   min_pivot - [out] (can be null)
@@ -22165,22 +22160,22 @@ Parameters:
     If there are some near duplicates in the input point set,
     the calculation is not stable.  If you want to get an
     estimate of the validity of the solution, then inspect
-    the returned values.  max_pivot should around 1,
+    the returned values.  max_pivot should around 1, 
     min_pivot should be > 1e-4 or so, and zero_pivot should
     be < 1e-10 or so.  If the returned pivots don't satisify
     these condtions, then exercise caution when using the
     returned solution.
 Returns:
-  True if a there is an ellipse, parabola or hyperbola through the
+  True if a there is an ellipse, parabola or hyperbola through the  
   six points.
   False if the input is invalid or the conic degenerate (the
   points lie on one or two lines).
   If false is returned, then conic[0]=...=conic[5] = 0 and
   *min_pivot = *max_pivot = *zero_pivot = 0.
 */
-ON_DECL bool ON_GetConicEquationThrough6Points(
-        int stride,
-        const double* points2d,
+ON_DECL bool ON_GetConicEquationThrough6Points( 
+        int stride, 
+        const double* points2d, 
         double conic[6],
         double* max_pivot,
         double* min_pivot,
@@ -22195,7 +22190,7 @@ Parameters:
   conic - [in]
     Coefficients of the conic equation.
     The points on the conic satisfy the equation
-      0 = conic[0]*x^2 + conic[1]*xy + conic[2]*y^2
+      0 = conic[0]*x^2 + conic[1]*xy + conic[2]*y^2 
         + conic[3]*x + conic[4]*y + conic[5]
   center - [out]
   major_axis - [out]
@@ -22208,12 +22203,12 @@ Returns:
   of center, major_axis, minor_axis, major_radius, and minor_radius
   are not changed.
 */
-ON_DECL bool ON_IsConicEquationAnEllipse(
-        const double conic[6],
-        ON_2dPoint& center,
-        ON_2dVector& major_axis,
-        ON_2dVector& minor_axis,
-        double* major_radius,
+ON_DECL bool ON_IsConicEquationAnEllipse( 
+        const double conic[6], 
+        ON_2dPoint& center, 
+        ON_2dVector& major_axis, 
+        ON_2dVector& minor_axis, 
+        double* major_radius, 
         double* minor_radius
         );
 
@@ -22235,7 +22230,7 @@ Parameters:
   conic - [out]
     Coefficients of the conic equation.
     The points on the conic satisfy the equation
-      0 = conic[0]*x^2 + conic[1]*xy + conic[2]*y^2
+      0 = conic[0]*x^2 + conic[1]*xy + conic[2]*y^2 
         + conic[3]*x + conic[4]*y + conic[5]
   center - [out]
   major_axis - [out]
@@ -22245,7 +22240,7 @@ Parameters:
 Remarks:
   Here is the way to evaluate a point on the ellipse:
 
-
+          
           double t = ellipse paramter in radians;
           double x = a*cos(t);
           double y = b*sin(t);
@@ -22258,9 +22253,9 @@ Returns:
   Falis if the input is not valid.  In this case the values in conic[]
   are not changed.
 */
-ON_DECL bool ON_GetEllipseConicEquation(
-      double a, double b,
-      double x0, double y0,
+ON_DECL bool ON_GetEllipseConicEquation( 
+      double a, double b, 
+      double x0, double y0, 
       double alpha,
       double conic[6]
       );
@@ -22317,7 +22312,7 @@ ON_DECL float ON_FloatCeil(double x);
 // THIS SOFTWARE IS PROVIDED "AS IS" WITHOUT EXPRESS OR IMPLIED WARRANTY.
 // ALL IMPLIED WARRANTIES OF FITNESS FOR ANY PARTICULAR PURPOSE AND OF
 // MERCHANTABILITY ARE HEREBY DISCLAIMED.
-//
+//				
 // For complete openNURBS copyright information see <http://www.opennurbs.org>.
 //
 ////////////////////////////////////////////////////////////////
@@ -22378,8 +22373,8 @@ Remarks:
 */
 ON_DECL
 bool ON_IntersectLineLine(
-          const ON_Line& lineA,
-          const ON_Line& lineB,
+          const ON_Line& lineA, 
+          const ON_Line& lineB, 
           double* a,
           double* b,
           double tolerance,
@@ -22402,15 +22397,15 @@ Returns:
             AoA  -AoB
            -AoB   BoB
 
- is numerically singluar, where A = lineA.to-lineA.from
+ is numerically singluar, where A = lineA.to-lineA.from 
  and B = lineB.to-lineB.from.
 See Also:
   ON_IntersectLineLine
 */
 ON_DECL
 bool ON_Intersect(
-          const ON_Line& lineA,
-          const ON_Line& lineB,
+          const ON_Line& lineA, 
+          const ON_Line& lineB, 
           double* a,
           double* b
           );
@@ -22420,20 +22415,20 @@ bool ON_Intersect( // Returns false unless intersection is a single point
                    // If returned parameter is < 0 or > 1, then the line
                    // segment between line.m_point[0] and line.m_point[1]
                    // does not intersect the plane
-          const ON_Line&,
-          const ON_Plane&,
+          const ON_Line&, 
+          const ON_Plane&, 
           double* // parameter on line
           );
 
 ON_DECL
-bool ON_Intersect( const ON_Plane&,
-                  const ON_Plane&,
+bool ON_Intersect( const ON_Plane&, 
+                  const ON_Plane&, 
                    ON_Line& // intersection line is returned here
                    );
 
 ON_DECL
-bool ON_Intersect( const ON_Plane&,
-                  const ON_Plane&,
+bool ON_Intersect( const ON_Plane&, 
+                  const ON_Plane&, 
                   const ON_Plane&,
                   ON_3dPoint& // intersection point is returned here
                   );
@@ -22456,16 +22451,16 @@ Returns:
 */
 ON_DECL
 int ON_Intersect(
-          const ON_Plane& plane,
+          const ON_Plane& plane, 
           const ON_Sphere& sphere,
           ON_Circle& circle
           );
 
 ON_DECL
-int ON_Intersect( // returns 0 = no intersections,
-                  // 1 = one intersection,
+int ON_Intersect( // returns 0 = no intersections, 
+                  // 1 = one intersection, 
                   // 2 = 2 intersections
-                  // If 0 is returned, first point is point
+                  // If 0 is returned, first point is point 
                   // on line closest to sphere and 2nd point is the point
                   // on the sphere closest to the line.
                   // If 1 is returned, first point is obtained by evaluating
@@ -22476,11 +22471,11 @@ int ON_Intersect( // returns 0 = no intersections,
                   );
 
 ON_DECL
-int ON_Intersect( // returns 0 = no intersections,
-                  // 1 = one intersection,
+int ON_Intersect( // returns 0 = no intersections, 
+                  // 1 = one intersection, 
                   // 2 = 2 intersections
                   // 3 = line lies on cylinder
-                  // If 0 is returned, first point is point
+                  // If 0 is returned, first point is point 
                   // on line closest to cylinder and 2nd point is the point
                   // on the sphere closest to the line.
                   // If 1 is returned, first point is obtained by evaluating
@@ -22499,7 +22494,7 @@ Parameters:
   tolerance - [in]  If tolerance > 0.0, then the intersection is
                    performed against a box that has each side
                    moved out by tolerance.
-  line_parameters - [out]
+  line_parameters - [out] 
     Pass null if you do not need the parameters.
     If true is returned and line.from != line.to,
     then the chord from line.PointAt(line_parameters[0])
@@ -22512,8 +22507,8 @@ Returns:
   True if the line intersects the box and false otherwise.
 */
 ON_DECL
-bool ON_Intersect( const ON_BoundingBox& bbox,
-                   const ON_Line& line,
+bool ON_Intersect( const ON_BoundingBox& bbox, 
+                   const ON_Line& line, 
                    double tolerance,
                    ON_Interval* line_parameters
                    );
@@ -22532,8 +22527,8 @@ Returns:
   3 if the spheres are the same.
 */
 ON_DECL
-int ON_Intersect( const ON_Sphere& sphere0,
-                  const ON_Sphere& sphere1,
+int ON_Intersect( const ON_Sphere& sphere0, 
+                  const ON_Sphere& sphere1, 
                   ON_Circle& circle
                  );
 #endif
@@ -22547,7 +22542,7 @@ int ON_Intersect( const ON_Sphere& sphere0,
 // THIS SOFTWARE IS PROVIDED "AS IS" WITHOUT EXPRESS OR IMPLIED WARRANTY.
 // ALL IMPLIED WARRANTIES OF FITNESS FOR ANY PARTICULAR PURPOSE AND OF
 // MERCHANTABILITY ARE HEREBY DISCLAIMED.
-//
+//				
 // For complete openNURBS copyright information see <http://www.opennurbs.org>.
 //
 ////////////////////////////////////////////////////////////////
@@ -22589,12 +22584,12 @@ public:
                              // domain for a root.  Returns true if
                              // a root is found.
 
-  // m_t0 and m_t1 specify the domain to search and must satisfy
+  // m_t0 and m_t1 specify the domain to search and must satisfy 
   //
   //          1) m_t0 != m_t1
   //          2) f(m_t0) and f(m_t1) must have different signs
   //             or one must have absolute value <= m_f_tolerance
-  double m_t0, m_t1;
+  double m_t0, m_t1; 
 
   double m_f_tolerance; // (>= 0.0)  If this value is > 0.0, then
                         // the search is terminated when a parameter
@@ -22608,26 +22603,26 @@ public:
   // m_k[] is either NULL or monotone increasing array of length m_k_count.
   //
   // This zero finder works on continuous piecewise c2 functions.
-  // If the function is c2 on the interior of the domain
+  // If the function is c2 on the interior of the domain 
   //
   //          [min(t0,t1), max(m_t0,m_t1)]
   //
   // then there is no need to initialize m_k[].  If the function
   // is not c2 on the domain in question, then the m_k[m_count] array
-  // is a list of parameters that define the c2 domains.  When m_k[]
-  // is not NULL, m_count must be >= 2 and m_k[] must be monotone
-  // increasing and satisfy
+  // is a list of parameters that define the c2 domains.  When m_k[] 
+  // is not NULL, m_count must be >= 2 and m_k[] must be monotone 
+  // increasing and satisfy 
   //
-  //          m_k[0] <= min(m_t0,m_t1)
+  //          m_k[0] <= min(m_t0,m_t1) 
   //          and
   //          m_k[m_count-1] >= max(m_t0,m_t1).
   //
   // Duplicate values in m_k[] are permitted so that NURBS knot
   // vector arrays may be used directly.
   const double* m_k;
-
+  
   // length of m_k[] array ( 0 or >= 2 ).
-  int m_k_count;
+  int m_k_count;     
 
 private:
   double m_s0, m_f0, m_s1, m_f1;
@@ -22648,7 +22643,7 @@ private:
 // THIS SOFTWARE IS PROVIDED "AS IS" WITHOUT EXPRESS OR IMPLIED WARRANTY.
 // ALL IMPLIED WARRANTIES OF FITNESS FOR ANY PARTICULAR PURPOSE AND OF
 // MERCHANTABILITY ARE HEREBY DISCLAIMED.
-//
+//				
 // For complete openNURBS copyright information see <http://www.opennurbs.org>.
 //
 ////////////////////////////////////////////////////////////////
@@ -22712,7 +22707,7 @@ bool ON_GetKnotVectorSpanVector(
 Description:
   Given an evaluation parameter t in the domain of a NURBS curve,
   ON_NurbsSpanIndex(order,cv_count,knot,t,0,0) returns the integer
-  i such that (knot[i],...,knot[i+2*degree-1]),  and
+  i such that (knot[i],...,knot[i+2*degree-1]),  and 
   (cv[i],...,cv[i+degree]) are the knots and control points that
   define the span of the NURBS that are used for evaluation at t.
 Parameters:
@@ -22722,7 +22717,7 @@ Parameters:
   t - [in] evaluation parameter
   side - [in] determines which span is used when t is at a knot
               value;  side = 0 for the default (from above),
-              side = -1 means from below, and
+              side = -1 means from below, and 
               side = +1 means from above.
   hint - [in] Search hint, or 0 if not hint is available.
 Returns:
@@ -22747,7 +22742,7 @@ int ON_NextNurbsSpanIndex(
           int order,
           int cv_count,
           const double* knot,
-          int            // current span_index
+          int            // current span_index 
           );
 
 ON_DECL
@@ -22755,18 +22750,18 @@ int ON_GetSpanIndices( // returns span count, which is one less than length of s
           int order,
           int cv_count,
           const double* knot,
-          int*           // span_indices[cv_count-order+2].
-                         //Indices of knots at end of group of mult knots
+          int*           // span_indices[cv_count-order+2]. 
+                         //Indices of knots at end of group of mult knots 
                          //at start of span, and knot at start of group of mult knots
                          //at end of spline.
           );
 
 ON_DECL
-double ON_SuperfluousKnot(
+double ON_SuperfluousKnot( 
           int order,
           int cv_count,
           const double* knot,
-          int            // 0 = first superfluous knot
+          int            // 0 = first superfluous knot 
                          // 1 = last superfluous knot
           );
 
@@ -22789,7 +22784,7 @@ ON_DECL
 bool ON_IsKnotVectorUniform(
           int order,
           int cv_count,
-          const double* knot
+          const double* knot 
           );
 
 //////////
@@ -22803,7 +22798,7 @@ bool ON_KnotVectorHasBezierSpans(
 
 
 ON_DECL
-ON::knot_style ON_KnotVectorStyle(
+ON::knot_style ON_KnotVectorStyle( 
           int order,
           int cv_count,
           const double* knot
@@ -22819,18 +22814,18 @@ Parameters:
   t0 - [in]
   t1 - [in] New domain will be the interval (t0,t1).
 Returns:
-  True if input is valid and the returned knot vector
+  True if input is valid and the returned knot vector 
   has the requested domain.  False if the input is
   invalid, in which case the input knot vector is not
   changed.
 */
 ON_DECL
-bool ON_SetKnotVectorDomain(
-          int order,
-          int cv_count,
-          double* knot,
-          double t0,
-          double t1
+bool ON_SetKnotVectorDomain( 
+          int order, 
+          int cv_count, 
+          double* knot, 
+          double t0, 
+          double t1 
           );
 
 ON_DECL
@@ -22849,7 +22844,7 @@ bool ON_ReverseKnotVector(
           );
 
 ON_DECL
-int ON_CompareKnotVector( // returns
+int ON_CompareKnotVector( // returns 
                                       // -1: first < second
                                       //  0: first == second
                                       // +1: first > second
@@ -22866,8 +22861,8 @@ int ON_CompareKnotVector( // returns
 ON_DECL
 bool ON_IsValidKnotVector(
           int order,
-          int cv_count,
-          const double* knot,
+          int cv_count, 
+          const double* knot, 
           ON_TextLog* text_log = 0
           );
 
@@ -22898,7 +22893,7 @@ bool ON_MakeKnotVectorPeriodic(
    order - [in] (>=2) order (degree+1) of the NURBS
    cv_count - [in] (>=order) total number of control points
        in the NURBS.
-   knot - [in/out] Input is an array with room for
+   knot - [in/out] Input is an array with room for 
        ON_KnotCount(order,cv_count) doubles.  Output is
        a clamped uniform knot vector with domain
        (0, (1+cv_count-order)*delta).
@@ -22924,7 +22919,7 @@ bool ON_MakeClampedUniformKnotVector(
    order - [in] (>=2) order (degree+1) of the NURBS
    cv_count - [in] (>=order) total number of control points
        in the NURBS.
-   knot - [in/out] Input is an array with room for
+   knot - [in/out] Input is an array with room for 
        ON_KnotCount(order,cv_count) doubles.  Output is
        a periodic uniform knot vector with domain
        (0, (1+cv_count-order)*delta).
@@ -22975,7 +22970,7 @@ bool ON_ClampKnotVector(
         int,       // cv_dim ( = dim+1 for rational cvs )
         int,       // order (>=2)
         int,       // cv_count,
-        int,       // cv_stride,
+        int,       // cv_stride, 
         double*,   // cv[] NULL or array of order many cvs
         double*,   // knot[] array with room for at least knot_multiplicity new knots
         int        // end  0 = clamp start, 1 = clamp end, 2 = clamp both ends
@@ -23005,10 +23000,10 @@ Description:
 Parameters:
   c - [in]
     reparameterization constant (generally speaking, c should be > 0).
-    The control points are adjusted so that
+    The control points are adjusted so that 
     output_bezier(t) = input_bezier(lambda(t)), where
     lambda(t) = c*t/( (c-1)*t + 1 ).
-    Note that lambda(0) = 0, lambda(1) = 1, lambda'(t) > 0,
+    Note that lambda(0) = 0, lambda(1) = 1, lambda'(t) > 0, 
     lambda'(0) = c and lambda'(1) = 1/c.
   dim - [in]
   order - [in]
@@ -23032,11 +23027,11 @@ Description:
   Use a combination of scaling and reparameterization to set two rational
   Bezier weights to specified values.
 Parameters:
-  dim - [in]
+  dim - [in] 
   order - [in]
   cvstride - [in] ( >= dim+1)
   cv - [in/out]  homogeneous rational control points
-  i0 - [in]
+  i0 - [in] 
   w0 - [in]
   i1 - [in]
   w1 - [in]
@@ -23050,15 +23045,15 @@ Remarks:
     s * r^i0 = w0/v0
     s * r^i1 = w1/v1
   determine the scaling and reparameterization necessary to change v0,v1 to
-  w0,w1.
+  w0,w1. 
 
-  If the input Bezier has control vertices {B_0, ..., B_d}, then the
+  If the input Bezier has control vertices {B_0, ..., B_d}, then the 
   output Bezier has control vertices {s*B_0, ... s*r^i * B_i, ..., s*r^d * B_d}.
 */
 ON_DECL
 bool ON_ChangeRationalBezierCurveWeights(
           int dim, int order, int cvstride, double* cv,
-          int i0, double w0,
+          int i0, double w0, 
           int i1, double w1
           );
 
@@ -23068,10 +23063,10 @@ Description:
 Parameters:
   c - [in]
     reparameterization constant (generally speaking, c should be > 0).
-    The control points and knots are adjusted so that
+    The control points and knots are adjusted so that 
     output_nurbs(t) = input_nurbs(lambda(t)), where
     lambda(t) = c*t/( (c-1)*t + 1 ).
-    Note that lambda(0) = 0, lambda(1) = 1, lambda'(t) > 0,
+    Note that lambda(0) = 0, lambda(1) = 1, lambda'(t) > 0, 
     lambda'(0) = c and lambda'(1) = 1/c.
   dim - [in]
   order - [in]
@@ -23087,9 +23082,9 @@ See Also:
 */
 ON_DECL
 bool ON_ReparameterizeRationalNurbsCurve(
-          double c,
-          int dim,
-          int order,
+          double c, 
+          int dim, 
+          int order, 
           int cv_count,
           int cvstride,
           double* cv,
@@ -23099,7 +23094,7 @@ bool ON_ReparameterizeRationalNurbsCurve(
 /*
 Description:
   Use a combination of scaling and reparameterization to set the end
-  weights to the specified values.  This
+  weights to the specified values.  This 
 Parameters:
   dim - [in]
   order - [in]
@@ -23119,13 +23114,13 @@ See Also:
 */
 ON_DECL
 bool ON_ChangeRationalNurbsCurveEndWeights(
-          int dim,
-          int order,
+          int dim, 
+          int order, 
           int cv_count,
-          int cvstride,
-          double* cv,
+          int cvstride, 
+          double* cv, 
           double* knot,
-          double w0,
+          double w0, 
           double w1
           );
 
@@ -23140,7 +23135,7 @@ bool ON_ChangeRationalNurbsCurveEndWeights(
 // THIS SOFTWARE IS PROVIDED "AS IS" WITHOUT EXPRESS OR IMPLIED WARRANTY.
 // ALL IMPLIED WARRANTIES OF FITNESS FOR ANY PARTICULAR PURPOSE AND OF
 // MERCHANTABILITY ARE HEREBY DISCLAIMED.
-//
+//				
 // For complete openNURBS copyright information see <http://www.opennurbs.org>.
 //
 ////////////////////////////////////////////////////////////////
@@ -23151,7 +23146,7 @@ bool ON_ChangeRationalNurbsCurveEndWeights(
 
 ON_DECL
 bool ON_IncreaseBezierDegree(
-        int,    // dimension
+        int,    // dimension 
         ON_BOOL32,   // true if Bezier is rational
         int,    // order (>=2)
         int,    // cv_stride (>=dim+1)
@@ -23160,7 +23155,7 @@ bool ON_IncreaseBezierDegree(
 
 ON_DECL
 bool ON_RemoveBezierSingAt0( // input bezier is rational with 0/0 at start
-        int,    // dimension
+        int,    // dimension 
         int,    // order (>=2)
         int,    // cv_stride (>=dim+1)
         double* // cv[order*cv_stride] array
@@ -23168,7 +23163,7 @@ bool ON_RemoveBezierSingAt0( // input bezier is rational with 0/0 at start
 
 ON_DECL
 bool ON_RemoveBezierSingAt1( // input bezier is rational with 0/0 at end
-        int,    // dimension
+        int,    // dimension 
         int,    // order (>=2)
         int,    // cv_stride (>=dim+1)
         double* // cv[order*cv_stride] array
@@ -23176,7 +23171,7 @@ bool ON_RemoveBezierSingAt1( // input bezier is rational with 0/0 at end
 
 ON_DECL
 double ON_EvaluateBernsteinBasis( // returns (i choose d)*(1-t)^(d-i)*t^i
-        int, // degree,
+        int, // degree, 
         int, // 0 <= i <= degree
         double //  t
         );
@@ -23205,9 +23200,9 @@ bool ON_EvaluateBezier(
         int,            // v_stride (>=dimension)
         double*         // v[(der_count+1)*v_stride] array
         );
-
+                                      
 ON_DECL
-bool ON_EvaluateNurbsBasis(
+bool ON_EvaluateNurbsBasis( 
                   int,           // order (>=1)
                   const double*, // knot[] array of 2*(order-1) knots
                   double,        // evaluation parameter
@@ -23215,12 +23210,12 @@ bool ON_EvaluateNurbsBasis(
                   );
 
 ON_DECL
-bool ON_EvaluateNurbsBasisDerivatives(
+bool ON_EvaluateNurbsBasisDerivatives( 
                   int,           // order (>=1)
                   const double*, // knot[] array of 2*(order-1) knots
                   int,           // number of derivatives
                   double*        // basis_values[] array of length order*order
-                  );
+                  );                      
 
 
 
@@ -23258,7 +23253,7 @@ Description:
 Parameters:
   dim - [in]
     dimension (> 0).
-  is_rat - [in]
+  is_rat - [in] 
     true or false.
   order - [in]
     order=degree+1 (order>=2)
@@ -23268,17 +23263,17 @@ Parameters:
   cv - [in]
     For 0 <= i < order the i-th control vertex is
 
-          cv[n],...,cv[n+(is_rat?dim:dim+1)],
+          cv[n],...,cv[n+(is_rat?dim:dim+1)], 
 
     where n = i*cv_stride.  If is_rat is true the cv is
     in homogeneous form.
-  der_count - [in]
+  der_count - [in] 
     number of derivatives to evaluate (>=0)
-  t - [in]
+  t - [in] 
     evaluation parameter
   v_stride - [in]
   v - [out]
-    An array of length v_stride*(der_count+1). The evaluation
+    An array of length v_stride*(der_count+1). The evaluation 
     results are returned in this array.
 
               P = v[0],...,v[m_dim-1]
@@ -23289,7 +23284,7 @@ Parameters:
             In general, Dt^i returned in v[n],...,v[n+m_dim-1], where
 
               n = v_stride*i.
-
+    
 Returns:
   True if successful.
 See Also:
@@ -23297,7 +23292,7 @@ See Also:
   ON_EvaluateNurbsSurfaceSpan
   ON_EvaluateNurbsCageSpan
 */
-bool ON_EvaluateNurbsSpan(
+bool ON_EvaluateNurbsSpan( 
         int dim,
         int is_rat,
         int order,
@@ -23318,7 +23313,7 @@ Parameters:
   is_rat - [in] true of false
   order0 - [in] >= 2
   order1 - [in] >= 2
-  knot0 - [in]
+  knot0 - [in] 
     NURBS knot vector with 2*(order0-1) knots, knot0[order0-2] != knot0[order0-1]
   knot1 - [in]
     NURBS knot vector with 2*(order1-1) knots, knot1[order1-2] != knot1[order1-1]
@@ -23327,11 +23322,11 @@ Parameters:
   cv - [in]
     For 0 <= i < order0 and  0 <= j < order1, the (i,j) control vertex is
 
-          cv[n],...,cv[n+(is_rat?dim:dim+1)],
+          cv[n],...,cv[n+(is_rat?dim:dim+1)], 
 
     where n = i*cv_stride0 + j*cv_stride1.  If is_rat is true the cv is
     in homogeneous form.
-
+   
   der_count - [in] (>=0)
   s - [in]
   t - [in] (s,t) is the evaluation parameter
@@ -23361,7 +23356,7 @@ ON_DECL
 bool ON_EvaluateNurbsSurfaceSpan(
         int dim,
         int is_rat,
-        int order0,
+        int order0, 
         int order1,
         const double* knot0,
         const double* knot1,
@@ -23374,7 +23369,7 @@ bool ON_EvaluateNurbsSurfaceSpan(
         int v_stride,
         double* v
         );
-
+            
 
 
 /*
@@ -23386,7 +23381,7 @@ Parameters:
   order0 - [in] >= 2
   order1 - [in] >= 2
   order2 - [in] >= 2
-  knot0 - [in]
+  knot0 - [in] 
     NURBS knot vector with 2*(order0-1) knots, knot0[order0-2] != knot0[order0-1]
   knot1 - [in]
     NURBS knot vector with 2*(order1-1) knots, knot1[order1-2] != knot1[order1-1]
@@ -23396,14 +23391,14 @@ Parameters:
   cv_stride1 - [in]
   cv_stride2 - [in]
   cv - [in]
-    For 0 <= i < order0, 0 <= j < order1, and 0 <= k < order2,
+    For 0 <= i < order0, 0 <= j < order1, and 0 <= k < order2, 
     the (i,j,k)-th control vertex is
 
-          cv[n],...,cv[n+(is_rat?dim:dim+1)],
+          cv[n],...,cv[n+(is_rat?dim:dim+1)], 
 
-    where n = i*cv_stride0 + j*cv_stride1 *k*cv_stride2.
+    where n = i*cv_stride0 + j*cv_stride1 *k*cv_stride2.  
     If is_rat is true the cv is in homogeneous form.
-
+   
   der_count - [in] (>=0)
   r - [in]
   s - [in]
@@ -23426,7 +23421,7 @@ Parameters:
             In general, Dr^i Ds^j Dt^k is returned in v[n],...,v[n+dim-1], where
 
                d = (i+j+k)
-               n = v_stride*( d*(d+1)*(d+2)/6 + (j+k)*(j+k+1)/2 + k)
+               n = v_stride*( d*(d+1)*(d+2)/6 + (j+k)*(j+k+1)/2 + k) 
 
 Returns:
   True if succcessful.
@@ -23447,7 +23442,7 @@ bool ON_EvaluateNurbsCageSpan(
         const double* cv,
         int der_count,
         double t0, double t1, double t2,
-        int v_stride,
+        int v_stride, 
         double* v
         );
 
@@ -23487,7 +23482,7 @@ bool ON_EvaluateNurbsDeBoor( // for expert users only - no support available
 
 ON_DECL
 bool ON_EvaluateNurbsBlossom(int, // cvdim,
-                             int, // order,
+                             int, // order, 
                              int, // cv_stride,
                              const double*, //CV, size cv_stride*order
                              const double*, //knot, nondecreasing, size 2*(order-1)
@@ -23503,7 +23498,7 @@ bool ON_EvaluateNurbsBlossom(int, // cvdim,
 ON_DECL
 void ON_ConvertNurbSpanToBezier(
         int,       // cvdim (dim+1 for rational curves)
-        int,       // order,
+        int,       // order, 
         int,       // cvstride (>=cvdim)
         double*,   // cv array - input has NURBS cvs, output has Bezier cvs
         const double*, // (2*order-2) knots for the NURBS span
@@ -23521,7 +23516,7 @@ void ON_ConvertNurbSpanToBezier(
 // THIS SOFTWARE IS PROVIDED "AS IS" WITHOUT EXPRESS OR IMPLIED WARRANTY.
 // ALL IMPLIED WARRANTIES OF FITNESS FOR ANY PARTICULAR PURPOSE AND OF
 // MERCHANTABILITY ARE HEREBY DISCLAIMED.
-//
+//				
 // For complete openNURBS copyright information see <http://www.opennurbs.org>.
 //
 ////////////////////////////////////////////////////////////////
@@ -23572,7 +23567,7 @@ public:
   int IndentSize() const; //  0: one tab per indent
                           // >0: number of spaces per indent
   void SetIndentSize(int);
-
+  
   void PrintWrappedText( const char*, int = 60 );    // last arg is maximum line length
   void PrintWrappedText( const wchar_t*, int = 60 ); // last arg is maximum line length
 
@@ -23580,7 +23575,7 @@ public:
   Description:
     Print a formatted ASCII string of up to 2000 characters.
   Parameters:
-    format - [in] NULL terminated format control string
+    format - [in] NULL terminated format control string 
   Remarks:
     To print strings longer than 2000 characters, you must
     use ON_TextLog::PrintString.
@@ -23593,7 +23588,7 @@ public:
   Description:
     Print a formatted INICODE string of up to 2000 characters.
   Parameters:
-    format - [in] NULL terminated format control string
+    format - [in] NULL terminated format control string 
   Remarks:
     To print strings longer than 2000 characters, you must
     use ON_TextLog::PrintString.
@@ -23630,8 +23625,8 @@ public:
   void Print( const ON_String& string );
 
   void Print( const ON_3dPointArray&, const char* = NULL );
-  void Print(
-         const ON_Matrix&,
+  void Print( 
+         const ON_Matrix&, 
          const char* = NULL, // optional preamble
          int = 0             // optional number precision
     );
@@ -23663,7 +23658,7 @@ public:
 
   void PrintTime( const struct tm& );
 
-  void PrintPointList(
+  void PrintPointList( 
     int,               // dim
     ON_BOOL32,              // true for rational points
     int,               // count
@@ -23672,7 +23667,7 @@ public:
     const char* = NULL // optional preabmle
     );
 
-  void PrintPointGrid(
+  void PrintPointGrid( 
     int,               // dim
     ON_BOOL32,              // true for rational points
     int, int,          // point_count0, point_count1
@@ -23680,8 +23675,8 @@ public:
     const double*,     // point[] array
     const char* = NULL // optional preabmle
     );
-
-  void PrintKnotVector(
+    
+  void PrintKnotVector( 
     int,             // order
     int,             // cv_count
     const double*    // knot[] array
@@ -23704,11 +23699,11 @@ protected:
   FILE* m_pFile;
   ON_wString* m_pString;
 
-
+  
   /*
   Description:
     If the ON_TextLog(ON_wString& wstr) constructor was used, the
-    default appends s to wstr.  If the ON_TextLog(FILE* fp)
+    default appends s to wstr.  If the ON_TextLog(FILE* fp) 
     constructor was used, the default calls fputs( fp, s).
     In all other cases, the default calls printf("%s",s).
   Parameters:
@@ -23722,7 +23717,7 @@ protected:
   /*
   Description:
     If the ON_TextLog(ON_wString& wstr) constructor was used, the
-    default appends s to wstr.  In all other cases, the default
+    default appends s to wstr.  In all other cases, the default 
     converts the string to an ON_String and calls the ASCII
     version AppendText(const char*).
   Parameters:
@@ -23732,7 +23727,7 @@ protected:
   void AppendText(
         const wchar_t* s
         );
-
+                  
 private:
   ON_String m_indent;
   ON_String m_double_format;
@@ -23768,7 +23763,7 @@ private:
 // THIS SOFTWARE IS PROVIDED "AS IS" WITHOUT EXPRESS OR IMPLIED WARRANTY.
 // ALL IMPLIED WARRANTIES OF FITNESS FOR ANY PARTICULAR PURPOSE AND OF
 // MERCHANTABILITY ARE HEREBY DISCLAIMED.
-//
+//				
 // For complete openNURBS copyright information see <http://www.opennurbs.org>.
 //
 ////////////////////////////////////////////////////////////////
@@ -23781,7 +23776,7 @@ private:
 // you may make calls to the same zlib that opennurbs uses.  This
 // zlib is compiled with z_ symbol projectection.  All the necessary
 // header files are included by opennurbs.h.
-//
+// 
 // If you are using opennurbs as a DLL or writing a Rhino plug-in
 // and you want to use the same zlib that opennurbs uses, then
 // compile opennurbs_zlib_memory.cpp into your application
@@ -23831,7 +23826,7 @@ public:
        This parameter only matters if the buffer will be compressed,
        and decompressed on CPUs with different endianness.  If this
        is the case, then the types in the buffer need to have the
-       same size (2,4, or 8).
+       same size (2,4, or 8).  
   Returns:
     True if inbuffer is successfully compressed.
   */
@@ -23842,12 +23837,6 @@ public:
           );
 
   /*
-  Returns:
-    Number of bytes in the uncompressed information.
-  */
-  size_t SizeOfUncompressedBuffer() const;
-
-  /*
   Description:
     Uncompress the contents of this ON_CompressedBuffer.
   Parameters:
@@ -23856,7 +23845,7 @@ public:
        If the function returns true, then the uncopressed information
        is stored in this buffer.
     bFailedCRC - [out]
-       If not null, then this boolean is set to true if the CRC
+       If not null, then this boolean is set to true if the CRC 
        of the uncompressed information has changed.
   Returns:
     True if uncompressed information is returned in outbuffer.
@@ -23868,7 +23857,7 @@ public:
 
   /*
   Description:
-    Destroy the current informtion in the ON_CompressedBuffer
+    Destroy the current informtion in the ON_CompressedBuffer 
     so the class can be reused.
   */
   void Destroy();
@@ -23892,9 +23881,9 @@ public:
         size_t sizeof___outbuffer,  // sizeof uncompressed data
         void* out___buffer          // buffer for uncompressed data
         ) const;
-  bool WriteChar(
-        size_t count,
-        const void* buffer
+  bool WriteChar( 
+        size_t count, 
+        const void* buffer 
         );
 
   size_t     m_sizeof_uncompressed;
@@ -23918,7 +23907,7 @@ public:
 // THIS SOFTWARE IS PROVIDED "AS IS" WITHOUT EXPRESS OR IMPLIED WARRANTY.
 // ALL IMPLIED WARRANTIES OF FITNESS FOR ANY PARTICULAR PURPOSE AND OF
 // MERCHANTABILITY ARE HEREBY DISCLAIMED.
-//
+//				
 // For complete openNURBS copyright information see <http://www.opennurbs.org>.
 //
 ////////////////////////////////////////////////////////////////
@@ -23929,24 +23918,24 @@ public:
 
 /*
 The opennurbs rtree code is a modifed version of the
-free and unrestricted R-tree implementation obtianed from
+free and unrestricted R-tree implementation obtianed from 
 http://www.superliminal.com/sources/sources.htm
 
 The first lines on the website indicate the code is free and unrestricted:
 
   Free Source Code
-  Here are a few useful bits of free source code.
+  Here are a few useful bits of free source code. 
   You're completely free to use them for any purpose whatsoever.
-  All I ask is that if you find one to be particularly valuable,
-  then consider sending feedback. Please send bugs and suggestions too.
-  Enjoy
+  All I ask is that if you find one to be particularly valuable, 
+  then consider sending feedback. Please send bugs and suggestions too. 
+  Enjoy 
 
 The readme.txt file included with the R-tree source says
 
   LICENSE:
     Entirely free for all uses. Enjoy!
 
-The original authors are
+The original authors are 
 
 AUTHORS
  * 1983 Original algorithm and test code by Antonin Guttman and Michael Stonebraker, UC Berkely
@@ -23961,7 +23950,7 @@ the leaf iterator.  The rest of the changes are cosmetic.
 
 
 
-// Minimum and maximum number of elements
+// Minimum and maximum number of elements 
 // in ON_RTreeNode::m_branch[].
 // must have ON_RTree_MAX_NODE_COUNT > ON_RTree_MIN_NODE_COUNT
 #define ON_RTree_MIN_NODE_COUNT 2
@@ -23969,7 +23958,7 @@ the leaf iterator.  The rest of the changes are cosmetic.
 
 /*
 In a test of a sphere mesh with mesh: 8385 vertices, 8192 polygons
-and ON_RTree_MAX_NODE_COUNT = 3, 4, 5, and 6, the memory use was
+and ON_RTree_MAX_NODE_COUNT = 3, 4, 5, and 6, the memory use was 
 most efficient with ON_RTree_MAX_NODE_COUNT=6
 
 Memory Usage MAX_NODE_COUNT = 3
@@ -24045,7 +24034,7 @@ struct ON_RTreeNode
   // The m_branch[] array contains m_count elements
   // 0 <= m_count <= ON_RTree_MAX_NODE_COUNT
   // m_count must be a signed int to insure signed compares work correctly
-  int m_count;
+  int m_count; 
   ON_RTreeBranch m_branch[ON_RTree_MAX_NODE_COUNT];
 };
 
@@ -24090,7 +24079,7 @@ private:
     struct Blk* m_next;
   };
 
-  // linked list of unused ON_RTreeNode
+  // linked list of unused ON_RTreeNode 
   struct Blk* m_nodes;
   // linked list of unused ON_RTreeListNode
   struct Blk* m_list_nodes;
@@ -24110,7 +24099,7 @@ private:
 //
 // ON_RTreeIterator
 //
-//   The ON_RTreeIterator class can be used to iterate each leaf
+//   The ON_RTreeIterator class can be used to iterate each leaf 
 //   in an ON_RTree.
 //
 class ON_CLASS ON_RTreeIterator
@@ -24127,7 +24116,7 @@ public:
 
     There is no connection between the order elements are inserted
     in an R-tree and the order the elements are iterated by an
-    iterator.
+    iterator.    
   */
   ON_RTreeIterator();
   ON_RTreeIterator(const class ON_RTree& a_rtree);
@@ -24151,7 +24140,7 @@ public:
 
     There is no connection between the order elements are inserted
     in an R-tree and the order the elements are iterated by an
-    iterator.
+    iterator.    
   */
   bool Initialize(const class ON_RTree& a_rtree);
 
@@ -24172,7 +24161,7 @@ public:
 
     There is no connection between the order elements are inserted
     in an R-tree and the order the elements are iterated by an
-    iterator.
+    iterator.    
   */
   bool Initialize(const struct ON_RTreeNode* a_node);
 
@@ -24270,7 +24259,7 @@ public:
 
 private:
   enum { MAX_STACK = 32 }; //  Max stack size. Allows almost n^32 where n is number of branches in node
-
+  
   struct StackElement
   {
     const struct ON_RTreeNode* m_node;
@@ -24301,7 +24290,7 @@ public:
     True if successful.
   */
   bool CreateMeshFaceTree( const class ON_Mesh* mesh );
-
+  
   /*
   Description:
     Insert an element into the RTree.
@@ -24310,7 +24299,7 @@ public:
     a_max - [in]
       3d bounding box of the element.  The values in a_min[3] and a_max[3]
       must satisfy
-      a_min[0] <= a_max[0],
+      a_min[0] <= a_max[0], 
       a_min[1] <= a_max[1], and
       a_min[1] <= a_max[1].
     a_dataId - [in]
@@ -24319,13 +24308,13 @@ public:
     True if element was successfully inserted.
   Remarks:
     Calling Insert() or Remove() invalidates any ON_RTreeIterator
-    used to iterate this rtree.
+    used to iterate this rtree. 
   */
   bool Insert(const double a_min[3], const double a_max[3], void* a_element_id);
   bool Insert(const double a_min[3], const double a_max[3], int a_element_id);
   bool Insert2d(const double a_min[2], const double a_max[2], void* a_element_id);
   bool Insert2d(const double a_min[2], const double a_max[2], int a_element_id);
-
+  
   /*
   Description:
     Remove an element from the RTree.
@@ -24334,7 +24323,7 @@ public:
     a_max - [in]
       3d bounding box of the element.  The values in a_min[3] and a_max[3]
       must satisfy
-      a_min[0] <= a_max[0],
+      a_min[0] <= a_max[0], 
       a_min[1] <= a_max[1], and
       a_min[2] <= a_max[2].
     a_dataId - [in]
@@ -24343,13 +24332,13 @@ public:
     True if element was successfully removed.
   Remarks:
     Calling Insert() or Remove() invalidates any ON_RTreeIterator
-    used to iterate this rtree.
+    used to iterate this rtree. 
   */
   bool Remove(const double a_min[3], const double a_max[3], void* a_elementId);
   bool Remove(const double a_min[3], const double a_max[3], int a_elementId);
   bool Remove2d(const double a_min[2], const double a_max[2], void* a_elementId);
   bool Remove2d(const double a_min[2], const double a_max[2], int a_elementId);
-
+  
   /*
   Description:
     Remove all elements from the R-tree.
@@ -24400,21 +24389,21 @@ public:
     If you are using a Search() that uses a resultCallback() function,
     then return true to keep searching and false to terminate the search.
   */
-  bool Search(
+  bool Search( 
     ON_RTreeSphere* a_sphere,
-    bool ON_MSC_CDECL resultCallback(void* a_context, ON__INT_PTR a_id),
+    bool ON_MSC_CDECL resultCallback(void* a_context, ON__INT_PTR a_id), 
     void* a_context
     ) const;
 
-  bool Search(
+  bool Search( 
     ON_RTreeCapsule* a_capsule,
-    bool ON_MSC_CDECL resultCallback(void* a_context, ON__INT_PTR a_id),
+    bool ON_MSC_CDECL resultCallback(void* a_context, ON__INT_PTR a_id), 
     void* a_context
     ) const;
 
-  bool Search(
+  bool Search( 
     ON_RTreeBBox* a_rect,
-    bool ON_MSC_CDECL resultCallback(void* a_context, ON__INT_PTR a_id),
+    bool ON_MSC_CDECL resultCallback(void* a_context, ON__INT_PTR a_id), 
     void* a_context
     ) const;
 
@@ -24443,28 +24432,28 @@ public:
     const double a_plane_eqn[4],
     double a_min,
     double a_max,
-    bool ON_MSC_CDECL resultCallback(void* a_context, ON__INT_PTR a_id),
+    bool ON_MSC_CDECL resultCallback(void* a_context, ON__INT_PTR a_id), 
     void* a_context
     ) const;
 
   bool Search(const double a_min[3], const double a_max[3],
-    bool ON_MSC_CDECL resultCallback(void* a_context, ON__INT_PTR a_id), void* a_context
+    bool ON_MSC_CDECL resultCallback(void* a_context, ON__INT_PTR a_id), void* a_context 
     ) const;
 
 	bool Search(const double a_min[3], const double a_max[3],
-    ON_RTreeSearchResult& a_result
+    ON_RTreeSearchResult& a_result 
     ) const;
 
 	bool Search(const double a_min[3], const double a_max[3],
-    ON_SimpleArray<ON_RTreeLeaf>& a_result
+    ON_SimpleArray<ON_RTreeLeaf>& a_result 
     ) const;
 
   bool Search(const double a_min[3], const double a_max[3],
-    ON_SimpleArray<void*>& a_result
+    ON_SimpleArray<void*>& a_result 
     ) const;
 
   bool Search(const double a_min[3], const double a_max[3],
-    ON_SimpleArray<int>& a_result
+    ON_SimpleArray<int>& a_result 
     ) const;
 
   bool Search2d(const double a_min[2], const double a_max[2],
@@ -24494,16 +24483,16 @@ public:
     a_rtreeA - [in]
     a_rtreeB - [in]
     tolerance - [in]
-      If the distance between a pair of bounding boxes is <= tolerance,
+      If the distance between a pair of bounding boxes is <= tolerance, 
       then the pair is added to a_result[].
     a_result - [out]
       Pairs of ids of elements who bounding boxes overlap.
   Returns:
     True if entire tree was searched.  It is possible no results were found.
   */
-  static bool Search(
+  static bool Search( 
           const ON_RTree& a_rtreeA,
-          const ON_RTree& a_rtreeB,
+          const ON_RTree& a_rtreeB, 
           double tolerance,
           ON_SimpleArray<ON_2dex>& a_result
           );
@@ -24515,7 +24504,7 @@ public:
     a_rtreeA - [in]
     a_rtreeB - [in]
     tolerance - [in]
-      If the distance between a pair of bounding boxes is <= tolerance,
+      If the distance between a pair of bounding boxes is <= tolerance, 
       then resultCallback() is called.
     resultCallback - [out]
       callback function
@@ -24523,9 +24512,9 @@ public:
   Returns:
     True if entire tree was searched.  It is possible no results were found.
   */
-  static bool Search(
+  static bool Search( 
           const ON_RTree& a_rtreeA,
-          const ON_RTree& a_rtreeB,
+          const ON_RTree& a_rtreeB, 
           double tolerance,
           void ON_MSC_CDECL resultCallback(void* a_context, ON__INT_PTR a_idA, ON__INT_PTR a_idB),
           void* a_context
@@ -24538,7 +24527,7 @@ public:
     a_rtreeA - [in]
     a_rtreeB - [in]
     tolerance - [in]
-      If the distance between a pair of bounding boxes is <= tolerance,
+      If the distance between a pair of bounding boxes is <= tolerance, 
       then resultCallback() is called.
     resultCallback - [out]
       callback function
@@ -24547,9 +24536,9 @@ public:
   Returns:
     True if entire tree was searched.  It is possible no results were found.
   */
-  static bool Search(
+  static bool Search( 
           const ON_RTree& a_rtreeA,
-          const ON_RTree& a_rtreeB,
+          const ON_RTree& a_rtreeB, 
           double tolerance,
           bool ON_MSC_CDECL resultCallback(void* a_context, ON__INT_PTR a_idA, ON__INT_PTR a_idB),
           void* a_context
@@ -24558,7 +24547,7 @@ public:
   Returns:
     Number of elements (leaves).
   Remark:
-    No internal count is maintained, so this function traverses the
+    No internal count is maintained, so this function traverses the 
     tree to count the leaves.  If efficiency is important, save the
     result.
   */
@@ -24569,7 +24558,7 @@ public:
     Pointer to the root node.
   */
   const ON_RTreeNode* Root() const;
-
+  
   /*
   Returns:
     Bounding box of the entire R-tree;
@@ -24608,7 +24597,7 @@ private:
 // THIS SOFTWARE IS PROVIDED "AS IS" WITHOUT EXPRESS OR IMPLIED WARRANTY.
 // ALL IMPLIED WARRANTIES OF FITNESS FOR ANY PARTICULAR PURPOSE AND OF
 // MERCHANTABILITY ARE HEREBY DISCLAIMED.
-//
+//				
 // For complete openNURBS copyright information see <http://www.opennurbs.org>.
 //
 ////////////////////////////////////////////////////////////////
@@ -24620,9 +24609,9 @@ private:
 ///////////////////////////////////////////////////////////////////////////////
 //
 // Class ON_MappingChannel
-//
+// 
 // Description:
-//   ON_3dmObjectAttributes uses ON_MappingChannel to record
+//   ON_3dmObjectAttributes uses ON_MappingChannel to record 
 //   which texture mapping function to use when applying a texture
 //   with a matching mapping channel id.
 //   When an object is rendered, if the material has textures and
@@ -24658,7 +24647,7 @@ public:
   // are lost and need to be recalculated and m_object_xform
   // is not the identity, then m_object_xform should be passed
   // to ON_TextureMapping::Evaluate() as the mesh_xform parameter.
-  // When validating mapping coordinates, m_object_xform itself
+  // When validating mapping coordinates, m_object_xform itself 
   // be passed to HasMatchingTextureCoordinates() as the
   // object_transform parameter.
   ON_Xform m_object_xform;
@@ -24666,7 +24655,7 @@ public:
 
 #if defined(ON_DLL_TEMPLATE)
 // This stuff is here because of a limitation in the way Microsoft
-// handles templates and DLLs.  See Microsoft's knowledge base
+// handles templates and DLLs.  See Microsoft's knowledge base 
 // article ID Q168958 for details.
 #pragma warning( push )
 #pragma warning( disable : 4231 )
@@ -24677,13 +24666,13 @@ ON_DLL_TEMPLATE template class ON_CLASS ON_SimpleArray<ON_MappingChannel>;
 ///////////////////////////////////////////////////////////////////////////////
 //
 // Class ON_MaterialRef
-//
+// 
 // Description:
 //   ON_3dmObjectAttributes uses ON_MaterialRef to record which
-//   rendering material and mappings a rendering plug-in wants to
-//   use.  This allows different rendering plug-ins to have different
+//   rendering material and mappings a rendering plug-in wants to 
+//   use.  This allows different rendering plug-ins to have different 
 //   materials on the same object.  The values of
-//   ON_3dmObjectAttributes.m_material_index and
+//   ON_3dmObjectAttributes.m_material_index and 
 //   ON_3dmObjectAttributes.m_matrial_source reflect the settings
 //   of the renderer that is currently active.
 //
@@ -24713,11 +24702,11 @@ public:
     A pointer to the plug-in's mapping channel, if there
     is one. Otherwise NULL is returned.
   */
-  const ON_MappingChannel* MappingChannel(
+  const ON_MappingChannel* MappingChannel( 
     int mapping_channel_id
     ) const;
 
-  const ON_MappingChannel* MappingChannel(
+  const ON_MappingChannel* MappingChannel( 
     const ON_UUID& mapping_id
     ) const;
 
@@ -24729,7 +24718,7 @@ public:
       ON_TextureMapping id
   Returns:
     True if the mapping channel was added or a pefect
-    match already existed.  False if a mapping channel
+    match already existed.  False if a mapping channel 
     with a different mapping_id already exists for this
     plug-in and channel.
   */
@@ -24766,7 +24755,7 @@ public:
     int new_mapping_channel_id
     );
 
-  // Use AddMappingChannel() if you  want to add an
+  // Use AddMappingChannel() if you  want to add an 
   // element to this array.
   //
   // Every mapping channel in this array must have
@@ -24796,7 +24785,7 @@ public:
   ON_UUID m_plugin_id;   // Identifies a rendering plugin
 
   ON_UUID m_material_id; // Identifies an ON_Material
-
+  
   // If nil, then m_material_id is used for front and back faces
   ON_UUID m_material_backface_id; // Identifies an ON_Material
 
@@ -24819,7 +24808,7 @@ public:
 
 #if defined(ON_DLL_TEMPLATE)
 // This stuff is here because of a limitation in the way Microsoft
-// handles templates and DLLs.  See Microsoft's knowledge base
+// handles templates and DLLs.  See Microsoft's knowledge base 
 // article ID Q168958 for details.
 #pragma warning( push )
 #pragma warning( disable : 4231 )
@@ -24841,7 +24830,7 @@ ON_DLL_TEMPLATE template class ON_CLASS ON_ClassArray<ON_MappingRef>;
 // THIS SOFTWARE IS PROVIDED "AS IS" WITHOUT EXPRESS OR IMPLIED WARRANTY.
 // ALL IMPLIED WARRANTIES OF FITNESS FOR ANY PARTICULAR PURPOSE AND OF
 // MERCHANTABILITY ARE HEREBY DISCLAIMED.
-//
+//				
 // For complete openNURBS copyright information see <http://www.opennurbs.org>.
 //
 ////////////////////////////////////////////////////////////////
@@ -24898,8 +24887,8 @@ public:
     A pointer to the plug-in's mapping reference, if there
     is one. Otherwise NULL is returned.
   */
-  const ON_MappingRef* MappingRef(
-    const ON_UUID& plugin_id
+  const ON_MappingRef* MappingRef( 
+    const ON_UUID& plugin_id 
     ) const;
 
   /*
@@ -24909,8 +24898,8 @@ public:
     If a mapping ref exists, it is returned.  Otherwise
     one is added.
   */
-  ON_MappingRef* AddMappingRef(
-    const ON_UUID& plugin_id
+  ON_MappingRef* AddMappingRef( 
+    const ON_UUID& plugin_id 
     );
 
   /*
@@ -24920,8 +24909,8 @@ public:
     If a mapping ref exists, it is returned.  Otherwise
     one is added.
   */
-  bool DeleteMappingRef(
-    const ON_UUID& plugin_id
+  bool DeleteMappingRef( 
+    const ON_UUID& plugin_id 
     );
 
 
@@ -24935,13 +24924,13 @@ public:
     A pointer to the plug-in's mapping channel, if there
     is one. Otherwise NULL is returned.
   */
-  const ON_MappingChannel* MappingChannel(
-    const ON_UUID& plugin_id,
+  const ON_MappingChannel* MappingChannel( 
+    const ON_UUID& plugin_id, 
     int mapping_channel_id
     ) const;
 
-  const ON_MappingChannel* MappingChannel(
-    const ON_UUID& plugin_id,
+  const ON_MappingChannel* MappingChannel( 
+    const ON_UUID& plugin_id, 
     const ON_UUID& mapping_id
     ) const;
 
@@ -24954,12 +24943,12 @@ public:
       ON_TextureMapping id
   Returns:
     True if the mapping channel was added or a pefect
-    match already existed.  False if a mapping channel
+    match already existed.  False if a mapping channel 
     with a different mapping_id already exists for this
     plug-in and channel.
   */
   bool AddMappingChannel(
-    const ON_UUID& plugin_id,
+    const ON_UUID& plugin_id, 
     int mapping_channel_id,
     const ON_UUID& mapping_id
     );
@@ -24974,12 +24963,12 @@ public:
     True if a matching mapping channel was deleted.
   */
   bool DeleteMappingChannel(
-    const ON_UUID& plugin_id,
+    const ON_UUID& plugin_id, 
     int mapping_channel_id
     );
 
   bool DeleteMappingChannel(
-    const ON_UUID& plugin_id,
+    const ON_UUID& plugin_id, 
     const ON_UUID& mapping_id
     );
 
@@ -24992,12 +24981,12 @@ public:
     True if a matching mapping channel was found and changed.
   */
   bool ChangeMappingChannel(
-    const ON_UUID& plugin_id,
+    const ON_UUID& plugin_id, 
     int old_mapping_channel_id,
     int new_mapping_channel_id
     );
 
-  // Use AddMappingRef() or AddMappingChannel() if you
+  // Use AddMappingRef() or AddMappingChannel() if you 
   // want to add an element to this array.
   //
   // Every mapping ref in this array must have
@@ -25008,9 +24997,9 @@ public:
   Parameters:
     bEnable - [in]
       false - (default)
-       Do not generate bitmap textures that
+       Do not generate bitmap textures that 
        approximate procedural textures.
-      true -
+      true - 
        generate bitmap textures that approximate
        procedural textures and use these for
        quick previews.
@@ -25037,7 +25026,7 @@ private:
 
 #if defined(ON_DLL_TEMPLATE)
 // This stuff is here because of a limitation in the way Microsoft
-// handles templates and DLLs.  See Microsoft's knowledge base
+// handles templates and DLLs.  See Microsoft's knowledge base 
 // article ID Q168958 for details.
 #pragma warning( push )
 #pragma warning( disable : 4231 )
@@ -25059,7 +25048,7 @@ ON_DLL_TEMPLATE template class ON_CLASS ON_ClassArray<ON_ObjectRenderingAttribut
 // THIS SOFTWARE IS PROVIDED "AS IS" WITHOUT EXPRESS OR IMPLIED WARRANTY.
 // ALL IMPLIED WARRANTIES OF FITNESS FOR ANY PARTICULAR PURPOSE AND OF
 // MERCHANTABILITY ARE HEREBY DISCLAIMED.
-//
+//				
 // For complete openNURBS copyright information see <http://www.opennurbs.org>.
 //
 ////////////////////////////////////////////////////////////////
@@ -25078,7 +25067,7 @@ public:
     filename - [in]
     mode - [in]
   Remarks:
-    Use the ON_FileStream static functions for reading, writing,
+    Use the ON_FileStream static functions for reading, writing, 
     seeking, position finding with the FILE pointer returned
     by this function.
   */
@@ -25091,12 +25080,12 @@ public:
     filename - [in]
     mode - [in]
   Remarks:
-    Use the ON_FileStream static functions for reading, writing,
+    Use the ON_FileStream static functions for reading, writing, 
     seeking, position finding with the FILE pointer returned
     by this function.
   */
   static FILE* Open( const char* filename, const char* mode );
-
+  
   /*
   Description:
     Portable wrapper for C runtime fclose().
@@ -25160,7 +25149,7 @@ public:
       FILE pointer returned by ON_FileStream::Open().
     offset - [in]
     origin - [in]
-      SEEK_SET (0): seek from beginning of file.
+      SEEK_SET (0): seek from beginning of file.  
       SEEK_CUR (1): seek from current position of file pointer.
       SEEK_END (2): seek from end of file.
   */
@@ -25217,7 +25206,7 @@ public:
       If file_size is not null, the the size of the file
       in bytes returned here
     file_creation_time - [out]
-      If file_creation_time is not null, then the time the file
+      If file_creation_time is not null, then the time the file 
       was created is returned here as the number of seconds since
       midnight January 1, 1970.
     file_last_modified_time - [out]
@@ -25227,7 +25216,7 @@ public:
   Returns:
     true if the query was successful.  False if an error occured.
   */
-  static bool GetFileInformation(
+  static bool GetFileInformation( 
     FILE* fp,
     ON__UINT64* file_size,
     ON__UINT64* file_create_time,
@@ -25251,7 +25240,7 @@ public:
     file_name_filter - [in]
       If this paramter is null, then the iteration
       includes all names in the directory.
-      The file name to search for. This parameter can
+      The file name to search for. This parameter can 
       include wildcard characters, such as an
       asterisk (*) or a question mark (?). For example,
       "\rootdir\subdir\*.*"  will iterate all files in
@@ -25286,13 +25275,13 @@ public:
   Returns:
     NULL if no matching files are present in the directory.
   */
-  const wchar_t* FirstFile(
-    const wchar_t* directory_name,
+  const wchar_t* FirstFile( 
+    const wchar_t* directory_name, 
     const wchar_t* file_name_filter
     );
 
-  const wchar_t* FirstFile(
-    const char* directory_name,
+  const wchar_t* FirstFile( 
+    const char* directory_name, 
     const char* file_name_filter
     );
 
@@ -25309,13 +25298,13 @@ public:
   ON__UINT64 CurrentFileSize() const;
 
   /*
-  Returns
+  Returns 
     true if the current "file" is a directory.
   */
   bool CurrentFileIsDirectory() const;
 
   /*
-  Returns
+  Returns 
     true if the current file or directory is hidden.
     This means its name begins with a '.' or it's
     Windows hidden attribute is true.
@@ -25377,7 +25366,7 @@ private:
 
 /////////////////////////////////////////////////////////////////////
 //
-// ON_Buffer
+// ON_Buffer 
 //
 
 typedef void (*ON_Buffer_ErrorHandler)(class ON_Buffer*);
@@ -25432,7 +25421,7 @@ public:
   Returns:
     32-bit CRC of the buffer contents.
   Remarks:
-
+    
   */
   ON__UINT32 CRC32( ON__UINT32 current_remainder ) const;
 
@@ -25447,7 +25436,7 @@ public:
     Size().
   */
   ON__UINT64 CurrentPosition() const;
-
+  
   /*
   Parameters:
     size - [in]
@@ -25466,15 +25455,15 @@ public:
     buffer - [out]
       read values are returned in buffer.
   Returns:
-    Number of bytes read into buffer. For example,
-    if CurrentPosition() <= Size() and
+    Number of bytes read into buffer. For example, 
+    if CurrentPosition() <= Size() and 
     size > (Size() - CurrentPosition()) and
     buffer is not null, then the value
     (Size() - CurrentPosition()) is returned.
   Remarks:
     If the size parameter is zero, then nothing is done.
-    When CurrentPosition() <= Size(), attempts to read more
-    than (Size() - CurrentPosition()) bytes do not generate
+    When CurrentPosition() <= Size(), attempts to read more 
+    than (Size() - CurrentPosition()) bytes do not generate 
     an error. When CurrentPosition() > Size(), any attempt
     to read generates an error.
   */
@@ -25505,9 +25494,9 @@ public:
     Seeking beyond the end of the buffer is succeeds.
     Seeking before the beginning of the buffer fails.
   */
-  bool Seek(
-    ON__INT64 offset,
-    int origin
+  bool Seek( 
+    ON__INT64 offset, 
+    int origin 
     );
 
   /*
@@ -25523,7 +25512,7 @@ public:
     Seeking beyond the end of the buffer is succeeds.
     Seeking before the beginning of the buffer fails.
   */
-  bool SeekFromStart( ON__INT64 offset );
+  bool SeekFromStart( ON__INT64 offset ); 
 
   /*
   Parameters:
@@ -25538,7 +25527,7 @@ public:
     Seeking beyond the end of the buffer is succeeds.
     Seeking before the beginning of the buffer fails.
   */
-  bool SeekFromCurrentPosition( ON__INT64 offset );
+  bool SeekFromCurrentPosition( ON__INT64 offset ); 
 
   /*
   Parameters:
@@ -25553,14 +25542,14 @@ public:
     Seeking beyond the end of the buffer is succeeds.
     Seeking before the beginning of the buffer fails.
   */
-  bool SeekFromEnd( ON__INT64 offset );
+  bool SeekFromEnd( ON__INT64 offset ); 
 
   /*
   Parameters:
     buffer_size - [in]
       new size of buffer.
   Returns:
-    True if successful.
+    True if successful.    
   Remarks:
     The current position is not changed and may be beyond the
     end of the file. Use Seek to set the current position after
@@ -25594,11 +25583,11 @@ public:
     1: attempt to seek to a negative position
   */
   ON__UINT32 LastError() const;
-
+  
   void ClearLastError();
 
   ON_Buffer_ErrorHandler ErrorHandler() const;
-
+  
   void SetErrorHandler(ON_Buffer_ErrorHandler error_handler);
 
   /*
@@ -25623,7 +25612,7 @@ public:
   Parameters:
     compressed_buffer - [out]
       (The reference can be *this)
-
+  
   Example:
 
         // compress a buffer in place
@@ -25691,7 +25680,7 @@ private:
 
 /////////////////////////////////////////////////////////////////////
 //
-// ON_BinaryArchive
+// ON_BinaryArchive 
 //      virtual class for CPU independent serialization
 //
 // ON_BinaryFile
@@ -25750,11 +25739,9 @@ struct ON_3DM_BIG_CHUNK
 
 bool ON_IsLongChunkTypecode(ON__UINT32 typecode);
 
-bool ON_IsShortChunkTypecode(ON__UINT32 typecode);
-
 #if defined(ON_DLL_TEMPLATE)
 // This stuff is here because of a limitation in the way Microsoft
-// handles templates and DLLs.  See Microsoft's knowledge base
+// handles templates and DLLs.  See Microsoft's knowledge base 
 // article ID Q168958 for details.
 #pragma warning( push )
 #pragma warning( disable : 4231 )
@@ -25776,7 +25763,7 @@ class ON_3dmGoo;
 class ON_BinaryArchive;
 
 // Used int ON_3dmProperties::Read() to set ON_BinaryArchive.m_3dm_opennurbs_version
-// Do not call directly.
+// Do not call directly. 
 void ON_SetBinaryArchiveOpenNURBSVersion(ON_BinaryArchive&,int);
 
 class ON_CLASS ON_BinaryArchive // use for generic serialization of binary data
@@ -25785,18 +25772,18 @@ public:
   ON_BinaryArchive( ON::archive_mode );
   virtual ~ON_BinaryArchive();
 
-  virtual
+  virtual 
   size_t CurrentPosition( // current offset (in bytes) into archive ( like ftell() )
-                ) const = 0;
-  virtual
+                ) const = 0; 
+  virtual 
   bool SeekFromCurrentPosition( // seek from current position ( like fseek( ,SEEK_CUR) )
                 int // byte offset ( >= -CurrentPostion() )
-                ) = 0;
-  virtual
+                ) = 0; 
+  virtual 
   bool SeekFromStart(  // seek from current position ( like fseek( ,SEEK_SET) )
                 size_t // byte offset ( >= 0 )
                 ) = 0;
-  virtual
+  virtual 
   bool AtEnd() const = 0; // true if at end of file
 
   bool BigSeekFromStart( ON__UINT64 offset );
@@ -25829,7 +25816,7 @@ public:
 
   bool ReadMode() const;  // true if reading is permitted
   bool WriteMode() const; // true if writing is permitted
-
+  
   /*
   Returns:
      Endian-ness of the cpu reading this file.
@@ -25838,7 +25825,7 @@ public:
   */
   ON::endian Endian() const; // endian-ness of cpu
 
-  int BadCRCCount() const; // number of chunks read with bad CRC
+  int BadCRCCount() const; // number of chunks read with bad CRC 
 
   bool ReadByte( size_t, void* ); // must fail if mode is not read or readwrite
 
@@ -25872,7 +25859,7 @@ public:
 
   // ReadCompressedBuffer()/WriteCompressedBuffer() use zlib 1.1.3
   // to inflate/deflate the data buffer.
-  // Care must be used to get an endian independent file.
+  // Care must be used to get an endian independent file.  
   // See ON_Mesh::Read()/ON_Mesh::Write() for an example of an endian
   // independent use of compression. See also ToggleByteOrder() and Endian().
   //
@@ -25942,84 +25929,84 @@ public:
 
 	bool ReadChar(    // Read an array of 8 bit chars
 			size_t,       // number of chars to read
-			char*
-			);
+			char*    
+			);  
 	bool ReadChar(    // Read an array of 8 bit unsigned chars
 			size_t,       // number of unsigned chars to read
-			unsigned char*
-			);
+			unsigned char*    
+			);  
 	bool ReadChar(    // Read a single 8 bit char
-			char*
-			);
+			char*    
+			);  
 	bool ReadChar(    // Read a single 8 bit unsigned char
-			unsigned char*
-			);
+			unsigned char*    
+			);  
 
 	bool ReadShort(   // Read an array of 16 bit shorts
 			size_t,       // number of shorts to read
-			short*
-			);
+			short*    
+			);  
 	bool ReadShort(   // Read an array of 16 bit unsigned shorts
 			size_t,       // number of shorts to read
-			unsigned short*
-			);
+			unsigned short*    
+			);  
 	bool ReadShort(   // Read a single 16 bit short
-			short*
-			);
+			short*    
+			);  
 	bool ReadShort(   // Read a single 16 bit unsigned short
-			unsigned short*
-			);
+			unsigned short*    
+			);  
 
 	bool ReadInt( // Read an array of 32 bit integers
 			size_t,	      // number of ints to read
-			int*
-			);
+			int*      
+			); 
 	bool ReadInt( // Read an array of 32 bit integers
 			size_t,	      // number of ints to read
-			unsigned int*
-			);
+			unsigned int*      
+			); 
 	bool ReadInt( // Read a single 32 bit integer
-			int*
-			);
+			int*      
+			); 
 	bool ReadInt( // Read a single 32 bit unsigned integer
-			unsigned int*
-			);
+			unsigned int*      
+			); 
 
 	bool ReadBigInt( // Read an array of 64 bit integers
 			size_t,	      // number of ints to read
-			ON__INT64*
-			);
+			ON__INT64*      
+			); 
 	bool ReadBigInt( // Read an array of 64 bit integers
 			size_t,	      // number of ints to read
-			ON__UINT64*
-			);
+			ON__UINT64*      
+			); 
 	bool ReadBigInt( // Read a single 64 bit integer
-			ON__INT64*
-			);
+			ON__INT64*      
+			); 
 	bool ReadBigInt( // Read a single 64 bit unsigned integer
-			ON__UINT64*
-			);
+			ON__UINT64*      
+			); 
 
 	bool ReadLong( // Read an array of 32 bit integers
 			size_t,	      // number of ints to read
-			long*
-			);
+			long*      
+			); 
 	bool ReadLong( // Read an array of 32 bit integers
 			size_t,	      // number of ints to read
-			unsigned long*
-			);
+			unsigned long*      
+			); 
 	bool ReadLong( // Read a single 32 bit integer
-			long*
-			);
+			long*      
+			); 
 	bool ReadLong( // Read a single 32 bit unsigned integer
-			unsigned long*
-			);
+			unsigned long*      
+			); 
 	bool ReadSize( // Read a single size_t
 			size_t*
-			);
+			); 
 
   bool ReadBigSize( size_t* ); // 64 bits
-
+  
   bool ReadBigTime( time_t* ); // UCT seconds since 1 January 1970 (64 bits)
 
 
@@ -26155,7 +26142,7 @@ public:
       Pass in an array with at least str_array_count elements.
       If true is returned and str_array_count > 0,
       then str_array[str_array_count-1] = 0. All strings with
-      unsigned char elements written by Rhino are UTF-8 encoded
+      unsigned char elements written by Rhino are UTF-8 encoded 
       unicode strings.
   */
   bool ReadString(
@@ -26167,7 +26154,7 @@ public:
   Parameters:
     str_array_count - [in]
       Number of unsigned short elements in str_array[],
-      including the null terminator. The value of
+      including the null terminator. The value of 
       str_array_count is returned by ReadWideCharStringElementCount().
     str_array - [in/out]
       Pass in an array with at least str_array_count elements.
@@ -26211,7 +26198,7 @@ public:
   bool ReadArray( ON_ClassArray<ON_String>& );
   bool ReadArray( ON_ClassArray<ON_wString>& );
   bool ReadArray( ON_SimpleArray<ON_DisplayMaterialRef>& );
-  bool ReadArray( ON_SimpleArray<ON_LinetypeSegment>& );
+  bool ReadArray( ON_SimpleArray<ON_LinetypeSegment>& );  
   bool ReadArray( ON_SimpleArray<ON_MappingChannel>& );
   bool ReadArray( ON_ClassArray<ON_MaterialRef>& );
   bool ReadArray( ON_ClassArray<ON_MappingRef>& );
@@ -26225,77 +26212,78 @@ public:
 
   bool WriteChar(    // Write an array of 8 bit chars
 			size_t,       // number of chars to write
-			const char*
-			);
+			const char*    
+			);  
 	bool WriteChar(    // Write an array of 8 bit unsigned chars
 			size_t,       // number of unsigned chars to write
-			const unsigned char*
-			);
+			const unsigned char*    
+			);  
 	bool WriteChar(    // Write a single 8 bit char
 			char
-			);
+			);  
+
 	bool WriteShort(   // Write an array of 16 bit shorts
 			size_t,       // number of shorts to write
-			const short*
-			);
+			const short*    
+			);  
 	bool WriteShort(   // Write an array of 16 bit unsigned shorts
 			size_t,       // number of shorts to write
-			const unsigned short*
-			);
+			const unsigned short*    
+			);  
 	bool WriteShort(   // Write a single 16 bit short
 			short
-			);
+			);  
 
 	bool WriteInt( // Write an array of 32 bit integers
 			size_t,	      // number of ints to write
-			const int*
-			);
+			const int*      
+			); 
 	bool WriteInt( // Write an array of 32 bit integers
 			size_t,	      // number of ints to write
-			const unsigned int*
-			);
+			const unsigned int*      
+			); 
 	bool WriteInt( // Write a single 32 bit integer
-			int
-			);
+			int    
+			); 
 	bool WriteInt( // Write a single 32 bit unsigned integer
 			unsigned int
-			);
+			); 
 
 	bool WriteBigInt( // Write an array of 64 bit integers
 			size_t,	      // number of ints to write
-			const ON__INT64*
-			);
+			const ON__INT64*      
+			); 
 	bool WriteBigInt( // Write an array of 64 bit integers
 			size_t,	      // number of ints to write
-			const ON__UINT64*
-			);
+			const ON__UINT64*      
+			); 
 	bool WriteBigInt( // Write a single 64 bit integer
-			ON__INT64
-			);
+			ON__INT64    
+			); 
 	bool WriteBigInt( // Write a single 64 bit unsigned integer
 			ON__UINT64
-			);
+			); 
 
 	bool WriteLong( // Write an array of 32 bit integers
 			size_t,	      // number of ints to write
-			const long*
-			);
+			const long*      
+			); 
 	bool WriteLong( // Write an array of 32 bit integers
 			size_t,	      // number of ints to write
-			const unsigned long*
-			);
+			const unsigned long*      
+			); 
 	bool WriteLong( // Write a single 32 bit integer
-			long
-			);
+			long    
+			); 
 	bool WriteLong( // Write a single 32 bit unsigned integer
 			unsigned long
-			);
+			); 
 	bool WriteSize( // Write a single size_t
 			size_t
-			);
+			); 
 
-  bool WriteBigSize( size_t ); // 64 bits
-
+  bool WriteBigSize( size_t ); // 64 bits 
+  
   bool WriteBigTime( time_t ); // UCT seconds since 1 January 1970 (64 bits)
 
 	bool WriteFloat(   // Write a number of IEEE floats
@@ -26368,7 +26356,7 @@ public:
     call ReadStringUTF8ElementCount(&string_utf8_element_count)
     to get the number of char elements written in the file,
     obtain a buffer with at least string_utf8_element_count
-    char elements and then call
+    char elements and then call 
     ReadString(string_utf8_element_count,buffer) to read the
     char elements.
 
@@ -26378,7 +26366,7 @@ public:
     followed by the null terminator.
   */
   bool WriteString(
-      const char* sUTF8
+      const char* sUTF8         
       );
 
   /*
@@ -26390,8 +26378,8 @@ public:
     call ReadStringUTF8ElementCount(&string_utf8_element_count) to
     get the number of unsigned char elements written in the file,
     obtain a buffer with at least string_utf8_element_count
-    unsigned char elements and then call
-    ReadString(string_utf8_element_count,buffer) to read the
+    unsigned char elements and then call 
+    ReadString(string_utf8_element_count,buffer) to read the 
     unsigned charelements.
 
     If 0 == sUTF8 or 0 == SUTF8[0], a 4 byte int with
@@ -26412,7 +26400,7 @@ public:
     call ReadStringUTF16ElementCount(&string_utf16_element_count) to
     get the number of unsigned short elements written in the file,
     obtain a buffer with at least string_utf16_element_count
-    unsigned short elements and then call
+    unsigned short elements and then call 
     ReadString(string_utf16_element_count,buffer) to read the
     unsigned short elements.
 
@@ -26424,7 +26412,7 @@ public:
   bool WriteString(
       const unsigned short* sUTF16
       );
-
+  
   bool WriteString( const ON_String& sUTF8 );
 
   bool WriteString( const ON_wString& s);
@@ -26458,7 +26446,7 @@ public:
   bool WriteArray( const ON_ClassArray<ON_String>& );
   bool WriteArray( const ON_ClassArray<ON_wString>& );
   bool WriteArray( const ON_SimpleArray<ON_DisplayMaterialRef>& );
-  bool WriteArray( const ON_SimpleArray<ON_LinetypeSegment>& );
+  bool WriteArray( const ON_SimpleArray<ON_LinetypeSegment>& );  
   bool WriteArray( const ON_SimpleArray<ON_MappingChannel>& );
   bool WriteArray( const ON_ClassArray<ON_MaterialRef>& );
   bool WriteArray( const ON_ClassArray<ON_MappingRef>& );
@@ -26486,7 +26474,7 @@ public:
        this could happen in cases where old code is attempting to read
        new objects.
   */
-  int ReadObject(
+  int ReadObject( 
          ON_Object** ppObject
          );
 
@@ -26504,7 +26492,7 @@ public:
     2: unable to read object because the class id in the archive
        did not match pObject->ClassId.
   */
-  int ReadObject(
+  int ReadObject( 
          ON_Object& object
          );
 
@@ -26525,17 +26513,17 @@ public:
 
   bool EnableSave3dmAnalysisMeshes( ON_BOOL32 = true ); // returns previous state
   bool Save3dmAnalysisMeshes() const;
-
+  
   bool EnableSaveUserData( ON_BOOL32 = true ); // returns previous state
   bool SaveUserData() const;
-
+  
   /*
   Returns:
     50 (The Rhino 5.0 opennurbs file version.)
     This is the value of version to pass to ON_BinaryArchive
-    functions like Write3dmStartSection() when you want to use the
+    functions like Write3dmStartSection() when you want to use the 
     the current opennurbs version number and you do not want to have
-    to update your code when this version number changes.
+    to update your code when this version number changes.    
   */
   static int CurrentArchiveVersion();
 
@@ -26547,22 +26535,22 @@ public:
   Parameters:
     version - [in]
        0, 2, 3, 4, 5 or 50 (5 is treated as 50)
-
+       
        If version is 0, then the value of ON_BinaryArchive::CurrentArchiveVersion()
        is used.
 
        Use either 0 or the value of ON_BinaryArchive::CurrentArchiveVersion()
-       for the version parameter when you want your code to write the most
-       up to date file version.
+       for the version parameter when you want your code to write the most 
+       up to date file version. 
 
     sStartSectionComment - [in]
       NULL or ASCII string with application name, et cetera.
       This information is primarily used when debugging files
       that contain problems.  McNeel and Associates stores
-      application name, application version, compile date,
+      application name, application version, compile date, 
       and the OS in use when file was written.
   */
-  bool Write3dmStartSection(
+  bool Write3dmStartSection( 
         int version,
         const char* sStartSectionComment
         );
@@ -26574,7 +26562,7 @@ public:
     sStartSectionComment - [out]
       string passed to Write3dmStartSection()
   */
-  bool Read3dmStartSection(
+  bool Read3dmStartSection( 
         int* version,
         ON_String& sStartSectionComment
         );
@@ -26675,13 +26663,13 @@ public:
   // Description:
   //   Reads groups from group table.  If the group definition is
   //   read, a group is created by calling new ON_Group(),
-  //   initialized with values stored in the archive, and
+  //   initialized with values stored in the archive, and 
   //   returned.
   //
   // Parameters:
   //   ppGroup - If the group definition is
   //   read, a group is created by calling new ON_Group(),
-  //   initialized with values stored in the archive, and
+  //   initialized with values stored in the archive, and 
   //   a pointer to the new group is returned in *ppGroup.
   //
   // Returns:
@@ -26706,7 +26694,7 @@ public:
   //               do something with pGroup
   //           } //
   //           archive.EndRead3dmGroupTable();
-  //
+  //      
   int  Read3dmGroup(
             ON_Group** // ppGroup
             );
@@ -26726,13 +26714,13 @@ public:
   // Description:
   //   Reads fonts from font table.  If the font definition is
   //   read, a font is created by calling new ON_Font(),
-  //   initialized with values stored in the archive, and
+  //   initialized with values stored in the archive, and 
   //   returned.
   //
   // Parameters:
   //   ppFont - If the font definition is
   //   read, a font is created by calling new ON_Font(),
-  //   initialized with values stored in the archive, and
+  //   initialized with values stored in the archive, and 
   //   a pointer to the new font is returned in *ppFont.
   //
   // Returns:
@@ -26757,7 +26745,7 @@ public:
   //               do something with pFont
   //           } //
   //           archive.EndRead3dmFontTable();
-  //
+  //      
   int Read3dmFont(
             ON_Font** // ppFont
             );
@@ -26776,15 +26764,15 @@ public:
 
   // Description:
   //   Reads annotation dimension styles from dimension style table.
-  //   If the dimension style definition is read,
+  //   If the dimension style definition is read, 
   //   a dimension style is created by calling new ON_DimStyle(),
-  //   initialized with values stored in the archive, and
+  //   initialized with values stored in the archive, and 
   //   returned.
   //
   // Parameters:
   //   ppDimStyle - If the dimstyle definition is
   //   read, a dimstyle is created by calling new ON_DimStyle(),
-  //   initialized with values stored in the archive, and
+  //   initialized with values stored in the archive, and 
   //   a pointer to the new dimstyle is returned in *ppDimStyle.
   //
   // Returns:
@@ -26809,7 +26797,7 @@ public:
   //               do something with pDimStyle
   //           } //
   //           archive.EndRead3dmDimStyleTable();
-  //
+  //      
   int Read3dmDimStyle(
             ON_DimStyle** // ppDimStyle
             );
@@ -26860,37 +26848,37 @@ public:
   /*
    Description:
      Reads instance definitions from instance defintion table.
-
+  
    Parameters:
      ppInstanceDefinition - If an instance defintion is
-     read, an instance defintion is created by calling new
+     read, an instance defintion is created by calling new 
      ON_InstanceDefinition(), initialized with values stored
      in the archive, and a pointer to the new instance defintion
      is returned in *ppInstanceDefinition.
-
+  
    Returns:
-
+  
      @untitled table
      0     at the end of the instance defintion table
      1     instance defintion was successfully read
      -1    archive is corrupt at this point
-
+  
    Example:
      Calls to Read3dmInstanceDefinition need to be bracketed by calls
      to BeginRead3dmInstanceDefinitionTable() / EndRead3dmInstanceDefinitionTable().
-
+  
              archive.BeginRead3dmInstanceDefinitionTable();
              int rc = 1;
              ON_InstanceDefinition* pInstanceDefinition;
              while(rc==1)
-             {
+             { 
                pInstanceDefinition = 0;
                archive.Read3dmInstanceDefinition(&pInstanceDefinition);
                if ( pInstanceDefinition )
                  do something with pInstanceDefinition
-             }
+             } 
              archive.EndRead3dmInstanceDefinitionTable();
-  */
+  */      
   int Read3dmInstanceDefinition(
             ON_InstanceDefinition** // ppInstanceDefinition
             );
@@ -26901,7 +26889,7 @@ public:
   // Step 15: REQUIRED - Write/Read geometry and annotation table (it can be empty)
   //
   bool BeginWrite3dmObjectTable();
-  bool Write3dmObject(
+  bool Write3dmObject( 
          const ON_Object&,
          const ON_3dmObjectAttributes* // optional
          );
@@ -26923,7 +26911,7 @@ public:
   // Step 16: REQUIRED - Write/Read history record table (it can be empty)
   //
   bool BeginWrite3dmHistoryRecordTable();
-  bool Write3dmHistoryRecord(
+  bool Write3dmHistoryRecord( 
          const class ON_HistoryRecord&
          );
   bool EndWrite3dmHistoryRecordTable();
@@ -26962,14 +26950,14 @@ public:
     goo_3dm_version - [in]
       If bSavingGoo is false, this parameter must be zero and
       ON_BinaryArchive::Archive3dmVersion() will be used.
-      If bSavingGoo is true, this parameter must be the version of
-      the 3dm archive (1,2,3,4,5,50,...) the plug-in code used to
+      If bSavingGoo is true, this parameter must be the version of 
+      the 3dm archive (1,2,3,4,5,50,...) the plug-in code used to 
       write the user table.
     goo_opennurbs_version - [in]
       If bSavingGoo is false, this parameter must be zero and
       ON_BinaryArchive::ArchiveOpenNURBSVersion() will be used.
       If bSavingGoo is true, this parameter must be the version
-      of the opennurbs (YYYYMMDDN) the plug-in code used to
+      of the opennurbs (YYYYMMDDN) the plug-in code used to 
       write the user table.
   Returns:
     True if the the user information can be written.
@@ -26986,7 +26974,7 @@ public:
 
   /*
   Description:
-    If Read3dmAnaonymousUserTable() was used to read ON_3dmGoo because a
+    If Read3dmAnaonymousUserTable() was used to read ON_3dmGoo because a 
     plug-in was not present, then use Write3dmAnonymousUserTableRecord()
     to put than information back into the archive.
     Write3dmAnonymousUserTableRecord() writes the entire record.
@@ -26998,14 +26986,14 @@ public:
       The version of the archive (1,2,3,4,5,50,...) that was used when
       the plug-in wrote the user table.
     goo_opennurbs_version - [in]
-      The version of opennurbs ( YYYMMDDN ) that was used when the
+      The version of opennurbs ( YYYMMDDN ) that was used when the 
       plug-in wrote the user table.
     goo - [in]
   Returns:
     True if the goo was written or skipped because it could not be robustly
     saved.  False if a catastrophic IO error occured.
   */
-  bool Write3dmAnonymousUserTableRecord(
+  bool Write3dmAnonymousUserTableRecord( 
     const ON_UUID& plugin_id,
     int goo_3dm_version,
     int goo_opennurbs_version,
@@ -27020,18 +27008,18 @@ public:
 
   /*
   Parameters:
-    plugin_id - [out]
+    plugin_id - [out] 
       id of plug-in that wrote the user table
-    bLastSavedAsGoo - [out]
+    bLastSavedAsGoo - [out] 
       True if this table was saved into this archive as goo because
       the plug-in was not present at the time of the save.
     archive_3dm_version - [out]
       Version of the archive the plug-in wrote to.  When bLastSavedAsGoo
       is true, this number can be different from Archive3dmVersion().
     archive_opennurbs_version - [out]
-      Version of opennurbs the plug-in used to write the archive.
-      When bLastSavedAsGoo is true, this number can be different
-      from ArchiveOpenNURBSVersion().
+      Version of opennurbs the plug-in used to write the archive.  
+      When bLastSavedAsGoo is true, this number can be different 
+      from ArchiveOpenNURBSVersion().     
   Returns:
     False when there are no more user tables or an IO error occurs.
   */
@@ -27050,7 +27038,7 @@ public:
     If you do not need to resave the information, then simply call EndRead3dmUserTable()
     to skip over this table.
   */
-  bool Read3dmAnonymousUserTable(
+  bool Read3dmAnonymousUserTable( 
     int archive_3dm_version,
     int archive_opennurbs_version,
     ON_3dmGoo& goo
@@ -27097,7 +27085,7 @@ public:
   // Returns:
   //   true if successful, false if unable to find or read
   //   a TCODE_ENDOFFILE chunk.
-  bool Read3dmEndMark(
+  bool Read3dmEndMark( 
            size_t* // sizeof_archive
            );
 
@@ -27173,8 +27161,8 @@ public:
     Begins reading a chunk that must be in the archive at this location.
   Parameters:
     expected_tcode - [in] chunk's typecode from opennurbs_3dm.h
-    major_version - [out]
-    minor_version - [out]
+    major_version - [out] 
+    minor_version - [out] 
   Returns:
     True if beginning of the chunk was read.  In this case
     You must call EndRead3dmChunk(), even if something goes wrong
@@ -27196,8 +27184,8 @@ public:
       read.  If bSupressPartiallyReadChunkWarning is true, then
       no warning is issued for partially read chunks.
   */
-  bool EndRead3dmChunk();
-  bool EndRead3dmChunk(bool bSupressPartiallyReadChunkWarning);
+  bool EndRead3dmChunk(); 
+  bool EndRead3dmChunk(bool bSupressPartiallyReadChunkWarning); 
 
 
   ///////////////////////////////////////////////////////////////////
@@ -27219,7 +27207,7 @@ public:
     a TCODE_DICTIONARY_ID chunk containing the id, version and name.
     After calling this function, you may either write entries by
     calling
-      BeginWriteDictionaryEntry();
+      BeginWriteDictionaryEntry(); 
       write entry definition...
       EndWriteDictionaryEntry();
     or you may finish writing the dictionay by calling
@@ -27237,10 +27225,10 @@ public:
     de_type - [in]
     entry_name - [in]
   Returns:
-    true
+    true 
       Entry header was written and you must call EndWriteDictionary()
       after writing the entry data.
-    false
+    false 
       Failed to write entry header.  Do not call EndWriteDictionary().
   Remarks:
     Begins a new chunk with tcode TCODE_DICTIONARY_ENTRY,
@@ -27255,17 +27243,17 @@ public:
     de_type - [in]
     entry_name - [in]
   Returns:
-    true
+    true 
       Entry header was written and you must call EndWriteDictionary()
       after writing the entry data.
-    false
+    false 
       Failed to write entry header.  Do not call EndWriteDictionary().
   Remarks:
     Begins a new chunk with tcode TCODE_DICTIONARY_ENTRY,
     then writes the int, and then writes the string.
   */
   bool BeginWriteDictionaryEntry(
-          int de_type,
+          int de_type, 
           const wchar_t* entry_name
           );
   bool EndWriteDictionaryEntry();
@@ -27290,7 +27278,7 @@ public:
     2: at end of dictionary
   */
   int BeginReadDictionaryEntry(
-          int* de_type,
+          int* de_type, 
           ON_wString& entry_name
           );
   bool EndReadDictionaryEntry();
@@ -27308,15 +27296,15 @@ public:
         ON__INT64* big_value
         );
 
-  bool Seek3dmChunkFromStart(
+  bool Seek3dmChunkFromStart( 
         // beginning at the start of the active chunk, search portion of
-        // archive included in active chunk for the start of a subchunk
+        // archive included in active chunk for the start of a subchunk 
         // with the specified type.
         // if true is returned, then the position is set so the next call to
         // BeginRead3dmChunk() will read a chunk with the specified typecode
         unsigned int    // typecode from opennurbs_3dm.h
         );
-  bool Seek3dmChunkFromCurrentPosition(
+  bool Seek3dmChunkFromCurrentPosition( 
         // beginning at the current position, search portion of archive
         // included in active chunk for the start of a subchunk with the
         // specified type.
@@ -27325,10 +27313,10 @@ public:
         unsigned int    // typecode from opennurbs_3dm.h
         );
 
-  // A chunk version is a single byte that encodes a major.minor
+  // A chunk version is a single byte that encodes a major.minor 
   // version number.  Useful when creating I/O code for 3dm chunks
-  // that may change in the future.  Increment the minor version
-  // number if new information is added to the end of the chunk.
+  // that may change in the future.  Increment the minor version 
+  // number if new information is added to the end of the chunk. 
   // Increment the major version if the format of the chunk changes
   // in some other way.
   bool Write3dmChunkVersion(
@@ -27342,7 +27330,7 @@ public:
 
   /*
   Description:
-    Low level tool to writes user data attached to the
+    Low level tool to writes user data attached to the 
     object.  This function should never be called
     directly.
   Parameters:
@@ -27410,7 +27398,7 @@ public:
     supports Windows linking/embedding, the first 5kb to 1mb
     of the file contains information that is put there by MFC.
     ArchiveStartOffset() returns the offset into the file where
-    the 3dm archive actually begins. The call to
+    the 3dm archive actually begins. The call to 
     ON_BinaryArchive::Read3dmStartSection() calculates this
     offset and stores the value in m_3dm_start_section_offset.
   Returns:
@@ -27492,9 +27480,9 @@ public:
     0 if something went wrong, otherwise the typecode
     of the chunk that was just studied.
   */
-  unsigned int
+  unsigned int 
   Dump3dmChunk(
-        ON_TextLog& text_log,
+        ON_TextLog& text_log, 
         int recursion_depth = 0
         );
 
@@ -27507,7 +27495,7 @@ protected:
     actual number of bytes read (like fread())
   */
   virtual
-  size_t Read( size_t, void* ) = 0;
+  size_t Read( size_t, void* ) = 0; 
 
   /*
   Description:
@@ -27539,8 +27527,8 @@ protected:
     2 - the application was already loaded
   */
   virtual
-  int LoadUserDataApplication(
-    ON_UUID application_id
+  int LoadUserDataApplication( 
+    ON_UUID application_id 
     );
 
   bool SetArchive3dmVersion(int);
@@ -27562,19 +27550,19 @@ private:
   bool WriteInt64( size_t, const ON__INT64* );
   bool ReadInt64(  size_t, ON__INT64* );
 
-  bool BeginWrite3dmTable(
+  bool BeginWrite3dmTable( 
     unsigned int // tcode
     );
-  bool EndWrite3dmTable(
+  bool EndWrite3dmTable( 
     unsigned int // tcode
     );
-  bool BeginRead3dmTable(
+  bool BeginRead3dmTable( 
     unsigned int // tcode
     );
-  bool EndRead3dmTable(
+  bool EndRead3dmTable( 
     unsigned int // tcode
     );
-
+  
   bool Read3dmV1Layer( ON_Layer*& );
   int  Read3dmV1Light(  // returns 0 at end of light table
                       //         1 light successfully read
@@ -27594,11 +27582,11 @@ private:
           unsigned int = 0 // optional filter made by setting ON::object_type bits
           );  // returns NULL at end of object table
 
-  bool Read3dmV1AttributesOrMaterial(
+  bool Read3dmV1AttributesOrMaterial( 
             ON_3dmObjectAttributes*,    // attributes,
             ON_Material*,      // material,
             ON_BOOL32&,             // bHaveMat
-            unsigned int,      // end_mark_tcode
+            unsigned int,      // end_mark_tcode 
             class ON__3dmV1_XDATA* = 0 // v1 "xdata"
             );
   bool Read3dmV1String( ON_String& );
@@ -27631,7 +27619,7 @@ private:
   //
   // bit 0x00000001
   //   V1 files do not have a table structure and are read using
-  //   multiple passes and there are valid situations where a
+  //   multiple passes and there are valid situations where a 
   //   4 byte read is attempted at the end of a file.
   //
   // bit 0x00000002
@@ -27640,15 +27628,15 @@ private:
   //
   // bit 0x00000004
   //   Requested read may go beyond end of file.
-  //   One situation where this happens is when a table is not at the
-  //   expected location in a file,
+  //   One situation where this happens is when a table is not at the 
+  //   expected location in a file, 
 
   unsigned int m_error_message_mask;
 protected:
   unsigned int ErrorMessageMask() const;
   /*
   Paramters:
-    sizeof_request - [in]
+    sizeof_request - [in] 
       value of count parameter passed to virtual Read() function.
     sizeof_read - [in]
       number of bytes actually read by the virtual Read() function.
@@ -27694,7 +27682,7 @@ private:
   bool WriteChunkValue( ON__UINT32 typecode, ON__INT64 );
   bool WriteChunkLength( ON__UINT64 );
   bool ReadChunkValue( ON__UINT32 typecode, ON__INT64* value64 );
-  bool FindMisplacedTable(
+  bool FindMisplacedTable( 
         ON__UINT64 filelength,
         const ON__UINT32 table_tocde,
         const ON__UINT32 table_record_record,
@@ -27803,9 +27791,9 @@ public:
   Parameters:
     mode - [in]
     fp - [in]
-      If a file is being read, fp is the pointer returned
+      If a file is being read, fp is the pointer returned 
       from ON_FileStream::Open(...,"rb").
-      If a file is being written, fp is the pointer returned
+      If a file is being written, fp is the pointer returned 
       from ON_FileStream::Open(...,"wb").
   */
   ON_BinaryFile( ON::archive_mode, FILE* fp );
@@ -27813,13 +27801,13 @@ public:
   virtual ~ON_BinaryFile();
 
   // ON_BinaryArchive overrides
-  size_t CurrentPosition() const;
+  size_t CurrentPosition() const; 
   bool SeekFromCurrentPosition(int);
   bool SeekFromStart(size_t);
   bool AtEnd() const;
 
   // fseek from end (since the file has an end)
-  bool SeekFromEnd( int );
+  bool SeekFromEnd( int ); 
 
   //////////
   // To use custom memory buffering instead of relying
@@ -27892,17 +27880,17 @@ public:
 
   /*
   Returns:
-    Buffer being read/written.
+    Buffer being read/written. 
   */
   ON_Buffer* Buffer() const;
 
   // virtual ON_BinaryArchive overrides
-  size_t CurrentPosition() const;
+  size_t CurrentPosition() const; 
   bool SeekFromCurrentPosition(int);
   bool SeekFromStart(size_t);
   bool AtEnd() const;
 
-  bool SeekFromEnd( ON__INT64 );
+  bool SeekFromEnd( ON__INT64 ); 
 
 protected:
   size_t Read( size_t, void* );
@@ -27935,16 +27923,16 @@ public:
     sizeof_buffer - [in] size of buffer in bytes (>0)
     buffer - [in] memory buffer containing binary archive
     bCopyBuffer - [in]
-      true - copy the input buffer.
+      true - copy the input buffer.  
           Useful when the buffer may be destroyed while this class is still in use.
-      false - Do not copy the input buffer.
-          In this case you are responsible for making certain the input buffer
+      false - Do not copy the input buffer.  
+          In this case you are responsible for making certain the input buffer 
           is valid while this class is in use.
     archive_3dm_version  - [in] (1,2,3,4 or 5)
     archive_opennurbs_version - [in] YYYYMMDDn
   */
-  ON_Read3dmBufferArchive(
-    size_t sizeof_buffer,
+  ON_Read3dmBufferArchive( 
+    size_t sizeof_buffer, 
     const void* buffer,
     bool bCopyBuffer,
     int archive_3dm_version,
@@ -27954,20 +27942,20 @@ public:
   ~ON_Read3dmBufferArchive();
 
   /*
-  Returns:
+  Returns: 
      value of m_sizeof_buffer
   */
   size_t SizeOfBuffer() const;
 
   /*
-  Returns:
+  Returns: 
      value of m_buffer
   */
   const void* Buffer() const;
 
   // ON_BinaryArchive overrides
-  size_t CurrentPosition() const;
-  bool SeekFromCurrentPosition(int);
+  size_t CurrentPosition() const; 
+  bool SeekFromCurrentPosition(int); 
   bool SeekFromStart(size_t);
   bool AtEnd() const;
 
@@ -27989,7 +27977,7 @@ private:
 
 private:
   // prohibit use - no implementation
-  ON_Read3dmBufferArchive();
+  ON_Read3dmBufferArchive(); 
   ON_Read3dmBufferArchive( const ON_Read3dmBufferArchive& );
   ON_Read3dmBufferArchive& operator=(const ON_Read3dmBufferArchive&);
 };
@@ -28002,22 +27990,22 @@ public:
   Description:
     Construct an ON_BinaryArchive for writing information to a memory buffer.
   Parameters:
-    initial_sizeof_buffer - [in]
+    initial_sizeof_buffer - [in] 
       initial size of buffer in bytes (>=0)
       If you are unable to estimate the size you will need, pass in zero.
-    max_sizeof_buffer - [in]
+    max_sizeof_buffer - [in] 
       maximum size of buffer in bytes (>=0)
-      If max_sizeof_buffer > 0 and the amount of information saved
-      requires a buffer larger than this size, then writing fails.
+      If max_sizeof_buffer > 0 and the amount of information saved 
+      requires a buffer larger than this size, then writing fails. 
       If max_sizeof_buffer <= 0, then no buffer size limits are enforced.
     archive_3dm_version  - [in] (0, ,2,3,4 or 50)
       Pass 0 or ON_BinaryArchive::CurrentArchiveVersion() to write the
       version of opennurbs archives used by lastest version of Rhino.
     archive_opennurbs_version - [in] YYYYMMDDn
   */
-  ON_Write3dmBufferArchive(
-    size_t initial_sizeof_buffer,
-    size_t max_sizeof_buffer,
+  ON_Write3dmBufferArchive( 
+    size_t initial_sizeof_buffer, 
+    size_t max_sizeof_buffer, 
     int archive_3dm_version,
     int archive_opennurbs_version
     );
@@ -28025,31 +28013,31 @@ public:
   ~ON_Write3dmBufferArchive();
 
   /*
-  Returns:
+  Returns: 
      Size of the archive in bytes.
   */
   size_t SizeOfArchive() const;
 
   /*
-  Returns:
+  Returns: 
      value of m_sizeof_buffer
   */
   size_t SizeOfBuffer() const;
 
   /*
-  Returns:
+  Returns: 
      value of m_buffer.
      SizeOfArchive() reports the number of bytes
      written to this buffer.
      SizeOfBuffer() reports the number of bytes
      allocated in this buffer.
-
+     
   */
   const void* Buffer() const;
 
   /*
   Returns:
-    The pointer to the buffer and sets all
+    The pointer to the buffer and sets all 
     members on this archive back to zero.
     The caller is responsible for calling onfree() on
     the pointer when finished with the buffer.
@@ -28057,14 +28045,14 @@ public:
   void* HarvestBuffer();
 
   // ON_BinaryArchive overrides
-  size_t CurrentPosition() const;
-  bool SeekFromCurrentPosition(int);
+  size_t CurrentPosition() const; 
+  bool SeekFromCurrentPosition(int); 
   bool SeekFromStart(size_t);
   bool AtEnd() const;
 
 protected:
   // ON_BinaryArchive overrides
-  size_t Read( size_t, void* );
+  size_t Read( size_t, void* ); 
   size_t Write( size_t, const void* ); // return actual number of bytes written (like fwrite())
   bool Flush();
 
@@ -28083,7 +28071,7 @@ private:
 
 private:
   // prohibit use - no implementation
-  ON_Write3dmBufferArchive();
+  ON_Write3dmBufferArchive(); 
   ON_Write3dmBufferArchive( const ON_Write3dmBufferArchive& );
   ON_Write3dmBufferArchive& operator=(const ON_Write3dmBufferArchive&);
 };
@@ -28118,7 +28106,7 @@ Remarks:
   object.
 */
 ON_DECL
-bool ON_WriteOneObjectArchive(
+bool ON_WriteOneObjectArchive( 
           ON_BinaryArchive& archive,
           int version,
           const ON_Object& object
@@ -28135,7 +28123,7 @@ bool ON_WriteOneObjectArchive(
 // THIS SOFTWARE IS PROVIDED "AS IS" WITHOUT EXPRESS OR IMPLIED WARRANTY.
 // ALL IMPLIED WARRANTIES OF FITNESS FOR ANY PARTICULAR PURPOSE AND OF
 // MERCHANTABILITY ARE HEREBY DISCLAIMED.
-//
+//				
 // For complete openNURBS copyright information see <http://www.opennurbs.org>.
 //
 ////////////////////////////////////////////////////////////////
@@ -28146,7 +28134,7 @@ bool ON_WriteOneObjectArchive(
 
 /*
 Description:
-  This class is used to returned results of
+  This class is used to returned results of 
   mass properties calculations.
 */
 class ON_CLASS ON_MassProperties
@@ -28259,7 +28247,7 @@ public:
 
 
 
-
+  
   // The "centroid coordinate system" (ccs) is the
   // coordinate system with origin at the centroid and
   // axes parallel to the world coordinate axes.
@@ -28370,14 +28358,14 @@ public:
   /*
   Description:
     Calculates the moments of inertia about world
-    coordinate axes.
+    coordinate axes.  
   Returns:
     Moments of inertia with respect to world coordinate system.
     WorldCoordMomentsOfInertia().x = integral of (y^2 + z^2) dm
     WorldCoordMomentsOfInertia().y = integral of (z^2 + x^2) dm
     WorldCoordMomentsOfInertia().z = integral of (z^2 + y^2) dm
   Remarks:
-    What is meant by "moments of intertia" varies widely in
+    What is meant by "moments of intertia" varies widely in 
     textbooks and papers.  The values returned here
     are the integrals listed in the Returns section.
     Some applications may want the values from
@@ -28396,7 +28384,7 @@ public:
     WorldCoordRadiiOfGyration().y = sqrt(integral of (z^2 + x^2) dm/M)
     WorldCoordRadiiOfGyration().z = sqrt(integral of (z^2 + y^2) dm/M)
   Remarks:
-    What is meant by "radii of gyration" varies widely in
+    What is meant by "radii of gyration" varies widely in 
     textbooks and papers.  The values returned here
     are the integrals listed in the Returns section.
   */
@@ -28408,7 +28396,7 @@ public:
     to world coordinates is returned.  This matrix is sometimes
     called the "intertia tensor".
   Parameters:
-    martix - [in] If you want to fill in an existing matrix,
+    martix - [in] If you want to fill in an existing matrix, 
                   pass a pointer to that matrix.  Otherwise
                   a matrix will be created and returned.
     returned.
@@ -28421,8 +28409,8 @@ public:
   See Also:
     CentroidCoordIntertiaMatrix
   */
-  ON_Matrix* WorldCoordIntertiaMatrix(
-                ON_Matrix* matrix = NULL
+  ON_Matrix* WorldCoordIntertiaMatrix( 
+                ON_Matrix* matrix = NULL 
                 ) const;
 
   /*
@@ -28443,7 +28431,7 @@ public:
   See Also:
     CentroidCoordPrincipalMoments
   */
-  bool WorldCoordPrincipalMoments(
+  bool WorldCoordPrincipalMoments( 
                 double* pxx, ON_3dVector& Ax,
                 double* pyy, ON_3dVector& Ay,
                 double* pzz, ON_3dVector& Az
@@ -28470,7 +28458,7 @@ public:
   /*
   Description:
     Calculates the moments of inertia about centroid
-    coordinate axes.
+    coordinate axes.  
   Returns:
     Moments of inertia with respect to centroid coordinate system.
     WorldCoordMomentsOfInertia().x = integral of ((y-y0)^2 + (z-z0)^2) dm
@@ -28478,7 +28466,7 @@ public:
     WorldCoordMomentsOfInertia().z = integral of ((z-z0)^2 + (y-y0)^2) dm
     where (x0,y0,z0) = centroid.
   Remarks:
-    What is meant by "moments of intertia" varies widely in
+    What is meant by "moments of intertia" varies widely in 
     textbooks and papers.  The values returned here
     are the integrals listed in the Returns section.
     Some applications may want the values from
@@ -28493,15 +28481,15 @@ public:
     coordinate axes.
   Returns:
     Radii of gyration with respect to centroid coordinate system.
-    CentroidCoordRadiiOfGyration().x
+    CentroidCoordRadiiOfGyration().x 
       = sqrt(integral of ((y-y0)^2 + (z-z0)^2) dm/M)
-    CentroidCoordRadiiOfGyration().y
+    CentroidCoordRadiiOfGyration().y 
       = sqrt(integral of ((z-z0)^2 + (x-x0)^2) dm/M)
-    CentroidCoordRadiiOfGyration().z
+    CentroidCoordRadiiOfGyration().z 
       = sqrt(integral of ((z-z0)^2 + (y-y0)^2) dm/M)
     where (x0,y0,z0) = centroid.
   Remarks:
-    What is meant by "radii of gyration" varies widely in
+    What is meant by "radii of gyration" varies widely in 
     textbooks and papers.  The values returned here
     are the integrals listed in the Returns section.
   */
@@ -28513,7 +28501,7 @@ public:
     to centroid coordinates is returned.  This matrix is sometimes
     called the "intertia tensor".
   Parameters:
-    martix - [in] If you want to fill in an existing matrix,
+    martix - [in] If you want to fill in an existing matrix, 
                   pass a pointer to that matrix.  Otherwise
                   a matrix will be created and returned.
     returned.
@@ -28526,8 +28514,8 @@ public:
   See Also:
     WorldCoordIntertiaMatrix
   */
-  ON_Matrix* CentroidCoordIntertiaMatrix(
-                ON_Matrix* matrix = NULL
+  ON_Matrix* CentroidCoordIntertiaMatrix( 
+                ON_Matrix* matrix = NULL 
                 ) const;
 
   /*
@@ -28548,7 +28536,7 @@ public:
   See Also:
     WorldCoordPrincipalMoments
   */
-  bool CentroidCoordPrincipalMoments(
+  bool CentroidCoordPrincipalMoments( 
                 double* pxx, ON_3dVector& Ax,
                 double* pyy, ON_3dVector& Ay,
                 double* pzz, ON_3dVector& Az
@@ -28655,8 +28643,8 @@ public:
 
   /*
   Description:
-    Construct an arc parallel to plane from a center point,
-    radius, and angle in radians.
+    Construct an arc parallel to plane from a center point, 
+    radius, and angle in radians.  
     The arc starts at center+radius*plane.xaxis.
   Parameters:
     plane - [in]
@@ -28767,8 +28755,8 @@ public:
 
   /*
   Description:
-    Create an arc parallel to plane from a center point,
-    radius, and angle in radians.
+    Create an arc parallel to plane from a center point, 
+    radius, and angle in radians.  
     The arc starts at center+radius*plane.xaxis.
   Parameters:
     plane - [in]
@@ -28816,7 +28804,7 @@ public:
 
   /*
   Description:
-    Create an arc from a 2d start point, 2d start direction
+    Create an arc from a 2d start point, 2d start direction 
     and a 2d end point.
   Parameters:
     start_point - [in]
@@ -28831,7 +28819,7 @@ public:
 
   /*
   Description:
-    Create an arc from a 3d start point, 3d start direction
+    Create an arc from a 3d start point, 3d start direction 
     and a 3d end point.
   Parameters:
     start_point - [in]
@@ -29023,7 +29011,7 @@ public:
 
   /*
   Returns:
-    Area of the arc's sector.
+    Area of the arc's sector.  
   Remarks:
     The arc's sector is the region bounded by the arc,
     the line segment from the arc's end to the center,
@@ -29034,7 +29022,7 @@ public:
 
   /*
   Returns:
-    Area centroid of the arc's sector.
+    Area centroid of the arc's sector.  
   Remarks:
     The arc's sector is the region bounded by the arc,
     the line segment from the arc's end to the center,
@@ -29054,7 +29042,7 @@ public:
 
   /*
   Returns:
-    Area centroid of the arc's segment.
+    Area centroid of the arc's segment.  
   Remarks:
     The arc's segment is the region bounded by the arc and
     the line segment from the arc's end to the arc's start.
@@ -29167,7 +29155,7 @@ private:
 // THIS SOFTWARE IS PROVIDED "AS IS" WITHOUT EXPRESS OR IMPLIED WARRANTY.
 // ALL IMPLIED WARRANTIES OF FITNESS FOR ANY PARTICULAR PURPOSE AND OF
 // MERCHANTABILITY ARE HEREBY DISCLAIMED.
-//
+//				
 // For complete openNURBS copyright information see <http://www.opennurbs.org>.
 //
 ////////////////////////////////////////////////////////////////
@@ -29192,7 +29180,7 @@ class ON_ClassId; // used for runtime class identification
 
 // Description:
 //   Every class derived from ON_Object has a class id that records
-//   its class name, baseclass name, and class uuid.  The
+//   its class name, baseclass name, and class uuid.  The 
 //   ON_OBJECT_DECLARE and ON_OBJECT_IMPLEMENT macros generate
 //   the code that creates and initializes class ids.
 //
@@ -29212,14 +29200,14 @@ public:
   //   create - [in] function to create a new object(like CreateNewON_Geometry())
   //   copy - [in] function to copy
   //   sUUID - [in] UUID in registry format from Windows guidgen.exe
-  ON_ClassId(
+  ON_ClassId( 
           const char* sClassName,
           const char* sBaseClassName,
           ON_Object* (*create)(),
           const char* sUUID
            );
 
-  ON_ClassId(
+  ON_ClassId( 
           const char* sClassName,
           const char* sBaseClassName,
           ON_Object* (*create)(),
@@ -29229,28 +29217,28 @@ public:
 
   ~ON_ClassId();
 
-  // Description:
+  // Description: 
   //   Gets a class's ON_ClassId from the class's name.
   // Parameters:
   //   sClassName - [in] name of class
-  // Returns:
+  // Returns: 
   //   Pointer to the class's ON_ClassId.
   // Example:
   //   const ON_ClassId* brep_id = ON_CLassId::ClassId("ON_Brep");
-  static const ON_ClassId* ClassId(
+  static const ON_ClassId* ClassId( 
           const char* sClassName
           );
 
-  // Description:
+  // Description: 
   //   Gets a class's ON_ClassId from the class's uuid.
   // Parameters:
   //   class_uuid - [in] uuid for the class
-  // Returns:
+  // Returns: 
   //   Pointer to the class's ON_ClassId.
   // Example:
   //   ON_UUID brep_uuid = ON_UuidFromString("60B5DBC5-E660-11d3-BFE4-0010830122F0");
   //   const ON_ClassId* brep_id = ON_CLassId::ClassId(brep_uuid);
-  static const ON_ClassId* ClassId(
+  static const ON_ClassId* ClassId( 
           ON_UUID class_uuid
           );
 
@@ -29269,12 +29257,12 @@ public:
   //   Each class derived from ON_Object has a corresponding
   //   ON_ClassId stored in a linked list.  If a class definition
   //   is going to disappear (which happens when the derived object
-  //   definition is in a DLL that uses openNURBS as a DLL and the
+  //   definition is in a DLL that uses openNURBS as a DLL and the 
   //   DLL containing the derived object's definition is unloaded),
-  //   then the class's ON_ClassId needs to be removed from the class
+  //   then the class's ON_ClassId needs to be removed from the class 
   //   list.  ON_ClassId::Purge( mark ) removes all ON_ClassIds with a
   //   a prescribed mark and returns the number of classes that
-  //   were purged.
+  //   were purged.  
   // Parameters:
   //   mark - [in] All ON_ClassIds with this mark will be purged.
   // Returns:
@@ -29294,7 +29282,7 @@ public:
   //   Dumps the ON_ClassId list
   // Parameters:
   //   dump - [in] destination for the text dump.
-  static void Dump(
+  static void Dump( 
     ON_TextLog& dump
     );
 
@@ -29305,7 +29293,7 @@ public:
   // Returns:
   //   base class name
   const char* BaseClassName() const;
-
+  
   // Returns:
   //   base class id
   const ON_ClassId* BaseClass() const;
@@ -29317,7 +29305,7 @@ public:
   //   potential_parent - [in] Class to test as parent.
   // Returns:
   //   true if this is derived from potential_parent.
-	ON_BOOL32 IsDerivedFrom(
+	ON_BOOL32 IsDerivedFrom( 
     const ON_ClassId* potential_parent
     ) const;
 
@@ -29350,7 +29338,7 @@ private:
   static int m_mark0;  // current mark value
   ON_ClassId* m_pNext;         // next in the linked list of class ids
   const ON_ClassId* m_pBaseClassId;  // base class id
-  char m_sClassName[80];
+  char m_sClassName[80];              
   char m_sBaseClassName[80];
   ON_Object* (*m_create)();
   ON_UUID m_uuid;
@@ -29362,9 +29350,9 @@ private:
   ON_ClassId( const ON_ClassId&);
   ON_ClassId& operator=( const ON_ClassId&);
 
-  void ConstructorHelper(
-          const char* sClassName,
-          const char* sBaseClassName,
+  void ConstructorHelper( 
+          const char* sClassName, 
+          const char* sBaseClassName, 
           const char* sUUID
           );
 
@@ -29372,7 +29360,7 @@ private:
   // to ON_Object without breaking the SDK.  At V6 these will
   // be redone to be ordinary virtual functions.
   friend class ON_Object;
-  unsigned int m_class_id_version;
+  unsigned int m_class_id_version; 
   bool (*m_copy)(const ON_Object*,ON_Object*); // on version 1 class ids
   void* m_f2;
   void* m_f3;
@@ -29408,7 +29396,7 @@ ON_DECL
 ON_UUID ON_GetMostRecentClassIdCreateUuid();
 
 /*
-All classes derived from ON_Object must have
+All classes derived from ON_Object must have 
 
   ON_OBJECT_DECLARE( <classname> );
 
@@ -29416,7 +29404,7 @@ as the first line in their class definition an a corresponding
 
   ON_VIRTUAL_OBJECT_IMPLEMENT( <classname>, <basclassname>, <classuuid> );
 
-or
+or 
 
   ON_OBJECT_IMPLEMENT( <classname>, <basclassname>, <classuuid> );
 
@@ -29454,7 +29442,7 @@ in a .CPP file.
     /*Description: Expert level tool - no support available.*/  \
     /*If this class is derived from CRhinoObject, use CRhinoObject::DuplicateRhinoObject instead*/
 
-// Objects derived from ON_Object that do not have a valid new, operator=,
+// Objects derived from ON_Object that do not have a valid new, operator=, 
 // or copy constructor must use ON_VIRTUAL_OBJECT_IMPLEMENT instead of
 // ON_OBJECT_IMPLEMENT.  Objects defined with ON_VIRTUAL_OBJECT_IMPLEMENT
 // cannot be serialized using ON_BinaryArchive::ReadObject()/WriteObject()
@@ -29474,7 +29462,7 @@ in a .CPP file.
 
 // Objects derived from ON_Object that use ON_OBJECT_IMPLEMENT must
 // have a valid operator= and copy constructor.  Objects defined with
-// ON_OBJECT_IMPLEMENT may be serialized using
+// ON_OBJECT_IMPLEMENT may be serialized using 
 // ON_BinaryArchive::ReadObject()/WriteObject()
 // and duplicated by calling ON_Object::Duplicate().
 #define ON_OBJECT_IMPLEMENT( cls, basecls, uuid ) \
@@ -29507,7 +29495,7 @@ public:
 
 #if defined(ON_DLL_TEMPLATE)
 // This stuff is here because of a limitation in the way Microsoft
-// handles templates and DLLs.  See Microsoft's knowledge base
+// handles templates and DLLs.  See Microsoft's knowledge base 
 // article ID Q168958 for details.
 #pragma warning( push )
 #pragma warning( disable : 4231 )
@@ -29582,9 +29570,9 @@ public:
 
   /*
   Description:
-    The MemoryRelocate() function is called when an
-    object's location in memory is changed.  For
-    example, if an object resides in a chunk of
+    The MemoryRelocate() function is called when an 
+    object's location in memory is changed.  For 
+    example, if an object resides in a chunk of 
     memory that is grown by calling a realloc
     that has to allocate a new chunk and
     copy the contents of the old chunk to the
@@ -29595,7 +29583,7 @@ public:
     of ON_ObjectArray<>'s that use realloc to grow
     the dynamic array.
   */
-  virtual
+  virtual 
   void MemoryRelocate();
 
   /*
@@ -29618,15 +29606,15 @@ public:
   Remarks:
     The primary reason for IsKindOf() is to support the
     static Cast() members declared in the ON_OBJECT_DECLARE
-    macro.  If we determine that dynamic_cast is properly
-    supported and implemented by all supported compilers,
+    macro.  If we determine that dynamic_cast is properly 
+    supported and implemented by all supported compilers, 
     then IsKindOf() may dissappear.  If an application needs
     to determine if a pointer points to a class derived from
-    ON_SomeClassName, then call
-    ON_SomeClassName::Cast(mystery pointer) and check for
+    ON_SomeClassName, then call 
+    ON_SomeClassName::Cast(mystery pointer) and check for 
     a non-null return.
   */
-  ON_BOOL32 IsKindOf(
+  ON_BOOL32 IsKindOf( 
         const ON_ClassId* pClassId
         ) const;
 
@@ -29638,9 +29626,9 @@ public:
     text_log - [in] if the object is not valid and text_log
         is not NULL, then a brief englis description of the
         reason the object is not valid is appened to the log.
-        The information appended to text_log is suitable for
-        low-level debugging purposes by programmers and is
-        not intended to be useful as a high level user
+        The information appended to text_log is suitable for 
+        low-level debugging purposes by programmers and is 
+        not intended to be useful as a high level user 
         interface tool.
   Returns:
     @untitled table
@@ -29658,7 +29646,7 @@ public:
     for creating high quality text descriptions of an
     object.
 
-    The default implementations of this virtual function
+    The default implementations of this virtual function 
     prints the class's name.
   */
   virtual
@@ -29695,9 +29683,9 @@ public:
     Use ON_BinaryArchive::WriteObject() to write objects.
     This Write() function should just write the specific definition of
     this object.  It should not write and any chunk typecode or length
-    information.
+    information.  
 
-    The default implementation of this virtual function returns
+    The default implementation of this virtual function returns 
     false and does nothing.
   */
   virtual
@@ -29717,7 +29705,7 @@ public:
     This Read() function should read the objects definition back into
     its data members.
 
-    The default implementation of this virtual function returns
+    The default implementation of this virtual function returns 
     false and does nothing.
   */
   virtual
@@ -29731,7 +29719,7 @@ public:
     between basic object types like points, curves, surfaces,
     and so on.
 
-  Returns:
+  Returns: 
     ON::object_type enum value.
 
     @untitled table
@@ -29762,7 +29750,7 @@ public:
   /*
   Description:
     All objects in an opennurbs model have an id
-    ( ON_Layer.m_layer_id, ON_Font.m_font_id,
+    ( ON_Layer.m_layer_id, ON_Font.m_font_id, 
       ON_Material.m_material_id, ON_3dmObjectAttributes.m_uuid
       ).
   Returns:
@@ -29782,14 +29770,14 @@ public:
     perisist through copy construction, operator=, and file IO.
   Parameters:
     key - [in] id used to retrieve this string.
-    string_value - [in]
+    string_value - [in] 
       If NULL, the string with this id will be removed.
   Returns:
     True if successful.
   */
-  bool SetUserString(
-    const wchar_t* key,
-    const wchar_t* string_value
+  bool SetUserString( 
+    const wchar_t* key, 
+    const wchar_t* string_value 
     );
 
   /*
@@ -29818,9 +29806,9 @@ public:
   Returns:
     True if a string with id was found.
   */
-  bool GetUserString(
-    const wchar_t* key,
-    ON_wString& string_value
+  bool GetUserString( 
+    const wchar_t* key, 
+    ON_wString& string_value 
     ) const;
 
   /*
@@ -29832,8 +29820,8 @@ public:
   Returns:
     Number of elements appended to the user_strings list.
   */
-  int GetUserStrings(
-    ON_ClassArray<ON_UserString>& user_strings
+  int GetUserStrings( 
+    ON_ClassArray<ON_UserString>& user_strings 
     ) const;
 
   /*
@@ -29845,8 +29833,8 @@ public:
   Returns:
     Number of elements appended to the user_strings list.
   */
-  int GetUserStringKeys(
-    ON_ClassArray<ON_wString>& user_string_keys
+  int GetUserStringKeys( 
+    ON_ClassArray<ON_wString>& user_string_keys 
     ) const;
 
   /*
@@ -29875,17 +29863,17 @@ public:
   Parameters:
     pUserData - [in] user data to attach to object.
         The ON_UserData pointer passed to AttachUserData()
-        must be created with new.
+        must be created with new.  
   Returns:
     If true is returned, then ON_Object will delete the user
-    data when appropriate.  If false is returned, then data
-    could not be attached and caller must delete.
+    data when appropriate.  If false is returned, then data 
+    could not be attached and caller must delete.  
   Remarks:
     AttachUserData() will fail if the user data's m_userdata_uuid
     field is nil or not unique.
   */
-  ON_BOOL32 AttachUserData(
-          ON_UserData* pUserData
+  ON_BOOL32 AttachUserData( 
+          ON_UserData* pUserData 
           );
 
   /*
@@ -29894,8 +29882,8 @@ public:
   Parameters:
     pUserData - [in] user data to attach to object.
         The ON_UserData pointer passed to DetachUserData()
-        must have been previously attached using
-        AttachUserData().
+        must have been previously attached using 
+        AttachUserData().  
   Returns:
     If true is returned, then the user data was
     attached to this object and it was detached.  If false
@@ -29906,7 +29894,7 @@ public:
     Call delete pUserData if you want to destroy the user data.
   */
   ON_BOOL32 DetachUserData(
-          ON_UserData* pUserData
+          ON_UserData* pUserData 
           );
 
 
@@ -29914,20 +29902,20 @@ public:
   Description:
     Get a pointer to user data.
   Parameters:
-    userdata_uuid - [in] value of the user data's
+    userdata_uuid - [in] value of the user data's 
        m_userdata_uuid field.
   Remarks:
     The returned user data is still attached to the object.
     Deleting the returned user data will automatically remove
     the user data from the object.
   */
-  ON_UserData* GetUserData(
+  ON_UserData* GetUserData( 
           const ON_UUID& userdata_uuid
           ) const;
 
   /*
   Description:
-    PurgeUserData() removes all user data from object.
+    PurgeUserData() removes all user data from object.  
   Remarks:
     Use delete GetUserData(...) to destroy a single piece
     of user data.
@@ -29941,7 +29929,7 @@ public:
     linked list.  This is the most recent item attached
     using AttachUserData().
   Remark:
-    To iterate through all the user data on an object,
+    To iterate through all the user data on an object, 
     call FirstUserData() and then use ON_UserData::Next()
     to traverse the list.
   */
@@ -29954,13 +29942,13 @@ public:
   Parameters:
     xform - [in] transformation to apply to user data
   */
-  void TransformUserData(
+  void TransformUserData( 
     const ON_Xform& xform
     );
 
   /*
   Description:
-    Expert user tool that copies user data that has a positive
+    Expert user tool that copies user data that has a positive 
     m_userdata_copycount from the source_object to this.
   Parameters:
     source_object - [in] source of user data to copy
@@ -29969,19 +29957,19 @@ public:
     Simply rely on ON_Object::operator=() or the copy constructor
     to do the right thing.
   */
-  void CopyUserData(
-    const ON_Object& source_object
+  void CopyUserData( 
+    const ON_Object& source_object 
     );
 
   /*
   Description:
-    Expert user tool Moves user data from source_object
+    Expert user tool Moves user data from source_object 
     to this, including user data with a nil m_userdata_copycount.
     Deletes any source user data with a duplicate m_userdata_uuid
     on this.
   */
-  void MoveUserData(
-    ON_Object& source_object
+  void MoveUserData( 
+    ON_Object& source_object 
     );
 
 
@@ -30030,7 +30018,7 @@ private:
 // THIS SOFTWARE IS PROVIDED "AS IS" WITHOUT EXPRESS OR IMPLIED WARRANTY.
 // ALL IMPLIED WARRANTIES OF FITNESS FOR ANY PARTICULAR PURPOSE AND OF
 // MERCHANTABILITY ARE HEREBY DISCLAIMED.
-//
+//				
 // For complete openNURBS copyright information see <http://www.opennurbs.org>.
 //
 ////////////////////////////////////////////////////////////////
@@ -30060,9 +30048,9 @@ public:
     text_log - [in] if the object is not valid and text_log
         is not NULL, then a brief englis description of the
         reason the object is not valid is appened to the log.
-        The information appended to text_log is suitable for
-        low-level debugging purposes by programmers and is
-        not intended to be useful as a high level user
+        The information appended to text_log is suitable for 
+        low-level debugging purposes by programmers and is 
+        not intended to be useful as a high level user 
         interface tool.
   Returns:
     @untitled table
@@ -30101,9 +30089,9 @@ public:
   ON_UserData* Next() const;
 
   ////////
-  // Returns the class id which is not necessarily the
+  // Returns the class id which is not necessarily the 
   // same as m_userdata_uuid.
-  ON_UUID UserDataClassUuid() const;
+  ON_UUID UserDataClassUuid() const; 
 
   //////////
   // Returns true if the user data is anonymous.  This happens
@@ -30121,18 +30109,18 @@ public:
 
   /*
   Parameters:
-    description - [out] description of user data shown in
+    description - [out] description of user data shown in 
                         object properties dump.
   Returns:
     True if user data class is ready.
   */
-  virtual
+  virtual 
   ON_BOOL32 GetDescription( ON_wString& description );
 
   /*
   Description:
     User will persist in binary archives if Archive() returns
-    true, m_application_uuid is not nil, and the virtual Read()
+    true, m_application_uuid is not nil, and the virtual Read() 
     and Write() are functions are overridden.
 
   Returns:
@@ -30141,33 +30129,33 @@ public:
 
   Remarks:
     The default implementation returns false.  If you override
-    ON_UserData::Archive so that it returns true, then your
+    ON_UserData::Archive so that it returns true, then your 
     constructor must set m_application_uuid, you must override
     the virtual ON_Object::Read and ON_Object::Write functions and
     you must CAREFULLY TEST your code.
 
     ON_UserData requires expert programming and testing skills.
 
-    YOU SHOULD READ AND UNDERSTAND EVERY COMMENT IN THIS
+    YOU SHOULD READ AND UNDERSTAND EVERY COMMENT IN THIS 
     HEADER FILE IN BEFORE ATTEMPTING TO USE ON_UserData.
   */
-  virtual
-  ON_BOOL32 Archive() const;
+  virtual 
+  ON_BOOL32 Archive() const; 
 
   /*
   Description:
-    If Transform() return false, then the userdata is destroyed when
-    its parent object is transformed.  The default Transform()
-    updates m_userdata_xform and returns true.
+    If Transform() return false, then the userdata is destroyed when 
+    its parent object is transformed.  The default Transform() 
+    updates m_userdata_xform and returns true. 
     Carefully read the comments above m_userdata_xform
   */
-  virtual
-  ON_BOOL32 Transform( const ON_Xform& );
+  virtual 
+  ON_BOOL32 Transform( const ON_Xform& ); 
 
   /*
   Description:
-    This uuid is the value that must be passed to
-    ON_Object::GetUserData() to retrieve
+    This uuid is the value that must be passed to 
+    ON_Object::GetUserData() to retrieve 
     this piece of user data.
   */
   ON_UUID m_userdata_uuid;
@@ -30183,22 +30171,22 @@ public:
   ON_UUID m_application_uuid;
 
   ////////
-  // If m_userdata_copycount is 0, user data is not copied when
+  // If m_userdata_copycount is 0, user data is not copied when 
   // object is copied.  If > 0, user data is copied and m_copycount
-  // is incremented when parent object is copied. The user data's
-  // operator=() is used to copy.
-  // The default ON_UserData::ON_UserData() constructor sets
+  // is incremented when parent object is copied. The user data's 
+  // operator=() is used to copy.  
+  // The default ON_UserData::ON_UserData() constructor sets 
   // m_userdata_copycount to zero.
-  unsigned int m_userdata_copycount;
+  unsigned int m_userdata_copycount;  
 
   ////////
   // Updated if user data is attached to a piece of geometry that is
-  // transformed and the virtual ON_UserData::Transform() is not
+  // transformed and the virtual ON_UserData::Transform() is not 
   // overridden.  If you override ON_UserData::Transform() and want
-  // m_userdata_xform to be updated, then call the
+  // m_userdata_xform to be updated, then call the 
   // ON_UserData::Transform() in your override.
   // The default constructor sets m_userdata_xform to the identity.
-  ON_Xform m_userdata_xform;
+  ON_Xform m_userdata_xform; 
 
 private: // don't look and don't touch - these may change
   friend int ON_BinaryArchive::ReadObject( ON_Object** );
@@ -30206,7 +30194,7 @@ private: // don't look and don't touch - these may change
   friend bool ON_BinaryArchive::ReadObjectUserData( ON_Object& );
   friend bool ON_BinaryArchive::WriteObjectUserData( const ON_Object& );
   friend class ON_Object;
-  ON_Object* m_userdata_owner;
+  ON_Object* m_userdata_owner; 
   ON_UserData* m_userdata_next;
 };
 
@@ -30231,9 +30219,9 @@ public:
     text_log - [in] if the object is not valid and text_log
         is not NULL, then a brief englis description of the
         reason the object is not valid is appened to the log.
-        The information appended to text_log is suitable for
-        low-level debugging purposes by programmers and is
-        not intended to be useful as a high level user
+        The information appended to text_log is suitable for 
+        low-level debugging purposes by programmers and is 
+        not intended to be useful as a high level user 
         interface tool.
   Returns:
     @untitled table
@@ -30250,7 +30238,7 @@ public:
 
   unsigned int SizeOf() const; // return amount of memory used by user data
   ON_BOOL32 GetDescription( ON_wString& ); // description of user data
-  ON_BOOL32 Archive() const;
+  ON_BOOL32 Archive() const; 
 
   // Convert unknown user data to actual user data.  Useful if
   // definition of actual user data is dynamically linked after
@@ -30268,12 +30256,12 @@ public:
   void* m_buffer;
 
   // These version numbers are set when unknown user data is read
-  // from a file record the version of the 3dm archive and the
+  // from a file record the version of the 3dm archive and the 
   // version of opennurbs that were used when the plug-in wrote
   // the user data.
   //   This information was added in to V5 opennurbs 200910190.
   // For files written with earlier versions of opennurbs, these
-  // values are set from the archive containing the user data.
+  // values are set from the archive containing the user data. 
   // The purpose of this version information is to have it accompany
   // unknown user data so that if is is eventually read by the plug-in
   // an ON_BinaryArchive with correct version information can be
@@ -30310,7 +30298,7 @@ public:
   ON_BOOL32 GetDescription( ON_wString& description );
 
   // override virtual ON_UserData::Archive function
-  ON_BOOL32 Archive() const;
+  ON_BOOL32 Archive() const; 
 
   /*
   Description:
@@ -30356,8 +30344,8 @@ public:
   /*
   Description:
     Transfers the user data from source_object to "this".
-    When MoveUserDataFrom() returns source_object will not
-    have any user data.  If "this" had user data when
+    When MoveUserDataFrom() returns source_object will not 
+    have any user data.  If "this" had user data when 
     MoveUserDataFrom() was called, then that user data is
     destroyed.
   Parameters:
@@ -30399,8 +30387,8 @@ Description:
   An ON_DocumentUserStringList object is saved in the list of user
   tables.  The Rhino SetDocumentText and GetDocumentText
   commands use the ON_Object SetUserString, GetUserString,
-  GetUserStrings, GetUserStringKeys functions on an
-  ON_DocumentUserStringList class to manage the tag-value pairs of
+  GetUserStrings, GetUserStringKeys functions on an 
+  ON_DocumentUserStringList class to manage the tag-value pairs of 
   strings.
 */
 class ON_CLASS ON_DocumentUserStringList : public ON_Object
@@ -30436,7 +30424,7 @@ public:
 // THIS SOFTWARE IS PROVIDED "AS IS" WITHOUT EXPRESS OR IMPLIED WARRANTY.
 // ALL IMPLIED WARRANTIES OF FITNESS FOR ANY PARTICULAR PURPOSE AND OF
 // MERCHANTABILITY ARE HEREBY DISCLAIMED.
-//
+//				
 // For complete openNURBS copyright information see <http://www.opennurbs.org>.
 //
 ////////////////////////////////////////////////////////////////
@@ -30478,7 +30466,7 @@ public:
   ON_Geometry& operator=(const ON_Geometry&);
   virtual ~ON_Geometry();
 
-  // Description:
+  // Description: 
   //   Get object's 3d axis aligned bounding box.
   // Returns:
   //   3d bounding box.
@@ -30491,9 +30479,9 @@ public:
   //   union of the input box with the object's bounding box.
   // Parameters:
   //   bbox - [in/out] 3d axis aligned bounding box
-  //   bGrowBox - [in] (default=false)
-  //     If true, then the union of the input bbox and the
-  //     object's bounding box is returned in bbox.
+  //   bGrowBox - [in] (default=false) 
+  //     If true, then the union of the input bbox and the 
+  //     object's bounding box is returned in bbox.  
   //     If false, the object's bounding box is returned in bbox.
   // Returns:
   //   true if object has bounding box and calculation was successful.
@@ -30511,8 +30499,8 @@ public:
   // Parameters:
   //   bbox_min - [in/out] minimum corner of the 3d bounding box
   //   bbox_max - [in/out] maximum corner of the 3d bounding box
-  //   bGrowBox - [in] (default=false)
-  //     If true, then the union of the input bbox and the
+  //   bGrowBox - [in] (default=false) 
+  //     If true, then the union of the input bbox and the 
   //     object's bounding box is returned.
   //     If false, the object's bounding box is returned.
   // Returns:
@@ -30569,7 +30557,7 @@ public:
   //   true if object successfully translated
   // Remarks:
   //   Uses virtual Transform() function to calculate the result.
-  ON_BOOL32 Translate(
+  ON_BOOL32 Translate( 
     const ON_3dVector& translation_vector
     );
 
@@ -30582,7 +30570,7 @@ public:
   //   true if object successfully scaled
   // Remarks:
   //   Uses virtual Transform() function to calculate the result.
-  ON_BOOL32 Scale(
+  ON_BOOL32 Scale( 
     double scale_factor
     );
 
@@ -30594,7 +30582,7 @@ public:
   //   The dimension is typically three.  For parameter space trimming
   //   curves the dimension is two.  In rare cases the dimension can
   //   be one or greater than three.
-  virtual
+  virtual 
   int Dimension() const = 0;
 
   // Description:
@@ -30603,9 +30591,9 @@ public:
   // Parameters:
   //   boxmin - [in/out] array of Dimension() doubles
   //   boxmax - [in/out] array of Dimension() doubles
-  //   bGrowBox - [in] (default=false)
-  //     If true, then the union of the input bbox and the
-  //     object's bounding box is returned in bbox.
+  //   bGrowBox - [in] (default=false) 
+  //     If true, then the union of the input bbox and the 
+  //     object's bounding box is returned in bbox.  
   //     If false, the object's bounding box is returned in bbox.
   // Returns:
   //   true if object has bounding box and calculation was successful
@@ -30621,9 +30609,9 @@ public:
     Get tight bounding box.
 	Parameters:
 		tight_bbox - [in/out] tight bounding box
-		bGrowBox -[in]	(default=false)
+		bGrowBox -[in]	(default=false)			
       If true and the input tight_bbox is valid, then returned
-      tight_bbox is the union of the input tight_bbox and the
+      tight_bbox is the union of the input tight_bbox and the 
       curve's tight bounding box.
 		xform -[in] (default=NULL)
       If not NULL, the tight bounding box of the transformed
@@ -30635,8 +30623,8 @@ public:
     especially when xform is not null.
   */
   virtual
-	bool GetTightBoundingBox(
-			ON_BoundingBox& tight_bbox,
+	bool GetTightBoundingBox( 
+			ON_BoundingBox& tight_bbox, 
       int bGrowBox = false,
 			const ON_Xform* xform = 0
       ) const;
@@ -30645,7 +30633,7 @@ public:
   //   Some objects cache bounding box information.
   //   If you modify an object, then call ClearBoundingBox()
   //   to inform the object that any cached bounding boxes
-  //   are invalid.
+  //   are invalid.  
   //
   // Remarks:
   //   Generally, ClearBoundingBox() overrides
@@ -30659,17 +30647,17 @@ public:
   /*
   Description:
     Transforms the object.
-
+ 
   Parameters:
     xform - [in] transformation to apply to object.
       If xform.IsSimilarity() is zero, then you may
       want to call MakeSquishy() before calling
       Transform.
-
+ 
   Remarks:
     When overriding this function, be sure to include a call
-    to ON_Object::TransformUserData() which takes care of
-    transforming any ON_UserData that may be attached to
+    to ON_Object::TransformUserData() which takes care of 
+    transforming any ON_UserData that may be attached to 
     the object.
 
   See Also:
@@ -30682,14 +30670,14 @@ public:
     definition.
   */
   virtual
-  ON_BOOL32 Transform(
+  ON_BOOL32 Transform( 
          const ON_Xform& xform
          );
 
   /*
   Returns:
-    True if object can be accuratly modified with
-    "squishy" transformations like projections,
+    True if object can be accuratly modified with 
+    "squishy" transformations like projections, 
     shears, an non-uniform scaling.
   See Also:
     ON_Geometry::MakeDeformable();
@@ -30720,7 +30708,7 @@ public:
   //   j - [in] coordinate index
   //
   // Remarks:
-  //   The default implementation uses the virtual Transform()
+  //   The default implementation uses the virtual Transform() 
   //   function to calculate the result.  If you are creating
   //   an object where Transform() is slow, coordinate swapping
   //   will be frequently used, and coordinate swapping can
@@ -30744,7 +30732,7 @@ public:
     Returns true if the virtual ON_Geometry::BrepForm can compute
     an ON_Brep representation of this object.
   Remarks:
-    The default implementation of ON_Geometry::BrepForm returns
+    The default implementation of ON_Geometry::BrepForm returns 
     false.
   See Also
     ON_Geometry::BrepForm
@@ -30755,7 +30743,7 @@ public:
   /*
   Description:
     If possible, BrepForm() creates a brep form of the
-    ON_Geometry.
+    ON_Geometry. 
   Parameters:
     brep - [in] if not NULL, brep is used to store the brep
         form of the geometry.
@@ -30780,7 +30768,7 @@ public:
   Returns:
     This object's component index.  If this object is
     not a sub-piece of a larger geometric entity, then
-    the returned index has
+    the returned index has 
     m_type = ON_COMPONENT_INDEX::invalid_type
     and
     m_index = -1.
@@ -30816,7 +30804,7 @@ public:
 // THIS SOFTWARE IS PROVIDED "AS IS" WITHOUT EXPRESS OR IMPLIED WARRANTY.
 // ALL IMPLIED WARRANTIES OF FITNESS FOR ANY PARTICULAR PURPOSE AND OF
 // MERCHANTABILITY ARE HEREBY DISCLAIMED.
-//
+//				
 // For complete openNURBS copyright information see <http://www.opennurbs.org>.
 //
 ////////////////////////////////////////////////////////////////
@@ -30855,7 +30843,7 @@ public:
   // mesh to meet the other meshing constraints.  In particular, if
   // sub_seg_count = 0, then the curve is broken into main_seg_count
   // pieces and no further testing is performed.
-  int m_main_seg_count;
+  int m_main_seg_count; 
   int m_sub_seg_count;
 
   int m_reserved1;
@@ -30865,12 +30853,12 @@ public:
   // vertices.
   double m_max_ang_radians;
 
-  // Maximum permitted value of
+  // Maximum permitted value of 
   // distance chord midpoint to curve) / (length of chord)
   double m_max_chr;
 
-  // If max_aspect < 1.0, the parameter is ignored.
-  // If 1 <= max_aspect < sqrt(2), it is treated as if
+  // If max_aspect < 1.0, the parameter is ignored. 
+  // If 1 <= max_aspect < sqrt(2), it is treated as if 
   // max_aspect = sqrt(2).
   // This parameter controls the maximum permitted value of
   // (length of longest chord) / (length of shortest chord)
@@ -30878,13 +30866,13 @@ public:
 
   // If tolerance = 0, the parameter is ignored.
   // This parameter controls the maximum permitted value of the
-  // distance from the curve to the mesh.
+  // distance from the curve to the mesh.  
   double m_tolerance;
 
   // If m_min_edge_length = 0, the parameter is ignored.
   // This parameter controls the minimum permitted edge length.
   double m_min_edge_length;
-
+  
   // If max_edge_length = 0, the parameter is ignored.
   // This parameter controls the maximum permitted edge length.
   double m_max_edge_length;
@@ -30926,12 +30914,12 @@ public:
   Description:
     Get a duplicate of the curve.
   Returns:
-    A duplicate of the curve.
+    A duplicate of the curve.  
   Remarks:
     The caller must delete the returned curve.
     For non-ON_CurveProxy objects, this simply duplicates the curve using
     ON_Object::Duplicate.
-    For ON_CurveProxy objects, this duplicates the actual proxy curve
+    For ON_CurveProxy objects, this duplicates the actual proxy curve 
     geometry and, if necessary, trims and reverse the result to that
     the returned curve's parameterization and locus match the proxy curve's.
   */
@@ -30949,19 +30937,19 @@ public:
     Get tight bounding box of the curve.
 	Parameters:
 		tight_bbox - [in/out] tight bounding box
-		bGrowBox -[in]	(default=false)
+		bGrowBox -[in]	(default=false)			
       If true and the input tight_bbox is valid, then returned
-      tight_bbox is the union of the input tight_bbox and the
+      tight_bbox is the union of the input tight_bbox and the 
       curve's tight bounding box.
 		xform -[in] (default=NULL)
       If not NULL, the tight bounding box of the transformed
       curve is calculated.  The curve is not modified.
 	Returns:
-    True if the returned tight_bbox is set to a valid
+    True if the returned tight_bbox is set to a valid 
     bounding box.
   */
-	bool GetTightBoundingBox(
-			ON_BoundingBox& tight_bbox,
+	bool GetTightBoundingBox( 
+			ON_BoundingBox& tight_bbox, 
       int bGrowBox = false,
 			const ON_Xform* xform = 0
       ) const;
@@ -30980,7 +30968,7 @@ public:
 
   // Returns:
   //   domain of the curve.
-  virtual
+  virtual 
   ON_Interval Domain() const = 0;
 
   /*
@@ -31001,9 +30989,9 @@ public:
   // Returns:
   //   true if successful.
   virtual
-  ON_BOOL32 SetDomain(
-        double t0,
-        double t1
+  ON_BOOL32 SetDomain( 
+        double t0, 
+        double t1 
         );
 
 
@@ -31017,9 +31005,9 @@ public:
   Returns:
     true if successful.
   */
-  virtual
-  ON_BOOL32 ChangeClosedCurveSeam(
-            double t
+  virtual 
+  ON_BOOL32 ChangeClosedCurveSeam( 
+            double t 
             );
 
   /*
@@ -31042,7 +31030,7 @@ public:
   //   Get number of nonempty smooth (c-infinity) spans in curve
   // Returns:
   //   Number of nonempty smooth (c-infinity) spans.
-  virtual
+  virtual 
   int SpanCount() const = 0;
 
   // Description:
@@ -31055,10 +31043,10 @@ public:
   virtual
   ON_BOOL32 GetSpanVector(
         double* knots
-        ) const = 0; //
+        ) const = 0; // 
 
   //////////
-  // If t is in the domain of the curve, GetSpanVectorIndex() returns the
+  // If t is in the domain of the curve, GetSpanVectorIndex() returns the 
   // span vector index "i" such that span_vector[i] <= t <= span_vector[i+1].
   // The "side" parameter determines which span is selected when t is at the
   // end of a span.
@@ -31075,15 +31063,15 @@ public:
   //   or a good estimate if curve spans are not algebraic.
   // Returns:
   //   degree
-  virtual
-  int Degree() const = 0;
+  virtual 
+  int Degree() const = 0; 
 
   // Description:
   //   Returns maximum algebraic degree of any span
   //   or a good estimate if curve spans are not algebraic.
   // Returns:
   //   degree
-  virtual
+  virtual 
   ON_BOOL32 GetParameterTolerance( // returns tminus < tplus: parameters tminus <= s <= tplus
          double t,       // [IN] t = parameter in domain
          double* tminus, // [OUT] tminus
@@ -31100,7 +31088,7 @@ public:
   //   the line segment connecting the curve's ends is <= tolerance.
   virtual
   ON_BOOL32 IsLinear(
-        double tolerance = ON_ZERO_TOLERANCE
+        double tolerance = ON_ZERO_TOLERANCE 
         ) const;
 
   /*
@@ -31165,12 +31153,12 @@ public:
   Returns:
     True if the paramter t is on a arc segment of the curve.
   */
-  bool IsArcAt(
-    double t,
+  bool IsArcAt( 
+    double t, 
     const ON_Plane* plane = 0,
     ON_Arc* arc = 0,
     double tolerance = ON_ZERO_TOLERANCE,
-    double* t0 = 0,
+    double* t0 = 0, 
     double* t1 = 0
     ) const;
 
@@ -31212,7 +31200,7 @@ public:
 
   /*
   Description:
-    Decide if it makes sense to close off this curve by moving
+    Decide if it makes sense to close off this curve by moving 
     the endpoint to the start based on start-end gap size and length
     of curve as approximated by chord defined by 6 points.
   Parameters:
@@ -31220,7 +31208,7 @@ public:
                      if start - end gap is greater than tolerance, returns false
     min_abs_size - [in] if greater than 0.0 and none of the interior sampled
                      points are at least min_abs_size from start, returns false.
-    min_rel_size - [in] if greater than 1.0 and chord length is less than
+    min_rel_size - [in] if greater than 1.0 and chord length is less than 
                      min_rel_size*gap, returns false.
   Returns:
     true if start and end points are close enough based on above conditions.
@@ -31236,59 +31224,59 @@ public:
   //   Test a curve to see if it is closed.
   // Returns:
   //   true if the curve is closed.
-  virtual
+  virtual 
   ON_BOOL32 IsClosed() const;
 
   // Description:
   //   Test a curve to see if it is periodic.
   // Returns:
   //   true if the curve is closed and at least C2 at the start/end.
-  virtual
+  virtual 
   ON_BOOL32 IsPeriodic() const;
 
   /*
   Description:
-    Search for a derivatitive, tangent, or curvature
+    Search for a derivatitive, tangent, or curvature 
     discontinuity.
   Parameters:
     c - [in] type of continity to test for.
     t0 - [in] Search begins at t0. If there is a discontinuity
-              at t0, it will be ignored.  This makes it
+              at t0, it will be ignored.  This makes it 
               possible to repeatedly call GetNextDiscontinuity
               and step through the discontinuities.
-    t1 - [in] (t0 != t1)  If there is a discontinuity at t1 is
+    t1 - [in] (t0 != t1)  If there is a discontinuity at t1 is 
               will be ingored unless c is a locus discontinuity
               type and t1 is at the start or end of the curve.
     t - [out] if a discontinuity is found, then *t reports the
           parameter at the discontinuity.
-    hint - [in/out] if GetNextDiscontinuity will be called
+    hint - [in/out] if GetNextDiscontinuity will be called 
        repeatedly, passing a "hint" with initial value *hint=0
-       will increase the speed of the search.
-    dtype - [out] if not NULL, *dtype reports the kind of
-        discontinuity found at *t.  A value of 1 means the first
-        derivative or unit tangent was discontinuous.  A value
-        of 2 means the second derivative or curvature was
+       will increase the speed of the search.       
+    dtype - [out] if not NULL, *dtype reports the kind of 
+        discontinuity found at *t.  A value of 1 means the first 
+        derivative or unit tangent was discontinuous.  A value 
+        of 2 means the second derivative or curvature was 
         discontinuous.  A value of 0 means teh curve is not
         closed, a locus discontinuity test was applied, and
         t1 is at the start of end of the curve.
-        If 'c', the type of continuity to test for
-        is ON::Gsmooth_continuous and the curvature changes
-        from curved to 0 or 0 to curved and there is no
+        If 'c', the type of continuity to test for 
+        is ON::Gsmooth_continuous and the curvature changes 
+        from curved to 0 or 0 to curved and there is no 
         tangency kink dtype is returns 3
     cos_angle_tolerance - [in] default = cos(1 degree) Used only
         when c is ON::G1_continuous or ON::G2_continuous.  If the
-        cosine of the angle between two tangent vectors is
+        cosine of the angle between two tangent vectors is 
         <= cos_angle_tolerance, then a G1 discontinuity is reported.
-    curvature_tolerance - [in] (default = ON_SQRT_EPSILON) Used
-        only when c is ON::G2_continuous.  If K0 and K1 are
-        curvatures evaluated from above and below and
-        |K0 - K1| > curvature_tolerance, then a curvature
+    curvature_tolerance - [in] (default = ON_SQRT_EPSILON) Used 
+        only when c is ON::G2_continuous.  If K0 and K1 are 
+        curvatures evaluated from above and below and 
+        |K0 - K1| > curvature_tolerance, then a curvature 
         discontinuity is reported.
   Returns:
     Parametric continuity tests c = (C0_continuous, ..., G2_continuous):
 
-      true if a parametric discontinuity was found strictly
-      between t0 and t1. Note well that all curves are
+      true if a parametric discontinuity was found strictly 
+      between t0 and t1. Note well that all curves are 
       parametrically continuous at the ends of their domains.
 
     Locus continuity tests c = (C0_locus_continuous, ...,G2_locus_continuous):
@@ -31296,12 +31284,12 @@ public:
       true if a locus discontinuity was found strictly between
       t0 and t1 or at t1 is the at the end of a curve.
       Note well that all open curves (IsClosed()=false) are locus
-      discontinuous at the ends of their domains.  All closed
-      curves (IsClosed()=true) are at least C0_locus_continuous at
+      discontinuous at the ends of their domains.  All closed 
+      curves (IsClosed()=true) are at least C0_locus_continuous at 
       the ends of their domains.
   */
   virtual
-  bool GetNextDiscontinuity(
+  bool GetNextDiscontinuity( 
                   ON::continuity c,
                   double t0,
                   double t1,
@@ -31328,10 +31316,10 @@ public:
         greater than d2_tolerance, then the curve is not C2.
     cos_angle_tolerance - [in] default = cos(1 degree) Used only when
         c is ON::G1_continuous or ON::G2_continuous.  If the cosine
-        of the angle between two tangent vectors
+        of the angle between two tangent vectors 
         is <= cos_angle_tolerance, then a G1 discontinuity is reported.
     curvature_tolerance - [in] (default = ON_SQRT_EPSILON) Used only when
-        c is ON::G2_continuous or ON::Gsmooth_continuous.
+        c is ON::G2_continuous or ON::Gsmooth_continuous.  
         ON::G2_continuous:
           If K0 and K1 are curvatures evaluated
           from above and below and |K0 - K1| > curvature_tolerance,
@@ -31342,13 +31330,13 @@ public:
           or ||K0| - |K1|| > (max(|K0|,|K1|) > curvature_tolerance,
           then a curvature discontinuity is reported.
   Returns:
-    true if the curve has at least the c type continuity at
+    true if the curve has at least the c type continuity at 
     the parameter t.
   */
   virtual
   bool IsContinuous(
     ON::continuity c,
-    double t,
+    double t, 
     int* hint = NULL,
     double point_tolerance=ON_ZERO_TOLERANCE,
     double d1_tolerance=ON_ZERO_TOLERANCE,
@@ -31364,7 +31352,7 @@ public:
   //   true if curve was reversed.
   // Remarks:
   //   If reveresed, the domain changes from [a,b] to [-b,-a]
-  virtual
+  virtual 
   ON_BOOL32 Reverse()=0;
 
 
@@ -31407,7 +31395,7 @@ public:
   ON_BOOL32 SetEndPoint(
           ON_3dPoint end_point
           );
-
+  
   // Description:
   //   Evaluate point at a parameter.
   // Parameters:
@@ -31420,8 +31408,8 @@ public:
   //   ON_Curve::EvPoint
   //   ON_Curve::PointAtStart
   //   ON_Curve::PointAtEnd
-  ON_3dPoint  PointAt(
-                double t
+  ON_3dPoint  PointAt( 
+                double t 
                 ) const;
 
   // Description:
@@ -31459,7 +31447,7 @@ public:
   // See Also:
   //   ON_Curve::Ev1Der
   ON_3dVector DerivativeAt(
-                double t
+                double t 
                 ) const;
 
   // Description:
@@ -31473,7 +31461,7 @@ public:
   // See Also:
   //   ON_Curve::EvTangent
   ON_3dVector TangentAt(
-                double t
+                double t 
                 ) const;
 
   // Description:
@@ -31509,7 +31497,7 @@ public:
   //   point - [out] value of curve at t
   //   side - [in] optional - determines which side to evaluate from
   //               =0   default
-  //               <0   to evaluate from below,
+  //               <0   to evaluate from below, 
   //               >0   to evaluate from above
   //   hint - [in/out] optional evaluation hint used to speed repeated evaluations
   // Returns:
@@ -31520,7 +31508,7 @@ public:
   //   ON_Curve::Evaluate
   ON_BOOL32 EvPoint(
          double t,
-         ON_3dPoint& point,
+         ON_3dPoint& point, 
          int side = 0,
          int* hint = 0
          ) const;
@@ -31533,7 +31521,7 @@ public:
   //   first_derivative - [out] value of first derivative at t
   //   side - [in] optional - determines which side to evaluate from
   //               =0   default
-  //               <0   to evaluate from below,
+  //               <0   to evaluate from below, 
   //               >0   to evaluate from above
   //   hint - [in/out] optional evaluation hint used to speed repeated evaluations
   // Returns:
@@ -31560,7 +31548,7 @@ public:
   //   second_derivative - [out] value of second derivative at t
   //   side - [in] optional - determines which side to evaluate from
   //               =0   default
-  //               <0   to evaluate from below,
+  //               <0   to evaluate from below, 
   //               >0   to evaluate from above
   //   hint - [in/out] optional evaluation hint used to speed repeated evaluations
   // Returns:
@@ -31587,7 +31575,7 @@ public:
     tangent - [out] value of unit tangent
     side - [in] optional - determines which side to evaluate from
                 =0   default
-                <0   to evaluate from below,
+                <0   to evaluate from below, 
                 >0   to evaluate from above
     hint - [in/out] optional evaluation hint used to speed repeated evaluations
   Returns:
@@ -31614,7 +31602,7 @@ public:
     kappa - [out] value of curvature vector
     side - [in] optional - determines which side to evaluate from
                 =0   default
-                <0   to evaluate from below,
+                <0   to evaluate from below, 
                 >0   to evaluate from above
     hint - [in/out] optional evaluation hint used to speed repeated evaluations
   Returns:
@@ -31648,7 +31636,7 @@ public:
         etc.
     side - [in] optional - determines which side to evaluate from
                 =0   default
-                <0   to evaluate from below,
+                <0   to evaluate from below, 
                 >0   to evaluate from above
     hint - [in/out] optional evaluation hint used to speed repeated evaluations
   Returns:
@@ -31658,7 +31646,7 @@ public:
     ON_Curve::Ev1Der
     ON_Curve::Ev2Der
   */
-  virtual
+  virtual 
   ON_BOOL32 Evaluate(
          double t,
          int der_count,
@@ -31811,39 +31799,39 @@ public:
           const ON_Interval* sub_domain = NULL
           ) const;
 
-
+ 
   /*
   Parameters:
     min_length -[in]
       minimum length of a linear span
     tolerance -[in]
       distance tolerance to use when checking linearity.
-  Returns
+  Returns 
     true if the span is a non-degenrate line.  This means:
     - dimension = 2 or 3
-    - The length of the the line segment from the span's initial
+    - The length of the the line segment from the span's initial 
       point to the span's control point is >= min_length.
     - The maximum distance from the line segment to the span
     is <= tolerance and the span increases monotonically
     in the direction of the line segment.
   */
-  bool FirstSpanIsLinear(
+  bool FirstSpanIsLinear( 
     double min_length,
     double tolerance
     ) const;
 
-  bool LastSpanIsLinear(
+  bool LastSpanIsLinear( 
     double min_length,
     double tolerance
     ) const;
 
-  bool FirstSpanIsLinear(
+  bool FirstSpanIsLinear( 
     double min_length,
     double tolerance,
     ON_Line* span_line
     ) const;
 
-  bool LastSpanIsLinear(
+  bool LastSpanIsLinear( 
     double min_length,
     double tolerance,
     ON_Line* span_line
@@ -31866,10 +31854,10 @@ public:
   //   Pure virtual function. Default returns false.
   //   Where possible, analytically extends curve to include domain.
   // Parameters:
-  //   domain - [in] if domain is not included in curve domain,
-  //   curve will be extended so that its domain includes domain.
+  //   domain - [in] if domain is not included in curve domain, 
+  //   curve will be extended so that its domain includes domain.  
   //   Will not work if curve is closed. Original curve is identical
-  //   to the restriction of the resulting curve to the original curve domain,
+  //   to the restriction of the resulting curve to the original curve domain, 
   // Returns:
   //   true if successful.
   virtual
@@ -31879,7 +31867,7 @@ public:
 
   /*
   Description:
-    Splits (divides) the curve at the specified parameter.
+    Splits (divides) the curve at the specified parameter.  
     The parameter must be in the interior of the curve's domain.
     The pointers passed to Split must either be NULL or point to
     an ON_Curve object of the same type.  If the pointer is NULL,
@@ -31891,7 +31879,7 @@ public:
     left_side - [out] left portion of curve returned here
     right_side - [out] right portion of curve returned here
 	Returns:
-		true	- The curve was split into two pieces.
+		true	- The curve was split into two pieces.  
 		false - The curve could not be split.  For example if the parameter is
 						too close to an endpoint.
 
@@ -31929,7 +31917,7 @@ public:
         the curve's to the desired accuracy and the
         domain of the NURBS curve is correct.  On
         However, This curve's parameterization and
-        the NURBS curve parameterization may not
+        the NURBS curve parameterization may not 
         match to the desired accuracy.  This situation
         happens when getting NURBS representations of
         curves that have a transendental parameterization
@@ -31958,15 +31946,15 @@ public:
         matches the curve's to wthe desired accuracy
     2   success - NURBS point locus matches
         the curve's and the
-        domain of the NURBS curve is correct.
+        domain of the NURBS curve is correct.  
         However, This curve's parameterization and
-        the NURBS curve parameterization may not
+        the NURBS curve parameterization may not 
         match.  This situation
         happens when getting NURBS representations of
         curves that have a transendental parameterization
         like circles
   Remarks:
-    This is a low-level virtual function.
+    This is a low-level virtual function.  
   See Also:
     ON_Curve::GetNurbForm
     ON_Curve::NurbsCurve
@@ -32043,7 +32031,7 @@ public:
   //   point and intersection calcuations.
   // Remarks:
   //   If the geometry of the curve is modified in any way,
-  //   then call DestroyCurveTree();  The curve tree is
+  //   then call DestroyCurveTree();  The curve tree is 
   //   created as needed.
   void DestroyCurveTree();
 
@@ -32166,7 +32154,7 @@ public:
 
   /*
 	Description:
-		Lookup a parameter in the m_t array, optionally using a built in snap tolerance to
+		Lookup a parameter in the m_t array, optionally using a built in snap tolerance to 
 		snap a parameter value to an element of m_t.
 		This function is used by some types derived from ON_Curve to snap parameter values
 	Parameters:
@@ -32176,21 +32164,21 @@ public:
                          (value)                              (condition)
                           -1                                     t < m_t[0] or m_t is empty
                            0 <= i <= m_t.Count()-2      m_t[i] < t < m_t[i+1]
-                           m_t.Count()-1                         t > m_t[m_t.Count()-1]
+                           m_t.Count()-1                         t > m_t[m_t.Count()-1]			 
 
-                        if the function returns true then t is equal to, or is closest to and
-                        within  tolerance of m_t[index].
-
-		bEnableSnap-[in] enable snapping
+                        if the function returns true then t is equal to, or is closest to and 
+                        within  tolerance of m_t[index]. 
+									
+		bEnableSnap-[in] enable snapping 
 		m_t-[in] Array of parameter values to snap to
 		RelTol-[in] tolerance used in snapping
-
-	Returns:
+	
+	Returns:		
 		true if the t is exactly equal to (bEnableSnap==false), or within tolerance of
-		(bEnableSnap==true) m_t[index].
+		(bEnableSnap==true) m_t[index]. 
   */
 protected:
-  bool ParameterSearch( double t, int& index, bool bEnableSnap, const ON_SimpleArray<double>& m_t,
+  bool ParameterSearch( double t, int& index, bool bEnableSnap, const ON_SimpleArray<double>& m_t, 
 								double RelTol=ON_SQRT_EPSILON) const;
 
 private:
@@ -32198,7 +32186,7 @@ private:
 
 #if defined(ON_DLL_TEMPLATE)
 // This stuff is here because of a limitation in the way Microsoft
-// handles templates and DLLs.  See Microsoft's knowledge base
+// handles templates and DLLs.  See Microsoft's knowledge base 
 // article ID Q168958 for details.
 #pragma warning( push )
 #pragma warning( disable : 4231 )
@@ -32225,19 +32213,19 @@ public:
     Get tight bounding box of the bezier.
 	Parameters:
 		tight_bbox - [in/out] tight bounding box
-		bGrowBox -[in]	(default=false)
+		bGrowBox -[in]	(default=false)			
       If true and the input tight_bbox is valid, then returned
-      tight_bbox is the union of the input tight_bbox and the
+      tight_bbox is the union of the input tight_bbox and the 
       tight bounding box of the bezier curve.
 		xform -[in] (default=NULL)
       If not NULL, the tight bounding box of the transformed
       bezier is calculated.  The bezier curve is not modified.
 	Returns:
-    True if the returned tight_bbox is set to a valid
+    True if the returned tight_bbox is set to a valid 
     bounding box.
   */
-	bool GetTightBoundingBox(
-			ON_BoundingBox& tight_bbox,
+	bool GetTightBoundingBox( 
+			ON_BoundingBox& tight_bbox, 
       int bGrowBox = false,
 			const ON_Xform* xform = 0
       ) const;
@@ -32249,15 +32237,15 @@ Description:
 Parameters:
   curve - [in] curve to trim (not modified)
   trim_parameters - [in] trimming parameters
-    If curve is open, then  trim_parameters must be an increasing
-    interval.If curve is closed, and trim_parameters ins a
+    If curve is open, then  trim_parameters must be an increasing 
+    interval.If curve is closed, and trim_parameters ins a 
     decreasing interval, then the portion of the curve across the
     start/end is returned.
 Returns:
   trimmed curve or NULL if input is invalid.
 */
 ON_DECL
-ON_Curve* ON_TrimCurve(
+ON_Curve* ON_TrimCurve( 
             const ON_Curve& curve,
             ON_Interval trim_parameters
             );
@@ -32265,8 +32253,8 @@ ON_Curve* ON_TrimCurve(
 /*
 Description:
   Move ends of curves to a common point. Neither curve can be closed or an ON_CurveProxy.
-  If one is an arc or polycurve with arc at end to change, and the other is not,
-  then the arc is left unchanged and the other curve is moved to the arc endpoint.
+  If one is an arc or polycurve with arc at end to change, and the other is not, 
+  then the arc is left unchanged and the other curve is moved to the arc endpoint. 
   Otherwise, both are moved to the midpoint of the segment between the ends.
 Parameters:
   Crv0 - [in] first curve to modify.
@@ -32280,9 +32268,9 @@ Returns:
 */
 ON_DECL
 bool ON_ForceMatchCurveEnds(
-                            ON_Curve& Crv0,
-                            int end0,
-                            ON_Curve& Crv1,
+                            ON_Curve& Crv0, 
+                            int end0, 
+                            ON_Curve& Crv1, 
                             int end1
                             );
 
@@ -32295,13 +32283,13 @@ Parameters:
                     are appended.
   join_tol - [in] Distance tolerance used to decide if endpoints are close enough
   bPreserveDirection - [in] If true, curve endpoints will be compared to curve startpoints.
-                            If false, all start and endpoints will be compared, and copies of input
+                            If false, all start and endpoints will be compared, and copies of input 
                             curves may be reversed in output.
   key     -  [out] if key is not null, InCurves[i] was joined into OutCurves[key[i]].
 Returns:
   Number of curves added to Outcurves
 Remarks:
-  Closed curves are copied to OutCurves.
+  Closed curves are copied to OutCurves. 
   Curves that cannot be joined to others are copied to OutCurves.  When curves are joined, the results
   are ON_PolyCurves. All members of InCurves must have same dimension, at most 3.
   */
@@ -32330,11 +32318,11 @@ Returns:
   True if successful, false if not.
 */
 ON_DECL
-bool ON_SortLines(
-        int line_count,
-        const ON_Line* line_list,
-        int* index,
-        bool* bReverse
+bool ON_SortLines( 
+        int line_count, 
+        const ON_Line* line_list, 
+        int* index, 
+        bool* bReverse 
         );
 
 /*
@@ -32352,10 +32340,10 @@ Returns:
   True if successful, false if not.
 */
 ON_DECL
-bool ON_SortLines(
+bool ON_SortLines( 
         const ON_SimpleArray<ON_Line>& line_list,
-        int* index,
-        bool* bReverse
+        int* index, 
+        bool* bReverse 
         );
 
 /*
@@ -32376,7 +32364,7 @@ Returns:
 ON_DECL
 bool ON_SortCurves(
           int curve_count,
-          const ON_Curve* const* curve_list,
+          const ON_Curve* const* curve_list, 
           int* index,
           bool* bReverse
           );
@@ -32396,10 +32384,10 @@ Returns:
   True if successful, false if not.
 */
 ON_DECL
-bool ON_SortCurves(
-                   const ON_SimpleArray<const ON_Curve*>& curves,
-                   ON_SimpleArray<int>& index,
-                   ON_SimpleArray<bool>& bReverse
+bool ON_SortCurves( 
+                   const ON_SimpleArray<const ON_Curve*>& curves, 
+                   ON_SimpleArray<int>& index, 
+                   ON_SimpleArray<bool>& bReverse 
                    );
 
 /*
@@ -32418,10 +32406,10 @@ Returns:
   True if successful, false if not.
 */
 ON_DECL
-bool ON_SortCurves(
-          const ON_SimpleArray<ON_Curve*>& curves,
-          ON_SimpleArray<int>& index,
-          ON_SimpleArray<bool>& bReverse
+bool ON_SortCurves( 
+          const ON_SimpleArray<ON_Curve*>& curves, 
+          ON_SimpleArray<int>& index, 
+          ON_SimpleArray<bool>& bReverse 
           );
 
 /*
@@ -32451,7 +32439,7 @@ int ON_ClosedCurveOrientation( const ON_Curve& curve, const ON_Xform* xform );
 // THIS SOFTWARE IS PROVIDED "AS IS" WITHOUT EXPRESS OR IMPLIED WARRANTY.
 // ALL IMPLIED WARRANTIES OF FITNESS FOR ANY PARTICULAR PURPOSE AND OF
 // MERCHANTABILITY ARE HEREBY DISCLAIMED.
-//
+//				
 // For complete openNURBS copyright information see <http://www.opennurbs.org>.
 //
 ////////////////////////////////////////////////////////////////
@@ -32497,7 +32485,7 @@ public:
   // note: odd values are all "x" = constant
   // and even values > 0 are all "y" = constant
   // ON_BrepTrim::m_iso uses these flags
-  enum ISO
+  enum ISO 
   {
     not_iso = 0, // curve is not an isoparameteric curve
     x_iso   = 1, // curve is a "x" = constant (vertical) isoparametric
@@ -32531,12 +32519,12 @@ public:
   Description:
     Get a duplicate of the surface.
   Returns:
-    A duplicate of the surface.
+    A duplicate of the surface.  
   Remarks:
     The caller must delete the returned surface.
     For non-ON_SurfaceProxy objects, this simply duplicates the surface using
     ON_Object::Duplicate.
-    For ON_SurfaceProxy objects, this duplicates the actual proxy surface
+    For ON_SurfaceProxy objects, this duplicates the actual proxy surface 
     geometry and, if necessary, transposes the result to that
     the returned surfaces's parameterization and locus match the proxy surface's.
   */
@@ -32565,7 +32553,7 @@ public:
 
   /*
   Description:
-    Overrides virtual ON_Geometry::HasBrepForm.
+    Overrides virtual ON_Geometry::HasBrepForm.  
     Uses ON_Brep::Create( ON_Surface&* ) to create a brep
     form.  The surface is copied for use in the returned
     brep.
@@ -32585,21 +32573,21 @@ public:
   ////////////////////////////////////////////////////////////////////
   // surface interface
 
-  ON_BOOL32 GetDomain(
+  ON_BOOL32 GetDomain( 
          int dir,              // 0 gets first parameter, 1 gets second parameter
          double* t0,
          double* t1
          ) const;
 
-  bool SetDomain(
+  bool SetDomain( 
     int dir, // 0 sets first parameter's domain, 1 gets second parameter's domain
     ON_Interval domain
     );
 
   virtual
-  ON_BOOL32 SetDomain(
+  ON_BOOL32 SetDomain( 
     int dir, // 0 sets first parameter's domain, 1 gets second parameter's domain
-    double t0,
+    double t0, 
     double t1
     );
 
@@ -32617,7 +32605,7 @@ public:
     height - [out] (corresponds to the first surface parameter)
   Example:
 
-          // Reparameterize a surface to minimize distortion
+          // Reparameterize a surface to minimize distortion 
           // in the map from parameter space to 3d.
           ON_Surface* surf = ...;
           double width, height;
@@ -32631,25 +32619,25 @@ public:
     true if successful.
   */
   virtual
-  ON_BOOL32 GetSurfaceSize(
-      double* width,
-      double* height
+  ON_BOOL32 GetSurfaceSize( 
+      double* width, 
+      double* height 
       ) const;
 
 
-  virtual
+  virtual 
   int SpanCount(
     int dir // 0 gets first parameter's domain, 1 gets second parameter's domain
     ) const = 0; // number of smooth nonempty spans in the parameter direction
 
   virtual
-  ON_BOOL32 GetSpanVector( // span "knots"
+  ON_BOOL32 GetSpanVector( // span "knots" 
         int dir, // 0 gets first parameter's domain, 1 gets second parameter's domain
-        double* span_vector // array of length SpanCount() + 1
-        ) const = 0; //
+        double* span_vector // array of length SpanCount() + 1 
+        ) const = 0; // 
 
   //////////
-  // If t is in the domain of the surface, GetSpanVectorIndex() returns the
+  // If t is in the domain of the surface, GetSpanVectorIndex() returns the 
   // span vector index "i" such that span_vector[i] <= t <= span_vector[i+1].
   // The "side" parameter determines which span is selected when t is at the
   // end of a span.
@@ -32662,11 +32650,11 @@ public:
         ON_Interval* span_interval // [OUT] domain of the span containing "t"
         ) const;
 
-  virtual
-  int Degree( // returns maximum algebraic degree of any span
+  virtual 
+  int Degree( // returns maximum algebraic degree of any span 
                   // ( or a good estimate if curve spans are not algebraic )
     int dir // 0 gets first parameter's domain, 1 gets second parameter's domain
-    ) const = 0;
+    ) const = 0; 
 
   virtual ON_BOOL32 GetParameterTolerance( // returns tminus < tplus: parameters tminus <= s <= tplus
          int dir,        // 0 gets first parameter, 1 gets second parameter
@@ -32739,7 +32727,7 @@ public:
     tolerance - [in]
       tolerance to use when checking
   Returns:
-    True if the surface is a portion of a sphere.
+    True if the surface is a portion of a sphere.                   
   */
   bool IsSphere(
         ON_Sphere* sphere = NULL,
@@ -32750,12 +32738,12 @@ public:
   Description:
     Determine if the surface is a portion of a cylinder.
   Parameters:
-    cylinder - [out] if not NULL and true is returned,
+    cylinder - [out] if not NULL and true is returned, 
       then the cylinder definition is returned.
     tolerance - [in]
       tolerance to use when checking
   Returns:
-    True if the surface is a portion of a cylinder.
+    True if the surface is a portion of a cylinder.                   
   */
   bool IsCylinder(
         ON_Cylinder* cylinder = NULL,
@@ -32766,12 +32754,12 @@ public:
   Description:
     Determine if the surface is a portion of a cone.
   Parameters:
-    cone - [out] if not NULL and true is returned,
+    cone - [out] if not NULL and true is returned, 
       then the cone definition is returned.
     tolerance - [in]
       tolerance to use when checking
   Returns:
-    True if the surface is a portion of a cone.
+    True if the surface is a portion of a cone.                   
   */
   bool IsCone(
         ON_Cone* cone = NULL,
@@ -32787,19 +32775,19 @@ public:
     tolerance - [in]
       tolerance to use when checking
   Returns:
-    True if the surface is a portion of a torus.
+    True if the surface is a portion of a torus.                   
   */
   bool IsTorus(
         ON_Torus* torus = NULL,
         double tolerance = ON_ZERO_TOLERANCE
         ) const;
 
-  virtual
+  virtual 
   ON_BOOL32 IsClosed(   // true if surface is closed in direction
         int        // dir  0 = "s", 1 = "t"
         ) const;
 
-  virtual
+  virtual 
   ON_BOOL32 IsPeriodic( // true if surface is periodic in direction (default is false)
         int        // dir  0 = "s", 1 = "t"
         ) const;
@@ -32829,8 +32817,8 @@ public:
     true if surface is singular at (s,t)
   */
   bool IsAtSingularity(
-    double s,
-    double t,
+    double s, 
+    double t, 
     bool bExact = true
     ) const;
 
@@ -32850,48 +32838,48 @@ public:
     double s,
     double t
     ) const;
-
+  
   /*
   Description:
-    Search for a derivatitive, tangent, or curvature
+    Search for a derivatitive, tangent, or curvature 
     discontinuity.
   Parameters:
     dir - [in] If 0, then "u" parameter is checked.  If 1, then
                the "v" parameter is checked.
     c - [in] type of continity to test for.
     t0 - [in] Search begins at t0. If there is a discontinuity
-              at t0, it will be ignored.  This makes it
+              at t0, it will be ignored.  This makes it 
               possible to repeatedly call GetNextDiscontinuity
               and step through the discontinuities.
-    t1 - [in] (t0 != t1)  If there is a discontinuity at t1 is
+    t1 - [in] (t0 != t1)  If there is a discontinuity at t1 is 
               will be ingored unless c is a locus discontinuity
               type and t1 is at the start or end of the curve.
     t - [out] if a discontinuity is found, then *t reports the
           parameter at the discontinuity.
-    hint - [in/out] if GetNextDiscontinuity will be called
+    hint - [in/out] if GetNextDiscontinuity will be called 
        repeatedly, passing a "hint" with initial value *hint=0
-       will increase the speed of the search.
-    dtype - [out] if not NULL, *dtype reports the kind of
-        discontinuity found at *t.  A value of 1 means the first
-        derivative or unit tangent was discontinuous.  A value
-        of 2 means the second derivative or curvature was
+       will increase the speed of the search.       
+    dtype - [out] if not NULL, *dtype reports the kind of 
+        discontinuity found at *t.  A value of 1 means the first 
+        derivative or unit tangent was discontinuous.  A value 
+        of 2 means the second derivative or curvature was 
         discontinuous.  A value of 0 means teh curve is not
         closed, a locus discontinuity test was applied, and
         t1 is at the start of end of the curve.
     cos_angle_tolerance - [in] default = cos(1 degree) Used only
         when c is ON::G1_continuous or ON::G2_continuous.  If the
-        cosine of the angle between two tangent vectors is
+        cosine of the angle between two tangent vectors is 
         <= cos_angle_tolerance, then a G1 discontinuity is reported.
-    curvature_tolerance - [in] (default = ON_SQRT_EPSILON) Used
-        only when c is ON::G2_continuous.  If K0 and K1 are
-        curvatures evaluated from above and below and
-        |K0 - K1| > curvature_tolerance, then a curvature
+    curvature_tolerance - [in] (default = ON_SQRT_EPSILON) Used 
+        only when c is ON::G2_continuous.  If K0 and K1 are 
+        curvatures evaluated from above and below and 
+        |K0 - K1| > curvature_tolerance, then a curvature 
         discontinuity is reported.
   Returns:
     Parametric continuity tests c = (C0_continuous, ..., G2_continuous):
 
-      true if a parametric discontinuity was found strictly
-      between t0 and t1. Note well that all curves are
+      true if a parametric discontinuity was found strictly 
+      between t0 and t1. Note well that all curves are 
       parametrically continuous at the ends of their domains.
 
     Locus continuity tests c = (C0_locus_continuous, ...,G2_locus_continuous):
@@ -32899,12 +32887,12 @@ public:
       true if a locus discontinuity was found strictly between
       t0 and t1 or at t1 is the at the end of a curve.
       Note well that all open curves (IsClosed()=false) are locus
-      discontinuous at the ends of their domains.  All closed
-      curves (IsClosed()=true) are at least C0_locus_continuous at
+      discontinuous at the ends of their domains.  All closed 
+      curves (IsClosed()=true) are at least C0_locus_continuous at 
       the ends of their domains.
   */
   virtual
-  bool GetNextDiscontinuity(
+  bool GetNextDiscontinuity( 
                   int dir,
                   ON::continuity c,
                   double t0,
@@ -32932,7 +32920,7 @@ public:
         greater than d2_tolerance, then the surface is not C2.
     cos_angle_tolerance - [in] default = cos(1 degree) Used only when
         c is ON::G1_continuous or ON::G2_continuous.  If the cosine
-        of the angle between two normal vectors
+        of the angle between two normal vectors 
         is <= cos_angle_tolerance, then a G1 discontinuity is reported.
     curvature_tolerance - [in] (default = ON_SQRT_EPSILON) Used only when
         c is ON::G2_continuous.  If K0 and K1 are curvatures evaluated
@@ -32944,8 +32932,8 @@ public:
   virtual
   bool IsContinuous(
     ON::continuity c,
-    double s,
-    double t,
+    double s, 
+    double t, 
     int* hint = NULL,
     double point_tolerance=ON_ZERO_TOLERANCE,
     double d1_tolerance=ON_ZERO_TOLERANCE,
@@ -32954,12 +32942,12 @@ public:
     double curvature_tolerance=ON_SQRT_EPSILON
     ) const;
 
-  virtual
+  virtual 
   ON_BOOL32 Reverse(  // reverse parameterizatrion, Domain changes from [a,b] to [-b,-a]
     int // dir  0 = "s", 1 = "t"
     ) = 0;
 
-  virtual
+  virtual 
   ON_BOOL32 Transpose() = 0; // transpose surface parameterization (swap "s" and "t")
 
   // simple evaluation interface - no error handling
@@ -33057,7 +33045,7 @@ public:
          ) const;
 
   // work horse evaluator
-  virtual
+  virtual 
   ON_BOOL32 Evaluate( // returns false if unable to evaluate
          double u, double v,   // evaluation parameters
          int num_der,          // number of derivatives (>=0)
@@ -33084,7 +33072,7 @@ public:
                  e.g., point on IsoCurve(1,c) at t is srf(c,t
                  This is a vertical line from bottom to top
 
-    c - [in] value of constant parameter
+    c - [in] value of constant parameter 
   Returns:
     Isoparametric curve.
   Remarks:
@@ -33135,7 +33123,7 @@ public:
         the portions of the surface with parameters (s,t) satisfying
         s < Domain(0).Min() or s > Domain(0).Max() are trimmed away.
         If dir is 1, then the portions of the surface with parameters
-        (s,t) satisfying t < Domain(1).Min() or t > Domain(1).Max()
+        (s,t) satisfying t < Domain(1).Min() or t > Domain(1).Max() 
         are trimmed away.
   */
   virtual
@@ -33153,11 +33141,11 @@ public:
                    (the first surface parameter).
                 1  new Domain(1) will include domain.
                    (the second surface parameter).
-     domain - [in] if domain is not included in surface domain,
-     surface will be extended so that its domain includes domain.
-     Will not work if surface is closed in direction dir.
+     domain - [in] if domain is not included in surface domain, 
+     surface will be extended so that its domain includes domain.  
+     Will not work if surface is closed in direction dir. 
      Original surface is identical to the restriction of the
-     resulting surface to the original surface domain,
+     resulting surface to the original surface domain, 
    Returns:
      true if successful.
      */
@@ -33170,7 +33158,7 @@ public:
 
   /*
   Description:
-    Splits (divides) the surface into two parts at the
+    Splits (divides) the surface into two parts at the 
     specified parameter.
 
   Parameters:
@@ -33238,7 +33226,7 @@ public:
         the surface's to the desired accuracy and the
         domain of the NURBS surface is correct.  On
         However, This surface's parameterization and
-        the NURBS surface parameterization may not
+        the NURBS surface parameterization may not 
         match to the desired accuracy.  This situation
         happens when getting NURBS representations of
         surfaces that have a transendental parameterization
@@ -33268,15 +33256,15 @@ public:
         matches the surface's
     2   success - NURBS point locus matches
         the surface's and the
-        domain of the NURBS surface is correct.
+        domain of the NURBS surface is correct.  
         However, This surface's parameterization and
-        the NURBS surface parameterization may not
+        the NURBS surface parameterization may not 
         match.  This situation
         happens when getting NURBS representations of
         surfaces that have a transendental parameterization
         like spheres, cylinders, and cones.
   Remarks:
-    This is a low-level virtual function.
+    This is a low-level virtual function. 
   See Also:
     ON_Surface::GetNurbForm
     ON_Surface::NurbsSurface
@@ -33632,7 +33620,7 @@ public:
 
 #if defined(ON_DLL_TEMPLATE)
 // This stuff is here because of a limitation in the way Microsoft
-// handles templates and DLLs.  See Microsoft's knowledge base
+// handles templates and DLLs.  See Microsoft's knowledge base 
 // article ID Q168958 for details.
 #pragma warning( push )
 #pragma warning( disable : 4231 )
@@ -33667,7 +33655,7 @@ public:
 // THIS SOFTWARE IS PROVIDED "AS IS" WITHOUT EXPRESS OR IMPLIED WARRANTY.
 // ALL IMPLIED WARRANTIES OF FITNESS FOR ANY PARTICULAR PURPOSE AND OF
 // MERCHANTABILITY ARE HEREBY DISCLAIMED.
-//
+//				
 // For complete openNURBS copyright information see <http://www.opennurbs.org>.
 //
 ////////////////////////////////////////////////////////////////
@@ -33687,7 +33675,7 @@ public:
 //
 //	This object represents a viewing frustum
 ///////////////////////////////////////////////////////////////////////////////
-class ON_CLASS ON_Viewport : public ON_Geometry
+class ON_CLASS ON_Viewport : public ON_Geometry 
 {
 	ON_OBJECT_DECLARE( ON_Viewport );
 public:
@@ -33713,9 +33701,9 @@ public:
     text_log - [in] if the object is not valid and text_log
         is not NULL, then a brief englis description of the
         reason the object is not valid is appened to the log.
-        The information appended to text_log is suitable for
-        low-level debugging purposes by programmers and is
-        not intended to be useful as a high level user
+        The information appended to text_log is suitable for 
+        low-level debugging purposes by programmers and is 
+        not intended to be useful as a high level user 
         interface tool.
   Returns:
     @untitled table
@@ -33736,7 +33724,7 @@ public:
   //
   // Remarks:
   //   This overrides the virtual ON_Object::Dump() function.
-  void Dump(
+  void Dump( 
     ON_TextLog& // dump_target
     ) const;
 
@@ -33791,9 +33779,9 @@ public:
   // Parameters:
   //   boxmin - [in/out] array of Dimension() doubles
   //   boxmax - [in/out] array of Dimension() doubles
-  //   bGrowBox - [in] (default=false)
-  //     If true, then the union of the input bbox and the
-  //     object's bounding box is returned in bbox.
+  //   bGrowBox - [in] (default=false) 
+  //     If true, then the union of the input bbox and the 
+  //     object's bounding box is returned in bbox.  
   //     If false, the object's bounding box is returned in bbox.
   //
   // Returns:
@@ -33822,7 +33810,7 @@ public:
   //
   // Remarks:
   //   This overrides the virtual ON_Geometry::Transform() function.
-  ON_BOOL32 Transform(
+  ON_BOOL32 Transform( 
          const ON_Xform& // xform
          );
 
@@ -33840,7 +33828,7 @@ public:
   See Also:
     ON_Viewport::SetParallelProjection
     ON_Viewport::SetPerpectiveProjection
-    ON_Viewport::SetTwoPointPerspectiveProjection
+    ON_Viewport::SetTwoPointPerspectiveProjection    
   */
   bool SetProjection( ON::view_projection projection );
 
@@ -33870,7 +33858,7 @@ public:
   Parameters:
     target_distance - [in]
       If ON_UNSET_VALUE this parameter is ignored.  Otherwise
-      it must be > 0 and indicates which plane in the current
+      it must be > 0 and indicates which plane in the current 
       view frustum should be perserved.
     bSymmetricFrustum - [in]
       True if you want the resulting frustum to be symmetric.
@@ -33884,7 +33872,7 @@ public:
     FrustumIsLeftRightSymmetric() and FrustumIsTopBottomSymmetric()
     are all equal, then no changes are made and true is returned.
   */
-  bool ChangeToPerspectiveProjection(
+  bool ChangeToPerspectiveProjection( 
           double target_distance,
           bool bSymmetricFrustum,
           double lens_length
@@ -33899,10 +33887,10 @@ public:
   Parameters:
     target_distance - [in]
       If ON_UNSET_VALUE this parameter is ignored.  Otherwise
-      it must be > 0 and indicates which plane in the current
+      it must be > 0 and indicates which plane in the current 
       view frustum should be perserved.
     up - [in]
-      This direction will be the locked up direction.  Pass
+      This direction will be the locked up direction.  Pass 
       ON_3dVector::ZeroVector if you want to use the world axis
       direction that is closest to the current up direction.
       Pass CameraY() if you want to preserve the current up direction.
@@ -33912,12 +33900,12 @@ public:
       is perspective or lens_length is <= 0.0,
       then this parameter is ignored.
   Remarks:
-    If the current projection is perspective and
+    If the current projection is perspective and 
     FrustumIsLeftRightSymmetric() is true and
     FrustumIsTopBottomSymmetric() is false, then no changes are
     made and true is returned.
   */
-  bool ChangeToTwoPointPerspectiveProjection(
+  bool ChangeToTwoPointPerspectiveProjection( 
           double target_distance,
           ON_3dVector up,
           double lens_length
@@ -33931,7 +33919,7 @@ public:
 
   /*
   Returns
-    IsPerspectiveProjection()
+    IsPerspectiveProjection() 
     && CameraUpIsLocked()
     && FrustumIsLeftRightSymmetric
     && !FrustumIsTopBottomSymmetric
@@ -33981,8 +33969,8 @@ public:
   ON_3dVector CameraY() const; // unit up vector
   ON_3dVector CameraZ() const; // unit vector in -CameraDirection
 
-
-  bool IsCameraFrameWorldPlan(
+  
+  bool IsCameraFrameWorldPlan( 
       // Returns true if the camera direction = some world axis.
       // The indices report which axes are used.  For a "twisted"
       // plan view it is possible to have zero x and y indices.
@@ -33995,7 +33983,7 @@ public:
       int*  // if true, view z index, else 0
       );
 
-  bool GetCameraExtents(
+  bool GetCameraExtents( 
       // returns bounding box in camera coordinates - this is useful information
       // for setting view frustrums to include the point list
       int,           // count = number of 3d points
@@ -34005,7 +33993,7 @@ public:
       int bGrowBox = false   // set to true if you want to enlarge an existing camera coordinate box
       ) const;
 
-  bool GetCameraExtents(
+  bool GetCameraExtents( 
       // returns bounding box in camera coordinates - this is useful information
       // for setting view frustrums to include the point list
       const ON_BoundingBox&, // world coordinate bounding box
@@ -34013,7 +34001,7 @@ public:
       int bGrowBox = false   // set to true if you want to enlarge an existing camera coordinate box
       ) const;
 
-  bool GetCameraExtents(
+  bool GetCameraExtents( 
       // returns bounding box in camera coordinates - this is useful information
       // for setting view frustrums to include the point list
       ON_3dPoint&,     // world coordinate bounding sphere center
@@ -34029,27 +34017,27 @@ public:
     adjusted so the resulting frustum is symmetric.
   */
   bool SetFrustum(
-        double left,   //
+        double left,   // 
         double right,  //   ( left < right )
-        double bottom, //
+        double bottom, // 
         double top,    //   ( bottom < top )
-        double near_dist,   //
+        double near_dist,   // 
         double far_dist     //   ( 0 < near_dist < far_dist ) // ignored by Rhino version 1.0
         );
   bool GetFrustum(
-        double* left,        //
+        double* left,        // 
         double* right,       // (left < right)
-        double* bottom,      //
+        double* bottom,      // 
         double* top,         // (bottom < top)
-        double* near_dist = NULL, //
+        double* near_dist = NULL, // 
         double* far_dist = NULL   // (0 < near_dist < far_dist)
         ) const;
 
   // SetFrustumAspect() changes the larger of the frustum's widht/height
   // so that the resulting value of width/height matches the requested
   // aspect.  The camera angle is not changed.  If you change the shape
-  // of the view port with a call SetScreenPort(), then you generally
-  // want to call SetFrustumAspect() with the value returned by
+  // of the view port with a call SetScreenPort(), then you generally 
+  // want to call SetFrustumAspect() with the value returned by 
   // GetScreenPortAspect().
   bool SetFrustumAspect( double );
 
@@ -34095,22 +34083,22 @@ public:
   double FrustumMaximumDiameter() const;
 
 
-  bool SetFrustumNearFar(
+  bool SetFrustumNearFar(       
          const double* bboxmin,  // 3d bounding box min
          const double* bboxmax   // 3d bounding box max
          );
-  bool SetFrustumNearFar(
+  bool SetFrustumNearFar( 
          const double* center,  // 3d bounding sphere center
          double radius         // 3d bounding sphere radius
          );
-  bool SetFrustumNearFar(
+  bool SetFrustumNearFar( 
          double near_dist, // ( > 0 )
-         double far_dist   //
+         double far_dist   // 
          );
 
   /*
   Description:
-    If needed, adjust the current frustum so it has the
+    If needed, adjust the current frustum so it has the 
     specified symmetries and adjust the camera location
     so the target plane remains visible.
   Parameters:
@@ -34119,9 +34107,9 @@ public:
     bTopBottomSymmetric - [in]
       If true, the frustum will be adjusted so top = -bottom.
     target_distance - [in]
-      If projection is not perspective or target_distance
-      is ON_UNSET_VALUE, this this parameter is ignored.
-      If the projection is perspective and target_distance
+      If projection is not perspective or target_distance 
+      is ON_UNSET_VALUE, this this parameter is ignored. 
+      If the projection is perspective and target_distance 
       is not ON_UNSET_VALUE, then it must be > 0.0 and
       it is used to determine which plane in the old
       frustum will appear unchanged in the new frustum.
@@ -34129,8 +34117,8 @@ public:
     Returns true if the returned viewport has a frustum
     with the specified symmetries.
   */
-  bool ChangeToSymmetricFrustum(
-    bool bLeftRightSymmetric,
+  bool ChangeToSymmetricFrustum( 
+    bool bLeftRightSymmetric, 
     bool bTopBottomSymmetric,
     double target_distance
     );
@@ -34139,10 +34127,10 @@ public:
   Description:
     Get near and far clipping distances of a point
   Parameters:
-    point - [in]
-    near_dist - [out]
+    point - [in] 
+    near_dist - [out] 
       near distance of the point (can be < 0)
-    far_dist - [out]
+    far_dist - [out] 
       far distance of the point (can be equal to near_dist)
     bGrowNearFar - [in]
       If true and input values of near_dist and far_dist
@@ -34154,7 +34142,7 @@ public:
     False if the bounding box does not intesect the
     view frustum.
   */
-  bool GetPointDepth(
+  bool GetPointDepth(       
          ON_3dPoint point,
          double* near_dist,
          double* far_dist,
@@ -34165,8 +34153,8 @@ public:
   Description:
     Get the view plane depth of a point
   Parameters:
-    point - [in]
-    view_plane_depth - [out]
+    point - [in] 
+    view_plane_depth - [out] 
       positive values are in front of the camera and negative
       values are behind the camera.
       If 0 <= point_depth < FrustumNear(), the point's view
@@ -34179,7 +34167,7 @@ public:
     False if the bounding box does not intesect the
     view frustum.
   */
-  bool GetPointDepth(
+  bool GetPointDepth(       
        ON_3dPoint point,
        double* view_plane_depth
        ) const;
@@ -34188,15 +34176,15 @@ public:
   Description:
     Get near and far clipping distances of a bounding box.
   Parameters:
-    bbox - [in]
+    bbox - [in] 
       bounding box
-    near_dist - [out]
+    near_dist - [out] 
       near distance of the box
       This value can be zero or negative when the camera
       location is inside bbox.
-    far_dist - [out]
+    far_dist - [out] 
       far distance of the box
-      This value can be equal to near_dist, zero or negative
+      This value can be equal to near_dist, zero or negative 
       when the camera location is in front of the bounding box.
     bGrowNearFar - [in]
       If true and input values of near_dist and far_dist
@@ -34207,7 +34195,7 @@ public:
     near_dist/far_dist were set.
     False if the bounding box does not intesect the view frustum.
   Remarks:
-    This function ignores the current value of the viewport's
+    This function ignores the current value of the viewport's 
     near and far settings. If the viewport is a perspective
     projection, the it intersects the semi infinite frustum
     volume with the bounding box and returns the near and far
@@ -34216,7 +34204,7 @@ public:
     bounding box and returns the near and far distances of the
     projection.
   */
-  bool GetBoundingBoxDepth(
+  bool GetBoundingBoxDepth(       
          ON_BoundingBox bbox,
          double* near_dist,
          double* far_dist,
@@ -34227,11 +34215,11 @@ public:
   Description:
     Get near and far clipping distances of a bounding sphere.
   Parameters:
-    sphere - [in]
+    sphere - [in] 
       bounding sphere
-    near_dist - [out]
+    near_dist - [out] 
       near distance of the sphere (can be < 0)
-    far_dist - [out]
+    far_dist - [out] 
       far distance of the sphere (can be equal to near_dist)
     bGrowNearFar - [in]
       If true and input values of near_dist and far_dist
@@ -34242,7 +34230,7 @@ public:
     near_dist/far_dist were set.
     False if the sphere does not intesect the view frustum.
   */
-  bool GetSphereDepth(
+  bool GetSphereDepth( 
          ON_Sphere sphere,
          double* near_dist,
          double* far_dist,
@@ -34255,12 +34243,12 @@ public:
   Parameters:
     near_dist - [in] (>0) desired near clipping distance
     far_dist - [in] (>near_dist) desired near clipping distance
-    min_near_dist - [in]
+    min_near_dist - [in] 
       If min_near_dist <= 0.0, it is ignored.
-      If min_near_dist > 0 and near_dist < min_near_dist,
-      then the frustum's near_dist will be increased to
+      If min_near_dist > 0 and near_dist < min_near_dist, 
+      then the frustum's near_dist will be increased to 
       min_near_dist.
-    min_near_over_far - [in]
+    min_near_over_far - [in] 
       If min_near_over_far <= 0.0, it is ignored.
       If near_dist < far_dist*min_near_over_far, then
       near_dist is increased and/or far_dist is decreased
@@ -34268,9 +34256,9 @@ public:
       If near_dist < target_dist < far_dist, then near_dist
       near_dist is increased and far_dist is decreased so that
       projection precision will be good at target_dist.
-      Otherwise, near_dist is simply set to
+      Otherwise, near_dist is simply set to 
       far_dist*min_near_over_far.
-    target_dist - [in]
+    target_dist - [in]  
       If target_dist <= 0.0, it is ignored.
       If target_dist > 0, it is used as described in the
       description of the min_near_over_far parameter.
@@ -34279,11 +34267,11 @@ public:
       If relative_depth_bias > 0, it is assumed that
       the requested near_dist and far_dist were calculated
       assuming no depth bias and the values will be
-      appropriately adjusted to ensure the frustum's
+      appropriately adjusted to ensure the frustum's 
       near and far clipping planes will not clip biased
       objects.
   */
-  bool SetFrustumNearFar(
+  bool SetFrustumNearFar( 
          double near_dist,
          double far_dist,
          double min_near_dist,
@@ -34291,7 +34279,7 @@ public:
          double target_dist
          );
 
-  bool SetFrustumNearFar(
+  bool SetFrustumNearFar( 
          double near_dist,
          double far_dist,
          double min_near_dist,
@@ -34312,12 +34300,12 @@ public:
   //
   // Returns:
   //   true if camera and frustum are valid.
-  bool GetNearPlane(
-    ON_Plane& near_plane
+  bool GetNearPlane( 
+    ON_Plane& near_plane 
     ) const;
 
-  bool GetNearPlaneEquation(
-    ON_PlaneEquation& near_plane_equation
+  bool GetNearPlaneEquation( 
+    ON_PlaneEquation& near_plane_equation 
     ) const;
 
   // Description:
@@ -34331,12 +34319,12 @@ public:
   //
   // Returns:
   //   true if camera and frustum are valid.
-  bool GetFarPlane(
-    ON_Plane& far_plane
+  bool GetFarPlane( 
+    ON_Plane& far_plane 
     ) const;
 
-  bool GetFarPlaneEquation(
-    ON_PlaneEquation& far_plane_equation
+  bool GetFarPlaneEquation( 
+    ON_PlaneEquation& far_plane_equation 
     ) const;
 
   /*
@@ -34345,7 +34333,7 @@ public:
     This plane is parallel to the frustum's near and far planes.
   Parameters:
     view_plane_depth - [in]
-      The distance from the camera location to the view plane.
+      The distance from the camera location to the view plane. 
       Positive distances are in front of the camera and
       negative distances are behind the camera.
       A value of FrustumNear() will return the frustum's
@@ -34359,21 +34347,21 @@ public:
     True if the camera and frustum are valid and view_plane
     was calculated.  False otherwise.
   */
-  bool GetViewPlane(
+  bool GetViewPlane( 
     double view_plane_depth,
-    ON_Plane& view_plane
+    ON_Plane& view_plane 
     ) const;
 
-  bool GetViewPlaneEquation(
+  bool GetViewPlaneEquation( 
     double view_plane_depth,
-    ON_PlaneEquation& view_plane_equation
+    ON_PlaneEquation& view_plane_equation 
     ) const;
 
   /*
   Description:
   Get left world frustum clipping plane.
   Parameters:
-    left_plane - [out]
+    left_plane - [out] 
       frustum left side clipping plane.  The normal points
       into the visible region of the frustum.  If the projection
       is perspective, the origin is at the camera location,
@@ -34382,19 +34370,19 @@ public:
   Returns:
     True if camera and frustum are valid and plane was set.
   */
-  bool GetFrustumLeftPlane(
-    ON_Plane& left_plane
+  bool GetFrustumLeftPlane( 
+    ON_Plane& left_plane 
     ) const;
 
-  bool GetFrustumLeftPlaneEquation(
-    ON_PlaneEquation& left_plane_equation
+  bool GetFrustumLeftPlaneEquation( 
+    ON_PlaneEquation& left_plane_equation 
     ) const;
 
   /*
   Description:
   Get right world frustum clipping plane.
   Parameters:
-    right_plane - [out]
+    right_plane - [out] 
       frustum right side clipping plane.  The normal points
       into the visible region of the frustum.  If the projection
       is perspective, the origin is at the camera location,
@@ -34403,19 +34391,19 @@ public:
   Returns:
     True if camera and frustum are valid and plane was set.
   */
-  bool GetFrustumRightPlane(
-    ON_Plane& right_plane
+  bool GetFrustumRightPlane( 
+    ON_Plane& right_plane 
     ) const;
 
-  bool GetFrustumRightPlaneEquation(
-    ON_PlaneEquation& right_plane_equation
+  bool GetFrustumRightPlaneEquation( 
+    ON_PlaneEquation& right_plane_equation 
     ) const;
 
   /*
   Description:
   Get right world frustum clipping plane.
   Parameters:
-    right_plane - [out]
+    right_plane - [out] 
       frustum bottom side clipping plane.  The normal points
       into the visible region of the frustum.  If the projection
       is perspective, the origin is at the camera location,
@@ -34424,18 +34412,18 @@ public:
   Returns:
     True if camera and frustum are valid and plane was set.
   */
-  bool GetFrustumBottomPlane(
-    ON_Plane& bottom_plane
+  bool GetFrustumBottomPlane( 
+    ON_Plane& bottom_plane 
     ) const;
 
-  bool GetFrustumBottomPlaneEquation(
-    ON_PlaneEquation& bottom_plane_equation
+  bool GetFrustumBottomPlaneEquation( 
+    ON_PlaneEquation& bottom_plane_equation 
     ) const;
   /*
   Description:
   Get right world frustum clipping plane.
   Parameters:
-    top_plane - [out]
+    top_plane - [out] 
       frustum top side clipping plane.  The normal points
       into the visible region of the frustum.  If the projection
       is perspective, the origin is at the camera location,
@@ -34444,26 +34432,26 @@ public:
   Returns:
     True if camera and frustum are valid and plane was set.
   */
-  bool GetFrustumTopPlane(
-    ON_Plane& top_plane
+  bool GetFrustumTopPlane( 
+    ON_Plane& top_plane 
     ) const;
 
-  bool GetFrustumTopPlaneEquation(
-    ON_PlaneEquation& top_plane_equation
+  bool GetFrustumTopPlaneEquation( 
+    ON_PlaneEquation& top_plane_equation 
     ) const;
 
   // Description:
   //   Get corners of near clipping plane rectangle.
   //
   // Parameters:
-  //   left_bottom - [out]
+  //   left_bottom - [out] 
   //   right_bottom - [out]
   //   left_top - [out]
   //   right_top - [out]
   //
   // Returns:
   //   true if camera and frustum are valid.
-  bool GetNearRect(
+  bool GetNearRect( 
           ON_3dPoint& left_bottom,
           ON_3dPoint& right_bottom,
           ON_3dPoint& left_top,
@@ -34474,14 +34462,14 @@ public:
   //   Get corners of far clipping plane rectangle.
   //
   // Parameters:
-  //   left_bottom - [out]
+  //   left_bottom - [out] 
   //   right_bottom - [out]
   //   left_top - [out]
   //   right_top - [out]
   //
   // Returns:
   //   true if camera and frustum are valid.
-  bool GetFarRect(
+  bool GetFarRect( 
           ON_3dPoint& left_bottom,
           ON_3dPoint& right_bottom,
           ON_3dPoint& left_top,
@@ -34495,7 +34483,7 @@ public:
     This rectangle is parallel to the frustum's near and far planes.
   Parameters:
     view_plane_depth - [in]
-      The distance from the camera location to the view plane.
+      The distance from the camera location to the view plane. 
       Positive distances are in front of the camera and
       negative distances are behind the camera.
       A value of FrustumNear() will return the frustum's
@@ -34542,8 +34530,8 @@ public:
           port_bottom = height;
           port_near = 0;
           port_far = 1;
-          SetScreenPort( port_left, port_right,
-                         port_bottom, port_top,
+          SetScreenPort( port_left, port_right, 
+                         port_bottom, port_top, 
                          port_near, port_far );
 
   Returns:
@@ -34565,17 +34553,17 @@ public:
         int* right,         //( port_left != port_right )
         int* port_bottom,
         int* port_top,      //( port_bottom != port_top)
-        int* port_near=NULL,
-        int* port_far=NULL
+        int* port_near=NULL,  
+        int* port_far=NULL   
         ) const;
 
-  /*
+  /* 
   Returns:
     abs(port_right - port_left)
   */
   int ScreenPortWidth() const;
 
-  /*
+  /* 
   Returns:
     abs(port_bottom - port_top)
   */
@@ -34583,15 +34571,15 @@ public:
 
   bool GetScreenPortAspect( double& ) const; // port's |width/height|
 
-  bool GetCameraAngle(
+  bool GetCameraAngle( 
           double* half_diagonal_angle, // 1/2 of diagonal subtended angle
           double* half_vertical_angle, // 1/2 of vertical subtended angle
           double* half_horizontal_angle // 1/2 of horizontal subtended angle
           ) const;
-  bool GetCameraAngle(
+  bool GetCameraAngle( 
           double* half_smallest_angle  // 1/2 of smallest subtended view angle
           ) const;
-  bool SetCameraAngle(
+  bool SetCameraAngle( 
           double half_smallest_angle // 1/2 of smallest subtended view angle
                   // 0 < angle < pi/2
           );
@@ -34602,24 +34590,24 @@ public:
   //
   // The SetCamera35mmLensLength() preserves camera location,
   // changes the frustum, but maintains the frsutrum's aspect.
-  bool GetCamera35mmLensLength(
-    double* lens_length
+  bool GetCamera35mmLensLength( 
+    double* lens_length 
     ) const;
-  bool SetCamera35mmLensLength(
-    double lens_length
+  bool SetCamera35mmLensLength( 
+    double lens_length 
     );
 
   // Same as GetCamera35mmLensLength() with "lens" misspelled.
-  bool GetCamera35mmLenseLength(
-    double* lens_length
+  bool GetCamera35mmLenseLength( 
+    double* lens_length 
     ) const;
 
   // Same as SetCamera35mmLensLength() with "lens" misspelled.
-  bool SetCamera35mmLenseLength(
-    double lens_length
+  bool SetCamera35mmLenseLength( 
+    double lens_length 
     );
 
-  bool GetXform(
+  bool GetXform( 
          ON::coordinate_system srcCS,
          ON::coordinate_system destCS,
          ON_Xform& matrix      // 4x4 transformation matrix (acts on the left)
@@ -34633,20 +34621,20 @@ public:
     screenx - [in]
     screeny - [in] (screenx,screeny) = screen location
     world_line - [out] 3d world coordinate line segment
-           starting on the near clipping plane and ending
+           starting on the near clipping plane and ending 
            on the far clipping plane.
   Returns:
-    true if successful.
+    true if successful. 
     false if view projection or frustum is invalid.
   */
-  bool GetFrustumLine(
-            double screenx,
-            double screeny,
+  bool GetFrustumLine( 
+            double screenx, 
+            double screeny, 
             ON_Line& world_line
             ) const;
 
   // display tools
-  bool GetWorldToScreenScale(
+  bool GetWorldToScreenScale( 
     const ON_3dPoint& point_in_frustum, // [in]  point in viewing frustum.
     double* pixels_per_unit             // [out] scale = number of pixels per world unit at the 3d point
     ) const;
@@ -34661,12 +34649,12 @@ public:
   // Use Extents() as a quick way to set a viewport to so that bounding
   // volume is inside of a viewports frusmtrum.
   // The view angle is used to determine the position of the camera.
-  bool Extents(
+  bool Extents( 
          double half_view_angle,        // 1/2 smallest subtended view angle
                         // (0 < angle < pi/2)
          const ON_BoundingBox& world_bbox// 3d world coordinate bounding box
          );
-  bool Extents(
+  bool Extents( 
          double half_view_angle,        // 1/2 smallest subtended view angle
                         // (0 < angle < pi/2)
          const ON_3dPoint& center, // 3d world coordinate bounding sphere center
@@ -34681,9 +34669,9 @@ public:
   //////////
   // ZoomToScreenRect() may change camera and frustum settings
   bool ZoomToScreenRect(
-         int screen_x0,
+         int screen_x0, 
          int screen_y0,  // (x,y) screen coords of a rectangle corner
-         int screen_x1,
+         int screen_x1, 
          int screen_y1   // (x,y) screen coords of opposite rectangle corner
          );
 
@@ -34692,7 +34680,7 @@ public:
   // To update the frustum's clipping planes call DollyFrustum(d)
   // with d = dollyVector o cameraFrameZ.  To convert screen locations
   // into a dolly vector, use GetDollyCameraVector().
-  bool DollyCamera( // Does not update frustum.  To update frustum use
+  bool DollyCamera( // Does not update frustum.  To update frustum use 
                     // DollyFrustum(d) with d = dollyVector o cameraFrameZ
           const ON_3dVector& dolly_vector // dolly vector in world coordinates
           );
@@ -34701,9 +34689,9 @@ public:
   // Gets a world coordinate dolly vector that can be passed to
   // DollyCamera().
   bool GetDollyCameraVector(
-         int screen_x0,
+         int screen_x0, 
          int screen_y0,  // (x,y) screen coords of start point
-         int screen_x1,
+         int screen_x1, 
          int screen_y1,  // (x,y) screen coords of end point
          double proj_plane_dist,      // distance of projection plane from camera.
                       // When in doubt, use 0.5*(frus_near+frus_far).
@@ -34719,7 +34707,7 @@ public:
   /*
   Description:
     Apply scaling factors to parallel projection clipping coordinates
-    by setting the m_clip_mod transformation.
+    by setting the m_clip_mod transformation.  
   Parameters:
     x - [in] x > 0
     y - [in] y > 0
@@ -34778,7 +34766,7 @@ public:
   /*
   Returns:
     The current value of the target point.  This point does not play
-    a role in the view projection calculations.  It can be used as a
+    a role in the view projection calculations.  It can be used as a 
     fixed point when changing the camera so the visible regions of the
     before and after frustums both contain the region of interest.
   Remarks:
@@ -34823,20 +34811,20 @@ public:
   double TargetDistance( bool bUseFrustumCenterFallback ) const;
 
   /*
-  Description:
+  Description:    
     Get suggested values for setting the perspective minimum
     near distance and minimum near/far ratio.
-  Parameters:
+  Parameters:      
     camera_location - [in]
     depth_buffer_bit_depth - [in]
-      typically 32, 24, 16 or 8, but any positive value can be
+      typically 32, 24, 16 or 8, but any positive value can be 
       passed in.
     min_near_dist - [out]
-      Suggest value for passing to SetPerspectiveMinNearDist().
+      Suggest value for passing to SetPerspectiveMinNearDist().     
     min_near_over_far - [out]
-      Suggest value for passing to SetPerspectiveMinNearOverFar().
+      Suggest value for passing to SetPerspectiveMinNearOverFar().     
   */
-  static void GetPerspectiveClippingPlaneConstraints(
+  static void GetPerspectiveClippingPlaneConstraints( 
         ON_3dPoint camera_location,
         unsigned int depth_buffer_bit_depth,
         double* min_near_dist,
@@ -34850,8 +34838,8 @@ public:
     coordinate by relative_depth_bias*(far - near).
   Parameters:
     relative_depth_bias - [in]
-      signed relative bias.
-      = 0: no bias,
+      signed relative bias. 
+      = 0: no bias, 
       > 0: bias towards frustum's near clipping plane
       < 0: bias towards frustum's far clipping plane
       When you have curves and points that are "on" shaded objects,
@@ -34873,7 +34861,7 @@ public:
   */
   double ClipCoordDepthBias(
     double relative_depth_bias,
-    double clip_z,
+    double clip_z, 
     double clip_w
     ) const;
 
@@ -34884,8 +34872,8 @@ public:
 
   Parameters:
     relative_depth_bias - [in]
-      signed relative bias.
-      = 0: no bias,
+      signed relative bias. 
+      = 0: no bias, 
       > 0: bias towards frustum's near clipping plane
       < 0: bias towards frustum's far clipping plane
       When you have curves and points that are "on" shaded objects,
@@ -34894,7 +34882,7 @@ public:
 
     clip_bias - [out]
       clip_bias = cam2clip * delta * clip2cam,
-      where delta = 1 0 0 0
+      where delta = 1 0 0 0 
                     0 1 0 0
                     0 0 1 D
                     0 0 0 1
@@ -34905,11 +34893,11 @@ public:
     are not valild, in which cate the identity matrix is returned.
 
   Remarks:
-    The inverse of the transformations returned by
+    The inverse of the transformations returned by 
     GetClipCoordDepthBiasXform(+r,...) is the transformation
     returned by GetClipCoordDepthBiasXform(-r,...).
   */
-  bool GetClipCoordDepthBiasXform(
+  bool GetClipCoordDepthBiasXform( 
     double relative_depth_bias,
     ON_Xform& clip_bias
     ) const;
@@ -34921,7 +34909,7 @@ public:
     by GetPerspectiveClippingPlaneConstraints().
   Parameters:
     depth_buffer_bit_depth - [in]
-      typically 32, 24, 16 or 8, but any positive value can be
+      typically 32, 24, 16 or 8, but any positive value can be 
       passed in.
   */
   void SetPerspectiveClippingPlaneConstraints(
@@ -34946,7 +34934,7 @@ public:
     value of near/far when perspective projections
     are begin used.
   Returns:
-    The minimum permitted value of near/far when perspective
+    The minimum permitted value of near/far when perspective 
     projections are begin used.
   Remarks:
     This is a runtime setting and is not saved in 3dm files.
@@ -34971,27 +34959,27 @@ public:
     value of near when perspective projections
     are begin used.
   Returns:
-    The minimum permitted value of near when perspective
+    The minimum permitted value of near when perspective 
     projections are begin used.
   Remarks:
     This is a runtime setting and is not saved in 3dm files.
   */
   double PerspectiveMinNearDist() const;
-
+  
   /*
   Description:
-    Sets the viewport's id to the value used to
+    Sets the viewport's id to the value used to 
     uniquely identify this viewport.
   Parameters:
-    viewport_id - [in]
+    viewport_id - [in]    
   Returns:
     True if the viewport's id was successfully set
     and false otherwise (ie. the viewport uuid has
     already been set).
   Remarks:
-    There is no approved way to change the viewport
+    There is no approved way to change the viewport 
     id once it is set in order to maintain consistency
-    across multiple viewports and those routines that
+    across multiple viewports and those routines that 
     manage them.
   */
   bool  SetViewportId(const ON_UUID& viewport_id );
@@ -35004,10 +34992,10 @@ public:
     If you change the id, you risk damaging display
     and visibility relationships in the model.
   Parameters:
-    viewport_id - [in]
+    viewport_id - [in]    
   */
   void ChangeViewportId(const ON_UUID& viewport_id);
-
+  
 protected:
 
   // These boolean status flags are set to true when
@@ -35053,32 +35041,32 @@ protected:
   //   bottom, top are camera Y coords on near clipping plane
   //   near = distance from camera to near clipping plane
   //   far = distance from camera to far clipping plane
-  double m_frus_left,   m_frus_right; // frus_left < frus_right
-  double m_frus_bottom, m_frus_top;   // frus_bottom < frus_top
-  double m_frus_near,   m_frus_far;   // frus_near < frus_far
+  double m_frus_left,   m_frus_right; // frus_left < frus_right 
+  double m_frus_bottom, m_frus_top;   // frus_bottom < frus_top 
+  double m_frus_near,   m_frus_far;   // frus_near < frus_far 
                                       // in perspective, 0 < frus_near
-
+  
 
   // Device View Port Box Settings: ( in display device coordinates ) ////
   //   The point (left,bottom,-near), in camera coordinates, of the view
   //   frustum is mapped to pixel coordinate (port_left,port_bottom,port_near).
-  //   The point (right,top,-far), in camera coordinates, of the view frustum
+  //   The point (right,top,-far), in camera coordinates, of the view frustum 
   //   is mapped to pixel coordinate (port_right,port_top,port_far).
   int m_port_left,   m_port_right; // port_left != port_right
-  int m_port_bottom, m_port_top;   // port_bottom != port_top
+  int m_port_bottom, m_port_top;   // port_bottom != port_top  
                                    // In many situations including Windows,
                                    // port_left = 0,
                                    // port_right = viewport width-1,
                                    // port_top = 0,
                                    // port_bottom = viewport height-1.
-  int m_port_near,   m_port_far;   // (If you want an 8 bit z-buffer with
+  int m_port_near,   m_port_far;   // (If you want an 8 bit z-buffer with 
                                    // z=255 being "in front of" z=0, then
                                    // set port_near = 255 and port_far = 0.)
 
 
-  // The location of this point has no impact on the
-  // view projection. It is simply a suggestion for a
-  // fixed point when views are rotated or the isometric
+  // The location of this point has no impact on the 
+  // view projection. It is simply a suggestion for a 
+  // fixed point when views are rotated or the isometric 
   // depth when perpsective views are dollied.  The default
   // is ON_UNSET_POINT.
   ON_3dPoint m_target_point;
@@ -35091,8 +35079,8 @@ private:
 
   bool SetCameraFrame(); // used to set m_CamX, m_CamY, m_CamZ
 
-  // This transform is used to tweak the clipping
-  // coordinates.  The default is the identity.
+  // This transform is used to tweak the clipping 
+  // coordinates.  The default is the identity.  
   // Modify this transformation when you need to do
   // things like z-buffer bias, non-uniform viewplane
   // scaling, and so on.
@@ -35120,10 +35108,10 @@ public:
 };
 
 ON_DECL
-bool
-ON_GetViewportRotationAngles(
+bool 
+ON_GetViewportRotationAngles( 
     const ON_3dVector&, // X, // X,Y,Z must be a right handed orthonormal basis
-    const ON_3dVector&, // Y,
+    const ON_3dVector&, // Y, 
     const ON_3dVector&, // Z,
     double*, // angle1, // returns rotation about world Z
     double*, // angle2, // returns rotation about world X ( 0 <= a2 <= pi )
@@ -35140,7 +35128,7 @@ ON_ViewportFromRhinoView( // create ON_Viewport from legacy Rhino projection inf
         double, // rhvp_angle3 in radians
         double, // rhvp_viewsize,     // > 0
         double, // rhvp_cameradist,   // > 0
-        int, // screen_width,
+        int, // screen_width, 
         int, // screen_height,
         ON_Viewport&
         );
@@ -35165,8 +35153,8 @@ ON_DECL
 bool
 ON_IntersectViewFrustumPlane(
           const ON_Viewport& vp,
-          const ON_PlaneEquation& plane_equation,
-          ON_SimpleArray<ON_3dPoint>& points
+          const ON_PlaneEquation& plane_equation, 
+          ON_SimpleArray<ON_3dPoint>& points 
           );
 
 #endif
@@ -35181,7 +35169,7 @@ ON_IntersectViewFrustumPlane(
 // THIS SOFTWARE IS PROVIDED "AS IS" WITHOUT EXPRESS OR IMPLIED WARRANTY.
 // ALL IMPLIED WARRANTIES OF FITNESS FOR ANY PARTICULAR PURPOSE AND OF
 // MERCHANTABILITY ARE HEREBY DISCLAIMED.
-//
+//				
 // For complete openNURBS copyright information see <http://www.opennurbs.org>.
 //
 ////////////////////////////////////////////////////////////////
@@ -35253,7 +35241,7 @@ public:
 
   /*
   Description:
-	  Create a mapping that will convert surface parameters into
+	  Create a mapping that will convert surface parameters into 
     normalized (0,1)x(0,1) texture coordinates.
 	*/
 	bool SetSurfaceParameterMapping(void);
@@ -35264,12 +35252,12 @@ public:
   Parameters:
     plane - [in]
     dx - [in]  portion of the plane's x axis that is mapped to [0,1]
-               (can be a decreasing interval)
+               (can be a decreasing interval)               
     dy - [in]  portion of the plane's x axis that is mapped to [0,1]
-               (can be a decreasing interval)
+               (can be a decreasing interval)               
     dz - [in]  portion of the plane's x axis that is mapped to [0,1]
-               (can be a decreasing interval)
-    projection_method - [in]
+               (can be a decreasing interval)       
+    projection_method - [in] 
         1: Closest point mapping.
           A target point P is mapped to the point on the plane
           that is closest to P.  The target normal is ignored.
@@ -35307,26 +35295,26 @@ public:
   Description:
     Create a cylindrical projection texture mapping.
   Parameters:
-    cylinder - [in]
+    cylinder - [in]  
         cylinder in world space used to define a cylindrical
         coordinate system.  The angular parameter maps (0,2pi)
-        to texture "u" (0,1), The height parameter maps
-        (height[0],height[1]) to texture "v" (0,1), and
+        to texture "u" (0,1), The height parameter maps 
+        (height[0],height[1]) to texture "v" (0,1), and 
         the radial parameter maps (0,r) to texture "w" (0,1).
     bIsCapped - [in]
         If true, the cylinder is treated as a finite
-        capped cylinder.
+        capped cylinder.          
   Returns:
     True if input is valid.
   Remarks:
-    When the cylinder is capped and m_texture_space = divided,
+    When the cylinder is capped and m_texture_space = divided, 
     the cylinder is mapped to texture space as follows:
       The side is mapped to 0 <= "u" <= 2/3.
       The bottom is mapped to 2/3 <= "u" <= 5/6.
       The top is mapped to 5/6 <= "u" <= 5/6.
     This is the same convention box mapping uses.
   */
-	bool SetCylinderMapping(
+	bool SetCylinderMapping( 
 		 const ON_Cylinder& cylinder,
 		 bool bIsCapped
 	);
@@ -35335,7 +35323,7 @@ public:
   Description:
     Create a spherical projection texture mapping.
   Parameters:
-    sphere - [in]
+    sphere - [in]  
         sphere in world space used to define a spherical
         coordinate system. The longitude parameter maps
         (0,2pi) to texture "u" (0,1).  The latitude paramter
@@ -35344,7 +35332,7 @@ public:
   Returns:
     True if input is valid.
   */
-	bool SetSphereMapping(
+	bool SetSphereMapping( 
 		 const ON_Sphere& sphere
 	);
 
@@ -35352,8 +35340,8 @@ public:
   Description:
     Create a box projection texture mapping.
   Parameters:
-    plane - [in]
-        The sides of the box the box are parallel to the
+    plane - [in]  
+        The sides of the box the box are parallel to the 
         plane's coordinate planes.  The dx, dy, dz intervals
         determine the location of the sides.
     dx - [in]
@@ -35366,18 +35354,18 @@ public:
        The vector plane.yaxis is perpendicular to these planes
        and they pass through plane.PointAt(0,dy[0],0) and
        plane.PointAt(0,dy[1],0), respectivly.
-    dz - [in]
+    dz - [in] 
        Determines the location of the top and bottom planes.
        The vector plane.zaxis is perpendicular to these planes
        and they pass through plane.PointAt(0,0,dz[0]) and
        plane.PointAt(0,0,dz[1]), respectivly.
     bIsCapped - [in]
         If true, the box is treated as a finite
-        capped box.
+        capped box.          
   Returns:
     True if input is valid.
   Remarks:
-    When m_texture_space = divided, the box is mapped to texture
+    When m_texture_space = divided, the box is mapped to texture 
     space as follows:
 
     If the box is not capped, then each side maps to 1/4 of the texture map.
@@ -35396,9 +35384,9 @@ public:
              | Front   | Right   | Back    | Left    | Top     |  Bottom |
              | --y->   | <-x--   | <-y--   | --x->   | --x->   | --x->   |
           v=0+---------+---------+---------+---------+---------+---------+
-            0/6 <=u<= 1/6 <=u<= 2/6 <=u<= 3/6 <=u<= 4/6 <=u<= 5/6 <=u<= 6/6
+            0/6 <=u<= 1/6 <=u<= 2/6 <=u<= 3/6 <=u<= 4/6 <=u<= 5/6 <=u<= 6/6 
   */
-	bool SetBoxMapping(
+	bool SetBoxMapping( 
 		 const ON_Plane& plane,
 		 ON_Interval dx,
 		 ON_Interval dy,
@@ -35436,17 +35424,17 @@ public:
   Description:
 	  Get a cylindrical projection parameters from this texture mapping.
 	Parameters:
-	  cylinder - [out]
+	  cylinder - [out]  
   Returns:
 	  True if a valid cylinder is returned.
   Remarks:
     Generally, GetMappingCylinder will not return the same
     parameters passed to SetCylinderMapping.  However, the
-    location of the cylinder will be the same.
+    location of the cylinder will be the same.  
     If this mapping is not cylindrical, the cylinder will
     approximate the actual mapping primitive.
 	*/
-	bool GetMappingCylinder(
+	bool GetMappingCylinder( 
 		 ON_Cylinder& cylinder
 	) const;
 
@@ -35454,7 +35442,7 @@ public:
   Description:
 	  Get a spherical projection parameters from this texture mapping.
 	Parameters:
-	  sphere - [out]
+	  sphere - [out]  
   Returns:
 	  True if a valid sphere is returned.
   Remarks:
@@ -35464,14 +35452,14 @@ public:
     If this mapping is not cylindrical, the cylinder will
     approximate the actual mapping primitive.
 	*/
-	bool GetMappingSphere(
+	bool GetMappingSphere( 
 		 ON_Sphere& sphere
 	) const;
 
 	/*
 	Get a box projection from the texture mapping.
 	Parameters:
-	plane - [out]
+	plane - [out]  
 		The center of the box is at plane.origin and the sides
 		of the box are parallel to the plane's coordinate planes.
 	dx - [out]
@@ -35484,7 +35472,7 @@ public:
 	   by the vectors plane.zaxis and plane.xaxis.  The left
 	   plane contains the point plane.PointAt(0,dx[0],0) and
 	   the back plane contains the point plane.PointAt(0,dy[1],0).
-	dz - [out]
+	dz - [out] 
 	   The "top" and "bottom" sides of the box are in spanned
 	   by the vectors plane.xaxis and plane.yaxis.  The bottom
 	   plane contains the point plane.PointAt(0,0,dz[0]) and
@@ -35496,7 +35484,7 @@ public:
     parameters passed to SetBoxMapping.  However, the
     location of the box will be the same.
 	*/
-	bool GetMappingBox(
+	bool GetMappingBox( 
 		 ON_Plane& plane,
 		 ON_Interval& dx,
 		 ON_Interval& dy,
@@ -35555,17 +35543,17 @@ public:
              N is ignored.
     T - [out] Texture coordinate (u,v,w)
 
-    P_xform -[in]
+    P_xform -[in] 
       Transformation to be applied to P before performing
       the mapping calculation.
-    N_xform - [in]
+    N_xform - [in] 
       Transformation to be applied to N before performing
       the mapping calculation.  One way to calculate N_xform
       is to use the call P_xform::GetVectorTransform(N_xform).
 
   Returns:
     Nonzero if evaluation is successful.  When the mapping
-    is a box or capped cylinder mapping, the value indicates
+    is a box or capped cylinder mapping, the value indicates 
     which side was evaluated.
 
       Cylinder mapping:
@@ -35576,21 +35564,21 @@ public:
         3 = back
         4 = left
         5 = bottom
-        6 = top
+        6 = top        
 
   See Also:
     ON_TextureMapping::GetTextureCoordinates
     ON_Mesh::SetTextureCoordinates
   */
   virtual
-  int Evaluate(
+  int Evaluate( 
     const ON_3dPoint& P,
     const ON_3dVector& N,
     ON_3dPoint* T
     ) const;
 
   virtual
-  int Evaluate(
+  int Evaluate( 
     const ON_3dPoint& P,
     const ON_3dVector& N,
     ON_3dPoint* T,
@@ -35598,25 +35586,25 @@ public:
     const ON_Xform& N_xform
     ) const;
 
-  int EvaluatePlaneMapping(
+  int EvaluatePlaneMapping( 
     const ON_3dPoint& P,
     const ON_3dVector& N,
     ON_3dPoint* T
     ) const;
 
-  int EvaluateSphereMapping(
+  int EvaluateSphereMapping( 
     const ON_3dPoint& P,
     const ON_3dVector& N,
     ON_3dPoint* T
     ) const;
 
-  int EvaluateCylinderMapping(
+  int EvaluateCylinderMapping( 
     const ON_3dPoint& P,
     const ON_3dVector& N,
     ON_3dPoint* T
     ) const;
 
-  int EvaluateBoxMapping(
+  int EvaluateBoxMapping( 
     const ON_3dPoint& P,
     const ON_3dVector& N,
     ON_3dPoint* T
@@ -35633,20 +35621,20 @@ public:
       If this transform is not NULL, then true will be
       returned only if the mapping function is the same and
       the tag's m_mesh_xform field is the same as mesh_xform.
-      This parameter is typically NULL or the value of
+      This parameter is typically NULL or the value of 
       ON_MappingRef::m_object_xform.
   Returns:
     True if the meshes texture coordinates were set by this
     mapping.
   */
-  bool HasMatchingTextureCoordinates(
+  bool HasMatchingTextureCoordinates( 
          const ON_Mesh& mesh,
          const ON_Xform* object_xform = 0
-         ) const;
-  bool HasMatchingTextureCoordinates(
+         ) const; 
+  bool HasMatchingTextureCoordinates( 
          const class ON_MappingTag& tag,
          const ON_Xform* object_xform = 0
-         ) const;
+         ) const; 
 
   /*
   Description:
@@ -35657,7 +35645,7 @@ public:
     mesh - [in]
     T - [out] Texture coordinates returned here.
     mesh_xform - [in] (optional)
-      If the mesh has been transformed since the texture mapping was set
+      If the mesh has been transformed since the texture mapping was set 
       up, pass the transformation here.  Typically this is the value
       of ON_Mesh::m_mapping_xform or ON_MappingRef::m_object_xform
     bLazy - [in]
@@ -35679,9 +35667,9 @@ public:
         3 = back
         4 = left
         5 = bottom
-        6 = top
+        6 = top        
   Example:
-
+    
           ON_TextureMapping mapping = ...;
           const ON_Mesh* mesh = ...;
           bool bLazy = true;
@@ -35693,16 +35681,16 @@ public:
   Returns:
     True if successful.
   */
-  bool GetTextureCoordinates(
-    const ON_Mesh& mesh,
+  bool GetTextureCoordinates( 
+    const ON_Mesh& mesh, 
     ON_SimpleArray<ON_3fPoint>& T,
 		const ON_Xform* mesh_xform = 0,
     bool bLazy = false,
     ON_SimpleArray<int>* Tside = 0
     ) const;
 
-  bool GetTextureCoordinates(
-    const ON_Mesh& mesh,
+  bool GetTextureCoordinates( 
+    const ON_Mesh& mesh, 
     ON_SimpleArray<ON_2fPoint>& T,
 		const ON_Xform* mesh_xform = 0,
     bool bLazy = false,
@@ -35710,21 +35698,21 @@ public:
     ) const;
 
 public:
-  // The only reliable and persistent way to reference texture
+  // The only reliable and persistent way to reference texture 
   // mappings is by the mapping_id.  If the mapping id is
   // set to m_srfp_mapping_id, then all other mapping settings
   // are ignored.
   ON_UUID m_mapping_id;
 
-  // Runtime texture mapping table index.
+  // Runtime texture mapping table index. 
   // This value is NOT SAVED IN 3DM FILES.
   // This value is constant for each runtime instance of Rhino,
-  // but can change each time a model is loaded or saved.
+  // but can change each time a model is loaded or saved.  
   // Once a texture mapping is in the CRhinoDoc material table,
   // its id and index never change in that instance of Rhino.
   int m_mapping_index;
 
-  // The texture mapping name is for UI and user comfort.
+  // The texture mapping name is for UI and user comfort. 
   // Duplicates are permitted.
   ON_wString m_mapping_name;
 
@@ -35748,7 +35736,7 @@ public:
     cylinder_mapping = 3, // u,v,w = logitude, height, radius
     sphere_mapping   = 4, // (u,v,w) = longitude,latitude,radius
     box_mapping      = 5,
-    mesh_mapping_primitive = 6, // m_mapping_primitive is an ON_Mesh
+    mesh_mapping_primitive = 6, // m_mapping_primitive is an ON_Mesh 
     srf_mapping_primitive  = 7, // m_mapping_primitive is an ON_Surface
     brep_mapping_primitive = 8, // m_mapping_primitive is an ON_Brep
 
@@ -35764,13 +35752,13 @@ public:
   //   When a mapping primitive, like a plane, sphere, box,
   //   or cylinder, is used, there are two projection options.
   //
-  //  clspt_projection: world xyz maps to the point on the
+  //  clspt_projection: world xyz maps to the point on the 
   //                    mapping primitive that is closest to xyz.
   //                    In this case, ON_TextureMapping::Evaluate
   //                    ignores the vector argument.
   //
   //  ray_projection:   world xyz + world vector defines a world line.
-  //                    The world line is intersected with the mapping
+  //                    The world line is intersected with the mapping 
   //                    primitive and the intersection point that is
   //                    closest to the world xyz point is used to
   //                    calculate the mapping parameters.
@@ -35795,10 +35783,10 @@ public:
   //
   //   When a mapping primitive is a box or a capped cylinder,
   //   there are two options for the mapping.  Either the sides
-  //   all map to (0,1)x(0,1) (so the either texture map appears
+  //   all map to (0,1)x(0,1) (so the either texture map appears 
   //   on each side, or the sides map to distinct regions of the
-  //   texture space.
-  //
+  //   texture space.  
+  //   
   enum TEXTURE_SPACE
   {
     single  = 0, // sides and caps map to same texture space
@@ -35809,7 +35797,7 @@ public:
                  // (0, 4/6, 5/6, 1) for capped cylinders.
     force_32bit_texture_space = 0xFFFFFFFF
   };
-
+  
   TEXTURE_SPACE m_texture_space;
 
   // The m_bCapped applies to planar, cylinder and box mappings.
@@ -35821,17 +35809,17 @@ public:
   //////////////////////////////////////////////////////////
   //
   // For primitive based mappings, these transformations are
-  // used to map the world coordinate (x,y,z) point P and
-  // surface normal N before it is projected to the normalized
+  // used to map the world coordinate (x,y,z) point P and 
+  // surface normal N before it is projected to the normalized 
   // mapping primitive. The surface normal transformation,
-  // m_Nxyz, is always calculated from m_Pxyz.  It is a
-  // runtime setting that is not saved in 3dm files.
+  // m_Nxyz, is always calculated from m_Pxyz.  It is a 
+  // runtime setting that is not saved in 3dm files. 
   // If m_type is srfp_mapping, then m_Pxyz and m_Nxyz are
   // ignored.
   ON_Xform m_Pxyz;
   ON_Xform m_Nxyz;
 
-  // Transform applied to mapping coordinate (u,v,w) to
+  // Transform applied to mapping coordinate (u,v,w) to 
   // convert it into a texture coordinate.
   ON_Xform m_uvw;
 
@@ -35847,7 +35835,7 @@ public:
 
 #if defined(ON_DLL_TEMPLATE)
 // This stuff is here because of a limitation in the way Microsoft
-// handles templates and DLLs.  See Microsoft's knowledge base
+// handles templates and DLLs.  See Microsoft's knowledge base 
 // article ID Q168958 for details.
 #pragma warning( push )
 #pragma warning( disable : 4231 )
@@ -35869,7 +35857,7 @@ ON_DLL_TEMPLATE template class ON_CLASS ON_ObjectArray<ON_TextureMapping>;
 // THIS SOFTWARE IS PROVIDED "AS IS" WITHOUT EXPRESS OR IMPLIED WARRANTY.
 // ALL IMPLIED WARRANTIES OF FITNESS FOR ANY PARTICULAR PURPOSE AND OF
 // MERCHANTABILITY ARE HEREBY DISCLAIMED.
-//
+//				
 // For complete openNURBS copyright information see <http://www.opennurbs.org>.
 //
 ////////////////////////////////////////////////////////////////
@@ -35887,7 +35875,7 @@ ON_DLL_TEMPLATE template class ON_CLASS ON_ObjectArray<ON_TextureMapping>;
 ///////////////////////////////////////////////////////////////////////////////
 //
 // Class ON_Texture
-//
+// 
 
 class ON_CLASS ON_Texture : public ON_Object
 {
@@ -35921,7 +35909,7 @@ public:
 
   void Default();
 
-  int Compare( const ON_Texture& other ) const;
+  int Compare( const ON_Texture& other ) const; 
 
   /*
   Description:
@@ -35991,18 +35979,18 @@ public:
     emap_channel = 0xFFFFFFFF  // Environment map the geometric object.
   };
 
-  // If the m_mapping_channel_id value is one of the built-in
-  // mappings listed in the MAPPING_CHANNEL enum, then that
+  // If the m_mapping_channel_id value is one of the built-in 
+  // mappings listed in the MAPPING_CHANNEL enum, then that 
   // mapping is used.  Otherwise, if an object has rendering
-  // attributes with an ON_MappingChannel entry that has a
-  // matching m_mapping_channel_id value, then the mapping
+  // attributes with an ON_MappingChannel entry that has a 
+  // matching m_mapping_channel_id value, then the mapping 
   // identified by ON_MappingChannel::m_mapping_id is used.
   // A value of zero means no mapping is supplied
   // and the texture coordinates on the mesh are
   // used.
   int m_mapping_channel_id;
 
-  // Bitmap filename
+  // Bitmap filename  
   //   During runtime, m_filename is the absolute path to the
   //   file in use.  If m_filename_bRelativePath is true, then
   //   the value saved in the 3dm archive will be a relative path.
@@ -36013,7 +36001,7 @@ public:
 
   // If false, texture is off and should be ignored.
   // The intended use is to allow people to turn textures
-  // on and off without have to create/destroy or change
+  // on and off without have to create/destroy or change 
   // other texture settings.
   bool m_bOn;
 
@@ -36059,11 +36047,11 @@ public:
 
     force_32bit_texture_filter = 0xFFFFFFFF
   };
-
+  
   // The value of m_minfilter determines how the color
   // of the image pixel is calculated when the image pixel
   // corresponds to multiple texture bitmap pixels.
-  FILTER m_minfilter;
+  FILTER m_minfilter;  
 
   // The magfilter setting controls how the color
   // of the image pixel is calculated when the image pixel
@@ -36096,15 +36084,15 @@ public:
   // not have an alpha channel and is used to set
   // runtime alpha values.  It needs to be parsed when the
   // texture is loaded and can be ignored at runtime.
-  //
-  // If ON_UNSET_COLOR != m_transparent_color, then
+  // 
+  // If ON_UNSET_COLOR != m_transparent_color, then 
   // a pixel in the bitmap file with a matching RGB
   // value is assigned the alpha value (ON_Color::Alpha)
-  // in m_transparent_color. The intended use is
+  // in m_transparent_color. The intended use is 
   // for non-rectangular decals defined by RGB bitmaps in
   // files that don't save an alpha channel.
   //
-  // For example if the decal is a red number 7 with a
+  // For example if the decal is a red number 7 with a 
   // white background, then you would set m_transparent_color's
   // RGB to white and its A to zero.
   ON_Color m_transparent_color;
@@ -36114,39 +36102,39 @@ public:
   // not have an alpha channel and is used to set
   // runtime alpha values.  It needs to be parsed when the
   // texture is loaded and can be ignored at runtime.
-  //
+  // 
   // If m_transparency_id is not nil, it is the id of another
   // texture in the ON_Material.m_textures[] array that has
   // type m_transparency_texture.  The runtime bitmap_texture's
   // alpha is set to (255-max(R,G,B)) (the "value" in the hue,
-  // saturation,value sense) of the correspondeing
-  // transparency_texture pixel.
+  // saturation,value sense) of the correspondeing 
+  // transparency_texture pixel. 
   //
-  // For example, if you had a bitmap texuture that was green
+  // For example, if you had a bitmap texuture that was green 
   // with purple dots saved in a RGB .bmp file and you wanted
   // the purple dots to be semi-transparent, you could create
   // another bitmap that was black, where the original was green,
-  // and gray, where the original was purple, have an
+  // and gray, where the original was purple, have an 
   // transparency_texture reference the white/gray bitmap,
-  // and have the bitmap_texture's m_transparency_id
+  // and have the bitmap_texture's m_transparency_id 
   // reference the transparency map.
   ON_UUID m_transparency_texture_id;
 
   // If the m_type is bump_texture, the height of the
   // bump is m_bump_scale.ParameterAt(value), where
-  // value is in the HSV sense and normalized
-  // (black=0, white=1).  The interval can be
+  // value is in the HSV sense and normalized 
+  // (black=0, white=1).  The interval can be 
   // decreasing.
   ON_Interval m_bump_scale;
 
   // If the m_mode is blend_texture, then m_blend_A[]
   // and m_blend_RGB[] determine the blending function.
-  //  new alpha  = m_blend_constant_A
+  //  new alpha  = m_blend_constant_A 
   //             + m_blend_A[0]*(current alpha)
   //             + m_blend_A[1]*(texture alpha)
   //             + m_blend_A[2]*min(current alpha,texture alpha)
   //             + m_blend_A[3]*max(current alpha,texture alpha)
-  //  new rgb    = m_blend_constant_RGB
+  //  new rgb    = m_blend_constant_RGB 
   //             + m_blend_RGB[0]*(current RGB)
   //             + m_blend_RGB[1]*(texture RGB)
   //             + m_blend_RGB[2]*min(current RGB,texture RGB)
@@ -36159,8 +36147,8 @@ public:
 
   // If an ON_Material m_textures[] array has more than
   // one texture, the textures are blended, and the textures
-  // have different m_blend_order values, the the texture
-  // with the smaller m_blend_order is first.
+  // have different m_blend_order values, the the texture 
+  // with the smaller m_blend_order is first. 
   int m_blend_order;
 
   // Applications use the m_runtime_ptr_id and m_runtime_ptr fields
@@ -36179,7 +36167,7 @@ public:
 
 #if defined(ON_DLL_TEMPLATE)
 // This stuff is here because of a limitation in the way Microsoft
-// handles templates and DLLs.  See Microsoft's knowledge base
+// handles templates and DLLs.  See Microsoft's knowledge base 
 // article ID Q168958 for details.
 #pragma warning( push )
 #pragma warning( disable : 4231 )
@@ -36200,7 +36188,7 @@ ON_DLL_TEMPLATE template class ON_CLASS ON_ObjectArray<ON_Texture>;
 // THIS SOFTWARE IS PROVIDED "AS IS" WITHOUT EXPRESS OR IMPLIED WARRANTY.
 // ALL IMPLIED WARRANTIES OF FITNESS FOR ANY PARTICULAR PURPOSE AND OF
 // MERCHANTABILITY ARE HEREBY DISCLAIMED.
-//
+//				
 // For complete openNURBS copyright information see <http://www.opennurbs.org>.
 //
 ////////////////////////////////////////////////////////////////
@@ -36213,7 +36201,7 @@ ON_DLL_TEMPLATE template class ON_CLASS ON_ObjectArray<ON_Texture>;
 ///////////////////////////////////////////////////////////////////////////////
 //
 // Class ON_Material
-//
+// 
 class ON_CLASS ON_Material : public ON_Object
 {
   ON_OBJECT_DECLARE(ON_Material);
@@ -36241,9 +36229,9 @@ public:
     text_log - [in] if the object is not valid and text_log
         is not NULL, then a brief englis description of the
         reason the object is not valid is appened to the log.
-        The information appended to text_log is suitable for
-        low-level debugging purposes by programmers and is
-        not intended to be useful as a high level user
+        The information appended to text_log is suitable for 
+        low-level debugging purposes by programmers and is 
+        not intended to be useful as a high level user 
         interface tool.
   Returns:
     @untitled table
@@ -36274,7 +36262,7 @@ public:
   // Interface
 
   // ignores m_material_index
-  int Compare( const ON_Material& other ) const;
+  int Compare( const ON_Material& other ) const; 
 
   // OBSOLETE - use m_ambient
   ON_Color Ambient() const;
@@ -36319,7 +36307,7 @@ public:
   // OBSOLETE - just use m_material_name
   void SetMaterialName( const wchar_t* );
 
-  // The only reliable and persistent way to reference
+  // The only reliable and persistent way to reference 
   // materials is by the material_id.
   ON_UUID m_material_id;
 
@@ -36330,9 +36318,9 @@ public:
   // never change in that instance of Rhino.
   int m_material_index;
 
-  //
+  // 
   ON_wString m_material_name;  // For user comfort - duplicates permitted
-
+  
   ON_wString m_flamingo_library; // Legacy information from V3.
                                  // Will vanish in V5.
 
@@ -36396,12 +36384,12 @@ public:
     filename - [in]  If NULL, then any filename matches.
     type - [in] If ON_Texture::no_texture_type, then
                 any texture type matches.
-    i0 - [in] If i0 is < 0, the search begins at
+    i0 - [in] If i0 is < 0, the search begins at 
               m_textures[0], if i0 >= m_textures.Count(),
               -1 is returnd, otherwise, the search begins
               at m_textures[i0+1].
   Example:
-    Iterate through all the the bitmap textures on
+    Iterate through all the the bitmap textures on 
     a material.
 
           ON_Material& mat = ...;
@@ -36409,9 +36397,9 @@ public:
           int bitmap_texture_count = 0;
           for(;;)
           {
-            ti = mat.FindTexture(
-                        NULL,
-                        ON_Texture::bitmap_texture,
+            ti = mat.FindTexture( 
+                        NULL, 
+                        ON_Texture::bitmap_texture, 
                         ti );
 
             if ( ti < 0 )
@@ -36451,14 +36439,14 @@ public:
     textures to the material.  If you need to do something
     different, then just work on the m_textures[] array.
   */
-  int AddTexture(
+  int AddTexture( 
     const ON_Texture& tx
     );
 
   /*
   Description:
     If there is a texture with a matching type, that texture's
-    filename is modified, otherwise a new texture is added.
+    filename is modified, otherwise a new texture is added.    
   Parameters:
     filename - [in] new filename
     type - [in]
@@ -36471,7 +36459,7 @@ public:
   */
   int AddTexture(
     const wchar_t* filename,
-    ON_Texture::TYPE type
+    ON_Texture::TYPE type 
     );
 
   /*
@@ -36486,15 +36474,15 @@ public:
   */
   int DeleteTexture(
     const wchar_t* filename,
-    ON_Texture::TYPE type
+    ON_Texture::TYPE type 
     );
 
   ON_ObjectArray<ON_Texture> m_textures;
 
   /*
   Description:
-    Used to provide per face material support.
-    The parent object reference a basic material.
+    Used to provide per face material support. 
+    The parent object reference a basic material. 
     When a brep face or mesh facet wants to use
     a material besides the base material, it specifies
     a channelSupports material channel.  The default
@@ -36502,10 +36490,10 @@ public:
     material.  A channel of n > 0 means that face
     used the material with id m_material_channel[n-1].
     If (n-1) >= m_material_channel.Count(), then the base
-    material is used.  The value of
+    material is used.  The value of 
     m_material_channel[n].m_id is persistent.  The
     value of m_material_channel[n].m_i is a runtime
-    index in the CRhinoDoc::m_material_table[].  If
+    index in the CRhinoDoc::m_material_table[].  If 
     CRhinoDoc::m_material_table[m_i].m_uuid != m_id,
     then m_id is assumed to be correct.
   */
@@ -36521,7 +36509,7 @@ private:
 
 #if defined(ON_DLL_TEMPLATE)
 // This stuff is here because of a limitation in the way Microsoft
-// handles templates and DLLs.  See Microsoft's knowledge base
+// handles templates and DLLs.  See Microsoft's knowledge base 
 // article ID Q168958 for details.
 #pragma warning( push )
 #pragma warning( disable : 4231 )
@@ -36542,7 +36530,7 @@ ON_DLL_TEMPLATE template class ON_CLASS ON_ObjectArray<ON_Material>;
 // THIS SOFTWARE IS PROVIDED "AS IS" WITHOUT EXPRESS OR IMPLIED WARRANTY.
 // ALL IMPLIED WARRANTIES OF FITNESS FOR ANY PARTICULAR PURPOSE AND OF
 // MERCHANTABILITY ARE HEREBY DISCLAIMED.
-//
+//				
 // For complete openNURBS copyright information see <http://www.opennurbs.org>.
 //
 ////////////////////////////////////////////////////////////////
@@ -36574,9 +36562,9 @@ public:
     text_log - [in] if the object is not valid and text_log
         is not NULL, then a brief englis description of the
         reason the object is not valid is appened to the log.
-        The information appended to text_log is suitable for
-        low-level debugging purposes by programmers and is
-        not intended to be useful as a high level user
+        The information appended to text_log is suitable for 
+        low-level debugging purposes by programmers and is 
+        not intended to be useful as a high level user 
         interface tool.
   Returns:
     @untitled table
@@ -36614,12 +36602,12 @@ public:
   /*
   Description:
     The string returned by ON_Layer::LayerNameReferenceDelimiter()
-    is used to separate the name of a reference file from the name of
+    is used to separate the name of a reference file from the name of 
     the layer in the file.
   Example:
     If a layer named "electrical" is in a file named "house plan.3dm"
     and "house plan.3dm" is a reference file in a Rhino worksession,
-    then Rhino's user interface will use the string
+    then Rhino's user interface will use the string 
     "house plan : electrical" to identify the layer.
   Returns:
     " : " (null terminated string space,colon,space)
@@ -36647,9 +36635,9 @@ public:
   Description:
     Get a layer name's "leaf" level name.
   Example:
-    If a layer name is "refernce file : alpha::beta::gamma",
+    If a layer name is "refernce file : alpha::beta::gamma", 
     then ON_Layer::GetLeafName() returns "gamma"
-  Returns:
+  Returns:    
     True if the layer has a valid non-empty leaf name.
   */
   static bool GetLeafName( const wchar_t* layer_name, ON_wString& leaf_name);
@@ -36660,7 +36648,7 @@ public:
   Example:
     If a layer name is "refenence file : alpha::beta::gamma", then
     ON_Layer::GetParentPathName() returns "alpha::beta"
-  Returns:
+  Returns:    
     True if the layer has a valid non-empty parent path name.
   */
   static bool GetParentName( const wchar_t* layer_name, ON_wString& parent_path_name );
@@ -36675,7 +36663,7 @@ public:
   Example:
     If a layer name is "refenence file : alpha::beta::gamma", then
     ON_Layer::RemoveReferenceName() returns "alpha::beta::gamma"
-  Returns:
+  Returns:    
     True if layer_path_name is non-empty. If no reference prefix was present,
     then the returned layer_path_name is identical to the input layer_name.
   */
@@ -36687,7 +36675,7 @@ public:
   Example:
     If a layer name is "refenence file : alpha::beta::gamma", then
     ON_Layer::GetReferenceFileName() returns "refenence file"
-  Returns:
+  Returns:    
     True if the layer has a valid non-empty reference file name.
   */
   static bool GetReferenceName( const wchar_t* layer_name, ON_wString& reference_name );
@@ -36720,7 +36708,7 @@ public:
     settings_mask - [in]
       settings_mask is a bitfield that specifies which settings
       to check for.  The bits are defined in the
-      ON_Layer::PER_VIEWPORT_PROPERTIES enum.  If you want to
+      ON_Layer::PER_VIEWPORT_PROPERTIES enum.  If you want to 
       determine if the layer has any per viewport settings,
       then pass 0xFFFFFFFF.
   Returns:
@@ -36758,7 +36746,7 @@ public:
     True if the settings could be copied, False if no per-viewport
     settings exist for the source viewport id
   */
-  bool CopyPerViewportSettings(
+  bool CopyPerViewportSettings( 
     ON_UUID source_viewport_id,
     ON_UUID destination_viewport_id
     );
@@ -36783,7 +36771,7 @@ public:
     True if the settings were copied, False if no per-viewport
     settings exist for the specified viewport_id.
   */
-  bool CopyPerViewportSettings(
+  bool CopyPerViewportSettings( 
     const ON_Layer& source_layer,
     ON_UUID viewport_id,
     unsigned int settings_mask
@@ -36798,8 +36786,8 @@ public:
       viewport are deleted.  If viewport_id is nil, then all
       per viewport settings are deleted.
   */
-  void DeletePerViewportSettings(
-    const ON_UUID& viewport_id
+  void DeletePerViewportSettings( 
+    const ON_UUID& viewport_id 
     ) const;
 
   /*
@@ -36811,8 +36799,8 @@ public:
       Settings for any viewports NOT in the viewport_id_list[]
       are culled.
   */
-  void CullPerViewportSettings(
-    int viewport_id_count,
+  void CullPerViewportSettings( 
+    int viewport_id_count, 
     const ON_UUID* viewport_id_list
     );
 
@@ -36905,7 +36893,7 @@ public:
   void SetPerViewportPlotColor( ON_UUID viewport_id, ON_Color plot_color );
 
   /* use ON_Layer::SetPerViewportPlotColor */
-  ON_DEPRECATED	void SetPlotColor( ON_Color, const ON_UUID& );
+  ON_DEPRECATED	void SetPlotColor( ON_Color, const ON_UUID& ); 
 
   /*
   Returns:
@@ -36924,7 +36912,7 @@ public:
     not have a per object color set.
   */
 	ON_Color PerViewportPlotColor( ON_UUID viewport_id ) const;
-
+  
   /* use ON_Layer::PerViewportPlotColor */
   ON_DEPRECATED	ON_Color PlotColor( const ON_UUID& ) const;
 
@@ -36971,7 +36959,7 @@ public:
   Description:
     Controls layer visibility
   Parameters:
-    bVisible - [in] true to make layer visible,
+    bVisible - [in] true to make layer visible, 
                     false to make layer invisible
     viewport_id - [in]
       If viewport_id is not nil, then the setting applies only
@@ -36991,7 +36979,7 @@ public:
     visibility setting determines what happens when the parent
     is turned on again.
   Returns:
-    true:
+    true: 
       If this layer's visibility is controlled by a parent object
       and the parent is turned on (after being off), then this
       layer will also be turned on.
@@ -37036,7 +37024,7 @@ public:
     ON_Layer::SetPersistentVisibility
   */
   void UnsetPersistentVisibility();
-
+    
   /*
   Parameters:
     viewport_id - [in]
@@ -37047,10 +37035,10 @@ public:
   Returns:
     Returns true if objects on layer are visible.
   */
-	bool PerViewportIsVisible( ON_UUID viewport_id ) const;
+	bool PerViewportIsVisible( ON_UUID viewport_id ) const;	
 
-  /* use ON_Layer::PerViewportIsVisible */
-  ON_DEPRECATED bool IsVisible( const ON_UUID& ) const;
+  /* use ON_Layer::PerViewportIsVisible */ 
+  ON_DEPRECATED bool IsVisible( const ON_UUID& ) const; 
 
   /*
   Description:
@@ -37061,30 +37049,30 @@ public:
       to the viewport with the specified id.  If viewport_id
       is nil, then the setting applies to all viewports with
       per viewport layer settings.
-    bVisible - [in] true to make layer visible,
+    bVisible - [in] true to make layer visible, 
                     false to make layer invisible
   See Also:
     ON_Layer::IsVisibleInViewport()
   */
   void SetPerViewportVisible( ON_UUID viewport_id, bool bVisible );
-
-  /* use ON_Layer::SetPerViewportVisible */
+  
+  /* use ON_Layer::SetPerViewportVisible */ 
   ON_DEPRECATED void SetVisible( bool, const ON_UUID& );
 
   /*
   Parameters:
     viewport_id - [in]
-      id of a viewport.  If viewport_id is nil, then
+      id of a viewport.  If viewport_id is nil, then 
       ON_Layer::PersistentVisibility() is returned.
   Returns:
-    true:
-      If this layer's visibility in the specified viewport is
+    true: 
+      If this layer's visibility in the specified viewport is 
       controlled by a parent object and the parent is turned on
       (after being off), then this layer will also be turned on
       in the specified viewport.
     false:
       If this layer's visibility in the specified viewport is
-      controlled by a parent object and the parent layer is
+      controlled by a parent object and the parent layer is 
       turned on (after being off), then this layer will continue
       to be off in the specified viewport.
   Remarks:
@@ -37110,7 +37098,7 @@ public:
   */
   void SetPerViewportPersistentVisibility( ON_UUID viewport_id, bool bPersistentVisibility );
 
-  void UnsetPerViewportPersistentVisibility( ON_UUID viewport_id );
+  void UnsetPerViewportPersistentVisibility( ON_UUID viewport_id );    
 
   /*
   Description:
@@ -37126,9 +37114,9 @@ public:
 
   /*
   Description:
-    Get a list of the viewport ids of viewports that
+    Get a list of the viewport ids of viewports that 
     that have per viewport visibility settings that
-    override the default layer visibility setting
+    override the default layer visibility setting 
     ON_Layer::m_bVisible.
   Parameters:
     viewport_id_list - [out]
@@ -37165,12 +37153,12 @@ public:
   Description:
     The persistent locking setting is used for layers that can
     be locked by a "parent" object. A common case is when a layer
-    is a child layer (ON_Layer.m_parent_id is not nil). In this
-    case, when a parent layer is locked, then child layers are
+    is a child layer (ON_Layer.m_parent_id is not nil). In this 
+    case, when a parent layer is locked, then child layers are 
     also locked. The persistent locking setting determines what
     happens when the parent is unlocked again.
   Returns:
-    true:
+    true: 
       If this layer's locking is controlled by a parent object
       and the parent is unlocked (after being locked), then this
       layer will also be unlocked.
@@ -37251,10 +37239,10 @@ public:
     A thickness of -1.0 indicates the layer should not be printed.
   */
   double PlotWeight() const;
-
+  
   double PerViewportPlotWeight( ON_UUID viewport_id ) const;
 
-  /* use ON_Layer::PerViewportPlotWeight */
+  /* use ON_Layer::PerViewportPlotWeight */ 
   ON_DEPRECATED double PlotWeight( const ON_UUID& ) const;
 
   /*
@@ -37277,7 +37265,7 @@ public:
   */
   void SetPerViewportPlotWeight(ON_UUID viewport_id, double plot_weight_mm);
 
-  /* use ON_Layer::SetPerViewportPlotWeight */
+  /* use ON_Layer::SetPerViewportPlotWeight */ 
   ON_DEPRECATED void SetPlotWeight(double, const ON_UUID& );
 
   /*
@@ -37300,18 +37288,18 @@ public:
   Returns:
     Number of viewport ids that were updated.
   */
-  int UpdateViewportIds(
-    const ON_UuidPairList& viewport_id_map
+  int UpdateViewportIds( 
+    const ON_UuidPairList& viewport_id_map 
     );
 
 public:
 
   int m_layer_index;       // index of this layer
   ON_UUID m_layer_id;
-  ON_UUID m_parent_layer_id; // Layers are origanized in a hierarchical
+  ON_UUID m_parent_layer_id; // Layers are origanized in a hierarchical 
                              // structure (like file folders).
-                             // If a layer is in a parent layer,
-                             // then m_parent_layer_id is the id of
+                             // If a layer is in a parent layer, 
+                             // then m_parent_layer_id is the id of 
                              // the parent layer.
 
   int m_iges_level;        // IGES level number if this layer was made during IGES import
@@ -37319,24 +37307,24 @@ public:
 
 
   // Rendering material:
-  //   If you want something simple and fast, set
-  //   m_material_index to the index of your rendering material
+  //   If you want something simple and fast, set 
+  //   m_material_index to the index of your rendering material 
   //   and ignore m_rendering_attributes.
   //   If you are developing a fancy plug-in renderer, and a user is
   //   assigning one of your fabulous rendering materials to this
-  //   layer, then add rendering material information to the
-  //   m_rendering_attributes.m_materials[] array.
+  //   layer, then add rendering material information to the 
+  //   m_rendering_attributes.m_materials[] array. 
   //
   // Developers:
   //   As soon as m_rendering_attributes.m_materials[] is not empty,
   //   rendering material queries slow down.  Do not populate
-  //   m_rendering_attributes.m_materials[] when setting
+  //   m_rendering_attributes.m_materials[] when setting 
   //   m_material_index will take care of your needs.
-  int m_material_index;
+  int m_material_index; 
   ON_RenderingAttributes m_rendering_attributes;
-
+  
   int m_linetype_index;    // index of linetype
-
+  
   // Layer display attributes.
   //   If m_display_material_id is nil, then m_color is the layer color
   //   and defaults are used for all other display attributes.
@@ -37383,7 +37371,7 @@ public:
   /*
   Returns:
     Bits in the returned value indicate if there are differences
-    between layer0 and layer1.  For example, if the layers have
+    between layer0 and layer1.  For example, if the layers have 
     difference color, then the returned value would have the
     "color" bit set.
   */
@@ -37391,7 +37379,7 @@ public:
 
   /*
   Description:
-    Use settings_values and settings to set the specified values
+    Use settings_values and settings to set the specified values 
     on this layer.
   Parameters:
     settings_values - [in]
@@ -37420,8 +37408,8 @@ public:
   Returns:
     0 if the layer does not have saved settings.
     Nonzero value with LAYER_SETTINGS bits specifying which settings
-    are saved.  The saved that can be retrieved by calling
-    GetSavedSettings().
+    are saved.  The saved that can be retrieved by calling 
+    GetSavedSettings().    
   */
   unsigned int SavedSettings() const;
 
@@ -37439,12 +37427,12 @@ public:
     True if there were saved settings.
   */
   bool GetSavedSettings( ON_Layer& layer, unsigned int& settings ) const;
-
+  
 private:
   // The following information may not be accurate and is subject
   // to change at any time.
   //
-  // m_extension_bits & 0x01:
+  // m_extension_bits & 0x01: 
   //   The value of ( m_extension_bits & 0x01) is used to speed
   //   common per viewport visiblity and color queries.
   //     0x00 = there may be per viewport settings on this layer.
@@ -37481,7 +37469,7 @@ private:
 // THIS SOFTWARE IS PROVIDED "AS IS" WITHOUT EXPRESS OR IMPLIED WARRANTY.
 // ALL IMPLIED WARRANTIES OF FITNESS FOR ANY PARTICULAR PURPOSE AND OF
 // MERCHANTABILITY ARE HEREBY DISCLAIMED.
-//
+//				
 // For complete openNURBS copyright information see <http://www.opennurbs.org>.
 //
 ////////////////////////////////////////////////////////////////
@@ -37572,7 +37560,7 @@ public:
 
   /*
     Index of each linetype
-    This index is used by geometry objects to
+    This index is used by geometry objects to 
     reference a specific linetype
   */
   bool SetLinetypeIndex( int);
@@ -37657,7 +37645,7 @@ private:
 // THIS SOFTWARE IS PROVIDED "AS IS" WITHOUT EXPRESS OR IMPLIED WARRANTY.
 // ALL IMPLIED WARRANTIES OF FITNESS FOR ANY PARTICULAR PURPOSE AND OF
 // MERCHANTABILITY ARE HEREBY DISCLAIMED.
-//
+//				
 // For complete openNURBS copyright information see <http://www.opennurbs.org>.
 //
 ////////////////////////////////////////////////////////////////
@@ -37687,9 +37675,9 @@ public:
     text_log - [in] if the object is not valid and text_log
         is not NULL, then a brief englis description of the
         reason the object is not valid is appened to the log.
-        The information appended to text_log is suitable for
-        low-level debugging purposes by programmers and is
-        not intended to be useful as a high level user
+        The information appended to text_log is suitable for 
+        low-level debugging purposes by programmers and is 
+        not intended to be useful as a high level user 
         interface tool.
   Returns:
     @untitled table
@@ -37715,7 +37703,7 @@ public:
   // Obsolete interface - just work on the public members
   void SetGroupName( const wchar_t* );
   void SetGroupName( const char* );
-
+  
   void GetGroupName( ON_wString& ) const;
   const wchar_t* GroupName() const;
 
@@ -37739,7 +37727,7 @@ public:
 // THIS SOFTWARE IS PROVIDED "AS IS" WITHOUT EXPRESS OR IMPLIED WARRANTY.
 // ALL IMPLIED WARRANTIES OF FITNESS FOR ANY PARTICULAR PURPOSE AND OF
 // MERCHANTABILITY ARE HEREBY DISCLAIMED.
-//
+//				
 // For complete openNURBS copyright information see <http://www.opennurbs.org>.
 //
 ////////////////////////////////////////////////////////////////
@@ -37771,10 +37759,10 @@ public:
     the face name with " Bold", " Italic" or " Bold Italic"
     appended as
  */
-  bool CreateFontFromFaceName(
+  bool CreateFontFromFaceName( 
     const wchar_t* face_name,
     bool bBold,
-    bool bItalic
+    bool bItalic 
     );
 
 #if defined(ON_OS_WINDOWS_GDI)
@@ -37794,9 +37782,9 @@ public:
     text_log - [in] if the object is not valid and text_log
         is not NULL, then a brief englis description of the
         reason the object is not valid is appened to the log.
-        The information appended to text_log is suitable for
-        low-level debugging purposes by programmers and is
-        not intended to be useful as a high level user
+        The information appended to text_log is suitable for 
+        low-level debugging purposes by programmers and is 
+        not intended to be useful as a high level user 
         interface tool.
   Returns:
     @untitled table
@@ -37827,8 +37815,8 @@ public:
   //
   // Interface
 
-  enum
-  {
+  enum 
+  { 
 
 #if defined(ON_OS_WINDOWS_GDI)
 
@@ -37836,7 +37824,7 @@ public:
 
     // 13 November 2008 - Dale Lear
     // Because:
-    //   * Prior to this date the above "ON_OS_WINDOWS_GDI"
+    //   * Prior to this date the above "ON_OS_WINDOWS_GDI" 
     //     was misspelled and this code did not get compiled.
     //   * The Windows headers defines LF_FACESIZE = 32
     //   * ON_Font has a member wchar_t m_facename[face_name_size] array
@@ -37874,10 +37862,10 @@ public:
 #endif
 
     normal_font_height = 256
-  };
+  }; 
 
   // Ratio of linefeed to character height (1.6)
-  static
+  static 
   const double m_default_linefeed_ratio;
 
   static
@@ -37890,13 +37878,13 @@ public:
     True if the font's character set should be SYMBOL_CHARSET;
   */
   static
-  bool IsSymbolFontFaceName(
+  bool IsSymbolFontFaceName( 
           const wchar_t* facename
           );
 
   void SetFontName( const wchar_t* );
   void SetFontName( const char* );
-
+  
   void GetFontName( ON_wString& ) const;
   const wchar_t* FontName() const;
 
@@ -37913,7 +37901,7 @@ public:
 
   bool SetFontFaceName( const wchar_t* );
   bool SetFontFaceName( const char* );
-
+  
   void GetFontFaceName( ON_wString& ) const;
   const wchar_t* FontFaceName() const;
 
@@ -37935,21 +37923,21 @@ public:
 
   /*
   Returns:
-    Height of the 'I' character when the font is drawn
+    Height of the 'I' character when the font is drawn 
     with m_logfont.lfHeight = ON_Font::normal_font_height.
   */
   int HeightOfI() const;
 
   /*
   Returns:
-    Height of a linefeed when the font is drawn
+    Height of a linefeed when the font is drawn 
     with m_logfont.lfHeight = ON_Font::normal_font_height.
   */
   int HeightOfLinefeed() const;
 
   /*
     Description:
-      Returns the ratio of the height of a typical upper case letter
+      Returns the ratio of the height of a typical upper case letter 
       to the height of a whole character cell.
 
   Parameters:
@@ -37959,23 +37947,6 @@ public:
     double - ratio of Windows Font Height / m_HeightOfH
   */
   double AscentRatio() const;
-
-  /*
-    Description:
-      Compare the visible characteristics to another font
-
-    Parameters:
-      font_to_compare - [in] The cont to compare this one to
-      bCompareName    - [in] if this is set, test if the names match
-                             otherwise don't compare the names
-
-    Returns:
-      true if font_to_compare matches this one
-      false if font_to_match doesn't match this one
-
-    Added for v5 - 5/20/07
-  */
-  bool CompareFontCharacteristics( ON_Font& font_to_compare, bool bCompareName) const;
 
 #if defined(ON_OS_WINDOWS_GDI)
   bool SetLogFont( const LOGFONT& logfont );
@@ -37990,14 +37961,14 @@ public:
   double     m_linefeed_ratio; // defaults to static s_linefeed_ratio.
   int        m_font_index;     // font index in Rhino font table
   ON_UUID    m_font_id;
-  wchar_t    m_facename[face_name_size]; // same as m_logfont.lfFaceName (
+  wchar_t    m_facename[face_name_size]; // same as m_logfont.lfFaceName ( 
 
 public:
 
-  /*
+  /*  
   Description:
-    Insures the settings in the OS specific information, like
-    the Windows m_logfont field, match the persistent m_font_* values
+    Insures the settings in the OS specific information, like 
+    the Windows m_logfont field, match the persistent m_font_* values 
     above that are used for all OSs and used in UI code.
   */
   void UpdateImplementationSettings();
@@ -38008,7 +37979,7 @@ public:
 
 private:
   // volitile - can be changed by ON_Font::HeightOfI() const.
-  int m_I_height; // height of the 'I' character when the font is drawn
+  int m_I_height; // height of the 'I' character when the font is drawn 
                   // with m_logfont.lfHeight = 256.
 };
 
@@ -38023,7 +37994,7 @@ private:
 // THIS SOFTWARE IS PROVIDED "AS IS" WITHOUT EXPRESS OR IMPLIED WARRANTY.
 // ALL IMPLIED WARRANTIES OF FITNESS FOR ANY PARTICULAR PURPOSE AND OF
 // MERCHANTABILITY ARE HEREBY DISCLAIMED.
-//
+//				
 // For complete openNURBS copyright information see <http://www.opennurbs.org>.
 //
 ////////////////////////////////////////////////////////////////
@@ -38045,7 +38016,7 @@ public:
 
   /////////////////////////////////////////////////////////////////
   //
-  // ON_Object virtual functions
+  // ON_Object virtual functions 
   //
 
   /*
@@ -38056,9 +38027,9 @@ public:
     text_log - [in] if the object is not valid and text_log
         is not NULL, then a brief englis description of the
         reason the object is not valid is appened to the log.
-        The information appended to text_log is suitable for
-        low-level debugging purposes by programmers and is
-        not intended to be useful as a high level user
+        The information appended to text_log is suitable for 
+        low-level debugging purposes by programmers and is 
+        not intended to be useful as a high level user 
         interface tool.
   Returns:
     @untitled table
@@ -38074,7 +38045,7 @@ public:
   // Use ON_BinaryArchive::WriteObject() and ON_BinaryArchive::ReadObject()
   // for top level serialization.  These Read()/Write() members should just
   // write/read specific definitions.  In particular, they should not write/
-  // read any chunk typecode or length information.  The default
+  // read any chunk typecode or length information.  The default 
   // implementations return false and do nothing.
   ON_BOOL32 Write(
          ON_BinaryArchive&  // serialize definition to binary archive
@@ -38092,7 +38063,7 @@ public:
 
   /////////////////////////////////////////////////////////////////
   //
-  // ON_Geometry virtual functions
+  // ON_Geometry virtual functions 
   //
   int Dimension() const;
 
@@ -38102,10 +38073,10 @@ public:
          ON_BOOL32 = false  // true means grow box
          ) const;
 
-  ON_BOOL32 Transform(
+  ON_BOOL32 Transform( 
          const ON_Xform&
          );
-
+ 
   /////////////////////////////////////////////////////////
   //
   // Interface
@@ -38119,7 +38090,7 @@ public:
   //
   ON_BOOL32 Enable( ON_BOOL32 = true ); // returns previous state
   ON_BOOL32 IsEnabled() const;
-
+  
   /////////////////////////////////////////////////////////
   //
   // style, location, and direction
@@ -38151,10 +38122,10 @@ public:
   Returns:
     true if successful.
   */
-  ON_BOOL32 GetLightXform(
+  ON_BOOL32 GetLightXform( 
            const ON_Viewport& vp,
-           ON::coordinate_system dest_cs,
-           ON_Xform& xform
+           ON::coordinate_system dest_cs, 
+           ON_Xform& xform 
            ) const;
 
   void SetLocation( const ON_3dPoint& );
@@ -38170,7 +38141,7 @@ public:
   double PowerWatts() const;
   double PowerLumens() const;
   double PowerCandela() const;
-
+  
   void SetPowerWatts( double );
   void SetPowerLumens( double );
   void SetPowerCandela( double );
@@ -38212,8 +38183,8 @@ public:
 
   //////////
   // The spot exponent varies from 0.0 to 128.0 and provides
-  // an exponential interface for controling the focus or
-  // concentration of a spotlight (like the
+  // an exponential interface for controling the focus or 
+  // concentration of a spotlight (like the 
   // OpenGL GL_SPOT_EXPONENT parameter).  The spot exponent
   // and hot spot parameters are linked; changing one will
   // change the other.
@@ -38224,7 +38195,7 @@ public:
 
   //////////
   // The hot spot setting runs from 0.0 to 1.0 and is used to
-  // provides a linear interface for controling the focus or
+  // provides a linear interface for controling the focus or 
   // concentration of a spotlight.
   // A hot spot setting of 0.0 corresponds to a spot exponent of 128.
   // A hot spot setting of 1.0 corresponds to a spot exponent of 0.0.
@@ -38255,7 +38226,7 @@ public:
   //
   void SetShadowIntensity(double);
   double ShadowIntensity() const;
-
+                                 
 
   /////////////////////////////////////////////////////////
   //
@@ -38283,7 +38254,7 @@ public:
   ON_Color m_ambient;
   ON_Color m_diffuse;
   ON_Color m_specular;
-
+  
   ON_3dVector m_direction; // ignored for "point" and "ambient" lights
   ON_3dPoint  m_location;  // ignored for "directional" and "ambient" lights
   ON_3dVector m_length;    // only for linear and rectangular lights
@@ -38331,7 +38302,7 @@ public:
 // THIS SOFTWARE IS PROVIDED "AS IS" WITHOUT EXPRESS OR IMPLIED WARRANTY.
 // ALL IMPLIED WARRANTIES OF FITNESS FOR ANY PARTICULAR PURPOSE AND OF
 // MERCHANTABILITY ARE HEREBY DISCLAIMED.
-//
+//				
 // For complete openNURBS copyright information see <http://www.opennurbs.org>.
 //
 ////////////////////////////////////////////////////////////////
@@ -38356,7 +38327,7 @@ public:
   ~ON_Point();
   ON_Point& operator=(const ON_Point&);
   ON_Point& operator=(const ON_3dPoint&);
-
+  
   operator double*();
   operator const double*() const;
   operator ON_3dPoint*();
@@ -38377,9 +38348,9 @@ public:
     text_log - [in] if the object is not valid and text_log
         is not NULL, then a brief englis description of the
         reason the object is not valid is appened to the log.
-        The information appended to text_log is suitable for
-        low-level debugging purposes by programmers and is
-        not intended to be useful as a high level user
+        The information appended to text_log is suitable for 
+        low-level debugging purposes by programmers and is 
+        not intended to be useful as a high level user 
         interface tool.
   Returns:
     @untitled table
@@ -38415,7 +38386,7 @@ public:
          ON_BOOL32 = false  // true means grow box
          ) const;
 
-  ON_BOOL32 Transform(
+  ON_BOOL32 Transform( 
          const ON_Xform&
          );
 
@@ -38444,7 +38415,7 @@ private:
 // THIS SOFTWARE IS PROVIDED "AS IS" WITHOUT EXPRESS OR IMPLIED WARRANTY.
 // ALL IMPLIED WARRANTIES OF FITNESS FOR ANY PARTICULAR PURPOSE AND OF
 // MERCHANTABILITY ARE HEREBY DISCLAIMED.
-//
+//				
 // For complete openNURBS copyright information see <http://www.opennurbs.org>.
 //
 ////////////////////////////////////////////////////////////////
@@ -38521,14 +38492,14 @@ public:
          ) const;
 
   // virtual ON_Geometry override
-	bool GetTightBoundingBox(
-			ON_BoundingBox& tight_bbox,
+	bool GetTightBoundingBox( 
+			ON_BoundingBox& tight_bbox, 
       int bGrowBox = false,
 			const ON_Xform* xform = 0
       ) const;
 
   // virtual ON_Geometry override
-  ON_BOOL32 Transform(
+  ON_BOOL32 Transform( 
          const ON_Xform&
          );
 
@@ -38560,7 +38531,7 @@ public:
   See Also:
     ON_GetClosestPointInPointList
   */
-  bool GetClosestPoint(
+  bool GetClosestPoint( 
           ON_3dPoint P,
           int* closest_point_index,
           double maximum_distance = 0.0
@@ -38569,7 +38540,7 @@ public:
 
   /////////////////////////////////////////////////////////////////
   // Interface
-  //
+  // 
   int PointCount() const;
   void AppendPoint( const ON_3dPoint& );
   void InvalidateBoundingBox(); // call if you change values of points
@@ -38659,7 +38630,7 @@ public:
   /////////////////////////////////////////////////////////////////
   // Implementation - RUNTIME point visibility - not saved in 3dm files.
   //    If m_H.Count() = m_P.Count(), then
-  //    m_H[j] is true if the point m_P[j]
+  //    m_H[j] is true if the point m_P[j] 
   //    is hidden.  Otherwise, all points are visible.
   //    m_hidden_count = number of true values in the m_H[] array.
   ON_SimpleArray<bool> m_H;
@@ -38683,7 +38654,7 @@ public:
 // THIS SOFTWARE IS PROVIDED "AS IS" WITHOUT EXPRESS OR IMPLIED WARRANTY.
 // ALL IMPLIED WARRANTIES OF FITNESS FOR ANY PARTICULAR PURPOSE AND OF
 // MERCHANTABILITY ARE HEREBY DISCLAIMED.
-//
+//				
 // For complete openNURBS copyright information see <http://www.opennurbs.org>.
 //
 ////////////////////////////////////////////////////////////////
@@ -38736,7 +38707,7 @@ public:
 
   /*
   Description:
-    Sets the curve geometry that "this" is a proxy for.
+    Sets the curve geometry that "this" is a proxy for.  
     Sets proxy domain to proxy_curve->Domain().
   Parameters:
     real_curve - [in]
@@ -38745,7 +38716,7 @@ public:
 
   /*
   Description:
-    Sets the curve geometry that "this" is a proxy for.
+    Sets the curve geometry that "this" is a proxy for.  
     Sets proxy domain to proxy_curve->Domain().
   Parameters:
     real_curve - [in]
@@ -38757,7 +38728,7 @@ public:
             as a curve is reversed from the underlying "real" curve
             geometry.
   */
-  void SetProxyCurve( const ON_Curve* real_curve,
+  void SetProxyCurve( const ON_Curve* real_curve, 
                       ON_Interval real_curve_subdomain
                       );
 
@@ -38826,7 +38797,7 @@ private:
   // the reverse of the m_curve parameterization.
   bool m_bReversed;
 
-  // The m_domain interval is always increasing and included in
+  // The m_domain interval is always increasing and included in 
   // m_curve->Domain().  The m_domain interval defines the portion
   // of m_curve that "this" proxy uses and it can be a proper
   // sub-interval of m_curve->Domain().
@@ -38834,10 +38805,10 @@ private:
 
   // The evaluation domain of this curve.  If "t" is a parameter for
   // "this" and "r" is a parameter for m_curve, then when m_bReversed==false
-	// we have
+	// we have 
   // t = m_this_domain.ParameterAt(m_real_curve_domain.NormalizedParameterAt(r))
   // r = m_real_curve_domain.ParameterAt(m_this_domain.NormalizedParameterAt(t))
-	// and when m_bReversed==true we have
+	// and when m_bReversed==true we have 
   // t = m_this_domain.ParameterAt(1 - m_real_curve_domain.NormalizedParameterAt(r))
   // r = m_real_curve_domain.ParameterAt(1 - m_this_domain.NormalizedParameterAt(t))
   ON_Interval m_this_domain;
@@ -38850,17 +38821,17 @@ public:
   Description:
     Get a duplicate of the curve.
   Returns:
-    A duplicate of the curve.
+    A duplicate of the curve.  
   Remarks:
     The caller must delete the returned curve.
     For non-ON_CurveProxy objects, this simply duplicates the curve using
     ON_Object::Duplicate.
-    For ON_CurveProxy objects, this duplicates the actual proxy curve
+    For ON_CurveProxy objects, this duplicates the actual proxy curve 
     geometry and, if necessary, trims and reverse the result to that
     the returned curve's parameterization and locus match the proxy curve's.
   */
   ON_Curve* DuplicateCurve() const;
-
+  
   /////////////////////////////////////////////////////////////////
   // ON_Object overrides
 
@@ -38872,9 +38843,9 @@ public:
     text_log - [in] if the object is not valid and text_log
         is not NULL, then a brief englis description of the
         reason the object is not valid is appened to the log.
-        The information appended to text_log is suitable for
-        low-level debugging purposes by programmers and is
-        not intended to be useful as a high level user
+        The information appended to text_log is suitable for 
+        low-level debugging purposes by programmers and is 
+        not intended to be useful as a high level user 
         interface tool.
   Returns:
     @untitled table
@@ -38888,7 +38859,7 @@ public:
   void Dump( ON_TextLog& ) const; // for debugging
 
   ON_BOOL32 Write( // returns false - nothing serialized
-         ON_BinaryArchive&  // open binary file
+         ON_BinaryArchive&  // open binary file 
        ) const;
 
   ON_BOOL32 Read( // returns false - nothing serialized
@@ -38906,7 +38877,7 @@ public:
          ON_BOOL32 = false  // true means grow box
          ) const;
 
-  ON_BOOL32 Transform(
+  ON_BOOL32 Transform( 
          const ON_Xform&
          );
 
@@ -38921,9 +38892,9 @@ public:
   ON_Interval Domain() const;
 
   /* virtual ON_Curve::SetDomain() override */
-  ON_BOOL32 SetDomain(
-        double t0,
-        double t1
+  ON_BOOL32 SetDomain( 
+        double t0, 
+        double t1 
         );
 
   bool SetDomain( ON_Interval domain );
@@ -38932,11 +38903,11 @@ public:
 
   ON_BOOL32 GetSpanVector(
     double*
-    ) const;
+    ) const; 
 
-  int Degree( // returns maximum algebraic degree of any span
+  int Degree( // returns maximum algebraic degree of any span 
                   // ( or a good estimate if curve spans are not algebraic )
-    ) const;
+    ) const; 
 
   // (optional - override if curve is piecewise smooth)
   ON_BOOL32 GetParameterTolerance( // returns tminus < tplus: parameters tminus <= s <= tplus
@@ -38981,9 +38952,9 @@ public:
                   // periodic.)
 
   ON_BOOL32 IsPeriodic(  // true if curve is a single periodic segment
-        void
+        void 
         ) const;
-
+  
   /*
   Description:
     Search for a derivatitive, tangent, or curvature discontinuity.
@@ -38995,17 +38966,17 @@ public:
           parameter at the discontinuity.
     hint - [in/out] if GetNextDiscontinuity will be called repeatedly,
        passing a "hint" with initial value *hint=0 will increase the speed
-       of the search.
+       of the search.       
     dtype - [out] if not NULL, *dtype reports the kind of discontinuity
         found at *t.  A value of 1 means the first derivative or unit tangent
         was discontinuous.  A value of 2 means the second derivative or
         curvature was discontinuous.
     cos_angle_tolerance - [in] default = cos(1 degree) Used only when
         c is ON::G1_continuous or ON::G2_continuous.  If the cosine
-        of the angle between two tangent vectors
+        of the angle between two tangent vectors 
         is <= cos_angle_tolerance, then a G1 discontinuity is reported.
     curvature_tolerance - [in] (default = ON_SQRT_EPSILON) Used only when
-        c is ON::G2_continuous or ON::Gsmooth_continuous.
+        c is ON::G2_continuous or ON::Gsmooth_continuous.  
         ON::G2_continuous:
           If K0 and K1 are curvatures evaluated
           from above and below and |K0 - K1| > curvature_tolerance,
@@ -39020,7 +38991,7 @@ public:
   Remarks:
     Overrides ON_Curve::GetNextDiscontinuity.
   */
-  bool GetNextDiscontinuity(
+  bool GetNextDiscontinuity( 
                   ON::continuity c,
                   double t0,
                   double t1,
@@ -39046,10 +39017,10 @@ public:
         greater than d2_tolerance, then the curve is not C2.
     cos_angle_tolerance - [in] default = cos(1 degree) Used only when
         c is ON::G1_continuous or ON::G2_continuous.  If the cosine
-        of the angle between two tangent vectors
+        of the angle between two tangent vectors 
         is <= cos_angle_tolerance, then a G1 discontinuity is reported.
     curvature_tolerance - [in] (default = ON_SQRT_EPSILON) Used only when
-        c is ON::G2_continuous or ON::Gsmooth_continuous.
+        c is ON::G2_continuous or ON::Gsmooth_continuous.  
         ON::G2_continuous:
           If K0 and K1 are curvatures evaluated
           from above and below and |K0 - K1| > curvature_tolerance,
@@ -39066,7 +39037,7 @@ public:
   */
   bool IsContinuous(
     ON::continuity c,
-    double t,
+    double t, 
     int* hint = NULL,
     double point_tolerance=ON_ZERO_TOLERANCE,
     double d1_tolerance=ON_ZERO_TOLERANCE,
@@ -39085,7 +39056,7 @@ public:
          double*,        // array of length stride*(ndir+1)
          int = 0,        // optional - determines which side to evaluate from
                          //         0 = default
-                         //      <  0 to evaluate from below,
+                         //      <  0 to evaluate from below, 
                          //      >  0 to evaluate from above
          int* = 0        // optional - evaluation hint (int) used to speed
                          //            repeated evaluations
@@ -39109,9 +39080,9 @@ public:
                    //            matches the curve's to wthe desired accuracy
                    //         2: success - returned NURBS point locus matches
                    //            the curve's to the desired accuracy but, on
-                   //            the interior of the curve's domain, the
+                   //            the interior of the curve's domain, the 
                    //            curve's parameterization and the NURBS
-                   //            parameterization may not match to the
+                   //            parameterization may not match to the 
                    //            desired accuracy.
         ON_NurbsCurve&,
         double = 0.0,
@@ -39124,9 +39095,9 @@ public:
                    //            matches the curve's to wthe desired accuracy
                    //         2: success - returned NURBS point locus matches
                    //            the curve's to the desired accuracy but, on
-                   //            the interior of the curve's domain, the
+                   //            the interior of the curve's domain, the 
                    //            curve's parameterization and the NURBS
-                   //            parameterization may not match to the
+                   //            parameterization may not match to the 
                    //            desired accuracy.
         ) const;
 
@@ -39155,7 +39126,7 @@ public:
 // THIS SOFTWARE IS PROVIDED "AS IS" WITHOUT EXPRESS OR IMPLIED WARRANTY.
 // ALL IMPLIED WARRANTIES OF FITNESS FOR ANY PARTICULAR PURPOSE AND OF
 // MERCHANTABILITY ARE HEREBY DISCLAIMED.
-//
+//				
 // For complete openNURBS copyright information see <http://www.opennurbs.org>.
 //
 ////////////////////////////////////////////////////////////////
@@ -39199,12 +39170,12 @@ public:
   Description:
     Get a duplicate of the surface.
   Returns:
-    A duplicate of the surface.
+    A duplicate of the surface.  
   Remarks:
     The caller must delete the returned surface.
     For non-ON_SurfaceProxy objects, this simply duplicates the surface using
     ON_Object::Duplicate.
-    For ON_SurfaceProxy objects, this duplicates the actual proxy surface
+    For ON_SurfaceProxy objects, this duplicates the actual proxy surface 
     geometry and, if necessary, transposes the result to that
     the returned surfaces's parameterization and locus match the proxy surface's.
   */
@@ -39228,9 +39199,9 @@ public:
     text_log - [in] if the object is not valid and text_log
         is not NULL, then a brief englis description of the
         reason the object is not valid is appened to the log.
-        The information appended to text_log is suitable for
-        low-level debugging purposes by programmers and is
-        not intended to be useful as a high level user
+        The information appended to text_log is suitable for 
+        low-level debugging purposes by programmers and is 
+        not intended to be useful as a high level user 
         interface tool.
   Returns:
     @untitled table
@@ -39262,7 +39233,7 @@ public:
          ON_BOOL32 = false  // true means grow box
          ) const;
 
-  ON_BOOL32 Transform(
+  ON_BOOL32 Transform( 
          const ON_Xform&
          );
 
@@ -39286,24 +39257,24 @@ public:
   Returns:
     true if successful.
   */
-  ON_BOOL32 GetSurfaceSize(
-      double* width,
-      double* height
+  ON_BOOL32 GetSurfaceSize( 
+      double* width, 
+      double* height 
       ) const;
 
   int SpanCount(
     int // 0 gets first parameter's domain, 1 gets second parameter's domain
     ) const; // number of smooth spans in curve
 
-  ON_BOOL32 GetSpanVector( // span "knots"
+  ON_BOOL32 GetSpanVector( // span "knots" 
     int, // 0 gets first parameter's domain, 1 gets second parameter's domain
-    double* // array of length SpanCount() + 1
-    ) const; //
+    double* // array of length SpanCount() + 1 
+    ) const; // 
 
-  int Degree( // returns maximum algebraic degree of any span
+  int Degree( // returns maximum algebraic degree of any span 
                   // ( or a good estimate if curve spans are not algebraic )
     int // 0 gets first parameter's domain, 1 gets second parameter's domain
-    ) const;
+    ) const; 
 
 
   ON_BOOL32 GetParameterTolerance( // returns tminus < tplus: parameters tminus <= s <= tplus
@@ -39354,48 +39325,48 @@ public:
         int        // side of parameter space to test
                    // 0 = south, 1 = east, 2 = north, 3 = west
         ) const;
-
+  
   /*
   Description:
-    Search for a derivatitive, tangent, or curvature
+    Search for a derivatitive, tangent, or curvature 
     discontinuity.
   Parameters:
     dir - [in] If 0, then "u" parameter is checked.  If 1, then
                the "v" parameter is checked.
     c - [in] type of continity to test for.
     t0 - [in] Search begins at t0. If there is a discontinuity
-              at t0, it will be ignored.  This makes it
+              at t0, it will be ignored.  This makes it 
               possible to repeatedly call GetNextDiscontinuity
               and step through the discontinuities.
-    t1 - [in] (t0 != t1)  If there is a discontinuity at t1 is
+    t1 - [in] (t0 != t1)  If there is a discontinuity at t1 is 
               will be ingored unless c is a locus discontinuity
               type and t1 is at the start or end of the curve.
     t - [out] if a discontinuity is found, then *t reports the
           parameter at the discontinuity.
-    hint - [in/out] if GetNextDiscontinuity will be called
+    hint - [in/out] if GetNextDiscontinuity will be called 
        repeatedly, passing a "hint" with initial value *hint=0
-       will increase the speed of the search.
-    dtype - [out] if not NULL, *dtype reports the kind of
-        discontinuity found at *t.  A value of 1 means the first
-        derivative or unit tangent was discontinuous.  A value
-        of 2 means the second derivative or curvature was
+       will increase the speed of the search.       
+    dtype - [out] if not NULL, *dtype reports the kind of 
+        discontinuity found at *t.  A value of 1 means the first 
+        derivative or unit tangent was discontinuous.  A value 
+        of 2 means the second derivative or curvature was 
         discontinuous.  A value of 0 means teh curve is not
         closed, a locus discontinuity test was applied, and
         t1 is at the start of end of the curve.
     cos_angle_tolerance - [in] default = cos(1 degree) Used only
         when c is ON::G1_continuous or ON::G2_continuous.  If the
-        cosine of the angle between two tangent vectors is
+        cosine of the angle between two tangent vectors is 
         <= cos_angle_tolerance, then a G1 discontinuity is reported.
-    curvature_tolerance - [in] (default = ON_SQRT_EPSILON) Used
-        only when c is ON::G2_continuous.  If K0 and K1 are
-        curvatures evaluated from above and below and
-        |K0 - K1| > curvature_tolerance, then a curvature
+    curvature_tolerance - [in] (default = ON_SQRT_EPSILON) Used 
+        only when c is ON::G2_continuous.  If K0 and K1 are 
+        curvatures evaluated from above and below and 
+        |K0 - K1| > curvature_tolerance, then a curvature 
         discontinuity is reported.
   Returns:
     Parametric continuity tests c = (C0_continuous, ..., G2_continuous):
 
-      true if a parametric discontinuity was found strictly
-      between t0 and t1. Note well that all curves are
+      true if a parametric discontinuity was found strictly 
+      between t0 and t1. Note well that all curves are 
       parametrically continuous at the ends of their domains.
 
     Locus continuity tests c = (C0_locus_continuous, ...,G2_locus_continuous):
@@ -39403,11 +39374,11 @@ public:
       true if a locus discontinuity was found strictly between
       t0 and t1 or at t1 is the at the end of a curve.
       Note well that all open curves (IsClosed()=false) are locus
-      discontinuous at the ends of their domains.  All closed
-      curves (IsClosed()=true) are at least C0_locus_continuous at
+      discontinuous at the ends of their domains.  All closed 
+      curves (IsClosed()=true) are at least C0_locus_continuous at 
       the ends of their domains.
   */
-  bool GetNextDiscontinuity(
+  bool GetNextDiscontinuity( 
                   int dir,
                   ON::continuity c,
                   double t0,
@@ -39435,7 +39406,7 @@ public:
         greater than d2_tolerance, then the surface is not C2.
     cos_angle_tolerance - [in] default = cos(1 degree) Used only when
         c is ON::G1_continuous or ON::G2_continuous.  If the cosine
-        of the angle between two normal vectors
+        of the angle between two normal vectors 
         is <= cos_angle_tolerance, then a G1 discontinuity is reported.
     curvature_tolerance - [in] (default = ON_SQRT_EPSILON) Used only when
         c is ON::G2_continuous.  If K0 and K1 are curvatures evaluated
@@ -39448,8 +39419,8 @@ public:
   */
   bool IsContinuous(
     ON::continuity c,
-    double s,
-    double t,
+    double s, 
+    double t, 
     int* hint = NULL,
     double point_tolerance=ON_ZERO_TOLERANCE,
     double d1_tolerance=ON_ZERO_TOLERANCE,
@@ -39492,9 +39463,9 @@ public:
                    //            matches the surface's to wthe desired accuracy
                    //         2: success - returned NURBS point locus matches
                    //            the surfaces's to the desired accuracy but, on
-                   //            the interior of the surface's domain, the
+                   //            the interior of the surface's domain, the 
                    //            surface's parameterization and the NURBS
-                   //            parameterization may not match to the
+                   //            parameterization may not match to the 
                    //            desired accuracy.
         ON_NurbsSurface&,
         double = 0.0
@@ -39506,9 +39477,9 @@ public:
                    //            matches the surface's to wthe desired accuracy
                    //         2: success - returned NURBS point locus matches
                    //            the surfaces's to the desired accuracy but, on
-                   //            the interior of the surface's domain, the
+                   //            the interior of the surface's domain, the 
                    //            surface's parameterization and the NURBS
-                   //            parameterization may not match to the
+                   //            parameterization may not match to the 
                    //            desired accuracy.
         ) const;
 
@@ -39538,7 +39509,7 @@ private:
 // THIS SOFTWARE IS PROVIDED "AS IS" WITHOUT EXPRESS OR IMPLIED WARRANTY.
 // ALL IMPLIED WARRANTIES OF FITNESS FOR ANY PARTICULAR PURPOSE AND OF
 // MERCHANTABILITY ARE HEREBY DISCLAIMED.
-//
+//				
 // For complete openNURBS copyright information see <http://www.opennurbs.org>.
 //
 ////////////////////////////////////////////////////////////////
@@ -39573,7 +39544,7 @@ public:
     Parameters that create render meshes where meshing
     speed is prefered over mesh quality.
   */
-  static
+  static 
   const ON_MeshParameters FastRenderMesh;
 
   /*
@@ -39581,7 +39552,7 @@ public:
     Parameters that create render meshes where mesh quality
     is prefered over meshing speed.
   */
-  static
+  static 
   const ON_MeshParameters QualityRenderMesh;
 
   /*
@@ -39589,7 +39560,7 @@ public:
     Get a value to use for tolerance based on the relative_tolerance
     and actual size.
   Parameters:
-    relative_tolerance - [in]
+    relative_tolerance - [in] 
       See m_relative_tolerance field
     actual_size - [in]
       Diagonal ov object bounding box or some similar measure of
@@ -39606,7 +39577,7 @@ public:
     Get a value to use for minimum edge length base on max_edge_length
     and tolerance settings.
   Parameters:
-    max_edge_length - [in]
+    max_edge_length - [in] 
       3d maximum edge length used to create mesh.
     tolerance - [in]
       3d distance tolerance used to create mesh.
@@ -39621,17 +39592,17 @@ public:
   ~ON_MeshParameters();
   // C++ default works fine // ON_MeshParameters(const ON_MeshParameters& );
   // C++ default works fine // ON_MeshParameters& operator=(const ON_MeshParameters&);
-
+ 
   bool operator!=(const ON_MeshParameters&) const;
   bool operator==(const ON_MeshParameters&) const;
 
   // compares with mesh's mesh parameters
   bool operator==(const ON_Mesh&) const;
   bool operator!=(const ON_Mesh&) const;
-
+  
   void Dump( ON_TextLog& test_log ) const;
 
-  void Default();
+  void Default(); 
 
   /*
   Description:
@@ -39674,7 +39645,7 @@ public:
   /*
   Description:
     Compares all meshing parameters that control mesh geometry.
-    Does not compare m_bCustomSettings, m_bComputeCurvature,
+    Does not compare m_bCustomSettings, m_bComputeCurvature, 
     m_bDoublePrecision, m_min_tolerance, and m_texture_range.
   */
   int CompareGeometrySettings( const ON_MeshParameters& ) const;
@@ -39689,7 +39660,7 @@ public:
   // rectangular grid.  The second stage refines the grid until
   // the mesh meets all meshing requirements.  The third stage
   // combines coincident vertices if the resulting mesh is a composite.
-
+  
   bool m_bCustomSettings;    // false - if these settings were used to create
                              //         a mesh and the app settings don't match,
                              //         then remesh the object using the app
@@ -39710,56 +39681,56 @@ public:
   bool m_bRefine;            // false - skip stage 2
                              // true  - (default) do stage 2
 
-  bool m_bJaggedSeams;       // false - (default) edges of meshes of joined
+  bool m_bJaggedSeams;       // false - (default) edges of meshes of joined 
                              //          b-rep faces match with no gaps or
                              //          "T" joints.
                              // true   - faces in b-reps are meshed independently.
                              //          This is faster but results in gaps and
                              //          "T" joints along seams between faces.
 
-  bool m_bDoublePrecision;   // false - (default) the mesh vertices will be
+  bool m_bDoublePrecision;   // false - (default) the mesh vertices will be 
                              //         float precision values in the m_V[] array.
                              // true -  The mesh vertices will be double precision
                              //         values in the DoublePrecisionVertices()
                              //         array.  Float precision values will also
                              //         be returned in the m_V[] array.
   bool m_bCustomSettingsEnabled; // false - if these settings should be ignored
-                             //         when used as per object custom render mesh
+                             //         when used as per object custom render mesh 
                              //         settings.
                              //  true - ignore these settings.
   unsigned char m_mesher;    // 0 = slow mesher, 1 = fast mesher
-
+    
   int m_texture_range;       // 1: normalized
                              //
-                             //          each face has a normalized texture range
+                             //          each face has a normalized texture range 
                              //          [0,1]x[0,1].
                              //
                              // 2: packed normalized (default)
                              //
                              //          each face in a polysurface is assigned
-                             //          a texture range that is a subrectangle
-                             //          of [0,1]x[0,1].  The subrectangles are
+                             //          a texture range that is a subrectangle 
+                             //          of [0,1]x[0,1].  The subrectangles are 
                              //          mutually disjoint and packed into
                              //          into [0,1]x[0,1] in a way that minimizes
                              //          distortion and maximizes the coverage
-                             //          of [0,1]x[0,1].  (This texture style
-                             //          is suitable for creating texture maps
+                             //          of [0,1]x[0,1].  (This texture style 
+                             //          is suitable for creating texture maps 
                              //          with popular 3D painting programs.)
 
 private:
   unsigned int m_reserved2;
 public:
-
+                           
   // These controls are used in both stages
 
   double m_tolerance; // maximum distance from center of edge to surface
 
-
-  double m_relative_tolerance; // If 0 < m_relative_tolerance < 1,
+        
+  double m_relative_tolerance; // If 0 < m_relative_tolerance < 1, 
   double m_min_tolerance;      // then the maximum distance from the
                                // center of an edge to the surface will
                                // be <= T, where T is the larger of
-                               // (m_min_tolerance,d*m_relative_tolerance),
+                               // (m_min_tolerance,d*m_relative_tolerance), 
                                // where d is an esimate of the size of the
                                // object being meshed.
 
@@ -39809,7 +39780,7 @@ public:
 
   void Destroy();
   void EmergencyDestroy();
-
+  
   bool Set( ON::curvature_style,
             int,           // Kcount,
             const ON_SurfaceCurvature*, // K[]
@@ -39821,7 +39792,7 @@ public:
   bool Read( ON_BinaryArchive& );
 
   ON::curvature_style m_style;
-
+  
   double m_infinity; // curvature values >= this are considered infinite
                      // and not used to compute the m_average or m_adev
   int    m_count_infinite; // number of "infinte" values
@@ -39840,18 +39811,18 @@ public:
 
 struct ON_MeshTopologyVertex
 {
-  // m_tope_count = number of topological edges that begin or
+  // m_tope_count = number of topological edges that begin or 
   // end at this topological vertex.
   int m_tope_count;
 
-  // m_topei[] is an array of length m_tope_count with the indices
+  // m_topei[] is an array of length m_tope_count with the indices 
   // of the topological edges that begin or end at this topological
   // vertex.  Generally, these edges are listed in no particular
   // order.  If you want the edges listed "radially", then call
   // ON_MeshTopology::SortVertexEdges.
   const int* m_topei;
 
-  // m_v_count = number of ON_Mesh vertices that correspond to
+  // m_v_count = number of ON_Mesh vertices that correspond to 
   // this topological vertex.
   int m_v_count;
 
@@ -39862,7 +39833,7 @@ struct ON_MeshTopologyVertex
 
 struct ON_MeshTopologyEdge
 {
-  // m_topvi[] = indices of the topological verteices where the
+  // m_topvi[] = indices of the topological verteices where the 
   // edge begins and ends.
   int m_topvi[2];
 
@@ -39880,7 +39851,7 @@ struct ON_CLASS ON_MeshTopologyFace
     m_topei[] = indices of the topological edges that bound the face.
     If m_topei[2] = m_topei[3], then the face is a triangle, otherwise
     the face is a quad.
-
+ 
     NOTE WELL:
       The topological edge with index m_topei[k] ENDS at the
       vertex corresponding to ON_MeshFace.vi[k]. So, ...
@@ -39894,7 +39865,7 @@ struct ON_CLASS ON_MeshTopologyFace
       ON_MeshFace.vi[1] and ENDS at ON_MeshFace.vi[2], and
       the topological edge with index m_topei[3] STARTS at
       ON_MeshFace.vi[0] and ENDS at ON_MeshFace.vi[1],
-
+      
       If the face is a triangle, (ON_MeshFace.vi[2]==ON_MeshFace.vi[3]),
       the topological edge with index m_topei[0] STARTS at
       ON_MeshFace.vi[2] and ENDS at ON_MeshFace.vi[0],
@@ -39914,8 +39885,8 @@ struct ON_CLASS ON_MeshTopologyFace
 
   /*
   Description:
-    A topological mesh face is a valid triangle if m_topei[0],
-    m_topei[1], m_topei[2] are distinct edges and
+    A topological mesh face is a valid triangle if m_topei[0], 
+    m_topei[1], m_topei[2] are distinct edges and 
     m_topei[3]=m_topei[2].
   Returns:
     True if face is a triangle.
@@ -39924,7 +39895,7 @@ struct ON_CLASS ON_MeshTopologyFace
 
   /*
   Description:
-    A topological mesh face is a valid quad if m_topei[0],
+    A topological mesh face is a valid quad if m_topei[0], 
     m_topei[1], m_topei[2], and m_topei[3] are distinct edges.
   Returns:
     True if face is a quad.
@@ -39933,8 +39904,8 @@ struct ON_CLASS ON_MeshTopologyFace
 
   /*
   Description:
-    A topological mesh face is valid if m_topei[0], m_topei[1],
-    and m_topei[2] are mutually distinct, and m_topei[3] is
+    A topological mesh face is valid if m_topei[0], m_topei[1], 
+    and m_topei[2] are mutually distinct, and m_topei[3] is 
     either equal to m_topei[2] or mutually distinct from the
     first three indices.
   Returns:
@@ -39980,7 +39951,7 @@ public:
       The face is not valid. It may be possible to repair the
       face by calling ON_MeshFace::Repair().
   */
-  bool IsValid(
+  bool IsValid( 
         int mesh_vertex_count
         ) const;
   bool IsValid(
@@ -40002,7 +39973,7 @@ public:
   /*
   Description:
     If IsValid() returns false, then you can use Repair()
-    to attempt to create a valid triangle.
+    to attempt to create a valid triangle. 
   Parameters:
     mesh_vertex_count - [in]
       number of vertices in the mesh
@@ -40013,7 +39984,7 @@ public:
      repair was successful and v[0], v[1], vi[2] have distinct valid
      values and v[2] == v[3].
     false
-     this face's vi[] values cannot be repaired
+     this face's vi[] values cannot be repaired    
   */
   bool Repair(
         int mesh_vertex_count
@@ -40063,9 +40034,9 @@ Remarks:
   The function is thread safe.
 */
 ON_DECL
-void ON_SortMeshFaceSidesByVertexIndex(
-        int sides_count,
-        struct ON_MeshFaceSide* sides
+void ON_SortMeshFaceSidesByVertexIndex( 
+        int sides_count, 
+        struct ON_MeshFaceSide* sides 
         );
 
 struct ON_MeshPart
@@ -40080,7 +40051,7 @@ struct ON_MeshPart
 
 #if defined(ON_DLL_TEMPLATE)
 // This stuff is here because of a limitation in the way Microsoft
-// handles templates and DLLs.  See Microsoft's knowledge base
+// handles templates and DLLs.  See Microsoft's knowledge base 
 // article ID Q168958 for details.
 #pragma warning( push )
 #pragma warning( disable : 4231 )
@@ -40115,7 +40086,7 @@ public:
   //////////
   // number of topoligical edges
   int TopEdgeCount() const;
-
+  
   //////////
   // number of topoligical faces (same as m_mesh.FaceCount())
   int TopFaceCount() const;
@@ -40219,7 +40190,7 @@ public:
 
   /*
   Description:
-    Sort the m_topei[] list of every mesh topology vertex so
+    Sort the m_topei[] list of every mesh topology vertex so 
     that the edges are in radial order.  The "const" is a white
     lie to make this function easier to call.
   Remarks:
@@ -40231,7 +40202,7 @@ public:
 
   /*
   Description:
-    Returns true if the topological vertex is hidden.
+    Returns true if the topological vertex is hidden. 
   Parameters:
     topvi - [in] mesh topology vertex index.
   Returns:
@@ -40244,7 +40215,7 @@ public:
 
   /*
   Description:
-    Returns true if the topological edge is hidden.
+    Returns true if the topological edge is hidden. 
   Parameters:
     topei - [in] mesh topology edge index.
   Returns:
@@ -40257,7 +40228,7 @@ public:
 
   /*
   Description:
-    Returns true if the topological face is hidden.
+    Returns true if the topological face is hidden. 
   Parameters:
     topfi - [in] mesh topology face index.
   Returns:
@@ -40269,7 +40240,7 @@ public:
   bool TopFaceIsHidden( int topfi ) const;
 
   //////////
-  // m_topv_map[] has length m_mesh.VertexCount() and
+  // m_topv_map[] has length m_mesh.VertexCount() and 
   // m_topv[m_topv_map[vi]] is the topological mesh vertex that is assocated
   // the with the mesh vertex m_mesh.m_V[vi].
   ON_SimpleArray<int> m_topv_map;
@@ -40288,8 +40259,8 @@ public:
   // Array of topological mesh faces.  The topological face
   // m_topf[fi] corresponds to the mesh face ON_Mesh.m_F[fi].
   // See the comments in the definition of ON_MeshTopologyFace
-  // for details. To get the indices of the mesh topology
-  // vertices at the face corners use
+  // for details. To get the indices of the mesh topology 
+  // vertices at the face corners use 
   // topvi = m_topv_map[m_mesh.m_F[fi].vi[n]]
   ON_SimpleArray<ON_MeshTopologyFace> m_topf;
 
@@ -40341,7 +40312,7 @@ struct ON_MeshNgon
   // An array of N indices into the mesh's m_V[] vertex array.
   // If the ON_MeshNgon is returned by the ON_MeshNgonList::AddNgon()
   // function, then the memory for vi is managed by the ON_MeshNgonList
-  // class.
+  // class.  
   int* vi;
 
   // N-gon face indices
@@ -40349,7 +40320,7 @@ struct ON_MeshNgon
   // Often, only N-2 indices are used. Unused indices are set to -1.
   // If the ON_MeshNgon is returned by the ON_MeshNgonList::AddNgon()
   // function, then the memory for fi is managed by the ON_MeshNgonList
-  // class.
+  // class.  
   int* fi;
 };
 
@@ -40429,10 +40400,10 @@ public:
   // maximum number of triangles in a partition (quads count as 2 triangles)
   int m_partition_max_triangle_count;
 
-  // Partition i uses
-  // vertices m_V[j] where
+  // Partition i uses 
+  // vertices m_V[j] where 
   //
-  //   m_part[i].vi[0] <= j < m_part[i].vi[1]
+  //   m_part[i].vi[0] <= j < m_part[i].vi[1] 
   //
   // and uses faces m_F[k] where
   //
@@ -40480,14 +40451,14 @@ public:
   */
   bool IsDefaultSurfaceParameterMapping() const;
 
-  // Identifies the mapping used to create the texture
-  // coordinates and records transformations applied
+  // Identifies the mapping used to create the texture 
+  // coordinates and records transformations applied 
   // to the mesh after the texture coordinates were
   // calculated.  If the texture mapping does not
-  // change when the mesh is transformed, then set
+  // change when the mesh is transformed, then set 
   // m_mesh_xform to zero so that compares will work right.
   //
-  //
+  // 
   ON_UUID                 m_mapping_id;   // ON_TextureMapping::m_mapping_id
   ON_TextureMapping::TYPE m_mapping_type; // ON_TextureMapping::m_type
   ON__UINT32              m_mapping_crc;  // ON_TextureMapping::MappingCRC()
@@ -40507,7 +40478,7 @@ public:
 
 #if defined(ON_DLL_TEMPLATE)
 // This stuff is here because of a limitation in the way Microsoft
-// handles templates and DLLs.  See Microsoft's knowledge base
+// handles templates and DLLs.  See Microsoft's knowledge base 
 // article ID Q168958 for details.
 #pragma warning( push )
 #pragma warning( disable : 4231 )
@@ -40539,11 +40510,11 @@ public:
 
   void Destroy();
   void EmergencyDestroy(); // Call only when memory used by this class's
-                           // members will soon become invalid for reasons
+                           // members will soon become invalid for reasons 
                            // beyond your control. EmergencyDestroy() zeros
                            // anything that could possibly cause
                            // ~ON_Mesh() to crash.  Calling
-                           // EmergencyDestroy() under normal conditions
+                           // EmergencyDestroy() under normal conditions 
                            // will result in ~ON_Mesh() leaking
                            // memory.
 
@@ -40566,9 +40537,9 @@ public:
     text_log - [in] if the object is not valid and text_log
         is not NULL, then a brief englis description of the
         reason the object is not valid is appened to the log.
-        The information appended to text_log is suitable for
-        low-level debugging purposes by programmers and is
-        not intended to be useful as a high level user
+        The information appended to text_log is suitable for 
+        low-level debugging purposes by programmers and is 
+        not intended to be useful as a high level user 
         interface tool.
   Returns:
     @untitled table
@@ -40603,24 +40574,24 @@ public:
     Get tight bounding box of the mesh.
 	Parameters:
 		tight_bbox - [in/out] tight bounding box
-		bGrowBox -[in]	(default=false)
+		bGrowBox -[in]	(default=false)			
       If true and the input tight_bbox is valid, then returned
-      tight_bbox is the union of the input tight_bbox and the
+      tight_bbox is the union of the input tight_bbox and the 
       mesh's tight bounding box.
 		xform -[in] (default=NULL)
       If not NULL, the tight bounding box of the transformed
       mesh is calculated.  The mesh is not modified.
 	Returns:
-    True if the returned tight_bbox is set to a valid
+    True if the returned tight_bbox is set to a valid 
     bounding box.
   */
-	bool GetTightBoundingBox(
-			ON_BoundingBox& tight_bbox,
+	bool GetTightBoundingBox( 
+			ON_BoundingBox& tight_bbox, 
       int bGrowBox = false,
 			const ON_Xform* xform = 0
       ) const;
 
-  ON_BOOL32 Transform(
+  ON_BOOL32 Transform( 
          const ON_Xform&
          );
 
@@ -40640,7 +40611,7 @@ public:
 
   /////////////////////////////////////////////////////////////////
   // Interface
-  //
+  // 
 
   // creation
   bool SetVertex(
@@ -40721,7 +40692,7 @@ public:
     ON_Mesh::EdgeRef
     ON_Mesh::FaceRef
   */
-  ON_Geometry* MeshComponent(
+  ON_Geometry* MeshComponent( 
       ON_COMPONENT_INDEX ci
       ) const;
 
@@ -40744,18 +40715,18 @@ public:
   */
   int HiddenVertexCount() const;
 
-  bool GetCurvatureStats(
-         ON::curvature_style,
-         ON_MeshCurvatureStats&
+  bool GetCurvatureStats( 
+         ON::curvature_style, 
+         ON_MeshCurvatureStats& 
          ) const;
 
-  void InvalidateVertexBoundingBox(); // Call if defining geometry is changed by
+  void InvalidateVertexBoundingBox(); // Call if defining geometry is changed by 
                              // directly manipulating the m_V[] array.
-  void InvalidateVertexNormalBoundingBox(); // Call if defining geometry is changed by
+  void InvalidateVertexNormalBoundingBox(); // Call if defining geometry is changed by 
                              // directly manipulating the m_N[] array.
-  void InvalidateTextureCoordinateBoundingBox(); // Call if defining geometry is changed by
+  void InvalidateTextureCoordinateBoundingBox(); // Call if defining geometry is changed by 
                              // directly manipulating the m_T[] array.
-  void InvalidateCurvatureStats(); // Call if defining geometry is changed by
+  void InvalidateCurvatureStats(); // Call if defining geometry is changed by 
                              // directly manipulating the m_T[] array.
   void InvalidateBoundingBoxes(); // Invalidates all cached bounding box information.
 
@@ -40770,7 +40741,7 @@ public:
   const ON_MeshParameters* MeshParameters() const;
   void DeleteMeshParameters();
 
-
+  
   bool UnitizeVertexNormals();
   bool UnitizeFaceNormals();
   bool CountQuads();
@@ -40804,49 +40775,6 @@ public:
   bool ComputeFaceNormals();   // compute face normals for all faces
   bool ComputeFaceNormal(int); // computes face normal of indexed face
 
-  /*
-  Description:
-    Get a list of pairs of faces that clash.
-  Parameters:
-    max_pair_count - [in]
-      If max_pair_count > 0, then at most this many pairs
-      will be appended to the clashing_pairs[] array.
-      If max_pair_count <= 0, then all clashing pairs
-      will be appended to the clashing_pairs[] array.
-    clashing_pairs - [out]
-      The faces indices of clashing pairs are appended
-      to this array.
-  Returns:
-    Number of pairs appended to clashing_pairs[].
-  */
-  int GetClashingFacePairs(
-    int max_pair_count,
-    ON_SimpleArray< ON_2dex >& clashing_pairs
-    ) const;
-
-  /*
-  Description:
-    Cull clashing faces from the mesh.
-  Parameters:
-    what_to_cull - [in]
-      0: when a pair of faces clash, cull both faces
-      1: when a pair of faces clash, leave the face with the
-         longest edge.
-      2: when a pair of faces clash, cull the face with the
-         longest edge.
-      3: when a pair of faces clash, leave the face with
-         the largest area.
-      4: when a pair of faces clash, cull the face with
-         the largest area.
-  Returns:
-    Number of faces culled from the mesh.
-  Remarks:
-    If a large face clashes with many small faces, the large
-    face and one small face will be removed.  When a degenerate
-    face is encountered, it is also culled.
-  */
-  int CullClashingFaces( int what_to_cull );
-
   int CullDegenerateFaces(); // returns number of degenerate faces
 
   int CullUnusedVertices(); // returns number of culled vertices
@@ -40857,7 +40785,7 @@ public:
   bool Compact();
 
   bool ComputeVertexNormals();    // uses face normals to cook up a vertex normal
-
+  
   //////////
   // Scales textures so the texture domains are [0,1] and
   // eliminates any texture rotations.
@@ -40870,7 +40798,7 @@ public:
 	//			true  -  success
 	bool TransposeTextureCoordinates();
 	bool TransposeSurfaceParameters();
-
+ 
 	/////////
 	// Description:
 	//		Reverse one coordinate direction of the texture coordinates, within texture domain m_tex_domain
@@ -40881,7 +40809,7 @@ public:
 	//			true  -  success
 	bool ReverseTextureCoordinates( int dir );
 	bool ReverseSurfaceParameters( int dir );
-
+ 
 
 
   /*
@@ -40901,7 +40829,7 @@ public:
   See Also:
     ON_TextureMapping::GetTextureCoordinates
   */
-  bool SetTextureCoordinates(
+  bool SetTextureCoordinates( 
           const class ON_TextureMapping& mapping,
 					const class ON_Xform* mesh_xform = 0,
           bool bLazy = true
@@ -40909,11 +40837,11 @@ public:
 
   bool HasCachedTextureCoordinates() const;
 
-  const ON_TextureCoordinates* CachedTextureCoordinates(
-          const ON_UUID& mapping_id
+  const ON_TextureCoordinates* CachedTextureCoordinates( 
+          const ON_UUID& mapping_id 
           ) const;
 
-  const ON_TextureCoordinates* SetCachedTextureCoordinates(
+  const ON_TextureCoordinates* SetCachedTextureCoordinates( 
           const class ON_TextureMapping& mapping,
 					const class ON_Xform* mesh_xform = 0,
           bool bLazy = true
@@ -40923,7 +40851,7 @@ public:
                                                   // to set mesh geometry
 
   // finds all coincident vertices and merges them if break angle is small enough
-  bool CombineCoincidentVertices(
+  bool CombineCoincidentVertices( 
           ON_3fVector, // coordinate tols for considering vertices
                        // to be coincident
           double  // cosine normal angle tolerance in radians
@@ -40964,16 +40892,16 @@ public:
       array of meshes to append.
   */
   void Append( int count, const ON_Mesh* const* meshes );
-
+  
   /*
   Description:
-    Expert user function to set m_is_closed member.
-    Setting this value correctly after a mesh is constructed
+    Expert user function to set m_is_closed member.  
+    Setting this value correctly after a mesh is constructed 
     can save time when IsClosed() is called.
     This function sets the private member variable m_is_closed.
   Paramters:
     closed - [in]
-      0: The mesh is not closed.  There is at least one face with an
+      0: The mesh is not closed.  There is at least one face with an 
          edge that is geometrically distinct (as an unoriented line segment)
          from all other edges.
       1: The mesh is closed.  Every geometrically distict edge is used
@@ -41029,8 +40957,8 @@ public:
 
   /*
   Description:
-    Expert user function to set m_is_solid member.
-    Setting this value correctly after a mesh is constructed
+    Expert user function to set m_is_solid member.  
+    Setting this value correctly after a mesh is constructed 
     can save time when IsSolid() is called.
     This function sets the private member variable m_is_solid.
     If solid is nonzero, it will set m_is_closed to 1.
@@ -41097,9 +41025,9 @@ public:
   Returns:
     Number of ON_2dex values appended to the edges[] array.
   */
-  int GetVertexEdges(
+  int GetVertexEdges( 
     int vcount,
-    const int* vertex_index,
+    const int* vertex_index, 
     bool bNoDuplicates,
     ON_SimpleArray<ON_2dex>& edges
     ) const;
@@ -41116,7 +41044,7 @@ public:
   Returns:
     Number of ON_2dex values appended to the edges[] array.
   */
-  int GetMeshEdges(
+  int GetMeshEdges( 
     ON_SimpleArray<ON_2dex>& edges
     ) const;
 
@@ -41146,9 +41074,9 @@ public:
     The maximum vertex id is Vid[Vindex[m_V.Count()-1]].  The number of
     unique vertex locations is (Vid[Vindex[m_V.Count()-1]] - first_vid + 1).
   */
-  int* GetVertexLocationIds(
-    int first_vid,
-    int* Vid,
+  int* GetVertexLocationIds( 
+    int first_vid, 
+    int* Vid, 
     int* Vindex
     ) const;
 
@@ -41163,24 +41091,24 @@ public:
       The value Vid[mesh m_V[] index] will be used to set the
       ON_MeshFaceSide::vi[] values.
     sides - [out]
-      If the input value of sides is not null, then sides[] must be long
+      If the input value of sides is not null, then sides[] must be long 
       enough to hold the returned side list.  The maximum posssible length
       is 4*FaceCount() for a mesh contining FaceCount() nondegenerate quads.
       If the input value of sides is null, memory will be allocated using
       onmalloc() and the caller is responsible for calling onfree() at an
       appropriate time.  This function fills in the sides[] array
       with face side information.  The returned list is sorted by sides[].fi
-      and the sides[].side and each element has vi[0] <= vi[1].
-      The function ON_SortMeshFaceSidesByVertexIndex() can be used to sort the
+      and the sides[].side and each element has vi[0] <= vi[1].  
+      The function ON_SortMeshFaceSidesByVertexIndex() can be used to sort the 
       list by the sides[].vi[] values.
   Returns:
     Number of elements added to sides[].
   Remarks:
-    Faces with out of range ON_MeshFace.vi[] values are skipped.
+    Faces with out of range ON_MeshFace.vi[] values are skipped. 
     Degenerate faces are processed, but degenerate sides (equal vertex indices)
     are not added to the list.
   */
-  int GetMeshFaceSideList(
+  int GetMeshFaceSideList( 
       const int* Vid,
       struct ON_MeshFaceSide*& sides
       ) const;
@@ -41190,10 +41118,10 @@ public:
     Get a list of the geometrically uniqued edges in a mesh.
   Parameters:
     edge_list - [out]
-      The edge list for this mesh is appended to edge_list[].
+      The edge list for this mesh is appended to edge_list[].  
       The ON_2dex i and j values are mesh->m_V[] array indices.
       There is exactly one element in edge_list[] for each
-      unoriented 3d line segment in the mesh. The edges are
+      unoriented 3d line segment in the mesh. The edges are 
       oriented the same way the corresponding ON_MeshTopology
       edge is oriented.
     ci_meshtop_edge_map - [out]
@@ -41223,7 +41151,7 @@ public:
       * If edge_type_partition[2] <= ei < edge_type_partition[3], then
         edge_list[ei] is an edge of 3 or more faces. These are also called
         "nonmanifold edges".
-      * If edge_type_partition[3] <= ei < edge_type_partition[4],
+      * If edge_type_partition[3] <= ei < edge_type_partition[4], 
         then edge_list[ei] is a boundary edge of exactly one mesh face.
         These are also called "naked edges".
   Returns:
@@ -41233,22 +41161,22 @@ public:
     m_V or m_F information after calling this function, be sure to
     clear m_is_closed.
   */
-  int GetMeshEdgeList(
-      ON_SimpleArray<ON_2dex>& edge_list,
-      int edge_type_partition[5]
+  int GetMeshEdgeList( 
+      ON_SimpleArray<ON_2dex>& edge_list, 
+      int edge_type_partition[5] 
       ) const;
 
-  int GetMeshEdgeList(
-      ON_SimpleArray<ON_2dex>& edge_list,
+  int GetMeshEdgeList( 
+      ON_SimpleArray<ON_2dex>& edge_list, 
       ON_SimpleArray<int>& ci_meshtop_edge_map,
-      int edge_type_partition[5]
+      int edge_type_partition[5] 
       ) const;
 
-  int GetMeshEdgeList(
-      ON_SimpleArray<ON_2dex>& edge_list,
+  int GetMeshEdgeList( 
+      ON_SimpleArray<ON_2dex>& edge_list, 
       ON_SimpleArray<int>& ci_meshtop_edge_map,
       ON_SimpleArray<int>& ci_meshtop_vertex_map,
-      int edge_type_partition[5]
+      int edge_type_partition[5] 
       ) const;
 
   ///////////////////////////////////////////////////////////////////////
@@ -41365,7 +41293,7 @@ public:
   //
   // In order to keep the mesh facet definition simple and make the mesh
   // definition easily used in common rendering application, if two facets
-  // share a vertex location but have different normals, curvatures,
+  // share a vertex location but have different normals, curvatures, 
   // textures, etc., at that common vertex location, then the vertex is
   // duplicated.  When the topology of the mesh needs to be known,
   // use Topology() to get a class that provides complete topological
@@ -41398,7 +41326,7 @@ public:
   // provided to partition the mesh into subsets of vertices and faces
   // that those renering engines could handle.
   //
-  const ON_MeshPartition* CreatePartition(
+  const ON_MeshPartition* CreatePartition( 
                 int, // maximum number of vertices in a partition
                 int  // maximum number of triangles in a partition
                 );
@@ -41421,9 +41349,9 @@ public:
     then the caller must delete this mesh when it is no longer needed.
     If the input is invalid, then null is returned.
   */
-  ON_Mesh* MeshPart(
+  ON_Mesh* MeshPart( 
     const ON_MeshPart& mesh_part,
-    ON_Mesh* mesh
+    ON_Mesh* mesh 
     ) const;
 
   /*
@@ -41435,17 +41363,17 @@ public:
     then the caller must delete this mesh when it is no longer needed.
     If the input is invalid, then null is returned.
   */
-  ON_Mesh* DuplicateFace(
+  ON_Mesh* DuplicateFace( 
     int face_index,
-    ON_Mesh* mesh
+    ON_Mesh* mesh 
     ) const;
 
   ///////////////////////////////////////////////////////////////////////
   //
-  // mesh N-gon lists.
+  // mesh N-gon lists.  
   //   ON_Mesh objects support faces that are triangle or quads.
   //   When a mesh is created from a format that supports N-gons
-  //   for N larger than 4, an optional N-gon list can be added
+  //   for N larger than 4, an optional N-gon list can be added 
   //   that specifies the vertices and faces that make up the N-gon.
   //
 
@@ -41478,7 +41406,7 @@ public:
   // mesh components
   //   ON_Mesh objects can consist of sets of faces that are isolated
   //   from any other sets of faces.  The following 2 functions will
-  //   dissect a mesh into these sets, called components.  Not to be
+  //   dissect a mesh into these sets, called components.  Not to be 
   //   confused with ON_COMPONENT_INDEX.
 
   /*
@@ -41493,8 +41421,8 @@ public:
         be considered connected.
       bUseTopologicalConnections - [in]
         If this parameter is true, then geometric location is used
-        to determine if facets are connected.
-        If this parameter is false, then facets must share the same vertex
+        to determine if facets are connected. 
+        If this parameter is false, then facets must share the same vertex 
         or vertices to be considered connected.
       facet_component_labels- [out]
         facet_component_labels[] will be an array with the same size
@@ -41502,11 +41430,11 @@ public:
         is the component id m_F[i] belongs to.  The component id
         will be 1 to the number of compoents.
     Returns:
-      Number of components on success, 0 on failure
+      Number of components on success, 0 on failure 
   */
 
-  int GetConnectedComponents( bool bUseVertexConnections,
-                              bool bTopologicalConnections,
+  int GetConnectedComponents( bool bUseVertexConnections, 
+                              bool bTopologicalConnections, 
                               ON_SimpleArray<int>& facet_component_labels
                             ) const;
 
@@ -41522,26 +41450,26 @@ public:
         be considered connected.
       bUseTopologicalConnections - [in]
         If this parameter is true, then geometric location is used
-        to determine if facets are connected.
-        If this parameter is false, then facets must share the same vertex
+        to determine if facets are connected. 
+        If this parameter is false, then facets must share the same vertex 
         or vertices to be considered connected.
       components   - [out]
         New components are appended to this array
         if this parameter is null, then the components are just counted.
     Returns:
-      Number of components on success, 0 on failure
+      Number of components on success, 0 on failure 
   */
 
-  int GetConnectedComponents( bool bUseVertexConnections,
-                              bool bTopologicalConnections,
+  int GetConnectedComponents( bool bUseVertexConnections, 
+                              bool bTopologicalConnections, 
                               ON_SimpleArray<ON_Mesh*>* components
                             ) const;
 
 
   /////////////////////////////////////////////////////////////////
-  //
+  // 
   // Double precision vertex support
-  //
+  // 
 
   /*
   Returns:
@@ -41556,12 +41484,12 @@ public:
   Remarks:
     This function returns true if a mesh has double
     precision vertex information, even if it is not
-    updated.
-
+    updated. 
+    
     Use ON_Mesh::DoublePrecisionVerticesAreValid()
-    and ON_Mesh::SinglePrecisionVerticesAreValid() to
-    check the validity.
-
+    and ON_Mesh::SinglePrecisionVerticesAreValid() to 
+    check the validity.  
+    
     Use ON_Mesh::UpdateDoublePrecisionVertices()
     or ON_Mesh::UpdateSinglePrecisionVertices() to synchronize
     values of single and double precision vertices.
@@ -41599,7 +41527,7 @@ public:
   /*
   Description:
     If you have modified the single precision vertices
-    and are certain they are valid, then call this
+    and are certain they are valid, then call this 
     function to update crc information.
   Remarks:
     If double precision vertices are not present, this function
@@ -41610,7 +41538,7 @@ public:
   /*
   Description:
     If you have modified the double precision vertices
-    and are certain they are valid, then call this
+    and are certain they are valid, then call this 
     function to update crc information.
   Remarks:
     If double precision vertices are not present, this function
@@ -41620,8 +41548,8 @@ public:
 
   /*
   Description:
-    The functions UpdateSinglePrecisionVertices(),
-    UpdateDoublePrecisionVertices(), and
+    The functions UpdateSinglePrecisionVertices(), 
+    UpdateDoublePrecisionVertices(), and 
     SetSinglePrecisionVerticesAsValid() save
     the count and crc of the single precision vertex
     array. True is returned if there are no
@@ -41636,8 +41564,8 @@ public:
 
   /*
   Description:
-    The functions UpdateSinglePrecisionVertices(),
-    UpdateDoublePrecisionVertices(), and
+    The functions UpdateSinglePrecisionVertices(), 
+    UpdateDoublePrecisionVertices(), and 
     SetDoublePrecisionVerticesAsValid() save
     the count and crc of the double precision vertex
     array. True is returned if the current
@@ -41673,7 +41601,7 @@ public:
   Returns:
     Array of double precision vertices.  If you modify the
     values in this array, you must make the same modifications
-    to the single precision vertices, or call
+    to the single precision vertices, or call 
     UpdateSinglePrecisonVertices().
   Example:
 
@@ -41687,10 +41615,10 @@ public:
           // in m_V[] and sets all the counts and CRCs that
           // are used in validity checking.
           mesh.UpdateSinglePrecisonVertices();
-
+    
   Remarks:
     Avoid mulitple calls to DoublePrecisionVertices().
-    It is most efficient to make one call, save a local
+    It is most efficient to make one call, save a local 
     reference, and use the local reference as needed.
   */
   ON_3dPointArray& DoublePrecisionVertices();
@@ -41702,7 +41630,7 @@ public:
   Returns:
     Array of float precision vertices.  If you modify the
     values in this array, you must make the same modifications
-    to the double precision vertices, or call
+    to the double precision vertices, or call 
     UpdateSinglePrecisonVertices().
   */
   ON_3fPointArray& SinglePrecisionVertices();
@@ -41734,13 +41662,13 @@ public:
   ON_SimpleArray<ON_MeshFace> m_F;
 
   // m_N[] OPTIONAL vertex unit normals
-  // If m_N[] is empty or m_N.Count() != m_V.Count(),
+  // If m_N[] is empty or m_N.Count() != m_V.Count(), 
   // Either m_N[] has zero count or it m_N[j] is the
   // the unit vertex normal at m_V[j].
   ON_3fVectorArray m_N;
 
   // m_FN[] OPTIONAL face unit normals
-  // If m_FN[] is empty or m_FN.Count() != m_F.Count(),
+  // If m_FN[] is empty or m_FN.Count() != m_F.Count(), 
   // then m_FN is ignored.  Otherwise m_FN[j] is the
   // unit normal for the facet m_F[j].
   ON_3fVectorArray m_FN;
@@ -41759,33 +41687,33 @@ public:
   // RUNTIME ONLY
   //   This array is used to cache texture coordinates used by
   //   rendering applications that require 1d texture coordinates,
-  //   3d texture coordinates, or multiple sets of texture
+  //   3d texture coordinates, or multiple sets of texture 
   //   coordinates (e.g. blended textures with different mappings).
-  //   Users are responsible for verifying
+  //   Users are responsible for verifying 
   //   m_TC[i].m_T.Count() = m_V.Count()
-  ON_ClassArray<ON_TextureCoordinates> m_TC;
+  ON_ClassArray<ON_TextureCoordinates> m_TC;  
 
   // If m_T.Count() == m_V.Count(), then the mesh has texture coordinates
   // and m_T[j] is the texture coordinate for vertex m_V[j].
   //
   // When opennurbs or Rhino meshes an ON_Surface or ON_Brep, the texture
-  // coordinates have a "canonical" linear relationship with the surface
-  // parameters that is described in the next section.  However, various
-  // mappings, spherical, planar, cylindrical, etc., can be applied that
+  // coordinates have a "canonical" linear relationship with the surface 
+  // parameters that is described in the next section.  However, various 
+  // mappings, spherical, planar, cylindrical, etc., can be applied that 
   // change the values of the texture coordinates.
   //
-  // If a texture mapping function was used to set the m_T[] values,
+  // If a texture mapping function was used to set the m_T[] values, 
   // then the id and serial number of the mapping function is saved
   // in m_mapping_id and m_mapping_sn. The intended use of these fields
-  // is to make it easy to avoid unnecessary recalculation.
-  // If a mesh is modified, then m_mapping_id should be set to nil
+  // is to make it easy to avoid unnecessary recalculation.  
+  // If a mesh is modified, then m_mapping_id should be set to nil 
   // and m_mapping_crc should be set to 0.
   //
   /////////////////////////////////////////////////////////////////
 
 
   /////////////////////////////////////////////////////////////////
-  // Implementation - surface parameters and packed texture
+  // Implementation - surface parameters and packed texture 
   // information
   //
   // If m_S.Count() == m_V.Count(), then the mesh is a tesselation
@@ -41793,11 +41721,11 @@ public:
   // m_V[j].  Storing values in m_S[] is OPTIONAL.
   //
   // If m_srf_scale[] has positive values, then they report
-  // the world coordinate size of a rectangle that would
+  // the world coordinate size of a rectangle that would 
   // minimize texture distortion if it were mapped to the
   // mesh using normalized surface evaluation parameters.
-  // This information is used to calculate high quality
-  // packed texture coordinates.
+  // This information is used to calculate high quality 
+  // packed texture coordinates.  
   ON_2dPointArray m_S;
   ON_Interval m_srf_domain[2]; // surface evaluation domain.
   double m_srf_scale[2];
@@ -41805,17 +41733,17 @@ public:
 
   // Packed texture information.
   //
-  // If either of the m_packed_tex_domain[] intervals is a
-  // proper subinterval of (0,1), then a texture packing
+  // If either of the m_packed_tex_domain[] intervals is a 
+  // proper subinterval of (0,1), then a texture packing 
   // calculation assigned this subrectangle to this mesh.
 
   ON_Interval m_packed_tex_domain[2];
 
   // The m_packed_tex_rotate setting is valid only when
-  // m_S, m_srf_domain, m_packed_scale[] and
+  // m_S, m_srf_domain, m_packed_scale[] and 
   // m_packed_tex_domain[] are all valid and the texture
   // coordinates are based on surface evaluation parameters.
-  // In this special situation, this boolean records the
+  // In this special situation, this boolean records the 
   // correspondence between the the surface parameters, (u,v),
   // and the packed texture coordinates, (s,t),
   //
@@ -41872,7 +41800,7 @@ public:
   // Implementation - runtime vertex visibility - not saved in 3dm files.
   ON_SimpleArray<bool> m_H; // OPTIONAL vertex visibility.
                             // If m_H.Count() = m_V.Count(), then
-                            // m_H[vi] is true if the vertex m_V[vi]
+                            // m_H[vi] is true if the vertex m_V[vi] 
                             // is hidden.  Otherwise, all vertices are visible.
   int m_hidden_count;       // number of vertices that are hidden
                             // = number of true values in m_H[] array.
@@ -41898,7 +41826,7 @@ protected:
   int                         m_triangle_count;
 
 private:
-  char m_mesh_is_closed;   // 0 = unset, 1 = all edges have 2 or more faces, 2 = at least one boundary edge
+  char m_mesh_is_closed;   // 0 = unset, 1 = all edges have 2 or more faces, 2 = at least one boundary edge 
   char m_mesh_is_manifold; // 0 = unset, 1 = all edges have 1 or 2 faces, 2 = not manifold
   char m_mesh_is_oriented; // 0 = unset, 1 = faces normals agree across all edges that have 2 faces, 2 = not oriented
   char m_mesh_is_solid;    // 0 = unset, 1 = solid with outward face normals, 2 = solid with inward face normals, 3 = not solid
@@ -41906,7 +41834,7 @@ private:
 protected:
   // The bounding boxes are valid if m_?box[0][0] <= m_?box[0][1];
   float m_vbox[2][3]; // 3d bounding box of all referenced vertices
-  float m_nbox[2][3]; // 3d bounding box of all referenced unit normals
+  float m_nbox[2][3]; // 3d bounding box of all referenced unit normals 
                       // (for estimation of Gauss map bounds)
   float m_tbox[2][2]; // 2d bounding box of all referenced texture coordinates
   ON_MeshCurvatureStats* m_kstat[4]; // gaussian,mean,min,max,sectionx,sectiony,sectionz
@@ -41935,13 +41863,13 @@ public:
 
   // parent mesh
   const ON_Mesh* m_mesh;
-
+  
   // m_mesh->m_V[] index
   // (can be -1 when m_top_vi references a shared vertex location)
-  int m_mesh_vi;
-
+  int m_mesh_vi; 
+  
   // m_mesh->m_top.m_tope[] index
-  int m_top_vi;
+  int m_top_vi; 
 
 
   /*
@@ -41949,8 +41877,8 @@ public:
     Override of the virtual ON_Geometry::ComponentIndex().
   Returns:
     A component index for the vertex.  The type of the returned
-    component index can be
-    ON_COMPONENT_INDEX::mesh_vertex,
+    component index can be 
+    ON_COMPONENT_INDEX::mesh_vertex, 
     ON_COMPONENT_INDEX::meshtop_vertex, or
     ON_COMPONENT_INDEX::invalid_type.
   */
@@ -41958,7 +41886,7 @@ public:
 
   /*
   Returns:
-    The mesh topology associated with this
+    The mesh topology associated with this 
     mesh vertex reference or NULL if it doesn't
     exist.
   */
@@ -41967,14 +41895,14 @@ public:
   /*
   Returns:
     The 3d location of the mesh vertex.  Returns
-    ON_UNSET_POINT is this ON_MeshVertexRef is not
+    ON_UNSET_POINT is this ON_MeshVertexRef is not 
     valid.
   */
   ON_3dPoint Point() const;
 
   /*
   Returns:
-    The mesh topology vertex associated with this
+    The mesh topology vertex associated with this 
     mesh vertex reference.
   */
   const ON_MeshTopologyVertex* MeshTopologyVertex() const;
@@ -41992,7 +41920,7 @@ public:
          double* boxmax,
          int bGrowBox = false
          ) const;
-  ON_BOOL32 Transform(
+  ON_BOOL32 Transform( 
          const ON_Xform& xform
          );
 };
@@ -42007,9 +41935,9 @@ public:
 
   // parent mesh
   const ON_Mesh* m_mesh;
-
+  
   // m_mesh->m_top.m_tope[] index
-  int m_top_ei;
+  int m_top_ei; 
 
   /*
   Description:
@@ -42023,7 +41951,7 @@ public:
 
   /*
   Returns:
-    The mesh topology associated with this
+    The mesh topology associated with this 
     mesh edge reference or NULL if it doesn't
     exist.
   */
@@ -42039,7 +41967,7 @@ public:
 
   /*
   Returns:
-    The mesh topology edge associated with this
+    The mesh topology edge associated with this 
     mesh edge reference.
   */
   const ON_MeshTopologyEdge* MeshTopologyEdge() const;
@@ -42057,7 +41985,7 @@ public:
          double* boxmax,
          int bGrowBox = false
          ) const;
-  ON_BOOL32 Transform(
+  ON_BOOL32 Transform( 
          const ON_Xform& xform
          );
 };
@@ -42074,7 +42002,7 @@ public:
   const ON_Mesh* m_mesh;
 
   // m_mesh->m_F[] and m_mesh->m_top.m_tope[] index.
-  int m_mesh_fi;
+  int m_mesh_fi; 
 
   /*
   Description:
@@ -42088,7 +42016,7 @@ public:
 
   /*
   Returns:
-    The mesh topology associated with this
+    The mesh topology associated with this 
     mesh face reference or NULL if it doesn't
     exist.
   */
@@ -42102,7 +42030,7 @@ public:
 
   /*
   Returns:
-    The mesh topology face associated with this
+    The mesh topology face associated with this 
     mesh face reference.
   */
   const ON_MeshTopologyFace* MeshTopologyFace() const;
@@ -42120,7 +42048,7 @@ public:
          double* boxmax,
          int bGrowBox = false
          ) const;
-  ON_BOOL32 Transform(
+  ON_BOOL32 Transform( 
          const ON_Xform& xform
          );
 };
@@ -42134,14 +42062,14 @@ Parameters:
                     up to be triangles. Surfaces with singular
                     sides are a common source of degenerate qauds.
   input_mesh - [in] If NULL, then the returned mesh is created
-       by a class to new ON_Mesh().  If not null, then this
+       by a class to new ON_Mesh().  If not null, then this 
        mesh will be used to store the conrol polygon.
 Returns:
   If successful, a pointer to a mesh.
 */
 ON_DECL
-ON_Mesh* ON_ControlPolygonMesh(
-          const ON_NurbsSurface& nurbs_surface,
+ON_Mesh* ON_ControlPolygonMesh( 
+          const ON_NurbsSurface& nurbs_surface, 
           bool bCleanMesh,
           ON_Mesh* input_mesh = NULL
           );
@@ -42207,7 +42135,7 @@ bool ON_GetTrianglePlaneEquation(
 // THIS SOFTWARE IS PROVIDED "AS IS" WITHOUT EXPRESS OR IMPLIED WARRANTY.
 // ALL IMPLIED WARRANTIES OF FITNESS FOR ANY PARTICULAR PURPOSE AND OF
 // MERCHANTABILITY ARE HEREBY DISCLAIMED.
-//
+//				
 // For complete openNURBS copyright information see <http://www.opennurbs.org>.
 //
 ////////////////////////////////////////////////////////////////
@@ -42228,7 +42156,7 @@ public:
 
   void Initialize(void);  // zeros all fields
 
-  ON_BOOL32 Create(
+  ON_BOOL32 Create( 
           int,  // point count0 (>=1)
           int   // point count1 (>=1)
           );
@@ -42243,7 +42171,7 @@ public:
   // point_grid[i][j] returns GetPoint(i,j)
   ON_3dPoint* operator[](int);             // 0 <= index < PointCount(0)
   const ON_3dPoint* operator[](int) const; // 0 <= index < PointCount(0)
-
+  
   /////////////////////////////////////////////////////////////////
   // ON_Object overrides
 
@@ -42255,9 +42183,9 @@ public:
     text_log - [in] if the object is not valid and text_log
         is not NULL, then a brief englis description of the
         reason the object is not valid is appened to the log.
-        The information appended to text_log is suitable for
-        low-level debugging purposes by programmers and is
-        not intended to be useful as a high level user
+        The information appended to text_log is suitable for 
+        low-level debugging purposes by programmers and is 
+        not intended to be useful as a high level user 
         interface tool.
   Returns:
     @untitled table
@@ -42296,24 +42224,24 @@ public:
     Get tight bounding box of the point grid.
 	Parameters:
 		tight_bbox - [in/out] tight bounding box
-		bGrowBox -[in]	(default=false)
+		bGrowBox -[in]	(default=false)			
       If true and the input tight_bbox is valid, then returned
-      tight_bbox is the union of the input tight_bbox and the
+      tight_bbox is the union of the input tight_bbox and the 
       tight bounding box of the point grid.
 		xform -[in] (default=NULL)
       If not NULL, the tight bounding box of the transformed
       point grid is calculated.  The point grid is not modified.
 	Returns:
-    True if the returned tight_bbox is set to a valid
+    True if the returned tight_bbox is set to a valid 
     bounding box.
   */
-	bool GetTightBoundingBox(
-			ON_BoundingBox& tight_bbox,
+	bool GetTightBoundingBox( 
+			ON_BoundingBox& tight_bbox, 
       int bGrowBox = false,
 			const ON_Xform* xform = 0
       ) const;
 
-  ON_BOOL32 Transform(
+  ON_BOOL32 Transform( 
          const ON_Xform&
          );
 
@@ -42330,7 +42258,7 @@ public:
   /////////////////////////////////////////////////////////////////
   // Interface
 
-  ON_BOOL32 IsClosed(
+  ON_BOOL32 IsClosed( 
         int // dir
         ) const;
 
@@ -42401,7 +42329,7 @@ private:
 // THIS SOFTWARE IS PROVIDED "AS IS" WITHOUT EXPRESS OR IMPLIED WARRANTY.
 // ALL IMPLIED WARRANTIES OF FITNESS FOR ANY PARTICULAR PURPOSE AND OF
 // MERCHANTABILITY ARE HEREBY DISCLAIMED.
-//
+//				
 // For complete openNURBS copyright information see <http://www.opennurbs.org>.
 //
 ////////////////////////////////////////////////////////////////
@@ -42429,7 +42357,7 @@ public:
 
 	ON_LineCurve& operator=(const ON_LineCurve&);
 	ON_LineCurve& operator=(const ON_Line&);
-
+  
   /////////////////////////////////////////////////////////////////
   // ON_Object overrides
 
@@ -42447,9 +42375,9 @@ public:
     text_log - [in] if the object is not valid and text_log
         is not NULL, then a brief englis description of the
         reason the object is not valid is appened to the log.
-        The information appended to text_log is suitable for
-        low-level debugging purposes by programmers and is
-        not intended to be useful as a high level user
+        The information appended to text_log is suitable for 
+        low-level debugging purposes by programmers and is 
+        not intended to be useful as a high level user 
         interface tool.
   Returns:
     @untitled table
@@ -42486,24 +42414,24 @@ public:
     Get tight bounding box of the line.
 	Parameters:
 		tight_bbox - [in/out] tight bounding box
-		bGrowBox -[in]	(default=false)
+		bGrowBox -[in]	(default=false)			
       If true and the input tight_bbox is valid, then returned
-      tight_bbox is the union of the input tight_bbox and the
+      tight_bbox is the union of the input tight_bbox and the 
       line's tight bounding box.
 		xform -[in] (default=NULL)
       If not NULL, the tight bounding box of the transformed
       line is calculated.  The line is not modified.
 	Returns:
-    True if the returned tight_bbox is set to a valid
+    True if the returned tight_bbox is set to a valid 
     bounding box.
   */
-	bool GetTightBoundingBox(
-			ON_BoundingBox& tight_bbox,
+	bool GetTightBoundingBox( 
+			ON_BoundingBox& tight_bbox, 
       int bGrowBox = false,
 			const ON_Xform* xform = 0
       ) const;
 
-  ON_BOOL32 Transform(
+  ON_BOOL32 Transform( 
          const ON_Xform&
          );
 
@@ -42529,9 +42457,9 @@ public:
   //   t1 - [in] new domain will be [t0,t1]
   // Returns:
   //   true if successful.
-  ON_BOOL32 SetDomain(
-        double t0,
-        double t1
+  ON_BOOL32 SetDomain( 
+        double t0, 
+        double t1 
         );
 
   bool ChangeDimension(
@@ -42540,13 +42468,13 @@ public:
 
   int SpanCount() const; // number of smooth spans in curve
 
-  ON_BOOL32 GetSpanVector( // span "knots"
-         double* // array of length SpanCount() + 1
-         ) const; //
+  ON_BOOL32 GetSpanVector( // span "knots" 
+         double* // array of length SpanCount() + 1 
+         ) const; // 
 
-  int Degree( // returns maximum algebraic degree of any span
+  int Degree( // returns maximum algebraic degree of any span 
                   // ( or a good estimate if curve spans are not algebraic )
-    ) const;
+    ) const; 
 
   ON_BOOL32 IsLinear( // true if curve locus is a line segment between
                  // between specified points
@@ -42600,9 +42528,9 @@ public:
                   // periodic.)
 
   ON_BOOL32 IsPeriodic(  // true if curve is a single periodic segment
-        void
+        void 
         ) const;
-
+  
   /*
   Description:
     Force the curve to start at a specified point.
@@ -42651,7 +42579,7 @@ public:
          double*,        // array of length stride*(ndir+1)
          int = 0,        // optional - determines which side to evaluate from
                          //         0 = default
-                         //      <  0 to evaluate from below,
+                         //      <  0 to evaluate from below, 
                          //      >  0 to evaluate from above
          int* = 0        // optional - evaluation hint (int) used to speed
                          //            repeated evaluations
@@ -42682,10 +42610,10 @@ public:
   // Description:
   //   Where possible, analytically extends curve to include domain.
   // Parameters:
-  //   domain - [in] if domain is not included in curve domain,
-  //   curve will be extended so that its domain includes domain.
+  //   domain - [in] if domain is not included in curve domain, 
+  //   curve will be extended so that its domain includes domain.  
   //   Original curve is identical
-  //   to the restriction of the resulting curve to the original curve domain,
+  //   to the restriction of the resulting curve to the original curve domain, 
   // Returns:
   //   true if successful.
   bool Extend(
@@ -42734,9 +42662,9 @@ public:
   //       matches the curve's to wthe desired accuracy
   //   2   success - returned NURBS point locus matches
   //       the curve's to the desired accuracy but, on
-  //       the interior of the curve's domain, the
+  //       the interior of the curve's domain, the 
   //       curve's parameterization and the NURBS
-  //       parameterization may not match to the
+  //       parameterization may not match to the 
   //       desired accuracy.
   int GetNurbForm(
         ON_NurbsCurve&,
@@ -42755,9 +42683,9 @@ public:
   //       matches the curve's to wthe desired accuracy
   //   2   success - returned NURBS point locus matches
   //       the curve's to the desired accuracy but, on
-  //       the interior of the curve's domain, the
+  //       the interior of the curve's domain, the 
   //       curve's parameterization and the NURBS
-  //       parameterization may not match to the
+  //       parameterization may not match to the 
   //       desired accuracy.
   int HasNurbForm(
         ) const;
@@ -43168,38 +43096,6 @@ public:
           const ON_Interval* curve_domain = 0
           ) const;
 
-
-  /*
-  Description:
-    virtual ON_Curve::GetNormalizedArcLengthPoints override.
-    Get the parameter of the point on the curve that is a
-    prescribed arc length from the start of the curve.
-  Parameters:
-    count - [in] number of parameters in s.
-    s - [in] array of normalized arc length parameters. E.g., 0 = start
-         of curve, 1/2 = midpoint of curve, 1 = end of curve.
-    t - [out] array of curve parameters such that the length of the
-       curve from its start to t[i] is s[i]*curve_length.
-    absolute_tolerance - [in] if absolute_tolerance > 0, then the difference
-        between (s[i+1]-s[i])*curve_length and the length of the curve
-        segment from t[i] to t[i+1] will be <= absolute_tolerance.
-    fractional_tolerance - [in] desired fractional precision for each segment.
-        fabs("true" length - actual length)/(actual length) <= fractional_tolerance
-    sub_domain - [in] If not NULL, the calculation is performed on
-        the specified sub-domain of the curve.  A 0.0 s value corresponds to
-        sub_domain->Min() and a 1.0 s value corresponds to sub_domain->Max().
-  Returns:
-    true if successful
-  */
-  ON_BOOL32 GetNormalizedArcLengthPoints(
-          int count,
-          const double* s,
-          double* t,
-          double absolute_tolerance = 0.0,
-          double fractional_tolerance = 1.0e-8,
-          const ON_Interval* sub_domain = NULL
-          ) const;
-
   // virtual ON_Curve::GetNurbForm override
   int GetNurbForm( // returns 0: unable to create NURBS representation
                    //            with desired accuracy.
@@ -43287,7 +43183,7 @@ public:
 // THIS SOFTWARE IS PROVIDED "AS IS" WITHOUT EXPRESS OR IMPLIED WARRANTY.
 // ALL IMPLIED WARRANTIES OF FITNESS FOR ANY PARTICULAR PURPOSE AND OF
 // MERCHANTABILITY ARE HEREBY DISCLAIMED.
-//
+//				
 // For complete openNURBS copyright information see <http://www.opennurbs.org>.
 //
 ////////////////////////////////////////////////////////////////
@@ -43312,9 +43208,9 @@ public:
 
   // Description:
   //   Call if memory used by ON_PolylineCurve becomes invalid.
-  void EmergencyDestroy();
+  void EmergencyDestroy(); 
 
-
+  
   /////////////////////////////////////////////////////////////////
   // ON_Object overrides
 
@@ -43332,9 +43228,9 @@ public:
     text_log - [in] if the object is not valid and text_log
         is not NULL, then a brief englis description of the
         reason the object is not valid is appened to the log.
-        The information appended to text_log is suitable for
-        low-level debugging purposes by programmers and is
-        not intended to be useful as a high level user
+        The information appended to text_log is suitable for 
+        low-level debugging purposes by programmers and is 
+        not intended to be useful as a high level user 
         interface tool.
   Returns:
     @untitled table
@@ -43347,7 +43243,7 @@ public:
 
   // Description:
   //   virtual ON_Object::Dump override
-  void Dump(
+  void Dump( 
     ON_TextLog& dump
     ) const;
 
@@ -43378,9 +43274,9 @@ public:
   // Parameters:
   //   boxmin - [in/out] array of Dimension() doubles
   //   boxmax - [in/out] array of Dimension() doubles
-  //   bGrowBox - [in] (default=false)
-  //     If true, then the union of the input bbox and the
-  //     object's bounding box is returned in bbox.
+  //   bGrowBox - [in] (default=false) 
+  //     If true, then the union of the input bbox and the 
+  //     object's bounding box is returned in bbox.  
   //     If false, the object's bounding box is returned in bbox.
   // Returns:
   //   true if object has bounding box and calculation was successful
@@ -43395,9 +43291,9 @@ public:
     Get tight bounding box.
 	Parameters:
 		tight_bbox - [in/out] tight bounding box
-		bGrowBox -[in]	(default=false)
+		bGrowBox -[in]	(default=false)			
       If true and the input tight_bbox is valid, then returned
-      tight_bbox is the union of the input tight_bbox and the
+      tight_bbox is the union of the input tight_bbox and the 
       polyline's tight bounding box.
 		xform -[in] (default=NULL)
       If not NULL, the tight bounding box of the transformed
@@ -43405,8 +43301,8 @@ public:
 	Returns:
     True if a valid tight_bbox is returned.
   */
-	bool GetTightBoundingBox(
-			ON_BoundingBox& tight_bbox,
+	bool GetTightBoundingBox( 
+			ON_BoundingBox& tight_bbox, 
       int bGrowBox = false,
 			const ON_Xform* xform = 0
       ) const;
@@ -43420,10 +43316,10 @@ public:
   //
   // Remarks:
   //   When overriding this function, be sure to include a call
-  //   to ON_Object::TransformUserData() which takes care of
-  //   transforming any ON_UserData that may be attached to
+  //   to ON_Object::TransformUserData() which takes care of 
+  //   transforming any ON_UserData that may be attached to 
   //   the object.
-  ON_BOOL32 Transform(
+  ON_BOOL32 Transform( 
          const ON_Xform& xform
          );
 
@@ -43440,7 +43336,7 @@ public:
   //   i - [in] coordinate index
   //   j - [in] coordinate index
   ON_BOOL32 SwapCoordinates(
-        int i,
+        int i, 
         int j
         );
 
@@ -43462,8 +43358,8 @@ public:
   // Returns:
   //   true if successful.
   ON_BOOL32 SetDomain(
-        double t0,
-        double t1
+        double t0, 
+        double t1 
         );
 
   bool ChangeDimension(
@@ -43482,8 +43378,8 @@ public:
   Remarks:
     Overrides virtual ON_Curve::ChangeClosedCurveSeam
   */
-  ON_BOOL32 ChangeClosedCurveSeam(
-            double t
+  ON_BOOL32 ChangeClosedCurveSeam( 
+            double t 
             );
 
   // Description:
@@ -43497,7 +43393,7 @@ public:
   //   virtual ON_Curve::GetSpanVector override.
   //   Get list of parameters at polyline points.
   // Parameters:
-  //   knot_values - [out] an array of length SpanCount()+1 is
+  //   knot_values - [out] an array of length SpanCount()+1 is 
   //       filled in with the parameter values.  knot_values[i]
   //       is the parameter for the point m_pline[i].
   // Returns:
@@ -43510,7 +43406,7 @@ public:
   //   virtual ON_Curve::Degree override.
   // Returns:
   //   1
-  int Degree() const;
+  int Degree() const; 
 
   // Description:
   //   virtual ON_Curve::IsLinear override.
@@ -43564,7 +43460,7 @@ public:
   // Description:
   //   virtual ON_Curve::IsInPlane override.
   // Returns:
-  //   true if every point in the polyline is within
+  //   true if every point in the polyline is within 
   //   tolerance of the test_plane.
   ON_BOOL32 IsInPlane(
         const ON_Plane& test_plane,
@@ -43585,9 +43481,9 @@ public:
   // Returns:
   //   false for all polylines.
   ON_BOOL32 IsPeriodic(  // true if curve is a single periodic segment
-        void
+        void 
         ) const;
-
+  
   /*
   Description:
     Search for a derivatitive, tangent, or curvature discontinuity.
@@ -43599,17 +43495,17 @@ public:
           parameter at the discontinuity.
     hint - [in/out] if GetNextDiscontinuity will be called repeatedly,
        passing a "hint" with initial value *hint=0 will increase the speed
-       of the search.
+       of the search.       
     dtype - [out] if not NULL, *dtype reports the kind of discontinuity
         found at *t.  A value of 1 means the first derivative or unit tangent
         was discontinuous.  A value of 2 means the second derivative or
         curvature was discontinuous.
     cos_angle_tolerance - [in] default = cos(1 degree) Used only when
         c is ON::G1_continuous or ON::G2_continuous.  If the cosine
-        of the angle between two tangent vectors
+        of the angle between two tangent vectors 
         is <= cos_angle_tolerance, then a G1 discontinuity is reported.
     curvature_tolerance - [in] (default = ON_SQRT_EPSILON) Used only when
-        c is ON::G2_continuous or ON::Gsmooth_continuous.
+        c is ON::G2_continuous or ON::Gsmooth_continuous.  
         ON::G2_continuous:
           If K0 and K1 are curvatures evaluated
           from above and below and |K0 - K1| > curvature_tolerance,
@@ -43624,7 +43520,7 @@ public:
   Remarks:
     Overrides ON_Curve::GetNextDiscontinuity.
   */
-  bool GetNextDiscontinuity(
+  bool GetNextDiscontinuity( 
                   ON::continuity c,
                   double t0,
                   double t1,
@@ -43650,10 +43546,10 @@ public:
         greater than d2_tolerance, then the curve is not C2.
     cos_angle_tolerance - [in] default = cos(1 degree) Used only when
         c is ON::G1_continuous or ON::G2_continuous.  If the cosine
-        of the angle between two tangent vectors
+        of the angle between two tangent vectors 
         is <= cos_angle_tolerance, then a G1 discontinuity is reported.
     curvature_tolerance - [in] (default = ON_SQRT_EPSILON) Used only when
-        c is ON::G2_continuous or ON::Gsmooth_continuous.
+        c is ON::G2_continuous or ON::Gsmooth_continuous.  
         ON::G2_continuous:
           If K0 and K1 are curvatures evaluated
           from above and below and |K0 - K1| > curvature_tolerance,
@@ -43670,7 +43566,7 @@ public:
   */
   bool IsContinuous(
     ON::continuity c,
-    double t,
+    double t, 
     int* hint = NULL,
     double point_tolerance=ON_ZERO_TOLERANCE,
     double d1_tolerance=ON_ZERO_TOLERANCE,
@@ -43734,7 +43630,7 @@ public:
          double*,        // array of length stride*(ndir+1)
          int = 0,        // optional - determines which side to evaluate from
                          //         0 = default
-                         //      <  0 to evaluate from below,
+                         //      <  0 to evaluate from below, 
                          //      >  0 to evaluate from above
          int* = 0        // optional - evaluation hint (int) used to speed
                          //            repeated evaluations
@@ -43747,10 +43643,10 @@ public:
   // Description:
   //   Where possible, analytically extends curve to include domain.
   // Parameters:
-  //   domain - [in] if domain is not included in curve domain,
-  //   curve will be extended so that its domain includes domain.
+  //   domain - [in] if domain is not included in curve domain, 
+  //   curve will be extended so that its domain includes domain.  
   //   Will not work if curve is closed. Original curve is identical
-  //   to the restriction of the resulting curve to the original curve domain,
+  //   to the restriction of the resulting curve to the original curve domain, 
   // Returns:
   //   true if successful.
   bool Extend(
@@ -43765,7 +43661,7 @@ public:
   // to ON_NurbsCurve::Split must either be NULL or point to an ON_NurbsCurve.
   // If the pointer is NULL, then a curve will be created
   // in Split().  You may pass "this" as one of the pointers to Split().
-  // For example,
+  // For example, 
   //
   //   ON_NurbsCurve right_side;
   //   crv.Split( crv.Domain().Mid() &crv, &right_side );
@@ -43784,9 +43680,9 @@ public:
                    //            matches the curve's to wthe desired accuracy
                    //         2: success - returned NURBS point locus matches
                    //            the curve's to the desired accuracy but, on
-                   //            the interior of the curve's domain, the
+                   //            the interior of the curve's domain, the 
                    //            curve's parameterization and the NURBS
-                   //            parameterization may not match to the
+                   //            parameterization may not match to the 
                    //            desired accuracy.
         ON_NurbsCurve&,
         double = 0.0,
@@ -43799,9 +43695,9 @@ public:
                    //            matches the curve's to wthe desired accuracy
                    //         2: success - returned NURBS point locus matches
                    //            the curve's to the desired accuracy but, on
-                   //            the interior of the curve's domain, the
+                   //            the interior of the curve's domain, the 
                    //            curve's parameterization and the NURBS
-                   //            parameterization may not match to the
+                   //            parameterization may not match to the 
                    //            desired accuracy.
         ) const;
 
@@ -43818,27 +43714,27 @@ public:
         ) const;
 /*
 	Description:
-		Lookup a parameter in the m_t array, optionally using a built in snap tolerance to
+		Lookup a parameter in the m_t array, optionally using a built in snap tolerance to 
 		snap a parameter value to an element of m_t.
 	Parameters:
 		t - [in]	  	parameter
 		index -[out]	index into m_t such that
 					  			if function returns false then value of index is
-
-									 @table
+								   
+									 @table  
 									 value of index              condition
-						  			  -1									  t<m_t[0] or m_t is empty
-										  0<=i<=m_t.Count()-2		m_t[i] < t < m_t[i+1]
-										  m_t.Count()-1					t>m_t[ m_t.Count()-1]
+						  			  -1									  t<m_t[0] or m_t is empty				
+										  0<=i<=m_t.Count()-2		m_t[i] < t < m_t[i+1]			
+										  m_t.Count()-1					t>m_t[ m_t.Count()-1]			 
 
-									if the function returns true then t is equal to, or is closest to and
-									within  tolerance of m_t[index].
-
-		bEnableSnap-[in] enable snapping
-	Returns:
+									if the function returns true then t is equal to, or is closest to and 
+									within  tolerance of m_t[index]. 
+									
+		bEnableSnap-[in] enable snapping 	
+	Returns:		
 		true if the t is exactly equal to, or within tolerance of
-		(only if bEnableSnap==true) m_t[index].
-*/
+		(only if bEnableSnap==true) m_t[index]. 
+*/ 
 	bool ParameterSearch(double t, int& index, bool bEnableSnap) const;
 
   bool Append( const ON_PolylineCurve& );
@@ -43865,7 +43761,7 @@ public:
 // THIS SOFTWARE IS PROVIDED "AS IS" WITHOUT EXPRESS OR IMPLIED WARRANTY.
 // ALL IMPLIED WARRANTIES OF FITNESS FOR ANY PARTICULAR PURPOSE AND OF
 // MERCHANTABILITY ARE HEREBY DISCLAIMED.
-//
+//				
 // For complete openNURBS copyright information see <http://www.opennurbs.org>.
 //
 ////////////////////////////////////////////////////////////////
@@ -43896,10 +43792,10 @@ public:
   */
   static ON_NurbsCurve* New();
   static ON_NurbsCurve* New(
-            const ON_NurbsCurve& nurbs_curve
+            const ON_NurbsCurve& nurbs_curve 
             );
   static ON_NurbsCurve* New(
-            const ON_BezierCurve& bezier_curve
+            const ON_BezierCurve& bezier_curve 
             );
   static ON_NurbsCurve* New(
             int dimension,
@@ -43951,10 +43847,10 @@ public:
   Returns:
     true if curves are tne same.
   */
-  bool IsDuplicate(
-          const ON_NurbsCurve& other,
+  bool IsDuplicate( 
+          const ON_NurbsCurve& other, 
           bool bIgnoreParameterization,
-          double tolerance = ON_ZERO_TOLERANCE
+          double tolerance = ON_ZERO_TOLERANCE 
           ) const;
 
   // Description:
@@ -43968,7 +43864,7 @@ public:
   //   bIsRational - [in] true to make a rational NURBS
   //   order - [in] (>= 2) The order=degree+1
   //   cv_count - [in] (>= order) number of control vertices
-  bool Create(
+  bool Create( 
           int dimension,
           ON_BOOL32 bIsRational,
           int order,
@@ -43986,7 +43882,7 @@ public:
   //   knot_delta - [in] (>0.0) knot spacing
   // Returns:
   //   true if successful
-  bool CreateClampedUniformNurbs(
+  bool CreateClampedUniformNurbs( 
           int dimension,
           int order,
           int point_count,
@@ -44005,7 +43901,7 @@ public:
   //   knot_delta - [in] (>0.0) knot spacing
   // Returns:
   //   true if successful
-  bool CreatePeriodicUniformNurbs(
+  bool CreatePeriodicUniformNurbs( 
           int dimension,
           int order,
           int point_count,
@@ -44021,7 +43917,7 @@ public:
 
   // Description:
   //   Call if memory used by ON_NurbsCurve becomes invalid.
-  void EmergencyDestroy();
+  void EmergencyDestroy(); 
 
 	ON_NurbsCurve& operator=(const ON_NurbsCurve& src);
 
@@ -44044,9 +43940,9 @@ public:
     text_log - [in] if the object is not valid and text_log
         is not NULL, then a brief englis description of the
         reason the object is not valid is appened to the log.
-        The information appended to text_log is suitable for
-        low-level debugging purposes by programmers and is
-        not intended to be useful as a high level user
+        The information appended to text_log is suitable for 
+        low-level debugging purposes by programmers and is 
+        not intended to be useful as a high level user 
         interface tool.
   Returns:
     @untitled table
@@ -44059,7 +43955,7 @@ public:
 
   // Description:
   //   virtual ON_Object::Dump override
-  void Dump(
+  void Dump( 
     ON_TextLog& dump
     ) const;
 
@@ -44090,9 +43986,9 @@ public:
   // Parameters:
   //   boxmin - [in/out] array of Dimension() doubles
   //   boxmax - [in/out] array of Dimension() doubles
-  //   bGrowBox - [in] (default=false)
-  //     If true, then the union of the input bbox and the
-  //     object's bounding box is returned in bbox.
+  //   bGrowBox - [in] (default=false) 
+  //     If true, then the union of the input bbox and the 
+  //     object's bounding box is returned in bbox.  
   //     If false, the object's bounding box is returned in bbox.
   // Returns:
   //   true if object has bounding box and calculation was successful
@@ -44111,10 +44007,10 @@ public:
   //
   // Remarks:
   //   When overriding this function, be sure to include a call
-  //   to ON_Object::TransformUserData() which takes care of
-  //   transforming any ON_UserData that may be attached to
+  //   to ON_Object::TransformUserData() which takes care of 
+  //   transforming any ON_UserData that may be attached to 
   //   the object.
-  ON_BOOL32 Transform(
+  ON_BOOL32 Transform( 
          const ON_Xform& xform
          );
 
@@ -44131,7 +44027,7 @@ public:
   //   i - [in] coordinate index
   //   j - [in] coordinate index
   ON_BOOL32 SwapCoordinates(
-        int i,
+        int i, 
         int j
         );
 
@@ -44153,8 +44049,8 @@ public:
   // Returns:
   //   true if successful.
   ON_BOOL32 SetDomain(
-        double t0,
-        double t1
+        double t0, 
+        double t1 
         );
 
   /*
@@ -44169,8 +44065,8 @@ public:
   Remarks:
     Overrides virtual ON_Curve::ChangeClosedCurveSeam
   */
-  ON_BOOL32 ChangeClosedCurveSeam(
-            double t
+  ON_BOOL32 ChangeClosedCurveSeam( 
+            double t 
             );
 
   // Description:
@@ -44187,20 +44083,20 @@ public:
   //   virtual ON_Curve::GetSpanVector override.
   //   Get number of parameters of distinct knots in NURBS curve's domain.
   // Parameters:
-  //   knot_values - [out] an array of length SpanCount()+1 is
+  //   knot_values - [out] an array of length SpanCount()+1 is 
   //       filled in with the distinct knot values in the list
   ///      (m_knot[m_order-2],...,m_knot[m_cv_count-1)
   // Returns:
   //   true if successful
   ON_BOOL32 GetSpanVector(
          double* knot_values
-         ) const; //
+         ) const; // 
 
   // Description:
   //   virtual ON_Curve::Degree override.
   // Returns:
   //   m_order-1
-  int Degree() const;
+  int Degree() const; 
 
   // Description:
   //   virtual ON_Curve::GetParameterTolerance override.
@@ -44272,10 +44168,10 @@ public:
   //   virtual ON_Curve::IsPeriodic override.
   // Returns:
   //   true if NURBS curve is periodic (degree > 1,
-  //   periodic knot vector, last degree many CVs
+  //   periodic knot vector, last degree many CVs 
   //   are duplicates of first degree many CVs).
   ON_BOOL32 IsPeriodic() const;
-
+  
   /*
   Description:
     Search for a derivatitive, tangent, or curvature discontinuity.
@@ -44287,17 +44183,17 @@ public:
           parameter at the discontinuity.
     hint - [in/out] if GetNextDiscontinuity will be called repeatedly,
        passing a "hint" with initial value *hint=0 will increase the speed
-       of the search.
+       of the search.       
     dtype - [out] if not NULL, *dtype reports the kind of discontinuity
         found at *t.  A value of 1 means the first derivative or unit tangent
         was discontinuous.  A value of 2 means the second derivative or
         curvature was discontinuous.
     cos_angle_tolerance - [in] default = cos(1 degree) Used only when
         c is ON::G1_continuous or ON::G2_continuous.  If the cosine
-        of the angle between two tangent vectors
+        of the angle between two tangent vectors 
         is <= cos_angle_tolerance, then a G1 discontinuity is reported.
     curvature_tolerance - [in] (default = ON_SQRT_EPSILON) Used only when
-        c is ON::G2_continuous or ON::Gsmooth_continuous.
+        c is ON::G2_continuous or ON::Gsmooth_continuous.  
         ON::G2_continuous:
           If K0 and K1 are curvatures evaluated
           from above and below and |K0 - K1| > curvature_tolerance,
@@ -44312,7 +44208,7 @@ public:
   Remarks:
     Overrides ON_Curve::GetNextDiscontinuity.
   */
-  bool GetNextDiscontinuity(
+  bool GetNextDiscontinuity( 
                   ON::continuity c,
                   double t0,
                   double t1,
@@ -44338,10 +44234,10 @@ public:
         greater than d2_tolerance, then the curve is not C2.
     cos_angle_tolerance - [in] default = cos(1 degree) Used only when
         c is ON::G1_continuous or ON::G2_continuous.  If the cosine
-        of the angle between two tangent vectors
+        of the angle between two tangent vectors 
         is <= cos_angle_tolerance, then a G1 discontinuity is reported.
     curvature_tolerance - [in] (default = ON_SQRT_EPSILON) Used only when
-        c is ON::G2_continuous or ON::Gsmooth_continuous.
+        c is ON::G2_continuous or ON::Gsmooth_continuous.  
         ON::G2_continuous:
           If K0 and K1 are curvatures evaluated
           from above and below and |K0 - K1| > curvature_tolerance,
@@ -44358,7 +44254,7 @@ public:
   */
   bool IsContinuous(
     ON::continuity c,
-    double t,
+    double t, 
     int* hint = NULL,
     double point_tolerance=ON_ZERO_TOLERANCE,
     double d1_tolerance=ON_ZERO_TOLERANCE,
@@ -44413,7 +44309,7 @@ public:
   //   and reversing the order of the control vertices.
   // Remarks:
   //   Domain changes from [a,b] to [-b,-a]
-  ON_BOOL32 Reverse();
+  ON_BOOL32 Reverse();       
 
   // Description:
   //   virtual ON_Curve::Evaluate override.
@@ -44424,7 +44320,7 @@ public:
          double*,        // array of length stride*(ndir+1)
          int = 0,        // optional - determines which side to evaluate from
                          //         0 = default
-                         //      <  0 to evaluate from below,
+                         //      <  0 to evaluate from below, 
                          //      >  0 to evaluate from above
          int* = 0        // optional - evaluation hint (int) used to speed
                          //            repeated evaluations
@@ -44439,25 +44335,25 @@ public:
     tolerance -[in]
       distance tolerance to use when checking control points
       between the span ends
-  Returns
+  Returns 
     true if the span is a non-degenrate line.  This means:
     - dimension = 2 or 3
     - There are full multiplicity knots at each end of the span.
-    - The length of the the line segment from the span's initial
-      control point to the span's final control point is
+    - The length of the the line segment from the span's initial 
+      control point to the span's final control point is 
       >= min_length.
     - The distance from the line segment to the interior control points
       is <= tolerance and the projections of these points onto
       the line increases monotonically.
   */
-  bool SpanIsLinear(
-    int span_index,
+  bool SpanIsLinear( 
+    int span_index, 
     double min_length,
     double tolerance
     ) const;
 
-  bool SpanIsLinear(
-    int span_index,
+  bool SpanIsLinear( 
+    int span_index, 
     double min_length,
     double tolerance,
     ON_Line* line
@@ -44490,10 +44386,10 @@ public:
   // Description:
   //   Where possible, analytically extends curve to include domain.
   // Parameters:
-  //   domain - [in] if domain is not included in curve domain,
-  //   curve will be extended so that its domain includes domain.
+  //   domain - [in] if domain is not included in curve domain, 
+  //   curve will be extended so that its domain includes domain.  
   //   Will not work if curve is closed. Original curve is identical
-  //   to the restriction of the resulting curve to the original curve domain,
+  //   to the restriction of the resulting curve to the original curve domain, 
   // Returns:
   //   true if successful.
   bool Extend(
@@ -44508,7 +44404,7 @@ public:
   // to ON_NurbsCurve::Split must either be NULL or point to an ON_NurbsCurve.
   // If the pointer is NULL, then a curve will be created
   // in Split().  You may pass "this" as one of the pointers to Split().
-  // For example,
+  // For example, 
   //
   //   ON_NurbsCurve right_side;
   //   crv.Split( crv.Domain().Mid() &crv, &right_side );
@@ -44529,9 +44425,9 @@ public:
                    //            matches the curve's to wthe desired accuracy
                    //         2: success - returned NURBS point locus matches
                    //            the curve's to the desired accuracy but, on
-                   //            the interior of the curve's domain, the
+                   //            the interior of the curve's domain, the 
                    //            curve's parameterization and the NURBS
-                   //            parameterization may not match to the
+                   //            parameterization may not match to the 
                    //            desired accuracy.
         ON_NurbsCurve& nurbsform,
         double tolerance = 0.0,
@@ -44546,9 +44442,9 @@ public:
                    //            matches the curve's to wthe desired accuracy
                    //         2: success - returned NURBS point locus matches
                    //            the curve's to the desired accuracy but, on
-                   //            the interior of the curve's domain, the
+                   //            the interior of the curve's domain, the 
                    //            curve's parameterization and the NURBS
-                   //            parameterization may not match to the
+                   //            parameterization may not match to the 
                    //            desired accuracy.
         ) const;
 
@@ -44574,38 +44470,38 @@ public:
   bool IsRational(  // true if NURBS curve is rational
         void
         ) const;
-
-  int CVSize(       // number of doubles per control vertex
+  
+  int CVSize(       // number of doubles per control vertex 
         void        // = IsRational() ? Dim()+1 : Dim()
         ) const;
-
+  
   int Order(        // order = degree + 1
         void
         ) const;
-
+	
   int CVCount(      // number of control vertices
-        void
+        void 
         ) const;
 
   int KnotCount(    // total number of knots in knot vector
         void
         ) const;
-
+  
   /*
   Description:
     Expert user function to get a pointer to control vertex
     memory.  If you are not an expert user, please use
-    ON_NurbsCurve::GetCV( ON_3dPoint& ) or
+    ON_NurbsCurve::GetCV( ON_3dPoint& ) or 
     ON_NurbsCurve::GetCV( ON_4dPoint& ).
   Parameters:
     cv_index - [in]
   Returns:
     Pointer to control vertex.
   Remarks:
-    If the NURBS curve is rational, the format of the
+    If the NURBS curve is rational, the format of the 
     returned array is a homogeneos rational point with
-    length m_dim+1.  If the NURBS curve is not rational,
-    the format of the returned array is a nonrational
+    length m_dim+1.  If the NURBS curve is not rational, 
+    the format of the returned array is a nonrational 
     euclidean point with length m_dim.
   See Also
     ON_NurbsCurve::CVStyle
@@ -44709,7 +44605,7 @@ public:
   // Returns:
   //   knot multiplicity = m_knot[knot_index]
   // See Also:
-  //   ON_NurbsCurve::SetKnot, ON_NurbsCurve::Knot,
+  //   ON_NurbsCurve::SetKnot, ON_NurbsCurve::Knot, 
   //   ON_NurbsCurve::InsertKnot
   int KnotMultiplicity(
         int knot_index
@@ -44720,7 +44616,7 @@ public:
   // Returns:
   //   pointer to knot vector array (m_knot).
   // See Also:
-  //   ON_NurbsCurve::SetKnot, ON_NurbsCurve::Knot,
+  //   ON_NurbsCurve::SetKnot, ON_NurbsCurve::Knot, 
   //   ON_NurbsCurve::InsertKnot
   const double* Knot() const;
 
@@ -44736,8 +44632,8 @@ public:
   //   Allocates m_knot[] if it is not big enough.
   // See Also:
   //   ON_MakeClampedUniformKnotVector
-  bool MakeClampedUniformKnotVector(
-    double delta = 1.0
+  bool MakeClampedUniformKnotVector( 
+    double delta = 1.0 
     );
 
   // Description:
@@ -44752,14 +44648,14 @@ public:
   //   Allocates m_knot[] if it is not big enough.
   // See Also:
   //   ON_MakePeriodicUniformKnotVector
-  bool MakePeriodicUniformKnotVector(
-    double delta = 1.0
+  bool MakePeriodicUniformKnotVector( 
+    double delta = 1.0 
     );
 
   bool IsClamped( // determine if knot vector is clamped
         int = 2 // end to check: 0 = start, 1 = end, 2 = start and end
         ) const;
-
+  
   double SuperfluousKnot(
            int // 0 = start, 1 = end
            ) const;
@@ -44793,7 +44689,7 @@ public:
   //   Does not change parameterization or locus of curve.
   // Returns:
   //   true if successful
-  bool InsertKnot(
+  bool InsertKnot( 
             double knot_value,
             int knot_multiplicity
             );
@@ -44827,7 +44723,7 @@ public:
 
   ////////
   // Converts a span of the NURBS curve into a bezier.  If
-  // the span is empty
+  // the span is empty 
   // (m_knot[span_index+m_order-2] == m_knot[span_index+m_order-1]),
   // then false is returned.
   bool ConvertSpanToBezier(
@@ -44848,18 +44744,9 @@ public:
     false if the span is not singular or span_index does not identify
     a non-empty span.
   */
-  bool SpanIsSingular(
-    int span_index
+  bool SpanIsSingular( 
+    int span_index 
     ) const;
-
-  /*
-  Returns:
-    True if every span in the NURBS curve is singular.
-  See Also:
-    ON_NurbsCurve::RepairBadKnots()
-    ON_NurbsCurve::RemoveShortSegments()
-  */
-  bool IsSingular() const;
 
   /*
   Paramaters:
@@ -44882,7 +44769,7 @@ public:
     ON_NurbsCurve::RemoveShortSegments()
   */
   bool RemoveSpan(
-    int span_index
+    int span_index 
     );
 
   /*
@@ -44892,22 +44779,22 @@ public:
   int RemoveSingularSpans();
 
   ////////
-  // Returns true if the NURBS curve has bezier spans
+  // Returns true if the NURBS curve has bezier spans 
   // (all distinct knots have multiplitity = degree)
   bool HasBezierSpans() const;
 
   /*
   Description:
-    Clamps ends and adds knots so the NURBS curve has bezier spans
+    Clamps ends and adds knots so the NURBS curve has bezier spans 
    (all distinct knots have multiplitity = degree).
   Paremeters:
     bSetEndWeightsToOne - [in] If true and the first or last weight is
-       not one, then the first and last spans are reparameterized so
+       not one, then the first and last spans are reparameterized so 
        that the end weights are one.
   Returns:
     true if successful.
-  */
-  bool MakePiecewiseBezier(
+  */      
+  bool MakePiecewiseBezier( 
         bool bSetEndWeightsToOne = false
         );
 
@@ -44926,25 +44813,25 @@ public:
     The domain, eucleanean locations of the control points,
     and locus of the curve do not change, but the weights,
     homogeneous cv values and internal knot values may change.
-    If w0 and w1 are 1 and the curve is not rational, the
+    If w0 and w1 are 1 and the curve is not rational, the 
     curve is not changed.
   */
   bool ChangeEndWeights( double w0, double w1 );
 
   /*
   Description:
-    Use a linear fractional transformation to reparameterize
+    Use a linear fractional transformation to reparameterize 
     the NURBS curve.  This does not change the curve's domain.
   Parameters:
     c - [in]
       reparameterization constant (generally speaking, c should be > 0).
-      The control points and knots are adjusted so that
+      The control points and knots are adjusted so that 
       output_nurbs(t) = input_nurbs(lambda(t)), where
       lambda(t) = c*t/( (c-1)*t + 1 ).
-      Note that lambda(0) = 0, lambda(1) = 1, lambda'(t) > 0,
+      Note that lambda(0) = 0, lambda(1) = 1, lambda'(t) > 0, 
       lambda'(0) = c and lambda'(1) = 1/c.
   Returns:
-    true if successful.
+    true if successful.  
   Remarks:
     The cv and knot values are values are changed so that
     output_nurbs(t) = input_nurbs(lambda(t)).
@@ -44992,7 +44879,7 @@ public:
 
   double* m_knot;           // Knot vector. ( The knot vector has length
                             // m_order+m_cv_count-2. )
-
+  
   // control vertex net memory
 
   int     m_cv_stride;      // The pointer to start of "CV[i]" is
@@ -45030,7 +44917,7 @@ public:
 // THIS SOFTWARE IS PROVIDED "AS IS" WITHOUT EXPRESS OR IMPLIED WARRANTY.
 // ALL IMPLIED WARRANTIES OF FITNESS FOR ANY PARTICULAR PURPOSE AND OF
 // MERCHANTABILITY ARE HEREBY DISCLAIMED.
-//
+//				
 // For complete openNURBS copyright information see <http://www.opennurbs.org>.
 //
 ////////////////////////////////////////////////////////////////
@@ -45046,14 +44933,14 @@ public:
 #define OPENNURBS_POLYCURVE_INC_
 
 /*
- Description:
-		An ON_PolyCurve is an ON_Curve represented by a sequence of
-	contiguous ON_Curve segments.    A valid polycurve is represented
+ Description: 
+		An ON_PolyCurve is an ON_Curve represented by a sequence of 
+	contiguous ON_Curve segments.    A valid polycurve is represented 
 	by an array m_segment of Count()>=1 curve objects	and a strictly
-	increasing array m_t of Count()+1 parameter values.  The i-th
-	curve segment,  when considered as part of the polycurve, is affinely
-	reparamaterized from m_t[i] to m_t[i+1], i.e., m_segment[i].Domain()[0]
-	is mapped to 	m_t[i] and m_segment[i].Domain()[1] is mapped to m_t[i+1].
+	increasing array m_t of Count()+1 parameter values.  The i-th 
+	curve segment,  when considered as part of the polycurve, is affinely 
+	reparamaterized from m_t[i] to m_t[i+1], i.e., m_segment[i].Domain()[0] 
+	is mapped to 	m_t[i] and m_segment[i].Domain()[1] is mapped to m_t[i+1]. 
 */
 class ON_PolyCurve;
 class ON_CLASS ON_PolyCurve : public ON_Curve
@@ -45077,7 +44964,7 @@ public:
   void EmergencyDestroy(); // call if memory used by ON_PolyCurve becomes invalid
 
 	ON_PolyCurve& operator=(const ON_PolyCurve&);
-
+  
   /////////////////////////////////////////////////////////////////
   // ON_Object overrides
 
@@ -45095,9 +44982,9 @@ public:
     text_log - [in] if the object is not valid and text_log
         is not NULL, then a brief englis description of the
         reason the object is not valid is appened to the log.
-        The information appended to text_log is suitable for
-        low-level debugging purposes by programmers and is
-        not intended to be useful as a high level user
+        The information appended to text_log is suitable for 
+        low-level debugging purposes by programmers and is 
+        not intended to be useful as a high level user 
         interface tool.
   Returns:
     @untitled table
@@ -45119,9 +45006,9 @@ public:
     text_log - [in] if the object is not valid and text_log
         is not NULL, then a brief englis description of the
         reason the object is not valid is appened to the log.
-        The information appended to text_log is suitable for
-        low-level debugging purposes by programmers and is
-        not intended to be useful as a high level user
+        The information appended to text_log is suitable for 
+        low-level debugging purposes by programmers and is 
+        not intended to be useful as a high level user 
         interface tool.
   Returns:
     @untitled table
@@ -45159,9 +45046,9 @@ public:
     Get tight bounding box.
 	Parameters:
 		tight_bbox - [in/out] tight bounding box
-		bGrowBox -[in]	(default=false)
+		bGrowBox -[in]	(default=false)			
       If true and the input tight_bbox is valid, then returned
-      tight_bbox is the union of the input tight_bbox and the
+      tight_bbox is the union of the input tight_bbox and the 
       curve's tight bounding box.
 		xform -[in] (default=NULL)
       If not NULL, the tight bounding box of the transformed
@@ -45169,13 +45056,13 @@ public:
 	Returns:
     True if a valid tight_bbox is returned.
   */
-	bool GetTightBoundingBox(
-			ON_BoundingBox& tight_bbox,
+	bool GetTightBoundingBox( 
+			ON_BoundingBox& tight_bbox, 
       int bGrowBox = false,
 			const ON_Xform* xform = 0
       ) const;
 
-  ON_BOOL32 Transform(
+  ON_BOOL32 Transform( 
          const ON_Xform&
          );
 
@@ -45208,8 +45095,8 @@ public:
   // Returns:
   //   true if successful.
   ON_BOOL32 SetDomain(
-        double t0,
-        double t1
+        double t0, 
+        double t1 
         );
 
   bool ChangeDimension(
@@ -45228,19 +45115,19 @@ public:
   Remarks:
     Overrides virtual ON_Curve::ChangeClosedCurveSeam
   */
-  ON_BOOL32 ChangeClosedCurveSeam(
-            double t
+  ON_BOOL32 ChangeClosedCurveSeam( 
+            double t 
             );
 
   int SpanCount() const; // number of smooth spans in curve
 
-  ON_BOOL32 GetSpanVector( // span "knots"
-         double* // array of length SpanCount() + 1
-         ) const; //
+  ON_BOOL32 GetSpanVector( // span "knots" 
+         double* // array of length SpanCount() + 1 
+         ) const; // 
 
-  int Degree( // returns maximum algebraic degree of any span
+  int Degree( // returns maximum algebraic degree of any span 
                   // ( or a good estimate if curve spans are not algebraic )
-    ) const;
+    ) const; 
 
   ON_BOOL32 IsLinear( // true if curve locus is a line segment between
                  // between specified points
@@ -45293,9 +45180,9 @@ public:
                   // periodic.)
 
   ON_BOOL32 IsPeriodic(  // true if curve is a single periodic segment
-        void
+        void 
         ) const;
-
+  
   /*
   Description:
     Search for a derivatitive, tangent, or curvature discontinuity.
@@ -45307,17 +45194,17 @@ public:
           parameter at the discontinuity.
     hint - [in/out] if GetNextDiscontinuity will be called repeatedly,
        passing a "hint" with initial value *hint=0 will increase the speed
-       of the search.
+       of the search.       
     dtype - [out] if not NULL, *dtype reports the kind of discontinuity
         found at *t.  A value of 1 means the first derivative or unit tangent
         was discontinuous.  A value of 2 means the second derivative or
         curvature was discontinuous.
     cos_angle_tolerance - [in] default = cos(1 degree) Used only when
         c is ON::G1_continuous or ON::G2_continuous.  If the cosine
-        of the angle between two tangent vectors
+        of the angle between two tangent vectors 
         is <= cos_angle_tolerance, then a G1 discontinuity is reported.
     curvature_tolerance - [in] (default = ON_SQRT_EPSILON) Used only when
-        c is ON::G2_continuous or ON::Gsmooth_continuous.
+        c is ON::G2_continuous or ON::Gsmooth_continuous.  
         ON::G2_continuous:
           If K0 and K1 are curvatures evaluated
           from above and below and |K0 - K1| > curvature_tolerance,
@@ -45332,7 +45219,7 @@ public:
   Remarks:
     Overrides ON_Curve::GetNextDiscontinuity.
   */
-  bool GetNextDiscontinuity(
+  bool GetNextDiscontinuity( 
                   ON::continuity c,
                   double t0,
                   double t1,
@@ -45358,10 +45245,10 @@ public:
         greater than d2_tolerance, then the curve is not C2.
     cos_angle_tolerance - [in] default = cos(1 degree) Used only when
         c is ON::G1_continuous or ON::G2_continuous.  If the cosine
-        of the angle between two tangent vectors
+        of the angle between two tangent vectors 
         is <= cos_angle_tolerance, then a G1 discontinuity is reported.
     curvature_tolerance - [in] (default = ON_SQRT_EPSILON) Used only when
-        c is ON::G2_continuous or ON::Gsmooth_continuous.
+        c is ON::G2_continuous or ON::Gsmooth_continuous.  
         ON::G2_continuous:
           If K0 and K1 are curvatures evaluated
           from above and below and |K0 - K1| > curvature_tolerance,
@@ -45378,7 +45265,7 @@ public:
   */
   bool IsContinuous(
     ON::continuity c,
-    double t,
+    double t, 
     int* hint = NULL,
     double point_tolerance=ON_ZERO_TOLERANCE,
     double d1_tolerance=ON_ZERO_TOLERANCE,
@@ -45437,7 +45324,7 @@ public:
          double*,        // array of length stride*(ndir+1)
          int = 0,        // optional - determines which side to evaluate from
                          //         0 = default
-                         //      <  0 to evaluate from below,
+                         //      <  0 to evaluate from below, 
                          //      >  0 to evaluate from above
          int* = 0        // optional - evaluation hint (int) used to speed
                          //            repeated evaluations
@@ -45459,10 +45346,10 @@ public:
   // Description:
   //   Where possible, analytically extends curve to include domain.
   // Parameters:
-  //   domain - [in] if domain is not included in curve domain,
-  //   curve will be extended so that its domain includes domain.
+  //   domain - [in] if domain is not included in curve domain, 
+  //   curve will be extended so that its domain includes domain.  
   //   Will not work if curve is closed. Original curve is identical
-  //   to the restriction of the resulting curve to the original curve domain,
+  //   to the restriction of the resulting curve to the original curve domain, 
   // Returns:
   //   true if successful.
   bool Extend(
@@ -45501,9 +45388,9 @@ public:
                    //            matches the curve's to wthe desired accuracy
                    //         2: success - returned NURBS point locus matches
                    //            the curve's to the desired accuracy but, on
-                   //            the interior of the curve's domain, the
+                   //            the interior of the curve's domain, the 
                    //            curve's parameterization and the NURBS
-                   //            parameterization may not match to the
+                   //            parameterization may not match to the 
                    //            desired accuracy.
         ON_NurbsCurve&,
         double = 0.0,
@@ -45516,9 +45403,9 @@ public:
                    //            matches the curve's to wthe desired accuracy
                    //         2: success - returned NURBS point locus matches
                    //            the curve's to the desired accuracy but, on
-                   //            the interior of the curve's domain, the
+                   //            the interior of the curve's domain, the 
                    //            curve's parameterization and the NURBS
-                   //            parameterization may not match to the
+                   //            parameterization may not match to the 
                    //            desired accuracy.
         ) const;
 
@@ -45559,7 +45446,7 @@ public:
   Description:
     Converts a polycurve parameter to a segment curve parameter.
   Parameters:
-    polycurve_parameter - [in]
+    polycurve_parameter - [in] 
   Returns:
     Segment curve evaluation parameter or ON_UNSET_VALUE if the
     segment curve parameter cannot be computed.
@@ -45575,7 +45462,7 @@ public:
     Converts a segment curve parameter to a polycurve parameter.
   Parameters:
     segment_index - [in]
-    segmentcurve_parameter - [in]
+    segmentcurve_parameter - [in] 
   Returns:
     Polycurve evaluation parameter or ON_UNSET_VALUE if the
     polycurve curve parameter cannot be computed.
@@ -45594,10 +45481,10 @@ public:
     segment_index - [in] 0 based index  (0 <= segment_index < Count() )
   Returns:
     The polycurve subdomain assigned to a segment curve.
-    Returns ([ON_UNSET_VALUE,ON_UNSET_VALUE) if segment_index < 0
+    Returns ([ON_UNSET_VALUE,ON_UNSET_VALUE) if segment_index < 0  
     or segment_index >= Count().
   */
-  ON_Interval SegmentDomain(
+  ON_Interval SegmentDomain( 
     int segment_index
     ) const;
 
@@ -45620,7 +45507,7 @@ public:
     Find the segments with support on sub_domain.
   Parameters:
     sub_domain - [in] increasing interval
-    segment_index0 - [out]
+    segment_index0 - [out] 
     segment_index1 - [out] segments with index i where
       *segment_index0 <= i < *segment_index1 are the segments
       with support on the sub_domain
@@ -45639,14 +45526,14 @@ public:
 
   /*
   Description:
-    Search the curve for gaps between the sub curve segments.
+    Search the curve for gaps between the sub curve segments. 
   Parameters:
     segment_index0 - [in]
       The search for gaps starts at with the comparing
       the end of segment[segment_index0] and the start of
       segment[segment_index0+1].
   Returns:
-    0:
+    0:     
       No gaps were found.
     i > segment_index0:
       The end of polycuve segment[i-1] is not coincident
@@ -45656,37 +45543,37 @@ public:
 
   /*
   Description:
-    Determine if there is a gap between the end of
+    Determine if there is a gap between the end of 
     segment[segment_index] and the start of segment[segment_index+1].
   Parameters:
     segment_index - [in]
       >= 0
   Returns:
-    true:
+    true: 
       segment_index was valid and there is a gap between
       the end of segment[segment_index] and the start of
       segment[segment_index+1].
   */
   bool HasGapAt( int segment_index ) const;
-
+  
   // Replace calls to HasGap() with FindNextGap(0)
   ON_DEPRECATED int HasGap() const;
 
   /*
   Description:
-    Modify the one or both locations at the end of
+    Modify the one or both locations at the end of 
     segment[gap_index-1] and the start of segment[gap_index]
-    so they are coindicent.
+    so they are coindicent.  
   Parameters:
     gap_index - [in] 1 <= gap_index < Count()
-      If the locations at the end of segment[gap_index-1] and
+      If the locations at the end of segment[gap_index-1] and 
       the start of segment[gap_index] are not identical, then
       an attempt is made to modify the segments so these
       locations are closer.
     ends_to_modify - [in]
       0: (suggested)
         The code will decide what segments to modify.
-      1:
+      1: 
         modify the end location of segment[gap_index-1]
       2:
         modify the start location of segment[gap_index]
@@ -45696,7 +45583,7 @@ public:
     False if no modification was preformed because there
     was no gap or because one could not be performed.
   Remarks:
-    Note that passing the return value from FindNextGap() will
+    Note that passing the return value from FindNextGap() will 
     close the gap found by FindNextGap().
   */
   bool CloseGap( int gap_index, int segments_to_modify );
@@ -45716,12 +45603,12 @@ public:
   // the original curve segment to survive ~ON_PolyCurve().
   ON_BOOL32 Prepend( ON_Curve* ); // Prepend curve.
   ON_BOOL32 Append( ON_Curve* );  // Append curve.
-  ON_BOOL32 Insert(
+  ON_BOOL32 Insert( 
            int, // segment_index,
            ON_Curve*
            );
 
-  //PrependAndMatch() and AppendAndMatch() return false if this->IsCLosed() or
+  //PrependAndMatch() and AppendAndMatch() return false if this->IsCLosed() or 
   //this->Count() > 0 and curve is closed
   ON_BOOL32 PrependAndMatch(ON_Curve*); //Prepend and match end of curve to start of polycurve
   ON_BOOL32 AppendAndMatch(ON_Curve*);  //Append and match start of curve to end of polycurve
@@ -45750,7 +45637,7 @@ public:
   */
 	void RemoveNesting();
 
-  /*
+  /* 
   Description:
     Removes the nested of polycurves. The result will have not
     have an  ON_PolyCurve  as a segment but will have identical
@@ -45761,7 +45648,7 @@ public:
   */
 	bool RemoveNestingEx();
 
-  /*
+  /* 
   Returns:
     True if the domains of the curves in the m_segment[] array exactly
     match the domains of the segments specified in the m_t[] array.
@@ -45770,7 +45657,7 @@ public:
   */
 	bool HasSynchronizedSegmentDomains() const;
 
-  /*
+  /* 
   Description:
     Sets the domain of the curve int the m_segment[] array to exactly
     match the domain defined in the m_t[] array.  This is not required,
@@ -45785,8 +45672,8 @@ public:
 
 
 	//////////
-	// Expert user function
-	//   Sets the m_segment[index] to crv.
+	// Expert user function  
+	//   Sets the m_segment[index] to crv. 
 	void SetSegment(int index, ON_Curve* crv);
 
 	//////////
@@ -45802,25 +45689,25 @@ public:
 
 /*
 	Description:
-		Lookup a parameter in the m_t array, optionally using a built in snap tolerance to
+		Lookup a parameter in the m_t array, optionally using a built in snap tolerance to 
 		snap a parameter value to an element of m_t.
 	Parameters:
 		t    - [in]	  	parameter
-		index -[out]	index into m_t such that if the function returns true then t is equal
-									to, or is within tolerance of m_t[index].
+		index -[out]	index into m_t such that if the function returns true then t is equal 
+									to, or is within tolerance of m_t[index]. 
 					  			if function returns false then the value of index is
 
-									 @table
+									 @table  
 												condition									value of index
 						  			t<m_t[0] or m_t is empty				-1
 										m_t[i] < t < m_t[i+1]				i for 0<=i<=m_t.Count()-2
 										t>m_t[ m_t.Count()-1]				m_t.Count()-1
-
-		bEnableSnap -[in]  if true use tolerance when comparing to m_t values
-	Returns
+									
+		bEnableSnap -[in]  if true use tolerance when comparing to m_t values 
+	Returns		
 		true if the t is exactly equal to, or within tolerance of
-		(only if bEnableSnap==true) m_t[index].
-*/
+		(only if bEnableSnap==true) m_t[index]. 
+*/ 
 	bool ParameterSearch(double t, int& index, bool bEnableSnap) const;
 
   /*
@@ -45861,7 +45748,7 @@ private:
 // THIS SOFTWARE IS PROVIDED "AS IS" WITHOUT EXPRESS OR IMPLIED WARRANTY.
 // ALL IMPLIED WARRANTIES OF FITNESS FOR ANY PARTICULAR PURPOSE AND OF
 // MERCHANTABILITY ARE HEREBY DISCLAIMED.
-//
+//				
 // For complete openNURBS copyright information see <http://www.opennurbs.org>.
 //
 ////////////////////////////////////////////////////////////////
@@ -45916,9 +45803,9 @@ public:
     text_log - [in] if the object is not valid and text_log
         is not NULL, then a brief englis description of the
         reason the object is not valid is appened to the log.
-        The information appended to text_log is suitable for
-        low-level debugging purposes by programmers and is
-        not intended to be useful as a high level user
+        The information appended to text_log is suitable for 
+        low-level debugging purposes by programmers and is 
+        not intended to be useful as a high level user 
         interface tool.
   Returns:
     @untitled table
@@ -45950,7 +45837,7 @@ public:
          ON_BOOL32 = false  // true means grow box
          ) const;
 
-  ON_BOOL32 Transform(
+  ON_BOOL32 Transform( 
          const ON_Xform&
          );
 
@@ -45966,13 +45853,13 @@ public:
 
   int SpanCount() const; // number of smooth spans in curve
 
-  ON_BOOL32 GetSpanVector( // span "knots"
-         double* // array of length SpanCount() + 1
-         ) const; //
+  ON_BOOL32 GetSpanVector( // span "knots" 
+         double* // array of length SpanCount() + 1 
+         ) const; // 
 
-  int Degree( // returns maximum algebraic degree of any span
+  int Degree( // returns maximum algebraic degree of any span 
                   // ( or a good estimate if curve spans are not algebraic )
-    ) const;
+    ) const; 
 
 
   // (optional - override if curve is piecewise smooth)
@@ -46012,9 +45899,9 @@ public:
                   // periodic.)
 
   ON_BOOL32 IsPeriodic(  // true if curve is a single periodic segment
-        void
+        void 
         ) const;
-
+  
   ON_BOOL32 Reverse();       // reverse parameterizatrion
                         // Domain changes from [a,b] to [-b,-a]
 
@@ -46025,7 +45912,7 @@ public:
          double*,        // array of length stride*(ndir+1)
          int = 0,        // optional - determines which side to evaluate from
                          //         0 = default
-                         //      <  0 to evaluate from below,
+                         //      <  0 to evaluate from below, 
                          //      >  0 to evaluate from above
          int* = 0        // optional - evaluation hint (int) used to speed
                          //            repeated evaluations
@@ -46037,9 +45924,9 @@ public:
                    //            matches the curve's to wthe desired accuracy
                    //         2: success - returned NURBS point locus matches
                    //            the curve's to the desired accuracy but, on
-                   //            the interior of the curve's domain, the
+                   //            the interior of the curve's domain, the 
                    //            curve's parameterization and the NURBS
-                   //            parameterization may not match to the
+                   //            parameterization may not match to the 
                    //            desired accuracy.
         ON_NurbsCurve&,
         double = 0.0,
@@ -46054,7 +45941,7 @@ public:
   // the destructor to destroy the curves
   ON_Curve* m_c2;  // REQUIRED parameter space (2d) curve
   ON_Curve* m_c3;  // OPTIONAL 3d curve (approximation) to srf(crv2(t))
-  ON_Surface* m_s;
+  ON_Surface* m_s; 
 };
 
 
@@ -46069,7 +45956,7 @@ public:
 // THIS SOFTWARE IS PROVIDED "AS IS" WITHOUT EXPRESS OR IMPLIED WARRANTY.
 // ALL IMPLIED WARRANTIES OF FITNESS FOR ANY PARTICULAR PURPOSE AND OF
 // MERCHANTABILITY ARE HEREBY DISCLAIMED.
-//
+//				
 // For complete openNURBS copyright information see <http://www.opennurbs.org>.
 //
 ////////////////////////////////////////////////////////////////
@@ -46138,7 +46025,7 @@ public:
           const ON_NurbsSurface& nurbs_surface
           );
   static ON_NurbsSurface* New(
-            const ON_BezierSurface& bezier_surface
+            const ON_BezierSurface& bezier_surface 
             );
   static ON_NurbsSurface* New(
           int dimension,
@@ -46179,15 +46066,15 @@ public:
   Returns:
     true if curves are tne same.
   */
-  bool IsDuplicate(
-          const ON_NurbsSurface& other,
+  bool IsDuplicate( 
+          const ON_NurbsSurface& other, 
           bool bIgnoreParameterization,
-          double tolerance = ON_ZERO_TOLERANCE
+          double tolerance = ON_ZERO_TOLERANCE 
           ) const;
 
   void Initialize(void);  // zeros all fields
 
-  ON_BOOL32 Create(
+  ON_BOOL32 Create( 
           int dim,  // dimension (>= 1)
           ON_BOOL32 is_rat, // true to make a rational NURBS
           int order0,  // order0 (>= 2)
@@ -46214,12 +46101,12 @@ public:
   Remarks:
     The ruling parameter is the second surface parameter and
     it is in the interval [0,1].
-    The true ruled surface has parameterization
+    The true ruled surface has parameterization 
     srf(s,t) = (1.0-t)*curveA(s) + t*curveB(s).
     The returned NURBS surface has parameterization
     srf(s,t) = (1.0-t)*nurbs_curveA(s) + t*nurbs_curveB(s),
     where nurbs_curveX is the NURBS form of curveX.  If the
-    parameterization of nurbs_curveX does not match the
+    parameterization of nurbs_curveX does not match the 
     parameterization of curveX, then 2 is returned.
   */
   virtual
@@ -46246,12 +46133,12 @@ public:
   Remarks:
     The ruling parameter is the second surface parameter and
     it is in the interval [0,1].
-    The true cone surface has parameterization
+    The true cone surface has parameterization 
     srf(s,t) = (1.0-t)*curve(s) + t*apex_point.
     The returned NURBS surface has parameterization
     srf(s,t) = (1.0-t)*nurbs_curve(s) + t*apex_point,
     where nurbs_curve is the NURBS form of curve.  If the
-    parameterization of nurbs_curve does not match the
+    parameterization of nurbs_curve does not match the 
     parameterization of curve, then 2 is returned.
   */
   int CreateConeSurface(
@@ -46264,8 +46151,8 @@ public:
   Description:
     Collapse the side of a NURBS surface to a single point.
   Parameters:
-    side - [in] 0 = south west,
-                1 = south east,
+    side - [in] 0 = south west, 
+                1 = south east, 
                 2 = north east,
                 3 = north west
     point - [in] point to collapse to.  If point is ON_unset_point,
@@ -46289,7 +46176,7 @@ public:
   void EmergencyDestroy(); // call if memory used by this class becomes invalid
 
   ON_NurbsSurface& operator=(const ON_NurbsSurface&);
-
+  
   /*
   Description:
     Set NURBS surface equal to bezier surface with domain [0,1]x[0,1].
@@ -46311,9 +46198,9 @@ public:
     text_log - [in] if the object is not valid and text_log
         is not NULL, then a brief englis description of the
         reason the object is not valid is appened to the log.
-        The information appended to text_log is suitable for
-        low-level debugging purposes by programmers and is
-        not intended to be useful as a high level user
+        The information appended to text_log is suitable for 
+        low-level debugging purposes by programmers and is 
+        not intended to be useful as a high level user 
         interface tool.
   Returns:
     @untitled table
@@ -46345,7 +46232,7 @@ public:
          ON_BOOL32 = false  // true means grow box
          ) const;
 
-  ON_BOOL32 Transform(
+  ON_BOOL32 Transform( 
          const ON_Xform&
          );
 
@@ -46362,9 +46249,9 @@ public:
   /////////////////////////////////////////////////////////////////
   // ON_Surface overrides
 
-  ON_BOOL32 SetDomain(
+  ON_BOOL32 SetDomain( 
     int dir, // 0 sets first parameter's domain, 1 gets second parameter's domain
-    double t0,
+    double t0, 
     double t1
     );
 
@@ -46385,24 +46272,24 @@ public:
   Returns:
     true if successful.
   */
-  ON_BOOL32 GetSurfaceSize(
-      double* width,
-      double* height
+  ON_BOOL32 GetSurfaceSize( 
+      double* width, 
+      double* height 
       ) const;
 
   int SpanCount(
     int // 0 gets first parameter's domain, 1 gets second parameter's domain
     ) const; // number of smooth spans in curve
 
-  ON_BOOL32 GetSpanVector( // span "knots"
+  ON_BOOL32 GetSpanVector( // span "knots" 
     int, // 0 gets first parameter's domain, 1 gets second parameter's domain
-    double* // array of length SpanCount() + 1
-    ) const; //
+    double* // array of length SpanCount() + 1 
+    ) const; // 
 
-  int Degree( // returns maximum algebraic degree of any span
+  int Degree( // returns maximum algebraic degree of any span 
                   // ( or a good estimate if curve spans are not algebraic )
     int // 0 gets first parameter's domain, 1 gets second parameter's domain
-    ) const;
+    ) const; 
 
   ON_BOOL32 GetParameterTolerance( // returns tminus < tplus: parameters tminus <= s <= tplus
          int,     // 0 gets first parameter, 1 gets second parameter
@@ -46435,9 +46322,9 @@ public:
                    // periodic.)
 
   ON_BOOL32 IsPeriodic( // true if NURBS surface is periodic (degree > 1,
-        int // dir // periodic knot vector, last degree many CVs
+        int // dir // periodic knot vector, last degree many CVs 
         ) const;   // are duplicates of first degree many CVs.)
-
+  
   ON_BOOL32 IsSingular( // true if surface side is collapsed to a point
         int        // side of parameter space to test
                    // 0 = south, 1 = east, 2 = north, 3 = west
@@ -46445,45 +46332,45 @@ public:
 
   /*
   Description:
-    Search for a derivatitive, tangent, or curvature
+    Search for a derivatitive, tangent, or curvature 
     discontinuity.
   Parameters:
     dir - [in] If 0, then "u" parameter is checked.  If 1, then
                the "v" parameter is checked.
     c - [in] type of continity to test for.
     t0 - [in] Search begins at t0. If there is a discontinuity
-              at t0, it will be ignored.  This makes it
+              at t0, it will be ignored.  This makes it 
               possible to repeatedly call GetNextDiscontinuity
               and step through the discontinuities.
-    t1 - [in] (t0 != t1)  If there is a discontinuity at t1 is
+    t1 - [in] (t0 != t1)  If there is a discontinuity at t1 is 
               will be ingored unless c is a locus discontinuity
               type and t1 is at the start or end of the curve.
     t - [out] if a discontinuity is found, then *t reports the
           parameter at the discontinuity.
-    hint - [in/out] if GetNextDiscontinuity will be called
+    hint - [in/out] if GetNextDiscontinuity will be called 
        repeatedly, passing a "hint" with initial value *hint=0
-       will increase the speed of the search.
-    dtype - [out] if not NULL, *dtype reports the kind of
-        discontinuity found at *t.  A value of 1 means the first
-        derivative or unit tangent was discontinuous.  A value
-        of 2 means the second derivative or curvature was
+       will increase the speed of the search.       
+    dtype - [out] if not NULL, *dtype reports the kind of 
+        discontinuity found at *t.  A value of 1 means the first 
+        derivative or unit tangent was discontinuous.  A value 
+        of 2 means the second derivative or curvature was 
         discontinuous.  A value of 0 means teh curve is not
         closed, a locus discontinuity test was applied, and
         t1 is at the start of end of the curve.
     cos_angle_tolerance - [in] default = cos(1 degree) Used only
         when c is ON::G1_continuous or ON::G2_continuous.  If the
-        cosine of the angle between two tangent vectors is
+        cosine of the angle between two tangent vectors is 
         <= cos_angle_tolerance, then a G1 discontinuity is reported.
-    curvature_tolerance - [in] (default = ON_SQRT_EPSILON) Used
-        only when c is ON::G2_continuous.  If K0 and K1 are
-        curvatures evaluated from above and below and
-        |K0 - K1| > curvature_tolerance, then a curvature
+    curvature_tolerance - [in] (default = ON_SQRT_EPSILON) Used 
+        only when c is ON::G2_continuous.  If K0 and K1 are 
+        curvatures evaluated from above and below and 
+        |K0 - K1| > curvature_tolerance, then a curvature 
         discontinuity is reported.
   Returns:
     Parametric continuity tests c = (C0_continuous, ..., G2_continuous):
 
-      true if a parametric discontinuity was found strictly
-      between t0 and t1. Note well that all curves are
+      true if a parametric discontinuity was found strictly 
+      between t0 and t1. Note well that all curves are 
       parametrically continuous at the ends of their domains.
 
     Locus continuity tests c = (C0_locus_continuous, ...,G2_locus_continuous):
@@ -46491,11 +46378,11 @@ public:
       true if a locus discontinuity was found strictly between
       t0 and t1 or at t1 is the at the end of a curve.
       Note well that all open curves (IsClosed()=false) are locus
-      discontinuous at the ends of their domains.  All closed
-      curves (IsClosed()=true) are at least C0_locus_continuous at
+      discontinuous at the ends of their domains.  All closed 
+      curves (IsClosed()=true) are at least C0_locus_continuous at 
       the ends of their domains.
   */
-  bool GetNextDiscontinuity(
+  bool GetNextDiscontinuity( 
                   int dir,
                   ON::continuity c,
                   double t0,
@@ -46523,7 +46410,7 @@ public:
         greater than d2_tolerance, then the surface is not C2.
     cos_angle_tolerance - [in] default = cos(1 degree) Used only when
         c is ON::G1_continuous or ON::G2_continuous.  If the cosine
-        of the angle between two normal vectors
+        of the angle between two normal vectors 
         is <= cos_angle_tolerance, then a G1 discontinuity is reported.
     curvature_tolerance - [in] (default = ON_SQRT_EPSILON) Used only when
         c is ON::G2_continuous.  If K0 and K1 are curvatures evaluated
@@ -46536,8 +46423,8 @@ public:
   */
   bool IsContinuous(
     ON::continuity c,
-    double s,
-    double t,
+    double s, 
+    double t, 
     int* hint = NULL,
     double point_tolerance=ON_ZERO_TOLERANCE,
     double d1_tolerance=ON_ZERO_TOLERANCE,
@@ -46577,7 +46464,7 @@ public:
                1 first parameter is constant and second parameter varies
                  e.g., point on IsoCurve(1,c) at t is srf(c,t)
 
-    c - [in] value of constant parameter
+    c - [in] value of constant parameter 
   Returns:
     Isoparametric curve.
   */
@@ -46600,7 +46487,7 @@ public:
         the portions of the surface with parameters (s,t) satisfying
         s < Domain(0).Min() or s > Domain(0).Max() are trimmed away.
         If dir is 1, then the portions of the surface with parameters
-        (s,t) satisfying t < Domain(1).Min() or t > Domain(1).Max()
+        (s,t) satisfying t < Domain(1).Min() or t > Domain(1).Max() 
         are trimmed away.
   */
   ON_BOOL32 Trim(
@@ -46616,11 +46503,11 @@ public:
                    (the first surface parameter).
                 1  new Domain(1) will include domain.
                    (the second surface parameter).
-     domain - [in] if domain is not included in surface domain,
-     surface will be extended so that its domain includes domain.
-     Will not work if surface is closed in direction dir.
+     domain - [in] if domain is not included in surface domain, 
+     surface will be extended so that its domain includes domain.  
+     Will not work if surface is closed in direction dir. 
      Original surface is identical to the restriction of the
-     resulting surface to the original surface domain,
+     resulting surface to the original surface domain, 
    Returns:
      true if successful.
      */
@@ -46632,7 +46519,7 @@ public:
 
   /*
   Description:
-    Splits (divides) the surface into two parts at the
+    Splits (divides) the surface into two parts at the 
     specified parameter.
     Overrides virtual ON_Surface::Split.
 
@@ -46680,8 +46567,8 @@ public:
     Offset surface.
   */
   ON_Surface* Offset(
-        double offset_distance,
-        double tolerance,
+        double offset_distance, 
+        double tolerance, 
         double* max_deviation = NULL
         ) const;
 
@@ -46691,9 +46578,9 @@ public:
                    //            matches the surface's to wthe desired accuracy
                    //         2: success - returned NURBS point locus matches
                    //            the surfaces's to the desired accuracy but, on
-                   //            the interior of the surface's domain, the
+                   //            the interior of the surface's domain, the 
                    //            surface's parameterization and the NURBS
-                   //            parameterization may not match to the
+                   //            parameterization may not match to the 
                    //            desired accuracy.
         ON_NurbsSurface&,
         double = 0.0 // tolerance
@@ -46707,9 +46594,9 @@ public:
     Get the maximum length of a nurb surface's control polygon
     rows and/or columns
   Parameters:
-    dir - [in] 0 to get "u" direction length, 1 to get "v"
+    dir - [in] 0 to get "u" direction length, 1 to get "v" 
                direction length
-    length - [out] maximum length of a polygon "row" in the
+    length - [out] maximum length of a polygon "row" in the 
                    specified direction
   Returns:
     true if successful.
@@ -46720,15 +46607,15 @@ public:
   bool IsRational(  // true if NURBS surface is rational
         void
         ) const;
-
-  int CVSize(       // number of doubles per control vertex
+  
+  int CVSize(       // number of doubles per control vertex 
         void        // = IsRational() ? Dim()+1 : Dim()
         ) const;
-
+  
   int Order(        // order = degree + 1
         int         // dir 0 = "s", 1 = "t"
         ) const;
-
+	
   int CVCount(      // number of control vertices
         int         // dir 0 = "s", 1 = "t"
         ) const;
@@ -46740,12 +46627,12 @@ public:
   int KnotCount(    // total number of knots in knot vector
         int dir         // dir 0 = "s", 1 = "t"
         ) const;
-
+  
   /*
   Description:
     Expert user function to get a pointer to control vertex
     memory.  If you are not an expert user, please use
-    ON_NurbsSurface::GetCV( ON_3dPoint& ) or
+    ON_NurbsSurface::GetCV( ON_3dPoint& ) or 
     ON_NurbsSurface::GetCV( ON_4dPoint& ).
   Parameters:
     i - [in] (0 <= i < m_cv_count[0])
@@ -46753,10 +46640,10 @@ public:
   Returns:
     Pointer to control vertex.
   Remarks:
-    If the NURBS surface is rational, the format of the
+    If the NURBS surface is rational, the format of the 
     returned array is a homogeneos rational point with
-    length m_dim+1.  If the NURBS surface is not rational,
-    the format of the returned array is a nonrational
+    length m_dim+1.  If the NURBS surface is not rational, 
+    the format of the returned array is a nonrational 
     euclidean point with length m_dim.
   See Also
     ON_NurbsSurface::CVStyle
@@ -46805,27 +46692,27 @@ public:
         const ON_4dPoint& cv// value of control vertex
         );
 
-  ON_BOOL32 SetCVRow(          // Sets CV( *, row_index )
+  ON_BOOL32 SetCVRow(          // Sets CV( *, row_index ) 
        int row_index,               // row_index >= 0 and < m_cv_count[1]
        const ON_3dPoint& cv // value of control vertex
                           // If NURBS is rational, weight
                           // will be set to 1.
        );
 
-  ON_BOOL32 SetCVRow(          // Sets CV( *, row_index )
+  ON_BOOL32 SetCVRow(          // Sets CV( *, row_index ) 
        int row_index,               // row_index >= 0 and < m_cv_count[1]
        int v_stride,               // v stride
        const double* v     // v[] = values (same dim and is_rat as surface)
        );
 
-  ON_BOOL32 SetCVColumn(       // Sets CV( col_index, * )
+  ON_BOOL32 SetCVColumn(       // Sets CV( col_index, * ) 
        int col_index,               // col_index >= 0 and < m_cv_count[0]
        const ON_3dPoint& cv // value of control vertex
                           // If NURBS is rational, weight
                           // will be set to 1.
        );
 
-  ON_BOOL32 SetCVColumn(       // Sets CV( col_index, * )
+  ON_BOOL32 SetCVColumn(       // Sets CV( col_index, * ) 
        int col_index,               // col_index >= 0 and < m_cv_count[0]
        int v_stride,               // v stride
        const double* v     // v[] = values (same dim and is_rat as surface)
@@ -46880,9 +46767,9 @@ public:
   //   Allocates m_knot[] if it is not big enough.
   // See Also:
   //   ON_MakeClampedUniformKnotVector
-  bool MakeClampedUniformKnotVector(
+  bool MakeClampedUniformKnotVector( 
     int dir,
-    double delta = 1.0
+    double delta = 1.0 
     );
 
   // Description:
@@ -46898,9 +46785,9 @@ public:
   //   Allocates m_knot[] if it is not big enough.
   // See Also:
   //   ON_MakePeriodicUniformKnotVector
-  bool MakePeriodicUniformKnotVector(
+  bool MakePeriodicUniformKnotVector( 
     int dir,
-    double delta = 1.0
+    double delta = 1.0 
     );
 
 
@@ -46908,7 +46795,7 @@ public:
         int dir,    // dir 0 = "s", 1 = "t"
         int end = 2 // end to check: 0 = start, 1 = end, 2 = start and end
         ) const;
-
+  
   double SuperfluousKnot(
            int dir,    // dir 0 = "s", 1 = "t"
            int end  // 0 = start, 1 = end
@@ -46973,9 +46860,9 @@ public:
   Returns:
     true if successful.
   */
-  ON_BOOL32 ChangeSurfaceSeam(
+  ON_BOOL32 ChangeSurfaceSeam( 
 						int dir,
-            double t
+            double t 
             );
 
 
@@ -47015,7 +46902,7 @@ public:
   */
   ON_BOOL32 ConvertSpanToBezier(
       int span_index0,
-      int span_index1,
+      int span_index1, 
       ON_BezierSurface& bezier_surface
       ) const;
 
@@ -47056,7 +46943,7 @@ public:
 
   double* m_knot[2];        // Knot vector. ( The knot vector has length
                             // m_order+m_cv_count-2. )
-
+  
   // control vertex net memory
 
   int     m_cv_stride[2];   // The pointer to start of "CV[i]" is
@@ -47080,7 +46967,7 @@ public:
                             // is stored in HOMOGENEOUS form and is
                             //
                             //         [ CV(i)[0], ..., CV(i)[m_dim] ].
-                            //
+                            // 
 };
 
 
@@ -47102,7 +46989,7 @@ public:
     int cv_count2
     );
 
-  ON_NurbsCage(
+  ON_NurbsCage( 
     const ON_BoundingBox& bbox,
     int order0,
     int order1,
@@ -47112,7 +46999,7 @@ public:
     int cv_count2
     );
 
-  ON_NurbsCage(
+  ON_NurbsCage( 
     const ON_3dPoint* box_corners, // array of 8 3d points
     int order0,
     int order1,
@@ -47146,8 +47033,8 @@ public:
     knot vectors are valid, and the other fields are valid
     for the specified orders and dimension.
   */
-  ON_BOOL32 IsValid(
-          ON_TextLog* text_log = NULL
+  ON_BOOL32 IsValid( 
+          ON_TextLog* text_log = NULL 
           ) const;
 
   /*
@@ -47162,7 +47049,7 @@ public:
   Description:
     Overrides the pure virtual ON_Object::SizeOf function.
   Returns:
-    An estimate of the amount of memory used by the class
+    An estimate of the amount of memory used by the class 
     and its members.
   */
   unsigned int SizeOf() const;
@@ -47224,8 +47111,8 @@ public:
   Returns:
     True if successful.
   */
-  void DestroyRuntimeCache(
-    bool bDelete = true
+  void DestroyRuntimeCache( 
+    bool bDelete = true 
     );
 
 
@@ -47263,7 +47150,7 @@ public:
   ON_BOOL32 GetBBox(
          double* boxmin,
          double* boxmax,
-         int bGrowBox = false
+         int bGrowBox = false 
          ) const;
 
   /*
@@ -47271,9 +47158,9 @@ public:
     Get tight bounding box.
 	Parameters:
 		tight_bbox - [in/out] tight bounding box
-		bGrowBox -[in]	(default=false)
+		bGrowBox -[in]	(default=false)			
       If true and the input tight_bbox is valid, then returned
-      tight_bbox is the union of the input tight_bbox and the
+      tight_bbox is the union of the input tight_bbox and the 
       surface's tight bounding box.
 		xform -[in] (default=NULL)
       If not NULL, the tight bounding box of the transformed
@@ -47281,8 +47168,8 @@ public:
 	Returns:
     True if a valid tight_bbox is returned.
   */
-	bool GetTightBoundingBox(
-			ON_BoundingBox& tight_bbox,
+	bool GetTightBoundingBox( 
+			ON_BoundingBox& tight_bbox, 
       int bGrowBox = false,
 			const ON_Xform* xform = 0
       ) const;
@@ -47296,7 +47183,7 @@ public:
   Returns:
     true if successful.
   */
-  ON_BOOL32 Transform(
+  ON_BOOL32 Transform( 
          const ON_Xform& xform
          );
 
@@ -47304,8 +47191,8 @@ public:
   Description:
     Overrides virtual ON_Geometry::IsDeformable function.
   Returns:
-    True because a NURBS volume can be accuratly modified
-    with "squishy" transformations like projections,
+    True because a NURBS volume can be accuratly modified 
+    with "squishy" transformations like projections, 
     shears, an non-uniform scaling.
   */
   bool IsDeformable() const;
@@ -47407,35 +47294,6 @@ public:
     int // dir 0 = "r", 1 = "s", 2 = "t"
     ) const;
 
-  bool Reverse(
-    int dir // dir 0 = "r", 1 = "s", 2 = "t"
-    );
-
-  bool Transpose(
-    int dir0,
-    int dir1
-    );
-
-  bool ClampEnd(
-            int dir,         // dir 0 = "r", 1 = "s", 2 = "t"
-            int end // 0 = clamp start, 1 = clamp end, 2 = clamp start and end
-            );
-
-  bool InsertKnot(
-           int dir,         // dir 0 = "r", 1 = "s", 2 = "t"
-           double knot_value, // value of knot
-           int knot_multiplicity=1   // multiplicity of knot ( >= 1 and <= degree )
-           );
-
-  ON_BOOL32 IncreaseDegree(
-           int dir,  // dir 0 = "r", 1 = "s", 2 = "t"
-           int desired_degree  //  desired_degree
-           );
-
-  ON_BOOL32 ChangeDimension(
-           int desired_dimension  //  desired_dimension
-           );
-
   /*
   Description:
     Evaluate the NURBS cage
@@ -47456,7 +47314,7 @@ public:
               In general, Dr^i Ds^j Dt^k is returned in v[n],...,v[n+m_dim-1], where
 
                d = (i+j+k)
-               n = v_stride*( d*(d+1)*(d+2)/6 + (j+k)*(j+k+1)/2 + k)
+               n = v_stride*( d*(d+1)*(d+2)/6 + (j+k)*(j+k+1)/2 + k) 
 
     side - [in] specifies the span to use for the evaluation
                 when r, s, or t is at a knot value.
@@ -47468,7 +47326,7 @@ public:
             5 = from lower NE quadrant
             6 = from lower NW quadrant
             7 = from lower SW quadrant
-            8 = from lower SE quadrant
+            8 = from lower SE quadrant  
     hint - [in/out] If a bunch of evaluations will be performed that
                     tend to occur in the same region, then
                     hint[3] can be used to speed the search for
@@ -47504,9 +47362,9 @@ public:
   See Also:
     ON_NurbsCage::PointAt
   */
-  bool Evaluate(
-         double r,
-         double s,
+  bool Evaluate( 
+         double r, 
+         double s, 
          double t,
          int der_count,
          int v_stride,
@@ -47524,8 +47382,8 @@ public:
     Value of the nurbs volume map at (r,s,t).
   */
   ON_3dPoint PointAt(
-         double r,
-         double s,
+         double r, 
+         double s, 
          double t
          ) const;
 
@@ -47535,15 +47393,6 @@ public:
          ON_NurbsSurface* srf = 0
          ) const;
 
-  bool Trim(
-         int dir,
-         const ON_Interval& domain
-         );
-
-  bool Extend(
-    int dir,
-    const ON_Interval& domain
-    );
 
   /*
   Description:
@@ -47558,13 +47407,13 @@ public:
          ) const;
 
   bool IsRational() const;
-
+  
   int CVSize() const;
-
+  
   int Order(
         int dir     // dir 0 = "r", 1 = "s", 2 = "t"
         ) const;
-
+	
   int CVCount(      // number of control vertices
         int         // dir 0 = "r", 1 = "s", 2 = "t"
         ) const;
@@ -47580,22 +47429,11 @@ public:
   int Degree(
         int dir
         ) const;
-
-
-  int SpanCount(
-    int dir         // dir 0 = "r", 1 = "s", 2 = "t"
-    ) const;
-
-  bool GetSpanVector(
-    int dir,        // dir 0 = "r", 1 = "s", 2 = "t"
-    double* span_vector
-    ) const;
-
   /*
   Description:
     Expert user function to get a pointer to control vertex
     memory.  If you are not an expert user, please use
-    ON_NurbsCage::GetCV( ON_3dPoint& ) or
+    ON_NurbsCage::GetCV( ON_3dPoint& ) or 
     ON_NurbsCage::GetCV( ON_4dPoint& ).
   Parameters:
     cv_index0 - [in] (0 <= cv_index0 < m_order[0])
@@ -47603,10 +47441,10 @@ public:
   Returns:
     Pointer to control vertex.
   Remarks:
-    If the Nurbs surface is rational, the format of the
+    If the Nurbs surface is rational, the format of the 
     returned array is a homogeneos rational point with
-    length m_dim+1.  If the Nurbs surface is not rational,
-    the format of the returned array is a nonrational
+    length m_dim+1.  If the Nurbs surface is not rational, 
+    the format of the returned array is a nonrational 
     euclidean point with length m_dim.
   See Also
     ON_NurbsCage::CVStyle
@@ -47733,7 +47571,7 @@ public:
                    // periodic.)
 
   bool IsPeriodic( // true if NURBS cage is periodic (degree > 1,
-        int // dir // periodic knot vector, last degree many CVs
+        int // dir // periodic knot vector, last degree many CVs 
         ) const;   // are duplicates of first degree many CVs.)
 
   bool IsSingular( // true if cage side is collapsed to a point
@@ -47786,9 +47624,9 @@ public:
 };
 
 ON_DECL
-bool ON_GetCageXform(
-          const ON_NurbsCage& cage,
-          ON_Xform& cage_xform
+bool ON_GetCageXform( 
+          const ON_NurbsCage& cage, 
+          ON_Xform& cage_xform 
           );
 
 
@@ -47803,7 +47641,7 @@ public:
 
 
   void Destroy();
-
+  
 
   /////////////////////////////////////////////////////////
   //
@@ -47843,15 +47681,15 @@ public:
          int bGrowBox = false
          ) const;
 
-	bool GetTightBoundingBox(
-			ON_BoundingBox& tight_bbox,
+	bool GetTightBoundingBox( 
+			ON_BoundingBox& tight_bbox, 
       int bGrowBox = false,
 			const ON_Xform* xform = 0
       ) const;
 
   void ClearBoundingBox();
 
-  ON_BOOL32 Transform(
+  ON_BOOL32 Transform( 
          const ON_Xform& xform
          );
 
@@ -47901,50 +47739,50 @@ public:
     Adds localizer with support near the controling NURBS object.
   Parameters:
     support_distance - [in] >= 0
-      If the distance a point to the controls NURBS
+      If the distance a point to the controls NURBS 
       curve/surface/cage is less than or equal to support_distance,
       then MorphPoint() deformation has 100% effect.
-
+      
     falloff_distance - [in] > 0
-      If the distance a point to the controls NURBS
+      If the distance a point to the controls NURBS 
       curve/surface/cage is more than support_distance+falloff_distance,
       then MorphPoint() deformation does not move the point.
-      As the distance varies from support_distance to
+      As the distance varies from support_distance to 
       support_distance+falloff_distance the deformation attenuates
       from 100% to 0%.
   */
   bool AddControlLocalizer(
-    double support_distance,
+    double support_distance, 
     double falloff_distance
     );
 
   bool AddSphereLocalizer(
     ON_3dPoint center,
-    double support_distance,
+    double support_distance, 
     double falloff_distance
     );
 
   bool AddCylinderLocalizer(
     ON_Line axis,
-    double support_distance,
+    double support_distance, 
     double falloff_distance
     );
 
   bool AddBoxLocalizer(
     ON_BoundingBox bbox,
-    double support_distance,
+    double support_distance, 
     double falloff_distance
     );
 
   bool AddPlaneLocalizer(
     const ON_Plane& plane,
-    double support_distance,
+    double support_distance, 
     double falloff_distance
     );
 
   bool AddConvexPolygonLocalizer(
     const ON_SimpleArray<ON_Plane>& planes,
-    double support_distance,
+    double support_distance, 
     double falloff_distance
     );
 
@@ -48012,17 +47850,17 @@ public:
 // Returns:
 //   An ON_NurbsSurface representation of the quadrilateral.
 ON_DECL
-ON_NurbsSurface* ON_NurbsSurfaceQuadrilateral(
-             const ON_3dPoint& P,
-             const ON_3dPoint& Q,
-             const ON_3dPoint& R,
+ON_NurbsSurface* ON_NurbsSurfaceQuadrilateral( 
+             const ON_3dPoint& P, 
+             const ON_3dPoint& Q, 
+             const ON_3dPoint& R, 
              const ON_3dPoint& S,
              ON_NurbsSurface* nurbs_surface = NULL
              );
 
 #if defined(ON_DLL_TEMPLATE)
 // This stuff is here because of a limitation in the way Microsoft
-// handles templates and DLLs.  See Microsoft's knowledge base
+// handles templates and DLLs.  See Microsoft's knowledge base 
 // article ID Q168958 for details.
 #pragma warning( push )
 #pragma warning( disable : 4231 )
@@ -48049,7 +47887,7 @@ ON_DLL_TEMPLATE template class ON_CLASS ON_SimpleArray<ON_NurbsCage*>;
 // THIS SOFTWARE IS PROVIDED "AS IS" WITHOUT EXPRESS OR IMPLIED WARRANTY.
 // ALL IMPLIED WARRANTIES OF FITNESS FOR ANY PARTICULAR PURPOSE AND OF
 // MERCHANTABILITY ARE HEREBY DISCLAIMED.
-//
+//				
 // For complete openNURBS copyright information see <http://www.opennurbs.org>.
 //
 ////////////////////////////////////////////////////////////////
@@ -48102,9 +47940,9 @@ public:
     text_log - [in] if the object is not valid and text_log
         is not NULL, then a brief englis description of the
         reason the object is not valid is appened to the log.
-        The information appended to text_log is suitable for
-        low-level debugging purposes by programmers and is
-        not intended to be useful as a high level user
+        The information appended to text_log is suitable for 
+        low-level debugging purposes by programmers and is 
+        not intended to be useful as a high level user 
         interface tool.
   Returns:
     @untitled table
@@ -48136,7 +47974,7 @@ public:
          ON_BOOL32 = false  // true means grow box
          ) const;
 
-  ON_BOOL32 Transform(
+  ON_BOOL32 Transform( 
          const ON_Xform&
          );
 
@@ -48156,9 +47994,9 @@ public:
   See Also:
     ON_PlaneSurface::SetExtents
   */
-  ON_BOOL32 SetDomain(
-    int dir,
-    double t0,
+  ON_BOOL32 SetDomain( 
+    int dir, 
+    double t0, 
     double t1
     );
 
@@ -48178,24 +48016,24 @@ public:
   Returns:
     true if successful.
   */
-  ON_BOOL32 GetSurfaceSize(
-      double* width,
-      double* height
+  ON_BOOL32 GetSurfaceSize( 
+      double* width, 
+      double* height 
       ) const;
 
   int SpanCount(
     int // 0 gets first parameter's domain, 1 gets second parameter's domain
     ) const; // number of smooth spans in curve
 
-  ON_BOOL32 GetSpanVector( // span "knots"
+  ON_BOOL32 GetSpanVector( // span "knots" 
     int, // 0 gets first parameter's domain, 1 gets second parameter's domain
-    double* // array of length SpanCount() + 1
-    ) const; //
+    double* // array of length SpanCount() + 1 
+    ) const; // 
 
-  int Degree( // returns maximum algebraic degree of any span
+  int Degree( // returns maximum algebraic degree of any span 
                   // ( or a good estimate if curve spans are not algebraic )
     int // 0 gets first parameter's domain, 1 gets second parameter's domain
-    ) const;
+    ) const; 
 
   ON_BOOL32 GetParameterTolerance( // returns tminus < tplus: parameters tminus <= s <= tplus
          int,     // 0 gets first parameter, 1 gets second parameter
@@ -48234,48 +48072,48 @@ public:
         int        // side of parameter space to test
                    // 0 = south, 1 = east, 2 = north, 3 = west
         ) const;
-
+  
   /*
   Description:
-    Search for a derivatitive, tangent, or curvature
+    Search for a derivatitive, tangent, or curvature 
     discontinuity.
   Parameters:
     dir - [in] If 0, then "u" parameter is checked.  If 1, then
                the "v" parameter is checked.
     c - [in] type of continity to test for.
     t0 - [in] Search begins at t0. If there is a discontinuity
-              at t0, it will be ignored.  This makes it
+              at t0, it will be ignored.  This makes it 
               possible to repeatedly call GetNextDiscontinuity
               and step through the discontinuities.
-    t1 - [in] (t0 != t1)  If there is a discontinuity at t1 is
+    t1 - [in] (t0 != t1)  If there is a discontinuity at t1 is 
               will be ingored unless c is a locus discontinuity
               type and t1 is at the start or end of the curve.
     t - [out] if a discontinuity is found, then *t reports the
           parameter at the discontinuity.
-    hint - [in/out] if GetNextDiscontinuity will be called
+    hint - [in/out] if GetNextDiscontinuity will be called 
        repeatedly, passing a "hint" with initial value *hint=0
-       will increase the speed of the search.
-    dtype - [out] if not NULL, *dtype reports the kind of
-        discontinuity found at *t.  A value of 1 means the first
-        derivative or unit tangent was discontinuous.  A value
-        of 2 means the second derivative or curvature was
+       will increase the speed of the search.       
+    dtype - [out] if not NULL, *dtype reports the kind of 
+        discontinuity found at *t.  A value of 1 means the first 
+        derivative or unit tangent was discontinuous.  A value 
+        of 2 means the second derivative or curvature was 
         discontinuous.  A value of 0 means teh curve is not
         closed, a locus discontinuity test was applied, and
         t1 is at the start of end of the curve.
     cos_angle_tolerance - [in] default = cos(1 degree) Used only
         when c is ON::G1_continuous or ON::G2_continuous.  If the
-        cosine of the angle between two tangent vectors is
+        cosine of the angle between two tangent vectors is 
         <= cos_angle_tolerance, then a G1 discontinuity is reported.
-    curvature_tolerance - [in] (default = ON_SQRT_EPSILON) Used
-        only when c is ON::G2_continuous.  If K0 and K1 are
-        curvatures evaluated from above and below and
-        |K0 - K1| > curvature_tolerance, then a curvature
+    curvature_tolerance - [in] (default = ON_SQRT_EPSILON) Used 
+        only when c is ON::G2_continuous.  If K0 and K1 are 
+        curvatures evaluated from above and below and 
+        |K0 - K1| > curvature_tolerance, then a curvature 
         discontinuity is reported.
   Returns:
     Parametric continuity tests c = (C0_continuous, ..., G2_continuous):
 
-      true if a parametric discontinuity was found strictly
-      between t0 and t1. Note well that all curves are
+      true if a parametric discontinuity was found strictly 
+      between t0 and t1. Note well that all curves are 
       parametrically continuous at the ends of their domains.
 
     Locus continuity tests c = (C0_locus_continuous, ...,G2_locus_continuous):
@@ -48283,11 +48121,11 @@ public:
       true if a locus discontinuity was found strictly between
       t0 and t1 or at t1 is the at the end of a curve.
       Note well that all open curves (IsClosed()=false) are locus
-      discontinuous at the ends of their domains.  All closed
-      curves (IsClosed()=true) are at least C0_locus_continuous at
+      discontinuous at the ends of their domains.  All closed 
+      curves (IsClosed()=true) are at least C0_locus_continuous at 
       the ends of their domains.
   */
-  bool GetNextDiscontinuity(
+  bool GetNextDiscontinuity( 
                   int dir,
                   ON::continuity c,
                   double t0,
@@ -48315,7 +48153,7 @@ public:
         greater than d2_tolerance, then the surface is not C2.
     cos_angle_tolerance - [in] default = cos(1 degree) Used only when
         c is ON::G1_continuous or ON::G2_continuous.  If the cosine
-        of the angle between two normal vectors
+        of the angle between two normal vectors 
         is <= cos_angle_tolerance, then a G1 discontinuity is reported.
     curvature_tolerance - [in] (default = ON_SQRT_EPSILON) Used only when
         c is ON::G2_continuous.  If K0 and K1 are curvatures evaluated
@@ -48328,8 +48166,8 @@ public:
   */
   bool IsContinuous(
     ON::continuity c,
-    double s,
-    double t,
+    double s, 
+    double t, 
     int* hint = NULL,
     double point_tolerance=ON_ZERO_TOLERANCE,
     double d1_tolerance=ON_ZERO_TOLERANCE,
@@ -48370,12 +48208,12 @@ public:
                1 first parameter is constant and second parameter varies
                  e.g., point on IsoCurve(1,c) at t is srf(c,t)
 
-    c - [in] value of constant parameter
+    c - [in] value of constant parameter 
   Returns:
     Isoparametric curve.
   */
   ON_Curve* IsoCurve(
-         int dir,
+         int dir,         
          double c
          ) const;
 
@@ -48393,7 +48231,7 @@ public:
         the portions of the surface with parameters (s,t) satisfying
         s < Domain(0).Min() or s > Domain(0).Max() are trimmed away.
         If dir is 1, then the portions of the surface with parameters
-        (s,t) satisfying t < Domain(1).Min() or t > Domain(1).Max()
+        (s,t) satisfying t < Domain(1).Min() or t > Domain(1).Max() 
         are trimmed away.
   */
   ON_BOOL32 Trim(
@@ -48409,11 +48247,11 @@ public:
                    (the first surface parameter).
                 1  new Domain(1) will include domain.
                    (the second surface parameter).
-     domain - [in] if domain is not included in surface domain,
-     surface will be extended so that its domain includes domain.
-     Will not work if surface is closed in direction dir.
+     domain - [in] if domain is not included in surface domain, 
+     surface will be extended so that its domain includes domain.  
+     Will not work if surface is closed in direction dir. 
      Original surface is identical to the restriction of the
-     resulting surface to the original surface domain,
+     resulting surface to the original surface domain, 
    Returns:
      true if successful.
      */
@@ -48424,7 +48262,7 @@ public:
 
   /*
   Description:
-    Splits (divides) the surface into two parts at the
+    Splits (divides) the surface into two parts at the 
     specified parameter.
     Overrides virtual ON_Surface::Split.
 
@@ -48460,16 +48298,16 @@ public:
   Description:
     Get the parameters of the point on the surface that is closest to P.
   Parameters:
-    P - [in]
+    P - [in] 
             test point
     s - [out]
-    t - [out]
-            (*s,*t) = parameters of the surface point that
+    t - [out] 
+            (*s,*t) = parameters of the surface point that 
             is closest to P.
-    maximum_distance = 0.0 - [in]
-            optional upper bound on the distance from P to
-            the surface.  If you are only interested in
-            finding a point Q on the surface when
+    maximum_distance = 0.0 - [in] 
+            optional upper bound on the distance from P to 
+            the surface.  If you are only interested in 
+            finding a point Q on the surface when 
             P.DistanceTo(Q) < maximum_distance, then set
             maximum_distance to that value.
     sdomain = 0 - [in] optional domain restriction
@@ -48480,7 +48318,7 @@ public:
   See Also:
     ON_Surface::GetLocalClosestPoint.
   */
-  bool GetClosestPoint(
+  bool GetClosestPoint( 
           const ON_3dPoint& P,
           double* s,
           double* t,
@@ -48490,8 +48328,8 @@ public:
           ) const;
 
   //////////
-  // Find parameters of the point on a surface that is locally closest to
-  // the test_point.  The search for a local close point starts at
+  // Find parameters of the point on a surface that is locally closest to 
+  // the test_point.  The search for a local close point starts at 
   // seed parameters. If a sub_domain parameter is not NULL, then
   // the search is restricted to the specified portion of the surface.
   //
@@ -48523,8 +48361,8 @@ public:
     Offset surface.
   */
   ON_Surface* Offset(
-        double offset_distance,
-        double tolerance,
+        double offset_distance, 
+        double tolerance, 
         double* max_deviation = NULL
         ) const;
 
@@ -48535,9 +48373,9 @@ public:
                    //            matches the surface's to wthe desired accuracy
                    //         2: success - returned NURBS point locus matches
                    //            the surfaces's to the desired accuracy but, on
-                   //            the interior of the surface's domain, the
+                   //            the interior of the surface's domain, the 
                    //            surface's parameterization and the NURBS
-                   //            parameterization may not match to the
+                   //            parameterization may not match to the 
                    //            desired accuracy.
         ON_NurbsSurface&,
         double = 0.0
@@ -48549,9 +48387,9 @@ public:
                    //            matches the surface's to wthe desired accuracy
                    //         2: success - returned NURBS point locus matches
                    //            the surfaces's to the desired accuracy but, on
-                   //            the interior of the surface's domain, the
+                   //            the interior of the surface's domain, the 
                    //            surface's parameterization and the NURBS
-                   //            parameterization may not match to the
+                   //            parameterization may not match to the 
                    //            desired accuracy.
         ) const;
 
@@ -48570,7 +48408,7 @@ public:
   See Also:
     ON_PlaneSurface::SetDomain
   */
-  bool SetExtents(
+  bool SetExtents( 
          int dir,
          ON_Interval extents,
          bool bSynchDomain = false
@@ -48603,7 +48441,7 @@ public:
   Returns:
     true if successful
   */
-  bool CreatePseudoInfinitePlane(
+  bool CreatePseudoInfinitePlane( 
           ON_PlaneEquation plane_equation,
           const ON_BoundingBox& bbox,
           double padding = 0.0625
@@ -48621,7 +48459,7 @@ public:
   Returns:
     true if successful
   */
-  bool CreatePseudoInfinitePlane(
+  bool CreatePseudoInfinitePlane( 
           const ON_Plane& plane,
           const ON_BoundingBox& bbox,
           double padding = 0.0625
@@ -48640,7 +48478,7 @@ public:
   Returns:
     true if successful
   */
-  bool CreatePseudoInfinitePlane(
+  bool CreatePseudoInfinitePlane( 
           const ON_Plane& plane,
           int point_count,
           const ON_3dPoint* point_list,
@@ -48707,7 +48545,7 @@ public:
 // THIS SOFTWARE IS PROVIDED "AS IS" WITHOUT EXPRESS OR IMPLIED WARRANTY.
 // ALL IMPLIED WARRANTIES OF FITNESS FOR ANY PARTICULAR PURPOSE AND OF
 // MERCHANTABILITY ARE HEREBY DISCLAIMED.
-//
+//				
 // For complete openNURBS copyright information see <http://www.opennurbs.org>.
 //
 ////////////////////////////////////////////////////////////////
@@ -48733,14 +48571,14 @@ public:
   // Axis of revolution.
   ON_Line     m_axis;
 
-  // Start and end angles of revolution in radians.
-  // The interval m_angle must be increasing and satisfiy
+  // Start and end angles of revolution in radians. 
+  // The interval m_angle must be increasing and satisfiy 
   // ON_ZERO_TOLERANCE < m_angle.Length() <= 2.0*ON_PI
   ON_Interval m_angle;
 
   // The interval m_t specifies the parameterization for the
   // angular parameter; m_t must be an increasing interval.
-  // The parameter m_t[0] corresonds to angle m_angle[0] and
+  // The parameter m_t[0] corresonds to angle m_angle[0] and 
   // the parameter m_t[1] corresponds to angle m_angle[1].
   // Changing m_t and leaving m_angle unchanged will change the
   // parameterization but not change the locus of the surface.
@@ -48749,9 +48587,9 @@ public:
   ON_Interval m_t;
 
   // If false, the "u" parameter is the angle parameter
-  // and the "v" parameter is the curve parameter.
+  // and the "v" parameter is the curve parameter.  
   // If true,  the "u" parameter is the curve parameter
-  // and the "v" parameter is the angle parameter.
+  // and the "v" parameter is the angle parameter.  
   ON_BOOL32 m_bTransposed;
 
   // Bounding box of the surface of revolution.
@@ -48780,7 +48618,7 @@ public:
     double start_angle_radians,
     double end_angle_radians
     );
-
+  
   ON_BOOL32 SetAngleDegrees(
     double start_angle_degrees,
     double end_angle_degrees
@@ -48805,9 +48643,9 @@ public:
     text_log - [in] if the object is not valid and text_log
         is not NULL, then a brief englis description of the
         reason the object is not valid is appened to the log.
-        The information appended to text_log is suitable for
-        low-level debugging purposes by programmers and is
-        not intended to be useful as a high level user
+        The information appended to text_log is suitable for 
+        low-level debugging purposes by programmers and is 
+        not intended to be useful as a high level user 
         interface tool.
   Returns:
     @untitled table
@@ -48823,7 +48661,7 @@ public:
   // Use ON_BinaryArchive::WriteObject() and ON_BinaryArchive::ReadObject()
   // for top level serialization.  These Read()/Write() members should just
   // write/read specific definitions.  In particular, they should not write/
-  // read any chunk typecode or length information.  The default
+  // read any chunk typecode or length information.  The default 
   // implementations return false and do nothing.
   ON_BOOL32 Write(
          ON_BinaryArchive&  // serialize definition to binary archive
@@ -48847,7 +48685,7 @@ public:
 
   void ClearBoundingBox();
 
-  ON_BOOL32 Transform(
+  ON_BOOL32 Transform( 
          const ON_Xform&
          );
 
@@ -48855,10 +48693,10 @@ public:
   //
   // overrides of virtual ON_Surface functions
   //
-
-  ON_BOOL32 SetDomain(
+  
+  ON_BOOL32 SetDomain( 
     int dir, // 0 sets first parameter's domain, 1 gets second parameter's domain
-    double t0,
+    double t0, 
     double t1
     );
 
@@ -48878,24 +48716,24 @@ public:
   Returns:
     true if successful.
   */
-  ON_BOOL32 GetSurfaceSize(
-      double* width,
-      double* height
+  ON_BOOL32 GetSurfaceSize( 
+      double* width, 
+      double* height 
       ) const;
 
   int SpanCount(
     int // 0 gets first parameter's domain, 1 gets second parameter's domain
     ) const; // number of smooth spans in curve
 
-  ON_BOOL32 GetSpanVector( // span "knots"
+  ON_BOOL32 GetSpanVector( // span "knots" 
     int, // 0 gets first parameter's domain, 1 gets second parameter's domain
-    double* // array of length SpanCount() + 1
-    ) const; //
+    double* // array of length SpanCount() + 1 
+    ) const; // 
 
-  int Degree( // returns maximum algebraic degree of any span
+  int Degree( // returns maximum algebraic degree of any span 
                   // ( or a good estimate if curve spans are not algebraic )
     int // 0 gets first parameter's domain, 1 gets second parameter's domain
-    ) const;
+    ) const; 
 
   ON_BOOL32 GetParameterTolerance( // returns tminus < tplus: parameters tminus <= s <= tplus
          int,     // 0 gets first parameter, 1 gets second parameter
@@ -48982,48 +48820,48 @@ public:
         int        // side of parameter space to test
                    // 0 = south, 1 = east, 2 = north, 3 = west
         ) const;
-
+  
   /*
   Description:
-    Search for a derivatitive, tangent, or curvature
+    Search for a derivatitive, tangent, or curvature 
     discontinuity.
   Parameters:
     dir - [in] If 0, then "u" parameter is checked.  If 1, then
                the "v" parameter is checked.
     c - [in] type of continity to test for.
     t0 - [in] Search begins at t0. If there is a discontinuity
-              at t0, it will be ignored.  This makes it
+              at t0, it will be ignored.  This makes it 
               possible to repeatedly call GetNextDiscontinuity
               and step through the discontinuities.
-    t1 - [in] (t0 != t1)  If there is a discontinuity at t1 is
+    t1 - [in] (t0 != t1)  If there is a discontinuity at t1 is 
               will be ingored unless c is a locus discontinuity
               type and t1 is at the start or end of the curve.
     t - [out] if a discontinuity is found, then *t reports the
           parameter at the discontinuity.
-    hint - [in/out] if GetNextDiscontinuity will be called
+    hint - [in/out] if GetNextDiscontinuity will be called 
        repeatedly, passing a "hint" with initial value *hint=0
-       will increase the speed of the search.
-    dtype - [out] if not NULL, *dtype reports the kind of
-        discontinuity found at *t.  A value of 1 means the first
-        derivative or unit tangent was discontinuous.  A value
-        of 2 means the second derivative or curvature was
+       will increase the speed of the search.       
+    dtype - [out] if not NULL, *dtype reports the kind of 
+        discontinuity found at *t.  A value of 1 means the first 
+        derivative or unit tangent was discontinuous.  A value 
+        of 2 means the second derivative or curvature was 
         discontinuous.  A value of 0 means teh curve is not
         closed, a locus discontinuity test was applied, and
         t1 is at the start of end of the curve.
     cos_angle_tolerance - [in] default = cos(1 degree) Used only
         when c is ON::G1_continuous or ON::G2_continuous.  If the
-        cosine of the angle between two tangent vectors is
+        cosine of the angle between two tangent vectors is 
         <= cos_angle_tolerance, then a G1 discontinuity is reported.
-    curvature_tolerance - [in] (default = ON_SQRT_EPSILON) Used
-        only when c is ON::G2_continuous.  If K0 and K1 are
-        curvatures evaluated from above and below and
-        |K0 - K1| > curvature_tolerance, then a curvature
+    curvature_tolerance - [in] (default = ON_SQRT_EPSILON) Used 
+        only when c is ON::G2_continuous.  If K0 and K1 are 
+        curvatures evaluated from above and below and 
+        |K0 - K1| > curvature_tolerance, then a curvature 
         discontinuity is reported.
   Returns:
     Parametric continuity tests c = (C0_continuous, ..., G2_continuous):
 
-      true if a parametric discontinuity was found strictly
-      between t0 and t1. Note well that all curves are
+      true if a parametric discontinuity was found strictly 
+      between t0 and t1. Note well that all curves are 
       parametrically continuous at the ends of their domains.
 
     Locus continuity tests c = (C0_locus_continuous, ...,G2_locus_continuous):
@@ -49031,11 +48869,11 @@ public:
       true if a locus discontinuity was found strictly between
       t0 and t1 or at t1 is the at the end of a curve.
       Note well that all open curves (IsClosed()=false) are locus
-      discontinuous at the ends of their domains.  All closed
-      curves (IsClosed()=true) are at least C0_locus_continuous at
+      discontinuous at the ends of their domains.  All closed 
+      curves (IsClosed()=true) are at least C0_locus_continuous at 
       the ends of their domains.
   */
-  bool GetNextDiscontinuity(
+  bool GetNextDiscontinuity( 
                   int dir,
                   ON::continuity c,
                   double t0,
@@ -49063,7 +48901,7 @@ public:
         greater than d2_tolerance, then the surface is not C2.
     cos_angle_tolerance - [in] default = cos(1 degree) Used only when
         c is ON::G1_continuous or ON::G2_continuous.  If the cosine
-        of the angle between two normal vectors
+        of the angle between two normal vectors 
         is <= cos_angle_tolerance, then a G1 discontinuity is reported.
     curvature_tolerance - [in] (default = ON_SQRT_EPSILON) Used only when
         c is ON::G2_continuous.  If K0 and K1 are curvatures evaluated
@@ -49076,8 +48914,8 @@ public:
   */
   bool IsContinuous(
     ON::continuity c,
-    double s,
-    double t,
+    double s, 
+    double t, 
     int* hint = NULL,
     double point_tolerance=ON_ZERO_TOLERANCE,
     double d1_tolerance=ON_ZERO_TOLERANCE,
@@ -49117,7 +48955,7 @@ public:
                1 first parameter is constant and second parameter varies
                  e.g., point on IsoCurve(1,c) at t is srf(c,t)
 
-    c - [in] value of constant parameter
+    c - [in] value of constant parameter 
   Returns:
     Isoparametric curve.
   */
@@ -49139,7 +48977,7 @@ public:
         the portions of the surface with parameters (s,t) satisfying
         s < Domain(0).Min() or s > Domain(0).Max() are trimmed away.
         If dir is 1, then the portions of the surface with parameters
-        (s,t) satisfying t < Domain(1).Min() or t > Domain(1).Max()
+        (s,t) satisfying t < Domain(1).Min() or t > Domain(1).Max() 
         are trimmed away.
   */
   ON_BOOL32 Trim(
@@ -49155,11 +48993,11 @@ public:
                    (the first surface parameter).
                 1  new Domain(1) will include domain.
                    (the second surface parameter).
-     domain - [in] if domain is not included in surface domain,
-     surface will be extended so that its domain includes domain.
-     Will not work if surface is closed in direction dir.
+     domain - [in] if domain is not included in surface domain, 
+     surface will be extended so that its domain includes domain.  
+     Will not work if surface is closed in direction dir. 
      Original surface is identical to the restriction of the
-     resulting surface to the original surface domain,
+     resulting surface to the original surface domain, 
    Returns:
      true if successful.
      */
@@ -49170,7 +49008,7 @@ public:
 
   /*
   Description:
-    Splits (divides) the surface into two parts at the
+    Splits (divides) the surface into two parts at the 
     specified parameter.
 
   Parameters:
@@ -49207,9 +49045,9 @@ public:
                    //            matches the surface's to wthe desired accuracy
                    //         2: success - returned NURBS point locus matches
                    //            the surfaces's to the desired accuracy but, on
-                   //            the interior of the surface's domain, the
+                   //            the interior of the surface's domain, the 
                    //            surface's parameterization and the NURBS
-                   //            parameterization may not match to the
+                   //            parameterization may not match to the 
                    //            desired accuracy.
         ON_NurbsSurface&,
         double = 0.0
@@ -49221,9 +49059,9 @@ public:
                    //            matches the surface's to wthe desired accuracy
                    //         2: success - returned NURBS point locus matches
                    //            the surfaces's to the desired accuracy but, on
-                   //            the interior of the surface's domain, the
+                   //            the interior of the surface's domain, the 
                    //            surface's parameterization and the NURBS
-                   //            parameterization may not match to the
+                   //            parameterization may not match to the 
                    //            desired accuracy.
         ) const;
 
@@ -49249,7 +49087,7 @@ public:
 // THIS SOFTWARE IS PROVIDED "AS IS" WITHOUT EXPRESS OR IMPLIED WARRANTY.
 // ALL IMPLIED WARRANTIES OF FITNESS FOR ANY PARTICULAR PURPOSE AND OF
 // MERCHANTABILITY ARE HEREBY DISCLAIMED.
-//
+//				
 // For complete openNURBS copyright information see <http://www.opennurbs.org>.
 //
 ////////////////////////////////////////////////////////////////
@@ -49272,9 +49110,9 @@ public:
 public:
 
   // for expert users
-  // surface-PointAt(s,t)
+  // surface-PointAt(s,t) 
   //  = m_curve[0]->PointAt(s) + m_curve[1]->PointAt(t) + m_basepoint;
-  ON_Curve*  m_curve[2]; // m_curve[0] and m_curve[1] are deleted by ~ON_SumSuface.
+  ON_Curve*  m_curve[2]; // m_curve[0] and m_curve[1] are deleted by ~ON_SumSuface.  
                          // Use a ON_ProxyCurve if this is problem.
   ON_3dVector m_basepoint;
   ON_BoundingBox m_bbox; // lazy evaluation used in ON_SumSurface::BoundingBox()
@@ -49330,7 +49168,7 @@ public:
   Returns:
     true if a valid surface is created.
   */
-  ON_BOOL32 Create( const ON_Curve& curve,
+  ON_BOOL32 Create( const ON_Curve& curve, 
                const ON_Curve& path_curve
                );
 
@@ -49347,8 +49185,8 @@ public:
   Returns:
     true if a valid surface is created.
   */
-  ON_BOOL32 Create(
-          ON_Curve* pCurve,
+  ON_BOOL32 Create( 
+          ON_Curve* pCurve, 
           ON_Curve* pPathCurve
           );
 
@@ -49376,9 +49214,9 @@ public:
     text_log - [in] if the object is not valid and text_log
         is not NULL, then a brief englis description of the
         reason the object is not valid is appened to the log.
-        The information appended to text_log is suitable for
-        low-level debugging purposes by programmers and is
-        not intended to be useful as a high level user
+        The information appended to text_log is suitable for 
+        low-level debugging purposes by programmers and is 
+        not intended to be useful as a high level user 
         interface tool.
   Returns:
     @untitled table
@@ -49392,7 +49230,7 @@ public:
   // Use ON_BinaryArchive::WriteObject() and ON_BinaryArchive::ReadObject()
   // for top level serialization.  These Read()/Write() members should just
   // write/read specific definitions.  In particular, they should not write/
-  // read any chunk typecode or length information.  The default
+  // read any chunk typecode or length information.  The default 
   // implementations return false and do nothing.
   ON_BOOL32 Write(
          ON_BinaryArchive&  // serialize definition to binary archive
@@ -49416,7 +49254,7 @@ public:
 
   void ClearBoundingBox();
 
-  ON_BOOL32 Transform(
+  ON_BOOL32 Transform( 
          const ON_Xform&
          );
 
@@ -49430,9 +49268,9 @@ public:
   //
   // overrides of virtual ON_Surface functions
   //
-  ON_BOOL32 SetDomain(
+  ON_BOOL32 SetDomain( 
     int dir, // 0 sets first parameter's domain, 1 gets second parameter's domain
-    double t0,
+    double t0, 
     double t1
     );
 
@@ -49452,24 +49290,24 @@ public:
   Returns:
     true if successful.
   */
-  ON_BOOL32 GetSurfaceSize(
-      double* width,
-      double* height
+  ON_BOOL32 GetSurfaceSize( 
+      double* width, 
+      double* height 
       ) const;
 
   int SpanCount(
     int // 0 gets first parameter's domain, 1 gets second parameter's domain
     ) const; // number of smooth spans in curve
 
-  ON_BOOL32 GetSpanVector( // span "knots"
+  ON_BOOL32 GetSpanVector( // span "knots" 
     int, // 0 gets first parameter's domain, 1 gets second parameter's domain
-    double* // array of length SpanCount() + 1
-    ) const; //
+    double* // array of length SpanCount() + 1 
+    ) const; // 
 
-  int Degree( // returns maximum algebraic degree of any span
+  int Degree( // returns maximum algebraic degree of any span 
                   // ( or a good estimate if curve spans are not algebraic )
     int // 0 gets first parameter's domain, 1 gets second parameter's domain
-    ) const;
+    ) const; 
 
   ON_BOOL32 GetParameterTolerance( // returns tminus < tplus: parameters tminus <= s <= tplus
          int,     // 0 gets first parameter, 1 gets second parameter
@@ -49508,48 +49346,48 @@ public:
         int        // side of parameter space to test
                    // 0 = south, 1 = east, 2 = north, 3 = west
         ) const;
-
+  
   /*
   Description:
-    Search for a derivatitive, tangent, or curvature
+    Search for a derivatitive, tangent, or curvature 
     discontinuity.
   Parameters:
     dir - [in] If 0, then "u" parameter is checked.  If 1, then
                the "v" parameter is checked.
     c - [in] type of continity to test for.
     t0 - [in] Search begins at t0. If there is a discontinuity
-              at t0, it will be ignored.  This makes it
+              at t0, it will be ignored.  This makes it 
               possible to repeatedly call GetNextDiscontinuity
               and step through the discontinuities.
-    t1 - [in] (t0 != t1)  If there is a discontinuity at t1 is
+    t1 - [in] (t0 != t1)  If there is a discontinuity at t1 is 
               will be ingored unless c is a locus discontinuity
               type and t1 is at the start or end of the curve.
     t - [out] if a discontinuity is found, then *t reports the
           parameter at the discontinuity.
-    hint - [in/out] if GetNextDiscontinuity will be called
+    hint - [in/out] if GetNextDiscontinuity will be called 
        repeatedly, passing a "hint" with initial value *hint=0
-       will increase the speed of the search.
-    dtype - [out] if not NULL, *dtype reports the kind of
-        discontinuity found at *t.  A value of 1 means the first
-        derivative or unit tangent was discontinuous.  A value
-        of 2 means the second derivative or curvature was
+       will increase the speed of the search.       
+    dtype - [out] if not NULL, *dtype reports the kind of 
+        discontinuity found at *t.  A value of 1 means the first 
+        derivative or unit tangent was discontinuous.  A value 
+        of 2 means the second derivative or curvature was 
         discontinuous.  A value of 0 means teh curve is not
         closed, a locus discontinuity test was applied, and
         t1 is at the start of end of the curve.
     cos_angle_tolerance - [in] default = cos(1 degree) Used only
         when c is ON::G1_continuous or ON::G2_continuous.  If the
-        cosine of the angle between two tangent vectors is
+        cosine of the angle between two tangent vectors is 
         <= cos_angle_tolerance, then a G1 discontinuity is reported.
-    curvature_tolerance - [in] (default = ON_SQRT_EPSILON) Used
-        only when c is ON::G2_continuous.  If K0 and K1 are
-        curvatures evaluated from above and below and
-        |K0 - K1| > curvature_tolerance, then a curvature
+    curvature_tolerance - [in] (default = ON_SQRT_EPSILON) Used 
+        only when c is ON::G2_continuous.  If K0 and K1 are 
+        curvatures evaluated from above and below and 
+        |K0 - K1| > curvature_tolerance, then a curvature 
         discontinuity is reported.
   Returns:
     Parametric continuity tests c = (C0_continuous, ..., G2_continuous):
 
-      true if a parametric discontinuity was found strictly
-      between t0 and t1. Note well that all curves are
+      true if a parametric discontinuity was found strictly 
+      between t0 and t1. Note well that all curves are 
       parametrically continuous at the ends of their domains.
 
     Locus continuity tests c = (C0_locus_continuous, ...,G2_locus_continuous):
@@ -49557,11 +49395,11 @@ public:
       true if a locus discontinuity was found strictly between
       t0 and t1 or at t1 is the at the end of a curve.
       Note well that all open curves (IsClosed()=false) are locus
-      discontinuous at the ends of their domains.  All closed
-      curves (IsClosed()=true) are at least C0_locus_continuous at
+      discontinuous at the ends of their domains.  All closed 
+      curves (IsClosed()=true) are at least C0_locus_continuous at 
       the ends of their domains.
   */
-  bool GetNextDiscontinuity(
+  bool GetNextDiscontinuity( 
                   int dir,
                   ON::continuity c,
                   double t0,
@@ -49589,7 +49427,7 @@ public:
         greater than d2_tolerance, then the surface is not C2.
     cos_angle_tolerance - [in] default = cos(1 degree) Used only when
         c is ON::G1_continuous or ON::G2_continuous.  If the cosine
-        of the angle between two normal vectors
+        of the angle between two normal vectors 
         is <= cos_angle_tolerance, then a G1 discontinuity is reported.
     curvature_tolerance - [in] (default = ON_SQRT_EPSILON) Used only when
         c is ON::G2_continuous.  If K0 and K1 are curvatures evaluated
@@ -49602,8 +49440,8 @@ public:
   */
   bool IsContinuous(
     ON::continuity c,
-    double s,
-    double t,
+    double s, 
+    double t, 
     int* hint = NULL,
     double point_tolerance=ON_ZERO_TOLERANCE,
     double d1_tolerance=ON_ZERO_TOLERANCE,
@@ -49638,7 +49476,7 @@ public:
                            //   e.g., point on IsoCurve(0,c) at t is srf(t,c)
                            // 1 first parameter is constant and second parameter varies
                            //   e.g., point on IsoCurve(1,c) at t is srf(c,t)
-         double            // value of constant parameter
+         double            // value of constant parameter 
          ) const;
 
   int GetNurbForm( // returns 0: unable to create NURBS representation
@@ -49647,9 +49485,9 @@ public:
                    //            matches the surface's to wthe desired accuracy
                    //         2: success - returned NURBS point locus matches
                    //            the surfaces's to the desired accuracy but, on
-                   //            the interior of the surface's domain, the
+                   //            the interior of the surface's domain, the 
                    //            surface's parameterization and the NURBS
-                   //            parameterization may not match to the
+                   //            parameterization may not match to the 
                    //            desired accuracy.
         ON_NurbsSurface&,
         double = 0.0
@@ -49661,9 +49499,9 @@ public:
                    //            matches the surface's to wthe desired accuracy
                    //         2: success - returned NURBS point locus matches
                    //            the surfaces's to the desired accuracy but, on
-                   //            the interior of the surface's domain, the
+                   //            the interior of the surface's domain, the 
                    //            surface's parameterization and the NURBS
-                   //            parameterization may not match to the
+                   //            parameterization may not match to the 
                    //            desired accuracy.
         ) const;
 
@@ -49691,7 +49529,7 @@ public:
         the portions of the surface with parameters (s,t) satisfying
         s < Domain(0).Min() or s > Domain(0).Max() are trimmed away.
         If dir is 1, then the portions of the surface with parameters
-        (s,t) satisfying t < Domain(1).Min() or t > Domain(1).Max()
+        (s,t) satisfying t < Domain(1).Min() or t > Domain(1).Max() 
         are trimmed away.
   */
   ON_BOOL32 Trim(
@@ -49707,11 +49545,11 @@ public:
                    (the first surface parameter).
                 1  new Domain(1) will include domain.
                    (the second surface parameter).
-     domain - [in] if domain is not included in surface domain,
-     surface will be extended so that its domain includes domain.
-     Will not work if surface is closed in direction dir.
+     domain - [in] if domain is not included in surface domain, 
+     surface will be extended so that its domain includes domain.  
+     Will not work if surface is closed in direction dir. 
      Original surface is identical to the restriction of the
-     resulting surface to the original surface domain,
+     resulting surface to the original surface domain, 
    Returns:
      true if successful.
      */
@@ -49722,7 +49560,7 @@ public:
 
   /*
   Description:
-    Splits (divides) the surface into two parts at the
+    Splits (divides) the surface into two parts at the 
     specified parameter.
 
   Parameters:
@@ -49765,7 +49603,7 @@ public:
 // THIS SOFTWARE IS PROVIDED "AS IS" WITHOUT EXPRESS OR IMPLIED WARRANTY.
 // ALL IMPLIED WARRANTIES OF FITNESS FOR ANY PARTICULAR PURPOSE AND OF
 // MERCHANTABILITY ARE HEREBY DISCLAIMED.
-//
+//				
 // For complete openNURBS copyright information see <http://www.opennurbs.org>.
 //
 ////////////////////////////////////////////////////////////////
@@ -49802,7 +49640,7 @@ class ON_BrepFace;
 //   a single trim with type ON_BrepTrim::ptonsrf.  There
 //   will be a loop containing this single trim.
 //   Use ON_Brep::NewPointOnFace() to create vertices that are
-//   points on faces.
+//   points on faces. 
 class ON_CLASS ON_BrepVertex : public ON_Point
 {
   ON_OBJECT_DECLARE(ON_BrepVertex);
@@ -49812,7 +49650,7 @@ public:
   // The constructor zeros m_vertex_user.
   // The value is of m_vertex_user is not saved in 3DM
   // archives and may be changed by some computations.
-  ON_U m_vertex_user;
+  ON_U m_vertex_user; 
 
   // index of the vertex in the ON_Brep.m_V[] array
   int m_vertex_index;
@@ -49842,9 +49680,9 @@ public:
     text_log - [in] if the object is not valid and text_log
         is not NULL, then a brief englis description of the
         reason the object is not valid is appened to the log.
-        The information appended to text_log is suitable for
-        low-level debugging purposes by programmers and is
-        not intended to be useful as a high level user
+        The information appended to text_log is suitable for 
+        low-level debugging purposes by programmers and is 
+        not intended to be useful as a high level user 
         interface tool.
   Returns:
     @untitled table
@@ -49874,7 +49712,7 @@ public:
   //   Set vertex location.
   // Parameters:
   //   point - [in] 3d vertex location
-  bool SetPoint(
+  bool SetPoint( 
           const ON_3dPoint& // point
           );
 
@@ -49897,7 +49735,7 @@ public:
 
   // indices of edges starting/ending at this vertex
   //
-  // For closed edges, edge.m_vi[0] = edge.m_vi[1] and
+  // For closed edges, edge.m_vi[0] = edge.m_vi[1] and 
   // edge.m_edge_index appears twice in the m_ei[] array.
   // The first occurance of edge.m_edge_index in m_ei[]
   // is for the closed edge starting the vertex.
@@ -49916,7 +49754,7 @@ public:
   // end is <=  ON_ZERO_TOLERANCE
   //
   // If an edge begins or ends at this vertex,
-  // then the distance from the vertex's
+  // then the distance from the vertex's 
   // 3d point to the appropriate end of the
   // edge's 3d curve must be <= this tolerance.
   //
@@ -49939,7 +49777,7 @@ Description:
   ON_Brep.m_E[] is an array of all the edges in the brep.
 
   An ON_BrepEdge is derived from ON_CurveProxy so the the
-  edge can supply easy to use evaluation tools via
+  edge can supply easy to use evaluation tools via 
   the ON_Curve virtual member functions.
 
   Note well that the domains and orientations of the curve
@@ -49958,7 +49796,7 @@ public:
   ON_U m_edge_user;
 
   // index of edge in ON_Brep.m_E[] array
-  int m_edge_index;
+  int m_edge_index;    
 
 
   // virtual ON_Curve::IsClosed override
@@ -50021,9 +49859,9 @@ public:
     text_log - [in] if the object is not valid and text_log
         is not NULL, then a brief englis description of the
         reason the object is not valid is appened to the log.
-        The information appended to text_log is suitable for
-        low-level debugging purposes by programmers and is
-        not intended to be useful as a high level user
+        The information appended to text_log is suitable for 
+        low-level debugging purposes by programmers and is 
+        not intended to be useful as a high level user 
         interface tool.
   Returns:
     @untitled table
@@ -50064,7 +49902,7 @@ public:
 
   /*
   Returns:
-    brep.m_C3[] index of the 3d curve geometry used by this edge
+    brep.m_C3[] index of the 3d curve geometry used by this edge 
     or -1.
   */
   int EdgeCurveIndexOf() const;
@@ -50093,7 +49931,7 @@ public:
     Sets m_c3i, calls SetProxyCurve, cleans runtime caches.
   */
   bool ChangeEdgeCurve(
-    int c3i
+    int c3i 
     );
 
   /*
@@ -50147,7 +49985,7 @@ struct ON_BrepTrimPoint
 
 #if defined(ON_DLL_TEMPLATE)
 // This stuff is here because of a limitation in the way Microsoft
-// handles templates and DLLs.  See Microsoft's knowledge base
+// handles templates and DLLs.  See Microsoft's knowledge base 
 // article ID Q168958 for details.
 #pragma warning( push )
 #pragma warning( disable : 4231 )
@@ -50162,7 +50000,7 @@ Description:
   ON_Brep.m_T[] is an array of all the trim in the brep.
 
   An ON_BrepTrim is derived from ON_CurveProxy so the the
-  trim can supply easy to use evaluation tools via
+  trim can supply easy to use evaluation tools via 
   the ON_Curve virtual member functions.
 
   Note well that the domains and orientations of the curve
@@ -50188,18 +50026,18 @@ public:
   int m_trim_index;  // index of trim in ON_Brep.m_T[] array
 
   // types of trim - access through m_type member.  Also see m_iso and ON_Surface::ISO
-  enum TYPE
+  enum TYPE 
   {
     unknown  = 0,
-    boundary = 1,       // trim is connected to an edge, is part of an outer,
+    boundary = 1,       // trim is connected to an edge, is part of an outer, 
                         // inner or slit loop, and is the only trim connected
                         // to the edge.
     mated    = 2,       // trim is connected to an edge, is part of an outer,
-                        // inner or slit loop, no other trim from the same
-                        // loop is connected to the edge, and at least one
+                        // inner or slit loop, no other trim from the same 
+                        // loop is connected to the edge, and at least one 
                         // trim from a different loop is connected to the edge.
-    seam     = 3,       // trim is connected to an edge, is part of an outer,
-                        // inner or slit loop, and one other trim from the
+    seam     = 3,       // trim is connected to an edge, is part of an outer, 
+                        // inner or slit loop, and one other trim from the 
                         // same loop is connected to the edge.
                         // (There can be other mated trims that are also
                         // connected to the edge.  For example, the non-mainfold
@@ -50268,7 +50106,7 @@ public:
   /////////////////////////////////////////////////////////////////
   // ON_Object overrides
   //
-  // (Trims are purely topologicial - geometry queries should be
+  // (Trims are purely topologicial - geometry queries should be 
   //  directed at the trim's 2d curve or the trim's edge's 3d curve.)
 
   /*
@@ -50279,9 +50117,9 @@ public:
     text_log - [in] if the object is not valid and text_log
         is not NULL, then a brief englis description of the
         reason the object is not valid is appened to the log.
-        The information appended to text_log is suitable for
-        low-level debugging purposes by programmers and is
-        not intended to be useful as a high level user
+        The information appended to text_log is suitable for 
+        low-level debugging purposes by programmers and is 
+        not intended to be useful as a high level user 
         interface tool.
   Returns:
     @untitled table
@@ -50320,7 +50158,7 @@ public:
 
   /////////////////////////////////////////////////////////////////
   // Interface
-
+  
   /*
   Description:
     Expert user tool that replaces the 2d curve geometry
@@ -50350,7 +50188,7 @@ public:
     curve is changed.
   */
   void DestroyPspaceInformation();
-
+  
   /*
   Description:
     Expert user function.
@@ -50368,7 +50206,7 @@ public:
     m_ti[] list.  The trim's m_bRev3d and tolerance values
     are not changed.
   */
-  bool RemoveFromEdge(
+  bool RemoveFromEdge( 
         bool bRemoveFromStartVertex,
         bool bRemoveFromEndVertex
         );
@@ -50411,21 +50249,21 @@ public:
 
   /*
   Returns:
-    brep.m_C2[] 2d curve index of the 2d curve geometry used by
+    brep.m_C2[] 2d curve index of the 2d curve geometry used by 
     this trim or -1.
   */
   int TrimCurveIndexOf() const;
 
   /*
   Returns:
-    brep.m_C3[] 3d curve index of the 3d curve geometry used by
+    brep.m_C3[] 3d curve index of the 3d curve geometry used by 
     this trim or -1.
   */
   int EdgeCurveIndexOf() const;
 
   /*
   Returns:
-    brep.m_S[] surface index of the 3d surface geometry used by
+    brep.m_S[] surface index of the 3d surface geometry used by 
     this trim or -1.
   */
   int SurfaceIndexOf() const;
@@ -50457,7 +50295,7 @@ public:
       1) is part of a loop
       2) is connected to a 3d edge
       3) one other trim from the same loop is connected to the edge
-      4) the 2d trim curve for this trim lies along the side of
+      4) the 2d trim curve for this trim lies along the side of 
          the face's parameter space and the 2d curve for the other
          trim lies on the opposite side of the face's parameter
          space.
@@ -50492,10 +50330,10 @@ public:
   // sides and trims that correspond to closed 3d edges
   // have m_vi[0] = m_vi[1].  Note that singular trims
   // and trims on the closed edge of a closed surface can
-  // have an open 2d trimming curve and still have
+  // have an open 2d trimming curve and still have 
   // m_vi[0] = m_vi[1].
   int m_vi[2];
-
+        
   // true if the 2d trim and 3d edge have opposite orientations.
   bool   m_bRev3d;
 
@@ -50515,22 +50353,22 @@ public:
   //   m_tolerance[1] = accuracy of parameter space curve
   //   in second ( "v" ) parameter
   //
-  //   A value of ON_UNSET_VALUE indicates that the
-  //   tolerance should be computed. If the value >= 0.0,
-  //   then the tolerance is set.  If the value is
+  //   A value of ON_UNSET_VALUE indicates that the 
+  //   tolerance should be computed. If the value >= 0.0, 
+  //   then the tolerance is set.  If the value is 
   //   ON_UNSET_VALUE, then the tolrance needs to be
   //   computed.
   //
   //   If the trim is not singular, then the trim must
   //   have an edge.  If P is a 3d point on the edge's
-  //   curve and surface(u,v) = Q is the point on the
+  //   curve and surface(u,v) = Q is the point on the 
   //   surface that is closest to P, then there must
   //   be a parameter t in the interval [m_t[0], m_t[1]]
   //   such that
   //
   //   |u - curve2d(t)[0]| <= m_tolerance[0]
   //
-  //   and
+  //   and 
   //
   //   |v - curve2d(t)[1]| <= m_tolerance[1]
   //
@@ -50543,7 +50381,7 @@ public:
   //      is <= brep.m_V[m_vi[k]].m_tolerance,
   //   *  |u-uk| <= m_tolerance[0].
   //   *  |v-vk| <= m_tolerance[1].
-  double m_tolerance[2];
+  double m_tolerance[2]; 
 
   // Runtime polyline approximation of trimming curve.
   // This information is not saved in 3DM archives.
@@ -50583,7 +50421,7 @@ public:
   void DestroyRuntimeCache( bool bDelete = true );
 
   // virtual ON_Geometry overrides
-  // A loop is derived from ON_Geometry so that is can
+  // A loop is derived from ON_Geometry so that is can 
   // be passed around to things that expect ON_Geometry
   // pointers.  It is not a very useful stand-alone object.
 
@@ -50603,7 +50441,7 @@ public:
          ) const;
 
   // virtual ON_Geometry::Transform() override.
-  ON_BOOL32 Transform(
+  ON_BOOL32 Transform( 
          const ON_Xform& xform
          );
 public:
@@ -50646,9 +50484,9 @@ public:
     outer    = 1,  // 2d loop curves form a simple closed curve with a counterclockwise orientation
     inner    = 2,  // 2d loop curves form a simple closed curve with a clockwise orientation
     slit     = 3,  // always closed - used internally during splitting operations
-    crvonsrf = 4,  // "loop" is a curveonsrf made from a single
+    crvonsrf = 4,  // "loop" is a curveonsrf made from a single 
                    // (open or closed) trim that is has type ON_BrepTrim::crvonsrf.
-    ptonsrf = 5,   // "loop" is a ptonsrf made from a single
+    ptonsrf = 5,   // "loop" is a ptonsrf made from a single 
                    // trim that is has type ON_BrepTrim::ptonsrf.
     type_count = 6
   };
@@ -50660,7 +50498,7 @@ public:
   /////////////////////////////////////////////////////////////////
   // ON_Object overrides
   //
-  // (Loops and trims are purely topologicial - geometry queries should be
+  // (Loops and trims are purely topologicial - geometry queries should be 
   // directed at the trim's 2d curve or the trim's edge's 3d curve.)
 
   // virtual ON_Object::SizeOf override
@@ -50674,9 +50512,9 @@ public:
     text_log - [in] if the object is not valid and text_log
         is not NULL, then a brief englis description of the
         reason the object is not valid is appened to the log.
-        The information appended to text_log is suitable for
-        low-level debugging purposes by programmers and is
-        not intended to be useful as a high level user
+        The information appended to text_log is suitable for 
+        low-level debugging purposes by programmers and is 
+        not intended to be useful as a high level user 
         interface tool.
   Returns:
     @untitled table
@@ -50706,14 +50544,14 @@ public:
 
   /*
   Returns:
-    brep.m_S[] surface index of the 3d surface geometry used by
+    brep.m_S[] surface index of the 3d surface geometry used by 
     this loop or -1.
   */
   int SurfaceIndexOf() const;
 
   /*
   Returns:
-    Pointer to the surface geometry used by the loop.
+    Pointer to the surface geometry used by the loop.   
   */
   const ON_Surface* SurfaceOf() const;
 
@@ -50809,7 +50647,7 @@ public:
   /////////////////////////////////////////////////////////////////
   // ON_Object overrides
   //
-  // (Faces are purely topologicial - geometry queries should be
+  // (Faces are purely topologicial - geometry queries should be 
   //  directed at the face's 3d surface.)
 
   // virtual ON_Object::SizeOf override
@@ -50826,9 +50664,9 @@ public:
     text_log - [in] if the object is not valid and text_log
         is not NULL, then a brief englis description of the
         reason the object is not valid is appened to the log.
-        The information appended to text_log is suitable for
-        low-level debugging purposes by programmers and is
-        not intended to be useful as a high level user
+        The information appended to text_log is suitable for 
+        low-level debugging purposes by programmers and is 
+        not intended to be useful as a high level user 
         interface tool.
   Returns:
     @untitled table
@@ -50983,7 +50821,7 @@ public:
     If the face had a surface and new surface has a different
     shape, then you probably want to call something like
     ON_Brep::RebuildEdges() to move the 3d edge curves so they
-    will lie on the new surface. This doesn't delete the old
+    will lie on the new surface. This doesn't delete the old 
     surface; call ON_Brep::CullUnusedSurfaces() or ON_Brep::Compact
     to remove unused surfaces.
   See Also:
@@ -50993,21 +50831,16 @@ public:
   bool ChangeSurface(
     int si
     );
-  bool ChangeSurface(
-    int si,
-    bool bTransformTrimCurves
-    );
-
   /*
   Returns:
-    brep.m_S[] surface index of the 3d surface geometry used by
+    brep.m_S[] surface index of the 3d surface geometry used by 
     this face or -1.
   */
   int SurfaceIndexOf() const;
 
   /*
   Returns:
-    Pointer to the surface geometry used by the face.
+    Pointer to the surface geometry used by the face.   
   */
   const ON_Surface* SurfaceOf() const;
 
@@ -51019,7 +50852,7 @@ public:
   // m_face_material_channel provides a way to have individual
   // brep faces use a rendering material that is different
   // from the rendering material used by the parent brep.
-  // If m_face_material_channel is zero
+  // If m_face_material_channel is zero 
   // channel and m_face_material_channel.m_j is the back face
   // materal. The default is (0,0) which indicates the face
   // should use the parent brep's material.
@@ -51060,7 +50893,7 @@ public:
   ON_U m_faceside_user;
 
   // index of face side in ON_BrepRegionTopology.m_FS[] array
-  int m_faceside_index;
+  int m_faceside_index;  
 
   ON_BrepFaceSide();
   ~ON_BrepFaceSide();
@@ -51104,7 +50937,7 @@ public:
   int SurfaceNormalDirection() const;
 
 public:
-  int m_ri; // region index
+  int m_ri; // region index 
             // m_ri = -1 indicates this faceside overlaps
             // another faceside. Generally this is a flaw
             // in an ON_Brep.
@@ -51181,7 +51014,7 @@ public:
 
   /*
   Description:
-    Get the boundary of a region as a brep object.
+    Get the boundary of a region as a brep object.  
     If the region is finite, the boundary will be a closed
     manifold brep.  The boundary may have more than one
     connected component.
@@ -51202,7 +51035,7 @@ private:
 
 #if defined(ON_DLL_TEMPLATE)
 // This stuff is here because of a limitation in the way Microsoft
-// handles templates and DLLs.  See Microsoft's knowledge base
+// handles templates and DLLs.  See Microsoft's knowledge base 
 // article ID Q168958 for details.
 #pragma warning( push )
 #pragma warning( disable : 4231 )
@@ -51325,7 +51158,7 @@ private:
   ON_Brep* m_brep;
 };
 
-class ON_CLASS ON_Brep : public ON_Geometry
+class ON_CLASS ON_Brep : public ON_Geometry 
 {
   ON_OBJECT_DECLARE(ON_Brep);
 
@@ -51348,8 +51181,8 @@ public:
   /*
   Description:
     Use ON_Brep::New() instead of new ON_Brep() when writing
-    Rhino plug-ins (or when openNURBS is used as a Microsoft
-    DLL and you need to create a new ON_Brep in a different
+    Rhino plug-ins (or when openNURBS is used as a Microsoft 
+    DLL and you need to create a new ON_Brep in a different 
     .EXE or .DLL).
   Example:
 
@@ -51376,7 +51209,7 @@ public:
 
   /*
   Description:
-    Use ON_Brep::New(const ON_Brep& src) instead
+    Use ON_Brep::New(const ON_Brep& src) instead 
     of new ON_Brep(const ON_Brep& src).
   Returns:
     Pointer to an ON_Brep.  Destroy by calling delete.
@@ -51387,7 +51220,7 @@ public:
 
 	// Construction
   ON_Brep();
-	~ON_Brep();
+	~ON_Brep();		
   ON_Brep(const ON_Brep&);
   ON_Brep& operator=(const ON_Brep&);
 
@@ -51405,19 +51238,19 @@ public:
   Returns:
     true if breps are the same
   */
-  bool IsDuplicate(
-          const ON_Brep& other,
-          double tolerance = ON_ZERO_TOLERANCE
+  bool IsDuplicate( 
+          const ON_Brep& other, 
+          double tolerance = ON_ZERO_TOLERANCE 
           ) const;
 
   /////////////////////////////////////////////////////////////////
   // construction/destruction helpers
 
   // returns Brep to state it has after default construction
-  void Destroy();
+  void Destroy(); 
 
   // call if memory pool used by b-rep members becomes invalid
-  void EmergencyDestroy();
+  void EmergencyDestroy(); 
 
   /*
   Description:
@@ -51430,7 +51263,7 @@ public:
   Returns:
     Number of meshes appended to mesh_list[] array.
   */
-  int CreateMesh(
+  int CreateMesh( 
     const ON_MeshParameters& mp,
     ON_SimpleArray<ON_Mesh*>& mesh_list
     ) const;
@@ -51486,28 +51319,28 @@ public:
       brep cannot be created from this surface.
       When false is returned, then the caller is responsible
       for deleting pSurface unless it was previously added
-      to the brep's m_S[] array.
+      to the brep's m_S[] array.     
   Remarks:
     The surface class must be created with new so that the
     delete in ~ON_Brep will not cause a crash.
   */
-  bool Create(
+  bool Create( 
           ON_Surface*& pSurface
           );
 
-  bool Create(
+  bool Create( 
           ON_NurbsSurface*& pNurbsSurface
           );
 
-  bool Create(
+  bool Create( 
           ON_PlaneSurface*& pPlaneSurface
           );
 
-  bool Create(
+  bool Create( 
           ON_RevSurface*& pRevSurface
           );
 
-  bool Create(
+  bool Create( 
           ON_SumSurface*& pSumSurface
           );
 
@@ -51519,9 +51352,9 @@ public:
     text_log - [in] if the object is not valid and text_log
         is not NULL, then a brief englis description of the
         reason the object is not valid is appened to the log.
-        The information appended to text_log is suitable for
-        low-level debugging purposes by programmers and is
-        not intended to be useful as a high level user
+        The information appended to text_log is suitable for 
+        low-level debugging purposes by programmers and is 
+        not intended to be useful as a high level user 
         interface tool.
   Returns:
     @untitled table
@@ -51539,12 +51372,12 @@ public:
     Tests the brep to see if its topology information is
     valid.
   Parameters:
-    text_log - [in] if the brep topology is not valid and
-        text_log is not NULL, then a brief english
+    text_log - [in] if the brep topology is not valid and 
+        text_log is not NULL, then a brief english 
         description of the problem is appended to the log.
-        The information appended to text_log is suitable for
-        low-level debugging purposes by programmers and is
-        not intended to be useful as a high level user
+        The information appended to text_log is suitable for 
+        low-level debugging purposes by programmers and is 
+        not intended to be useful as a high level user 
         interface tool.
   Returns:
     @untitled table
@@ -51563,16 +51396,16 @@ public:
   /*
   Description:
     Expert user function that tests the brep to see if its
-    geometry information is valid.  The value of
-    brep.IsValidTopology() must be true before
+    geometry information is valid.  The value of 
+    brep.IsValidTopology() must be true before 
     brep.IsValidGeometry() can be safely called.
   Parameters:
-    text_log - [in] if the brep geometry is not valid and
-        text_log is not NULL, then a brief english
+    text_log - [in] if the brep geometry is not valid and 
+        text_log is not NULL, then a brief english 
         description of the problem is appended to the log.
-        The information appended to text_log is suitable for
-        low-level debugging purposes by programmers and is
-        not intended to be useful as a high level user
+        The information appended to text_log is suitable for 
+        low-level debugging purposes by programmers and is 
+        not intended to be useful as a high level user 
         interface tool.
   Returns:
     @untitled table
@@ -51591,17 +51424,17 @@ public:
   /*
   Description:
     Expert user function that tests the brep to see if its
-    tolerances and flags are valid.  The values of
+    tolerances and flags are valid.  The values of 
     brep.IsValidTopology() and brep.IsValidGeometry() must
-    be true before brep.IsValidTolerancesAndFlags() can
+    be true before brep.IsValidTolerancesAndFlags() can 
     be safely called.
   Parameters:
     text_log - [in] if the brep tolerance or flags are not
-        valid and text_log is not NULL, then a brief english
+        valid and text_log is not NULL, then a brief english 
         description of the problem is appended to the log.
-        The information appended to text_log is suitable for
-        low-level debugging purposes by programmers and is
-        not intended to be useful as a high level user
+        The information appended to text_log is suitable for 
+        low-level debugging purposes by programmers and is 
+        not intended to be useful as a high level user 
         interface tool.
   Returns:
     @untitled table
@@ -51619,7 +51452,7 @@ public:
   bool IsValidTolerancesAndFlags( ON_TextLog* text_log = NULL ) const;
 
   // Description:
-  //   Tests brep to see if it is valid for
+  //   Tests brep to see if it is valid for 
   //   saving in V2 3DM archives.
   // Returns:
   //   true if brep is valid for V2 3DM archives.
@@ -51643,7 +51476,7 @@ public:
     If you need to detect when splitting occured, comare the
     before and after values of m_F.Count().
   */
-  bool SplitKinkyFaces(
+  bool SplitKinkyFaces( 
                        double kink_tol_radians = ON_DEFAULT_ANGLE_TOLERANCE,
           bool bCompactIfNeeded = true
                         );
@@ -51657,12 +51490,12 @@ public:
   Returns:
     True if successful.
   Remarks:
-    This function leaves deleted stuff in the brep.
+    This function leaves deleted stuff in the brep.  
     Call ON_Brep::Compact() to remove deleted stuff.
   */
   virtual
-    bool SplitKinkyFace(
-                        int face_index,
+    bool SplitKinkyFace( 
+                        int face_index, 
                         double kink_tol_radians = ON_DEFAULT_ANGLE_TOLERANCE // ON_PI/180.0
                          );
 
@@ -51675,12 +51508,12 @@ public:
   Returns:
     True if successful.
   Remarks:
-    This function leaves deleted stuff in the brep.
+    This function leaves deleted stuff in the brep.  
     Call ON_Brep::Compact() to remove deleted stuff.
   */
   virtual
-    bool SplitKinkyEdge(
-                        int edge_index,
+    bool SplitKinkyEdge( 
+                        int edge_index, 
                         double kink_tol_radians = ON_DEFAULT_ANGLE_TOLERANCE //ON_PI/180.0
                          );
 
@@ -51710,7 +51543,7 @@ public:
          ) const;
 
   // virtual ON_Geometry::Transform() override
-  ON_BOOL32 Transform(
+  ON_BOOL32 Transform( 
          const ON_Xform&
          );
 
@@ -51725,7 +51558,7 @@ public:
   /*
   Description:
     If possible, BrepForm() creates a brep form of the
-    ON_Geometry.
+    ON_Geometry. 
   Parameters:
     brep - [in] if not NULL, brep is used to store the brep
         form of the geometry.
@@ -51757,7 +51590,7 @@ public:
   //      sub interval of m_C3[c3_index]->Domain().
   // Returns:
   //   true if successful.
-  bool SetEdgeCurve(
+  bool SetEdgeCurve( 
     ON_BrepEdge& edge,
     int c3_index,
     const ON_Interval* sub_domain = NULL
@@ -51772,16 +51605,16 @@ public:
   //      sub interval of m_C2[c2_index]->Domain().
   // Returns:
   //   true if successful.
-  bool SetTrimCurve(
+  bool SetTrimCurve( 
     ON_BrepTrim& trim,
     int c2_index,
     const ON_Interval* sub_domain = NULL
     );
 
-  // These add a new topology piece to the b-rep and return a
+  // These add a new topology piece to the b-rep and return a 
   // reference that is intended to be used for initialization.
   ON_BrepVertex& NewVertex();
-  ON_BrepVertex& NewVertex(
+  ON_BrepVertex& NewVertex( 
     ON_3dPoint vertex_point,
     double vertex_tolerance = ON_UNSET_VALUE
     );
@@ -51789,7 +51622,7 @@ public:
   ON_BrepEdge& NewEdge(
                   int = -1              // 3d curve index
                   );
-  ON_BrepEdge& NewEdge(
+  ON_BrepEdge& NewEdge( 
                   ON_BrepVertex&, // start vertex
                   ON_BrepVertex&, // end vertex
                   int = -1,       // 3d curve index
@@ -51825,7 +51658,7 @@ public:
     Add a new face to a brep.  This creates a complete face with
     new vertices at the surface corners, new edges along the surface
     boundary, etc.  The loop of the returned face has four trims that
-    correspond to the south, east, north, and west side of the
+    correspond to the south, east, north, and west side of the 
     surface in that order.  If you use this version of NewFace to
     add an exiting brep, then you are responsible for using a tool
     like ON_Brep::JoinEdges() to hook the new face to its
@@ -51844,8 +51677,8 @@ public:
     ON_Brep::JoinEdges
     ON_Brep::AddSurface
   */
-  ON_BrepFace* NewFace(
-    const ON_Surface& surface
+  ON_BrepFace* NewFace( 
+    const ON_Surface& surface 
     );
 
   /*
@@ -51856,7 +51689,7 @@ public:
                     that goes around the edges of the surface.
     vid - [in/out] four vertex indices that specify the vertices at
                    the (sw,se,nw,ne) corners.  If the input value
-                   of a vertex index is -1, then the vertex will be
+                   of a vertex index is -1, then the vertex will be 
                    created.
     eid - [in/out] four edge indices that specify the edges for
                    the (south,east,north,west) sides.  If the input value
@@ -51888,7 +51721,7 @@ public:
 
   /*
   Description:
-    Add a new face to the brep whose surface geometry is a
+    Add a new face to the brep whose surface geometry is a 
     ruled surface between two edges.
   Parameters:
     edgeA - [in] The south side of the face's surface will
@@ -51908,13 +51741,13 @@ public:
   ON_BrepFace* NewRuledFace(
         const ON_BrepEdge& edgeA,
         bool bRevEdgeA,
-        const ON_BrepEdge& edgeB,
+        const ON_BrepEdge& edgeB, 
         bool bRevEdgeB
         );
 
   /*
   Description:
-    Add a new face to the brep whose surface geometry is a
+    Add a new face to the brep whose surface geometry is a 
     ruled cone with the edge as the base and the vertex as
     the apex point.
   Parameters:
@@ -51924,7 +51757,7 @@ public:
     edge - [in] The south side of the face's surface will
           run along this edge.
     bRevEdge - [in] true if the new face's outer boundary
-          orientation along the edge is opposite the
+          orientation along the edge is opposite the 
           orientation of edge.
   Returns:
     A pointer to the new face or a NULL if the new face could
@@ -51948,7 +51781,7 @@ public:
   /*
   Description:
     Create a new boundary loop on a face.  After you get this
-    ON_BrepLoop, you still need to create the vertices, edges,
+    ON_BrepLoop, you still need to create the vertices, edges, 
     and trims that define the loop.
   Returns:
     New loop that needs to be filled in.
@@ -51977,7 +51810,7 @@ public:
                    underlying surface.
     vid - [in/out] four vertex indices that specify the vertices at
                    the (sw,se,nw,ne) corners.  If the input value
-                   of a vertex index is -1, then the vertex will be
+                   of a vertex index is -1, then the vertex will be 
                    created.
     eid - [in/out] four edge indices that specify the edges for
                    the (south,east,north,west) sides.  If the input value
@@ -52009,7 +51842,7 @@ public:
         suface must be an ON_PlaneSurface.
     loop_type - [in] type of loop to add.  If loop_type is
         ON_BrepLoop::unknown, then the loop direction is tested
-        and the the new loops type will be set to
+        and the the new loops type will be set to 
         ON_BrepLoop::outer or ON_BrepLoop::inner.  If the loop_type
         is ON_BrepLoop::outer, then the direction of the new loop
         is tested and flipped if it is clockwise. If the loop_type
@@ -52018,7 +51851,7 @@ public:
     boundary - [in] a list of 3d curves that form a simple (no self
         intersections) closed curve.  These curves define the 3d
         edge geometry and should be near the planar surface.
-    bDuplicateCurves - [in] If true, then duplicates of the curves
+    bDuplicateCurves - [in] If true, then duplicates of the curves 
         in the boundary array are added to the brep.  If false, the
         curves in the boundary array are added to the brep and will
         be deleted by ON_Brep::~ON_Brep.
@@ -52129,8 +51962,8 @@ public:
     trim.m_type = ...;
     trim.m_iso = ...;
   Remarks:
-    You should set the trim's ON_BrepTrim::m_tolerance,
-    ON_BrepTrim::m_type, ON_BrepTrim::m_iso,
+    You should set the trim's ON_BrepTrim::m_tolerance, 
+    ON_BrepTrim::m_type, ON_BrepTrim::m_iso, 
     and ON_BrepTrim::m_li values.
         In general, you should try to use the
     ON_BrepTrim::NewTrim( edge, bRev3d, loop, c2i ) version of NewTrim.
@@ -52196,7 +52029,7 @@ public:
   Parameters:
     vertex - [in] vertex along collapsed surface edge
     loop - [in] trim is appended to this loop
-    iso - [in] one of ON_Surface::S_iso, ON_Surface::E_iso,
+    iso - [in] one of ON_Surface::S_iso, ON_Surface::E_iso, 
                ON_Surface::N_iso, or ON_Surface::W_iso.
     c2i - [in] index of 2d trimming curve
   Returns:
@@ -52225,7 +52058,7 @@ public:
     a single trim with type ON_BrepTrim::ptonsrf.  There
     will be a loop containing this single trim.
   */
-  ON_BrepVertex& NewPointOnFace(
+  ON_BrepVertex& NewPointOnFace( 
     ON_BrepFace& face,
     double s,
     double t
@@ -52237,7 +52070,7 @@ public:
   Parameters:
     face - [in] face that curve lies on
     edge - [in] 3d edge associated with this curve on surface
-    bRev3d - [in] true if the 3d edge and the 2d parameter space
+    bRev3d - [in] true if the 3d edge and the 2d parameter space 
                   curve have opposite directions.
     c2i - [in] index of 2d curve in face's parameter space
   Returns:
@@ -52255,13 +52088,13 @@ public:
 
   // appends a copy of brep to this and updates
   // indices of appended brep parts.  Duplicates are not removed.
-  void Append(
+  void Append( 
     const ON_Brep& // brep
-    );
+    ); 
 
   // This function can be used to compute vertex information for a
   // b-rep when everything but the m_V array is properly filled in.
-  // It is intended to be used when creating a ON_Brep from a
+  // It is intended to be used when creating a ON_Brep from a 
   // definition that does not include explicit vertex information.
   void SetVertices(void);
 
@@ -52293,8 +52126,8 @@ public:
   See Also:
     ON_Brep::SetTrimTypeFlags
   */
-  ON_BrepTrim::TYPE TrimType(
-    const ON_BrepTrim& trim,
+  ON_BrepTrim::TYPE TrimType( 
+    const ON_BrepTrim& trim, 
     ON_BOOL32 bLazy = true
     ) const;
 
@@ -52309,30 +52142,30 @@ public:
 
   // GetTrim2dStart() evaluates the start of the
   // parameter space (2d) trim curve.
-  bool GetTrim2dStart(
+  bool GetTrim2dStart( 
           int trim_index,         // index of ON_BrepTrim in m_T[] array
-          ON_2dPoint&
+          ON_2dPoint& 
           ) const;
 
   // GetTrim2dEnd() evaluates end of the
   // parameter space (2d) trim curve.
   bool GetTrim2dEnd(
           int,         // index of ON_BrepTrim in m_T[] array
-          ON_2dPoint&
+          ON_2dPoint& 
           ) const;
 
   // GetTrim3dStart() evaluates the 3d surface at the start of the
   // parameter space (2d) trim curve.
-  bool GetTrim3dStart(
+  bool GetTrim3dStart( 
           int,         // index of ON_BrepTrim in m_T[] array
-          ON_3dPoint&
+          ON_3dPoint& 
           ) const;
 
   // GetTrim3dEnd() evaluates the 3d surface at the end of the
   // parameter space (2d) trim curve.
   bool GetTrim3dEnd(
           int,         // index of ON_BrepTrim in m_T[] array
-          ON_3dPoint&
+          ON_3dPoint& 
           ) const;
 
   // This function examines the 2d parameter space curves and returns
@@ -52429,7 +52262,7 @@ public:
     Set the loop parameter space bounding box (loop.m_pbox).
   Parameters:
     loop - [in]
-    bLazy - [in] if true and loop trim trim.m_pbox is valid,
+    bLazy - [in] if true and loop trim trim.m_pbox is valid, 
        then that trim.m_pbox is not recalculated.
   Returns:
     true if loop ends up with a valid bounding box.
@@ -52441,13 +52274,13 @@ public:
   /*
   Description:
     Set the loop and trim parameter space bounding boxes
-    for every loop and trim in the face
+    for every loop and trim in the face 
   Parameters:
     face - [in]
-    bLazy - [in] if true and trim trim.m_pbox is valid,
+    bLazy - [in] if true and trim trim.m_pbox is valid, 
        then that trim.m_pbox is not recalculated.
   Returns:
-    true if all the face's loop and trim parameter space bounding
+    true if all the face's loop and trim parameter space bounding 
     boxes are valid.
   */
   virtual
@@ -52458,7 +52291,7 @@ public:
     Set the loop and trim parameter space bounding boxes
     for every loop and trim in the brep.
   Parameters:
-    bLazy - [in] if true and trim trim.m_pbox is valid,
+    bLazy - [in] if true and trim trim.m_pbox is valid, 
        then that trim.m_pbox is not recalculated.
   Returns:
     true if all the loop and trim parameter space bounding boxes
@@ -52515,9 +52348,9 @@ public:
   Returns:
     Number of brep faces that reference the surface.
   */
-  int SurfaceUseCount(
+  int SurfaceUseCount( 
               int surface_index,
-              int max_count=0 )
+              int max_count=0 ) 
               const;
   /*
   Description:
@@ -52529,9 +52362,9 @@ public:
   Returns:
     Number of brep edges that reference the 3d curve.
   */
-  int EdgeCurveUseCount(
+  int EdgeCurveUseCount( 
               int c3_index,
-              int max_count=0 )
+              int max_count=0 ) 
               const;
 
   /*
@@ -52544,9 +52377,9 @@ public:
   Returns:
     Number of brep trims that reference the 2d curve.
   */
-  int TrimCurveUseCount(
+  int TrimCurveUseCount( 
               int c2_index,
-              int max_count=0 )
+              int max_count=0 ) 
               const;
 
   /*
@@ -52563,7 +52396,7 @@ public:
     A pointer to a 3d ON_Curve.  The caller must delete
     this curve.
   */
-  ON_Curve* Loop3dCurve(
+  ON_Curve* Loop3dCurve( 
     const ON_BrepLoop& loop,
     ON_BOOL32 bRevCurveIfFaceRevIsTrue = false
     ) const;
@@ -52583,7 +52416,7 @@ public:
   Returns:
     Number of curves appended to curve_list.
   */
-  int Loop3dCurve(
+  int Loop3dCurve( 
     const ON_BrepLoop& loop,
     ON_SimpleArray<ON_Curve*>& curve_list,
     ON_BOOL32 bRevCurveIfFaceRevIsTrue = false
@@ -52633,7 +52466,7 @@ public:
     ON_Brep::IsManifold
   */
   bool IsSolid() const;
-
+  
   /*
   Description:
     Test brep to see if it is an oriented manifold.
@@ -52655,30 +52488,6 @@ public:
     ON_BOOL32* pbHasBoundary = NULL
     ) const;
 
-  /*
-  Description:
-    Determine if P is inside Brep.  This question only makes sense
-    when the brep is a closed manifold.  This function does not
-    not check for closed or manifold, so result is not valid in
-    those cases.  Intersects a line through P with brep, finds
-    the intersection point Q closest to P, and looks at face
-    normal at Q.  If the point Q is on an edge or the intersection
-    is not transverse at Q, then another line is used.
-  Parameters:
-    P - [in] 3d point
-    tolerance - [in] 3d distance tolerance used for intersection
-      and determining strict inclusion.
-    bStrictlInside - [in] If bStrictlInside is true, then this
-      function will return false if the distance from P is within
-      tolerance of a brep face.
-  Returns:
-    True if P is in, false if not. See parameter bStrictlyIn.
-  */
-  bool IsPointInside(
-          ON_3dPoint P,
-          double tolerance,
-          bool bStrictlyInside
-          ) const;
 
 
   bool IsSurface() const;      // returns true if the b-rep has a single face
@@ -52718,7 +52527,7 @@ public:
 
   //////////
   // Change the domain of a trim's 2d curve.  This changes only the
-  // parameterization of the 2d trimming curve; the locus of the
+  // parameterization of the 2d trimming curve; the locus of the 
   // 2d trimming curve is not changed.
   bool SetTrimDomain(
          int, // index of trim in m_T[] array
@@ -52727,23 +52536,23 @@ public:
 
   //////////
   // Change the domain of an edge.  This changes only the
-  // parameterization of the 3d edge curve; the locus of the
+  // parameterization of the 3d edge curve; the locus of the 
   // 3d edge curve is not changed.
   bool SetEdgeDomain(
          int, // index of edge in m_E[] array
          const ON_Interval&
          );
 
-  // Reverses entire brep orientation of all faces by toggling
+  // Reverses entire brep orientation of all faces by toggling 
   // value of all face's ON_BrepFace::m_bRev flag.
   void Flip();
 
   // reverses orientation of a face by toggling ON_BrepFace::m_bRev
   void FlipFace(ON_BrepFace&);
 
-  // Reverses orientation of trimming loop.
+  // Reverses orientation of trimming loop. 
   // This function is intended to be used by brep experts and does
-  // does NOT modify ON_BrepLoop::m_type.  You should make sure
+  // does NOT modify ON_BrepLoop::m_type.  You should make sure 
   // ON_BrepLoop::m_type jibes with the loop's direction.  (Outer loops
   // should be counter-clockwise and inner loops should be clockwise.)
   // You can use ON_Brep::LoopDirection() to determine the direction of
@@ -52766,7 +52575,7 @@ public:
 
   /*
   Description:
-    Sort the face.m_li[] array by loop type
+    Sort the face.m_li[] array by loop type 
     (outer, inner, slit, crvonsrf, ptonsrf)
   Parameters:
     face - [in/out] face whose m_li[] array should be sorted.
@@ -52791,7 +52600,7 @@ public:
     join_tolerance - [in] The distances between the ends
       of edge and other_edge must be at most join_tolerance
       in order for the edges to be joined.  The caller is
-      responsible for insuring that the 3d location of
+      responsible for insuring that the 3d location of 
       other_edge is within join_tolerance of edge.
     bCheckFaceOrientaion - [in]
       If true and edge and other_edge are boundary edges,
@@ -52815,7 +52624,7 @@ public:
     ON_SumSurface* new_surface = new ON_SumSurface();
     new_surface->Create( edge, v );
 
-    //
+    // 
     ON_Brep new_brep;
     new_brep.AddFace( Create( new_surface );
     brep.
@@ -52825,8 +52634,8 @@ public:
     ON_Brep:CullUnusedVertices
     ON_Brep:CullUnused3dCurves
   */
-  bool JoinEdges(
-                 ON_BrepEdge& edge,
+  bool JoinEdges( 
+                 ON_BrepEdge& edge, 
                  ON_BrepEdge& other_edge,
                  double join_tolerance,
     ON_BOOL32 bCheckFaceOrientaion = true
@@ -52865,12 +52674,12 @@ public:
     be combined into a single edge.
   Remarks:
     The input edges are deleted but are still in the
-    brep's m_E[] arrays.  Use ON_Brep::Compact to remove
+    brep's m_E[] arrays.  Use ON_Brep::Compact to remove 
     the unused edges.
   */
-  ON_BrepEdge* CombineContiguousEdges(
-    int edge_index0,
-    int edge_iindex1,
+  ON_BrepEdge* CombineContiguousEdges( 
+    int edge_index0, 
+    int edge_iindex1, 
     double angle_tolerance_radians = ON_PI/180.0
     );
 
@@ -52882,7 +52691,7 @@ public:
     trim_index - [in] index of trim in m_T array
     edge_t - [in] parameter on 3d edge
     trim_t - [out] parameter on 2d trim curve
-    bOkToBuildTrimPline - [in]
+    bOkToBuildTrimPline - [in] 
        if true and m_T[trim_index].m_pline[] does not
        have its edge parameters set, then they are filled
        in.  This is slow the first time, but greatly
@@ -52963,7 +52772,7 @@ public:
   // These remove a topology piece from a b-rep but do not
   // rearrange the arrays that hold the brep objects.  The
   // deleted objects have their indices set to -1.  Deleting
-  // an object that is connected to other objects will
+  // an object that is connected to other objects will 
   // modify thos objects.
   void DeleteVertex(ON_BrepVertex& vertex);
   void DeleteEdge(ON_BrepEdge& edge, ON_BOOL32 bDeleteEdgeVertices); // pass true to delete vertices used only by edge
@@ -52976,7 +52785,7 @@ public:
 
   // Description:
   //   Set m_vertex_user.i, m_edge_user.i, m_face_user.i, m_loop_user.i,
-  //   and m_trim_user.i values of faces of component including
+  //   and m_trim_user.i values of faces of component including 
   //   m_F[face_index] to label. Numbering starts at 1.
   // Parameters:
   //   face_index - [in] index of face in component
@@ -53008,7 +52817,7 @@ public:
 
   /*
   Description:
-    If this brep has two or more connected components,
+    If this brep has two or more connected components, 
     then duplicates of the connected components are appended
     to the components[] array.
   Parameters:
@@ -53021,7 +52830,7 @@ public:
   See Also:
     ON_Brep::GetConnectedComponents
   */
-  int GetConnectedComponents(
+  int GetConnectedComponents( 
           ON_SimpleArray< ON_Brep* >& components,
           bool bDuplicateMeshes
           ) const;
@@ -53045,10 +52854,10 @@ public:
     in the subbrep's m_F array are in the same
     order as they were specified in sub_fi[].
   */
-  ON_Brep* SubBrep(
-    int subfi_count,
-    const int* sub_fi,
-    ON_Brep* sub_brep = 0
+  ON_Brep* SubBrep( 
+    int subfi_count, 
+    const int* sub_fi, 
+    ON_Brep* sub_brep = 0 
     ) const;
 
   ///////////////////////////////////////////////////////////////////////
@@ -53061,7 +52870,7 @@ public:
   Description:
     Get region topology information:
     In order to keep the ON_Brep class efficient, rarely used
-    region topology information is not maintained.  If you
+    region topology information is not maintained.  If you 
     require this information, call RegionTopology().
   */
   const ON_BrepRegionTopology& RegionTopology() const;
@@ -53070,7 +52879,7 @@ public:
   Description:
     Get region topology information:
     In order to keep the ON_Brep class efficient, rarely used
-    region topology information is not maintained.  If you
+    region topology information is not maintained.  If you 
     require this information, call RegionTopology().
   */
   void DestroyRegionTopology();
@@ -53083,7 +52892,7 @@ public:
   //   Single face brep.
   // Remarks:
   //   The m_vertex_user.i, m_edge_user.i, m_face_user.i, m_loop_user.i,
-  //   and m_trim_user.i values of the returned brep are are set to the
+  //   and m_trim_user.i values of the returned brep are are set to the 
   //   indices of the objects they duplicate.
   // See Also:
   //   ON_Brep::DeleteFace, ON_Brep::ExtractFace
@@ -53102,7 +52911,7 @@ public:
   //   A brep made by duplicating the faces listed in the face_index[] array.
   // Remarks:
   //   The m_vertex_user.i, m_edge_user.i, m_face_user.i, m_loop_user.i,
-  //   and m_trim_user.i values of the returned brep are are set to the
+  //   and m_trim_user.i values of the returned brep are are set to the 
   //   indices of the objects they duplicate.
   // See Also:
   //   ON_Brep::DuplicateFace
@@ -53129,8 +52938,8 @@ public:
   Description:
     Standardizes the relationship between an ON_BrepEdge
     and the 3d curve it uses.  When done, the edge will
-    be the only edge that references its 3d curve, the
-    domains of the edge and 3d curve will be the same,
+    be the only edge that references its 3d curve, the 
+    domains of the edge and 3d curve will be the same, 
     and the edge will use the entire locus of the 3d curve.
   Parameters:
     edge_index - [in] index of edge to standardize.
@@ -53148,14 +52957,14 @@ public:
     curve use count is known for the edge.
     Standardizes the relationship between an ON_BrepEdge
     and the 3d curve it uses.  When done, the edge will
-    be the only edge that references its 3d curve, the
-    domains of the edge and 3d curve will be the same,
+    be the only edge that references its 3d curve, the 
+    domains of the edge and 3d curve will be the same, 
     and the edge will use the entire locus of the 3d curve.
   Parameters:
     edge_index - [in] index of edge to standardize.
     bAdjustEnds - [in] if true, move edge curve endpoints to vertices
     EdgeCurveUse - [in] if > 1, then the edge curve for this edge is used by more than one
-        edge.  if 1, then the edge curve is used only for this edge.
+        edge.  if 1, then the edge curve is used only for this edge. 
         If <= 0, then use count is unknown.
   See Also:
     ON_Brep::StandardizeEdgeCurves
@@ -53179,8 +52988,8 @@ public:
   Description:
     Standardizes the relationship between an ON_BrepTrim
     and the 2d curve it uses.  When done, the trim will
-    be the only trim that references its 2d curve, the
-    domains of the trim and 2d curve will be the same,
+    be the only trim that references its 2d curve, the 
+    domains of the trim and 2d curve will be the same, 
     and the trim will use the entire locus of the 2d curve.
   Parameters:
     trim_index - [in] index of trim to standardize.
@@ -53204,8 +53013,8 @@ public:
     Standardizes the relationship between an ON_BrepFace
     and the 3d surface it uses.  When done, the face will
     be the only face that references its 3d surface, and
-    the orientations of the face and 3d surface will be
-    the same.
+    the orientations of the face and 3d surface will be 
+    the same. 
   Parameters:
     face_index - [in] index of face to standardize.
   See Also:
@@ -53240,7 +53049,7 @@ public:
     ON_Brep::Compact
   */
   void Standardize();
-
+  
 
   /*
   Description:
@@ -53251,9 +53060,9 @@ public:
   Parameters:
     face - [in] face to test and whose surface should be shrunk.
     DisableSide - [in] This is a bit field.  A set bit indicates not to shrink
-                the surface on a given side.  The default of 0 enables shrinking
+                the surface on a given side.  The default of 0 enables shrinking 
                 on all four sides.
-      @table
+      @table  
       value       meaning
       0x0001     Dont shrink on the west side of domain.
       0x0002     Dont shrink on the south side of domain.
@@ -53338,7 +53147,7 @@ public:
   Parameters:
     current_edge_index - [in]
     endi - [in] 0 = use the edge start vertex, 1 = use the edge end vertex
-    prev_endi - [out] 0 if previous edge begins at the vertex,
+    prev_endi - [out] 0 if previous edge begins at the vertex, 
                       1 if previous edge ends at the vertex
   Returns:
     edge index of the previous edge or -1 if there is only one edge
@@ -53363,14 +53172,14 @@ public:
   Parameters:
     current_edge_index - [in]
     endi - [in] 0 = use the edge start vertex, 1 = use the edge end vertex
-    next_endi - [out] 0 if next edge begins at the vertex,
+    next_endi - [out] 0 if next edge begins at the vertex, 
                       1 if next edge ends at the vertex
   Returns:
     edge index of the next edge or -1 if there is only one edge
     that begins or ends at the vertex.
   Remarks:
     This is a tool that simplifies searching through the
-    ON_BrepVertex.m_ei[] array.
+    ON_BrepVertex.m_ei[] array.  
     The edges are in no particular order.
   See Also:
     ON_Brep::NextEdge
@@ -53385,7 +53194,7 @@ public:
   Description:
     Get a brep component from its index.
   Parameters:
-    component_index - [in]
+    component_index - [in] 
   Returns:
     A const pointer to the component.  Do not delete
     the returned object.  It points to an object managed
@@ -53397,7 +53206,7 @@ public:
     ON_Brep::Trim
     ON_Brep::Vertex
   */
-  const ON_Geometry* BrepComponent(
+  const ON_Geometry* BrepComponent( 
     ON_COMPONENT_INDEX ci
     ) const;
 
@@ -53503,29 +53312,6 @@ public:
   */
   bool RemoveSlits(ON_BrepFace& F);
 
-  /*
-  Description:
-    If fid0 != fid1 and m_F[fid0] and m_F[fid1] have the same surface (m_si is identical),
-    and they are joined along a set of edges that do not have any other faces, then this will
-    combine the two faces into one.
-  Parameters:
-    fid0, fid1 - [in] indices into m_F of faces to be merged.
-  Returns:
-    id of merged face if faces were successfully merged. -1 if not merged.
-  Remarks:
-    Caller should call Compact() when done.
-  */
-  int MergeFaces(int fid0, int fid1);
-
-  /*
-  Description:
-    Merge all possible faces that have the same m_si
-  Returns:
-    true if any faces were successfully merged.
-  Remarks:
-    Caller should call Compact() when done.
-  */
-  bool MergeFaces();
 
   /*
   Description:
@@ -53534,14 +53320,14 @@ public:
     bExtractSingleSegments - [in] if true, polycurves with a
       single segment are replaced with the segment curve.
     bEdges - [in] if true, the m_C3[] array is processed
-    bTrimCurves - [in] if true, the m_C2[] array is processed.
+    bTrimCurves - [in] if true, the m_C2[] array is processed.  
   Returns:
     True if any nesting was removed and false if no nesting
     was removed.
   */
   bool RemoveNesting(
           bool bExtractSingleSegments,
-          bool bEdges = true,
+          bool bEdges = true, 
           bool bTrimCurves = true
           );
 
@@ -53565,7 +53351,7 @@ public:
   Remarks:
     After you finish cleaning up the brep, you need
     to call ON_Brep::Compact() to remove unused edge,
-    trim, and vertex information from the brep's m_E[],
+    trim, and vertex information from the brep's m_E[], 
     m_V[], m_T[], m_C2[], and m_C3[] arrays.
   */
   bool CollapseEdge(
@@ -53592,13 +53378,13 @@ public:
   Remarks:
     After you finish cleaning up the brep, you need
     to call ON_Brep::Compact() to remove unused edge,
-    trim, and vertex information from the brep's m_E[],
+    trim, and vertex information from the brep's m_E[], 
     m_V[], m_T[], m_C2[], and m_C3[] arrays.
   */
-  bool ChangeVertex(
-    int old_vi,
-    int new_vi,
-    bool bClearTolerances
+  bool ChangeVertex( 
+    int old_vi, 
+    int new_vi, 
+    bool bClearTolerances 
     );
 
   /*
@@ -53615,9 +53401,9 @@ public:
     the start of trim1.  The trim's m_iso and m_type flags
     need to be correctly set.
   */
-  bool CloseTrimGap(
-    ON_BrepTrim& trim0,
-    ON_BrepTrim& trim1
+  bool CloseTrimGap( 
+    ON_BrepTrim& trim0, 
+    ON_BrepTrim& trim1 
     );
 
   /*
@@ -53625,14 +53411,14 @@ public:
     Remove edges that are not connected to a face.
   Parameters:
     bDeleteVertices - [in] if true, then the vertices
-      at the ends of the wire edges are deleted if
+      at the ends of the wire edges are deleted if 
       they are not connected to face trimming edges.
   Returns:
     Number of edges that were removed.
   Remarks:
     After you finish cleaning up the brep, you need
     to call ON_Brep::Compact() to remove unused edge,
-    trim, and vertex information from the brep's m_E[],
+    trim, and vertex information from the brep's m_E[], 
     m_V[], m_T[], m_C2[], and m_C3[] arrays.
 
     If you want to remove wire edges and wiere
@@ -53651,7 +53437,7 @@ public:
     Number of vertices that were deleted.
   Remarks:
     After you finish cleaning up the brep, you need
-    to call ON_Brep::Compact() to remove deleted
+    to call ON_Brep::Compact() to remove deleted 
     vertices from the m_V[] array.
   See Also:
     ON_Brep::RemoveWireEdges
@@ -53674,9 +53460,9 @@ public:
   // The constructor zeros m_brep_user.
   // The value is of m_brep_user is not saved in 3DM
   // archives and may be changed by some computations.
-  ON_U m_brep_user;
+  ON_U m_brep_user; 
 
-  // geometry
+  // geometry 
   // (all geometry is deleted by ~ON_Brep().  Pointers can be NULL
   // or not referenced.  Use Compact() to remove unreferenced geometry.
   ON_CurveArray   m_C2;  // Pointers to parameter space trimming curves
@@ -53693,13 +53479,13 @@ public:
   ON_BrepLoopArray    m_L;   // loops
   ON_BrepFaceArray    m_F;   // faces
 
-protected:
+protected:	
   friend class ON_BrepFace;
   friend class ON_BrepRegion;
   friend class ON_BrepFaceSide;
   ON_BoundingBox m_bbox;
 
-  // Never directly set m_is_solid, use calls to IsSolid() and/or
+  // Never directly set m_is_solid, use calls to IsSolid() and/or 
   // SolidOrientation() when you need to know the answer to this
   // question.
   // 0 = unset
@@ -53750,7 +53536,7 @@ protected:
   bool IsValidFaceTopology(int face_index,ON_TextLog* text_log) const;
   bool IsValidFaceGeometry(int face_index,ON_TextLog* text_log) const;
   bool IsValidFaceTolerancesAndFlags(int face_index,ON_TextLog* text_log) const;
-
+  
   bool IsValidEdge(int edge_index,ON_TextLog* text_log) const;
   bool IsValidEdgeTopology(int edge_index,ON_TextLog* text_log) const;
   bool IsValidEdgeGeometry(int edge_index,ON_TextLog* text_log) const;
@@ -53782,7 +53568,7 @@ protected:
 ///////////////////////////////////////////////////////////////////////////////
 //
 // brep construction tools
-//
+// 
 
 /*
 Description:
@@ -53806,10 +53592,10 @@ See Also
   ON_BrepFromMesh( const ON_Mesh& mesh, ... );
 */
 ON_DECL
-ON_Brep* ON_BrepFromMesh(
-          const ON_MeshTopology& mesh_topology,
+ON_Brep* ON_BrepFromMesh( 
+          const ON_MeshTopology& mesh_topology, 
           ON_BOOL32 bTrimmedTriangles = true,
-          ON_Brep* pBrep = NULL
+          ON_Brep* pBrep = NULL 
           );
 
 /*
@@ -53822,7 +53608,7 @@ Parameters:
           v7_______e6_____v6
            |\             |\
            | e7           | e5
-           |  \ ______e4_____\
+           |  \ ______e4_____\ 
           e11  v4         |   v5
            |   |        e10   |
            |   |          |   |
@@ -53869,20 +53655,20 @@ Parameters:
   corners - [in] 6 points defining the box corners
      arranged as the vN lables indicate.
 
-                     /v5
-                    /|\
-                   / | \
-                  e5 |  e4
-                 /   e8  \
-                /__e3_____\
-              v3|    |    |v4
-                |    |    |
-                |    /v2  |
-                e6  / \   e7
-                |  /   \  |
-                | e2    e1|
-                |/       \|
-                /____e0___\
+                     /v5    
+                    /|\       
+                   / | \     
+                  e5 |  e4   
+                 /   e8  \     
+                /__e3_____\  
+              v3|    |    |v4     
+                |    |    |       
+                |    /v2  |   
+                e6  / \   e7   
+                |  /   \  |   
+                | e2    e1|   
+                |/       \|     
+                /____e0___\  
               v0           v1
 
   pBrep - [in] if not NULL, this brep will be used and
@@ -53952,13 +53738,13 @@ Parameters:
                returned.
 Returns:
   An ON_Brep representation of the cylinder with a single
-  face for the cylinder, an edge along the cylinder seam,
+  face for the cylinder, an edge along the cylinder seam, 
   and vertices at the bottom and top ends of this seam edge.
   The optional bottom/top caps are single faces with one
   circular edge starting and ending at the bottom/top vertex.
 */
 ON_DECL
-ON_Brep* ON_BrepCylinder( const ON_Cylinder& cylinder,
+ON_Brep* ON_BrepCylinder( const ON_Cylinder& cylinder, 
                           ON_BOOL32 bCapBottom,
                           ON_BOOL32 bCapTop,
                           ON_Brep* pBrep = NULL );
@@ -53973,16 +53759,16 @@ Parameters:
                returned.
 Returns:
   An ON_Brep representation of the cone with a single
-  face for the cone, an edge along the cone seam,
+  face for the cone, an edge along the cone seam, 
   and vertices at the base and apex ends of this seam edge.
-  The optional cap is asingle face with one circular edge
+  The optional cap is asingle face with one circular edge 
   starting and ending at the base vertex.
 */
 ON_DECL
-ON_Brep* ON_BrepCone(
-          const ON_Cone& cone,
+ON_Brep* ON_BrepCone( 
+          const ON_Cone& cone, 
           ON_BOOL32 bCapBottom,
-          ON_Brep* pBrep = NULL
+          ON_Brep* pBrep = NULL 
           );
 
 /*
@@ -54011,15 +53797,15 @@ Remarks:
   in ~ON_Brep.
 */
 ON_DECL
-ON_Brep* ON_BrepRevSurface(
+ON_Brep* ON_BrepRevSurface( 
           ON_RevSurface*& pRevSurface,
           ON_BOOL32 bCapStart,
           ON_BOOL32 bCapEnd,
-          ON_Brep* pBrep = NULL
+          ON_Brep* pBrep = NULL 
           );
 
 
-
+          
 /*
 Description:
   Create an ON_Brep trimmed plane.
@@ -54035,8 +53821,8 @@ See Also:
   ON_Brep::NewPlanarFaceLoop()
 */
 ON_DECL
-ON_Brep* ON_BrepTrimmedPlane(
-            const ON_Plane& plane,
+ON_Brep* ON_BrepTrimmedPlane( 
+            const ON_Plane& plane, 
             const ON_Curve& boundary,
             ON_Brep* pBrep = NULL );
 
@@ -54045,7 +53831,7 @@ Description:
   Get an ON_Brep definition of a trimmed plane.
 Parameters:
   plane - [in] plane that will be trimmed.
-  boundary - [in] a list of 3d curves that form a simple
+  boundary - [in] a list of 3d curves that form a simple 
       (no self intersections) closed curve that defines the
       outer boundary of the trimmed plane.
   bDuplicateCurves - [in] if true, duplicates of the
@@ -54060,8 +53846,8 @@ See Also:
   ON_Brep::NewPlanarFaceLoop()
 */
 ON_DECL
-ON_Brep* ON_BrepTrimmedPlane(
-            const ON_Plane& plane,
+ON_Brep* ON_BrepTrimmedPlane( 
+            const ON_Plane& plane, 
             ON_SimpleArray<ON_Curve*>& boundary,
             ON_BOOL32 bDuplicateCurves = true,
             ON_Brep* pBrep = NULL );
@@ -54090,7 +53876,7 @@ Remarks:
   responsibility to insure the result does not self intersect.
 */
 ON_DECL
-bool ON_BrepExtrude(
+bool ON_BrepExtrude( 
           ON_Brep& brep,
           const ON_Curve& path_curve,
           bool bCap = true
@@ -54132,7 +53918,7 @@ Remarks:
   it is the last face in the returned brep.m_F[]
 */
 ON_DECL
-int ON_BrepExtrudeFace(
+int ON_BrepExtrudeFace( 
           ON_Brep& brep,
           int face_index,
           const ON_Curve& path_curve,
@@ -54166,7 +53952,7 @@ Remarks:
   it is the last face in the returned brep.m_F[]
 */
 ON_DECL
-int ON_BrepExtrudeLoop(
+int ON_BrepExtrudeLoop( 
           ON_Brep& brep,
           int loop_index,
           const ON_Curve& path_curve,
@@ -54196,7 +53982,7 @@ Remarks:
   The new face is appended to brep.m_F[].
 */
 ON_DECL
-int ON_BrepExtrudeEdge(
+int ON_BrepExtrudeEdge( 
           ON_Brep& brep,
           int edge_index,
           const ON_Curve& path_curve
@@ -54227,7 +54013,7 @@ Remarks:
   the new edge is appended to brep.m_E[].
 */
 ON_DECL
-int ON_BrepExtrudeVertex(
+int ON_BrepExtrudeVertex( 
           ON_Brep& brep,
           int vertex_index,
           const ON_Curve& path_curve
@@ -54257,7 +54043,7 @@ Remarks:
   The new faces are appended to brep.m_F[].
 */
 ON_DECL
-int ON_BrepConeFace(
+int ON_BrepConeFace( 
           ON_Brep& brep,
           int face_index,
           ON_3dPoint apex_point
@@ -54286,7 +54072,7 @@ Remarks:
   The new faces are appended to brep.m_F[].
 */
 ON_DECL
-bool ON_BrepConeLoop(
+bool ON_BrepConeLoop( 
           ON_Brep& brep,
           int loop_index,
           ON_3dPoint apex_point
@@ -54315,7 +54101,7 @@ Remarks:
   The new face is appended to brep.m_F[].
 */
 ON_DECL
-int ON_BrepConeEdge(
+int ON_BrepConeEdge( 
           ON_Brep& brep,
           int edge_index,
           ON_3dPoint apex_point
@@ -54329,8 +54115,8 @@ ON_DECL
 bool ON_BrepMergeFaces(ON_Brep& B);
 
 //This removes all slit trims  from F that are not joined to another face.
-//Unlike ON_Brep::RemoveSlits(), this will remove slit pairs from a loop in cases
-//that will result in the creation of more loops. Caller is responsible for calling
+//Unlike ON_Brep::RemoveSlits(), this will remove slit pairs from a loop in cases 
+//that will result in the creation of more loops. Caller is responsible for calling 
 //ON_Brep::Compact() to get rid of deleted trims and loops.
 
 ON_DECL
@@ -54365,7 +54151,7 @@ ON_Brep* ON_MergeBreps(
 
 /*
 Description:
-  Get the transformation that maps the ON_Extrusion
+  Get the transformation that maps the ON_Extrusion 
   2d xy profile to 3d world space.
 Parameters:
   P - [in] start or end of path
@@ -54386,9 +54172,9 @@ Returns:
 */
 ON_DECL
 bool ON_GetEndCapTransformation(
-          ON_3dPoint P,
-          ON_3dVector T,
-          ON_3dVector U,
+          ON_3dPoint P, 
+          ON_3dVector T, 
+          ON_3dVector U, 
           const ON_3dVector* Normal,
           ON_Xform& xform, // = rot3d*scale2d
           ON_Xform* scale2d,
@@ -54408,7 +54194,7 @@ public:
   ////////////////////////////////////////////////////////////
   //
   // overrides of virtual ON_Object functions
-  //
+  // 
   ON_BOOL32 IsValid( ON_TextLog* text_log = NULL ) const;
   void Dump( ON_TextLog& ) const;
   unsigned int SizeOf() const;
@@ -54420,26 +54206,26 @@ public:
   ////////////////////////////////////////////////////////////
   //
   // overrides of virtual ON_Geometry functions
-  //
+  // 
   int Dimension() const;
   ON_BOOL32 GetBBox(
         double* boxmin,
         double* boxmax,
         int bGrowBox = false
         ) const;
-	bool GetTightBoundingBox(
-        ON_BoundingBox& tight_bbox,
+	bool GetTightBoundingBox( 
+        ON_BoundingBox& tight_bbox, 
         int bGrowBox = false,
         const ON_Xform* xform = 0
         ) const;
-  ON_BOOL32 Transform(
+  ON_BOOL32 Transform( 
         const ON_Xform& xform
         );
 
   /*
   Description:
-    Build a brep form of the extrusion.  The outer profile is always
-    the first face in the brep.  If there are inner profiles,
+    Build a brep form of the extrusion.  The outer profile is always 
+    the first face in the brep.  If there are inner profiles, 
     additional brep faces are created for each profile.  If the
     outer profile is closed, then end caps are added as the last
     two faces in the brep.
@@ -54452,13 +54238,13 @@ public:
     If successful, a pointer to the brep form.  If unsuccessful, null.
   */
   ON_Brep* BrepForm(
-        ON_Brep* brep = NULL
+        ON_Brep* brep = NULL 
         ) const;
 
   /*
   Description:
-    Build a brep form of the extrusion.  The outer profile is always
-    the first face in the brep.  If there are inner profiles,
+    Build a brep form of the extrusion.  The outer profile is always 
+    the first face in the brep.  If there are inner profiles, 
     additional brep faces are created for each profile.  If the
     outer profile is closed, then end caps are added as the last
     two faces in the brep.
@@ -54475,7 +54261,7 @@ public:
   */
   ON_Brep* BrepForm(
     ON_Brep* brep,
-    bool bSmoothFaces
+    bool bSmoothFaces 
     ) const;
 
   /*
@@ -54483,16 +54269,16 @@ public:
     Build a sum surface form of the extrusion.
   Parameters:
     sum_surface - [in]
-      If the sum_surface pointer is not null, then the sum surface
-      form is constructed in sum_surface.  If the sum_surface pointer
+      If the sum_surface pointer is not null, then the sum surface 
+      form is constructed in sum_surface.  If the sum_surface pointer 
       is null, then an ON_SumSurface is allocated on the heap.
   Returns:
     If successful, a pointer to the sum surface form.
     If unsuccessful, null. In particular, extrusions with
     mitered ends do not have sum surface forms.
   */
-  ON_SumSurface* SumSurfaceForm(
-    ON_SumSurface* sum_surface
+  ON_SumSurface* SumSurfaceForm( 
+    ON_SumSurface* sum_surface 
     ) const;
 
   /*
@@ -54528,18 +54314,18 @@ public:
   ////////////////////////////////////////////////////////////
   //
   // overrides of virtual ON_Surface functions
-  //
-  ON_BOOL32 SetDomain(
+  // 
+  ON_BOOL32 SetDomain( 
         int dir,
-        double t0,
+        double t0, 
         double t1
         );
   ON_Interval Domain(
         int dir
         ) const;
-  ON_BOOL32 GetSurfaceSize(
-        double* width,
-        double* height
+  ON_BOOL32 GetSurfaceSize( 
+        double* width, 
+        double* height 
         ) const;
   int SpanCount(
         int dir
@@ -54557,7 +54343,7 @@ public:
         ) const;
   int Degree(
         int dir
-        ) const;
+        ) const; 
   ON_BOOL32 GetParameterTolerance(
          int dir,
          double t,
@@ -54578,7 +54364,7 @@ public:
   ON_BOOL32 IsPeriodic(
         int
         ) const;
-  bool GetNextDiscontinuity(
+  bool GetNextDiscontinuity( 
                   int dir,
                   ON::continuity c,
                   double t0,
@@ -54591,8 +54377,8 @@ public:
                   ) const;
   bool IsContinuous(
     ON::continuity c,
-    double s,
-    double t,
+    double s, 
+    double t, 
     int* hint = NULL,
     double point_tolerance=ON_ZERO_TOLERANCE,
     double d1_tolerance=ON_ZERO_TOLERANCE,
@@ -54633,15 +54419,6 @@ public:
          ON_Surface*& east_or_north_side
          ) const;
 
-  bool GetClosestPoint(
-          const ON_3dPoint& P,
-          double* s,
-          double* t,
-          double maximum_distance = 0.0,
-          const ON_Interval* sdomain = 0,
-          const ON_Interval* tdomain = 0
-          ) const;
-
   ON_BOOL32 GetLocalClosestPoint( const ON_3dPoint&, // test_point
           double,double,     // seed_parameters
           double*,double*,   // parameters of local closest point returned here
@@ -54650,8 +54427,8 @@ public:
           ) const;
 
   //ON_Surface* Offset(
-  //      double offset_distance,
-  //      double tolerance,
+  //      double offset_distance, 
+  //      double tolerance, 
   //      double* max_deviation = NULL
   //      ) const;
 
@@ -54672,7 +54449,7 @@ public:
   ////////////////////////////////////////////////////////////
   //
   // ON_Extrusion interface
-  //
+  // 
   void Destroy();
 
   /*
@@ -54700,7 +54477,7 @@ public:
     A - [in] path start
     B - [in] path end
     up - [in] up direction
-      If up is a unit vector and perpendicular to the line
+      If up is a unit vector and perpendicular to the line 
       segment from A to B, then m_up is set to up.
       Otherwise up will be adjusted so it is perpendicular
       to the line segment from A to B and unitized.
@@ -54723,7 +54500,7 @@ public:
     1: The second surface parameter corresponds to the path direction.
        (m_bTransposed = false)
   Remarks:
-    The default ON_Extrusion constructor sets
+    The default ON_Extrusion constructor sets 
     m_bTransposed = false which corresponds to the 1 = PathParameter().
   */
   int PathParameter() const;
@@ -54737,10 +54514,10 @@ public:
     Set miter plane normal.
   Parameters:
     N - [in] If ON_UNSET_VECTOR or N is parallel to the z-axis,
-             then the miter plane is the default plane
+             then the miter plane is the default plane 
              perpendicular to the path.
              If N is valid and the z coordinate of a unitized
-             N is greater than m_Nz_tol, then the miter plane
+             N is greater than m_Nz_tol, then the miter plane 
              normal is set.
     end - [in] 0 = set miter plane at the start of the path.
                1 = set miter plane at the end of the path.
@@ -54790,7 +54567,7 @@ public:
 
     Use CapCount() to determine how many end caps there are.
     Use ProfileCount() to determine how many profiles there are.
-    Use ProfileSmoothSegmentCount() to determine how many
+    Use ProfileSmoothSegmentCount() to determine how many 
     smooth subsegments are in a profile. Each smooth subsegment
     becomes a wall face in the brep form.
 
@@ -54864,7 +54641,7 @@ public:
   Description:
     Set the outer profile of the extrusion.
   Paramters:
-    outer_profile - [in]
+    outer_profile - [in] 
       curve in the xy plane or a 2d curve.
     bCap - [in]
       If outer_profile is a closed curve, then bCap
@@ -54891,8 +54668,8 @@ public:
     inner_profile - [in]
       closed curve in the xy plane or a 2d curve.
   Returns:
-    True if the profile was set. In this case the
-    ON_Extrusion class  manages the curve and ~ON_Extrusion will
+    True if the profile was set. In this case the 
+    ON_Extrusion class  manages the curve and ~ON_Extrusion will 
     delete it. The extrusion must already have an outer profile.
     If the extrusion already has a profile, the set will
     fail.
@@ -54935,7 +54712,7 @@ public:
     1: The second surface parameter corresponds to the profile direction.
        (m_bTransposed = true)
   Remarks:
-    The default ON_Extrusion constructor sets
+    The default ON_Extrusion constructor sets 
     m_bTransposed = false which corresponds to the 0 = ProfileParameter().
   */
   int ProfileParameter() const;
@@ -54964,7 +54741,7 @@ public:
       and s = 1.0 returns the top profile.
   Returns:
     NULL if the input parameters or the ON_Extrusion class is
-    not valid.  Otherwise a pointer to a 3d curve for
+    not valid.  Otherwise a pointer to a 3d curve for 
     the requested profile. This curve is on the heap and
     the caller is responsible for deleting this curve.
   */
@@ -54976,7 +54753,7 @@ public:
       component index identifying a 3d extrusion profile curve.
   Returns:
     NULL if the component index or the ON_Extrusion class is
-    not valid.  Otherwise a pointer to a 3d curve for
+    not valid.  Otherwise a pointer to a 3d curve for 
     the requested profile. This curve is on the heap and
     the caller is responsible for deleting this curve.
   */
@@ -54988,7 +54765,7 @@ public:
       component index identifying a wall edge curve.
   Returns:
     NULL if the component index or the ON_Extrusion class is
-    not valid.  Otherwise a pointer to a 3d curve for
+    not valid.  Otherwise a pointer to a 3d curve for 
     the requested wall edge. This curve is on the heap and
     the caller is responsible for deleting this curve.
   */
@@ -55000,7 +54777,7 @@ public:
       component index identifying a wall surface.
   Returns:
     NULL if the component index or the ON_Extrusion class is
-    not valid.  Otherwise a pointer to a surface for
+    not valid.  Otherwise a pointer to a surface for 
     the requested wall surface. This curve is on the heap and
     the caller is responsible for deleting this curve.
   */
@@ -55012,7 +54789,7 @@ public:
       If null, a line curve will be allocated using new.
   Returns:
     Null if the extrusion path is not valid.  Otherwise
-    a pointer to an ON_LineCurve that is set to the
+    a pointer to an ON_LineCurve that is set to the 
     extrusion's path. The caller must delete this curve.
   */
   ON_LineCurve* PathLineCurve(ON_LineCurve* line_curve) const;
@@ -55022,7 +54799,7 @@ public:
     profile_parameter - [in]
       parameter on profile curve
   Returns:
-      -1: if the profile_parameter does not correspond
+      -1: if the profile_parameter does not correspond 
           to a point on the profile curve.
     >= 0: index of the profile curve with domain containing
           this paramter.  When the profile_parameter corresponds
@@ -55075,10 +54852,10 @@ public:
 
   /*
   Description:
-    Test a polycurve to determine if it meets the necessary
+    Test a polycurve to determine if it meets the necessary 
     conditions to be used as a multi-segment profile in a extrusion.
   Returns:
-    True if the returned polycurve can be used a a multi-segment
+    True if the returned polycurve can be used a a multi-segment 
     profile in a extrusion.
   */
   static bool IsValidPolyCurveProfile( const ON_PolyCurve& polycurve, ON_TextLog* text_log = 0 );
@@ -55088,7 +54865,7 @@ public:
     If possible, modify a polycurve so it meets the necessary conditions
     to be used as a multi-segment profile in a extrusion.
   Returns:
-    True if the returned polycurve can be used a a multi-segment
+    True if the returned polycurve can be used a a multi-segment 
     profile in a extrusion.
   */
   static bool CleanupPolyCurveProfile( ON_PolyCurve& polycurve );
@@ -55119,7 +54896,7 @@ public:
   //   must exactly match the polycurve's segment domain,
   //   every segment must be continuous and closed,
   //   the first segement curve must have counter-clockwise
-  //   orientation, and the rest must have clockwise
+  //   orientation, and the rest must have clockwise 
   //   orientations.
   int m_profile_count;
   ON_Curve* m_profile;
@@ -55159,7 +54936,7 @@ public:
     cylinder - [in] cylinder.IsFinite() must be true
     bCapBottom - [in] if true, the end at cylinder.m_height[0] will be capped
     bCapTop - [in] if true, the end at cylinder.m_height[1] will be capped
-    extrusion - [in]
+    extrusion - [in] 
       If the input extrusion pointer is null, one will be allocated on the heap
       and it is the caller's responsibility to delte it at an appropriate time.
       If the input pointer is not null, this extrusion will be used and the same
@@ -55185,11 +54962,11 @@ public:
             ...
           }
   */
-  static ON_Extrusion* Cylinder(
-    const ON_Cylinder& cylinder,
+  static ON_Extrusion* Cylinder( 
+    const ON_Cylinder& cylinder, 
     bool bCapBottom,
     bool bCapTop,
-    ON_Extrusion* extrusion = 0
+    ON_Extrusion* extrusion = 0 
     );
 
   /*
@@ -55204,7 +54981,7 @@ public:
       the cylinder will be the outside of the pipe.
     bCapBottom - [in] if true, the end at cylinder.m_height[0] will be capped
     bCapTop - [in] if true, the end at cylinder.m_height[1] will be capped
-    extrusion - [in]
+    extrusion - [in] 
       If the input extrusion pointer is null, one will be allocated on the heap
       and it is the caller's responsibility to delte it at an appropriate time.
       If the input pointer is not null, this extrusion will be used and the same
@@ -55231,19 +55008,19 @@ public:
             ...
           }
   */
-  static ON_Extrusion* Pipe(
-    const ON_Cylinder& cylinder,
+  static ON_Extrusion* Pipe( 
+    const ON_Cylinder& cylinder, 
     double other_radius,
     bool bCapBottom,
     bool bCapTop,
-    ON_Extrusion* extrusion = 0
+    ON_Extrusion* extrusion = 0 
     );
 
   /*
   Description:
     Create an ON_Exrusion from a 3d curve, a plane and a height.
   Parameters:
-    curve - [in]
+    curve - [in] 
       A continuous 3d curve.
     plane - [in]
       If plane is null, then the plane returned by curve.IsPlanar() is used.
@@ -55257,7 +55034,7 @@ public:
     bCap - [in]
       If the curve is closed and bCap is true, then the resulting extrusion
       is capped.
-    extrusion - [in]
+    extrusion - [in] 
       If the input extrusion pointer is null, one will be allocated on the heap
       and it is the caller's responsibility to delte it at an appropriate time.
       If the input pointer is not null, this extrusion will be used and the same
@@ -55267,12 +55044,12 @@ public:
     If the input is not valid, then null, even when the input extrusion
     object is not null.
   */
-  static ON_Extrusion* CreateFrom3dCurve(
+  static ON_Extrusion* CreateFrom3dCurve( 
     const ON_Curve& curve,
     const ON_Plane* plane,
     double height,
     bool bCap,
-    ON_Extrusion* extrusion = 0
+    ON_Extrusion* extrusion = 0 
     );
 
 };
@@ -55290,7 +55067,7 @@ public:
 // THIS SOFTWARE IS PROVIDED "AS IS" WITHOUT EXPRESS OR IMPLIED WARRANTY.
 // ALL IMPLIED WARRANTIES OF FITNESS FOR ANY PARTICULAR PURPOSE AND OF
 // MERCHANTABILITY ARE HEREBY DISCLAIMED.
-//
+//				
 // For complete openNURBS copyright information see <http://www.opennurbs.org>.
 //
 ////////////////////////////////////////////////////////////////
@@ -55344,11 +55121,11 @@ public:
 
   virtual
   unsigned char* Bits(
-    int // index of scan line
+    int // index of scan line 
     ) = 0;
   virtual
   const unsigned char* Bits(
-    int // index of scan line
+    int // index of scan line 
     ) const = 0;
 
   ON_UUID    m_bitmap_id;
@@ -55358,7 +55135,7 @@ public:
 };
 
 /*
-  ON_EmbeddedFile is derived from ON_Bitmap so it can be stored
+  ON_EmbeddedFile is derived from ON_Bitmap so it can be stored 
   in the Rhino document's CRhinoDoc::m_bitmap_table[] array.
   The ON_EmbeddedFile class is used to embed any type of file
   in a Rhino document.
@@ -55391,8 +55168,8 @@ public:
     a new unique id, m_full_file_name is set to filename,
     and m_relative_file_name is empty.
   */
-  bool Create(
-    const wchar_t* filename,
+  bool Create( 
+    const wchar_t* filename, 
     bool bCompress
     );
 
@@ -55407,11 +55184,11 @@ public:
       (Pass false if the file is already in a compressed
       format, like jpg, png, zip files.)
   */
-  bool Create(
+  bool Create( 
     FILE* fp,
-    bool bCompress
+    bool bCompress 
     );
-
+  
   /*
   Description:
     Store the specified buffer in an ON_EmbeddedFile class.
@@ -55423,17 +55200,17 @@ public:
       true if the source_buffer should be compressed.
       (Pass false if source_buffer is already in a compressed format.)
   */
-  bool Create(
+  bool Create( 
     const void* source_buffer,
     ON__UINT64 sizeof_source_buffer,
-    bool bCompress
+    bool bCompress 
     );
 
-  bool Extract(
+  bool Extract( 
     const wchar_t* destination_filename
     ) const;
 
-  bool Extract(
+  bool Extract( 
     FILE* fp
     ) const;
 
@@ -55448,16 +55225,16 @@ public:
     True if successful.
     False if not successful.
   */
-  bool Extract(
+  bool Extract( 
     void* buffer
     ) const;
-
+        
   /*
   Returns
     full path file name
   */
   const wchar_t* FullFileName() const;
-
+    
   /*
   Returns
     Relative file name.  Usually relative to the directory
@@ -55478,7 +55255,7 @@ public:
   ON__UINT64 FileSize() const;
   ON__UINT64 FileLastModifiedTime() const;
   ON__UINT32 FileCRC() const;
-
+  
   ON_BOOL32 IsValid( ON_TextLog* text_log = NULL ) const;
 
   ON_BOOL32 Write( ON_BinaryArchive& ) const;
@@ -55523,7 +55300,7 @@ private:
 //#define BI_BITFIELDS  3L
 
 // Mimics Windows BITMAPINFOHEADER structure.
-// For details searh for "BITMAPINFOHEADER" at http://msdn.microsoft.com/default.asp
+// For details searh for "BITMAPINFOHEADER" at http://msdn.microsoft.com/default.asp 
 struct ON_WindowsBITMAPINFOHEADER
 {
   unsigned int   biSize;          // DWORD = sizeof(BITMAPINFOHEADER)
@@ -55533,44 +55310,44 @@ struct ON_WindowsBITMAPINFOHEADER
                                   //            in the lower left corner.
                                   //         <0 means it's a top-down bitmap with origin
                                   //            in the upper left corner.
-  unsigned short biPlanes;        // WORD  = number of planes
+  unsigned short biPlanes;        // WORD  = number of planes 
                                   //         (always 1 in current Windows versions)
   unsigned short biBitCount;      // WORD  = bits per pixel (0,1,4,8,16,24,32 are valid)
-                                  //         1 See http://msdn.microsoft.com/default.asp
-                                  //         4 See http://msdn.microsoft.com/default.asp
-                                  //         8 The bitmap has a maximum of 256 colors,
-                                  //           and the bmiColors member contains up
+                                  //         1 See http://msdn.microsoft.com/default.asp  
+                                  //         4 See http://msdn.microsoft.com/default.asp  
+                                  //         8 The bitmap has a maximum of 256 colors, 
+                                  //           and the bmiColors member contains up 
                                   //           to 256 entries. In this case, each byte
-                                  //           in the array represents a single pixel.
-                                  //        16 See http://msdn.microsoft.com/default.asp
+                                  //           in the array represents a single pixel. 
+                                  //        16 See http://msdn.microsoft.com/default.asp  
                                   //        24 If biClrUsed=0 and biCompression=BI_RGB(0),
-                                  //           then each 3-byte triplet in the bitmap
+                                  //           then each 3-byte triplet in the bitmap 
                                   //           array represents the relative intensities
                                   //           of blue, green, and red, respectively, for
                                   //           a pixel. For other possibilities, see
-                                  //           http://msdn.microsoft.com/default.asp
+                                  //           http://msdn.microsoft.com/default.asp  
                                   //        32 If biClrUsed=0 and biCompression=BI_RGB(0),
-                                  //           then each 4-byte DWORD in the bitmap
+                                  //           then each 4-byte DWORD in the bitmap 
                                   //           array represents the relative intensities
                                   //           of blue, green, and red, respectively, for
                                   //           a pixel. The high byte in each DWORD is not
-                                  //           used.
+                                  //           used.  
                                   //           If biClrUsed=3, biCompression=BITFIELDS(3),
-                                  //           biColors[0] = red mask (0x00FF0000),
+                                  //           biColors[0] = red mask (0x00FF0000), 
                                   //           biColors[1] = green mask (0x0000FF00), and
                                   //           biColors[2] = blue mask (0x000000FF),
                                   //           then tese masks are used with each 4-byte
                                   //           DWORD in the bitmap array to determine
-                                  //           the pixel's relative intensities.                                 //
+                                  //           the pixel's relative intensities.                                 //           
                                   //           For other possibilities, see
-                                  //           http://msdn.microsoft.com/default.asp
+                                  //           http://msdn.microsoft.com/default.asp  
   unsigned int   biCompression;   // DWORD   Currently, Windows defines the following
                                   //         types of compression.
                                   //         =0  BI_RGB (no compression)
                                   //         =1  BI_RLE8 (run length encoded used for 8 bpp)
                                   //         =2  BI_RLE4 (run length encoded used for 4 bpp)
                                   //         =3  BI_BITFIELDS  Specifies that the bitmap is
-                                  //             not compressed and that the color table
+                                  //             not compressed and that the color table 
                                   //             consists of three DWORD color masks that
                                   //             specify the red, green, and blue components,
                                   //             respectively, of each pixel. This is valid
@@ -55589,7 +55366,7 @@ struct ON_WindowsBITMAPINFOHEADER
 
 struct ON_WindowsRGBQUAD {
   // Mimics Windows RGBQUAD structure.
-  // For details searh for "RGBQUAD" at http://msdn.microsoft.com/default.asp
+  // For details searh for "RGBQUAD" at http://msdn.microsoft.com/default.asp 
   unsigned char rgbBlue;      // BYTE
   unsigned char rgbGreen;     // BYTE
   unsigned char rgbRed;       // BYTE
@@ -55599,7 +55376,7 @@ struct ON_WindowsRGBQUAD {
 struct ON_WindowsBITMAPINFO
 {
   // Mimics Windows BITMAPINFO structure.
-  // For details searh for "BITMAPINFO" at http://msdn.microsoft.com/default.asp
+  // For details searh for "BITMAPINFO" at http://msdn.microsoft.com/default.asp 
   ON_WindowsBITMAPINFOHEADER bmiHeader;
   ON_WindowsRGBQUAD bmiColors[1]; // The "[1]" is for the compiler.  In
                                   // practice this array commonly has
@@ -55623,7 +55400,7 @@ struct ON_WindowsBITMAPINFO
 class ON_CLASS ON_WindowsBitmap : public ON_Bitmap
 {
   ON_OBJECT_DECLARE(ON_WindowsBitmap);
-  // Uncompressed 8 bpp, 24 bpp, or 32 bpp Windows device
+  // Uncompressed 8 bpp, 24 bpp, or 32 bpp Windows device 
   // independent bitmaps (DIB)
 public:
 
@@ -55636,7 +55413,7 @@ public:
   void EmergencyDestroy();
   void Destroy();
 
-  bool Create(
+  bool Create( 
          int, // width
          int, // height
          int  // bits per pixel ( 1, 2, 4, 8, 16, 24, or 32 )
@@ -55650,9 +55427,9 @@ public:
     text_log - [in] if the object is not valid and text_log
         is not NULL, then a brief englis description of the
         reason the object is not valid is appened to the log.
-        The information appended to text_log is suitable for
-        low-level debugging purposes by programmers and is
-        not intended to be useful as a high level user
+        The information appended to text_log is suitable for 
+        low-level debugging purposes by programmers and is 
+        not intended to be useful as a high level user 
         interface tool.
   Returns:
     @untitled table
@@ -55682,24 +55459,24 @@ public:
   int SizeofImage() const;       // number of bytes in image
 
   unsigned char* Bits(
-    int // index of scan line
+    int // index of scan line 
     );
   const unsigned char* Bits(
-    int // index of scan line
+    int // index of scan line 
     ) const;
 
   //int PaletteIndex( ON_Color ) const; // for 8bpp bitmaps
 
-  ON_Color Pixel(
+  ON_Color Pixel( 
     int, // 0 <= i < width
     int  // 0 <= j < height
     ) const;
-  ON_Color Pixel(
+  ON_Color Pixel( 
     int,  // 0 <= i < width
     const unsigned char* // value of Bits( j )
     ) const;
 
-  //ON_BOOL32 SetColor( // sets entire map to specified color
+  //ON_BOOL32 SetColor( // sets entire map to specified color 
   //       ON_Color
   //       );
 
@@ -55719,7 +55496,7 @@ public:
          ON_WindowsBitmap::Create( &src, &src.bmiColors[color_count], true ).
 
   See Also:
-    ON_WindowsBitmap::Create
+    ON_WindowsBitmap::Create    
   */
   ON_WindowsBitmap( const BITMAPINFO& src );
 
@@ -55730,7 +55507,7 @@ public:
   Parameters:
     src - [in] contiguous Windows device independent bitmap.
   See Also:
-    ON_WindowsBitmap::Create
+    ON_WindowsBitmap::Create    
   Remarks:
     ~ON_WindowsBitmap will not delete src.
   */
@@ -55743,7 +55520,7 @@ public:
   Parameters:
     src - [in] contiguous Windows device independent bitmap.
   See Also:
-    ON_WindowsBitmap::Create
+    ON_WindowsBitmap::Create    
   */
   ON_WindowsBitmap& operator=( const BITMAPINFO& src );
 
@@ -55783,7 +55560,7 @@ public:
           bmi->bmiHeader.biHeight        = height;
           bmi->bmiHeader.biPlanes        = 1;
           bmi->bmiHeader.biBitCount      = (USHORT)color_depth;
-          bmi->bmiHeader.biCompression   = BI_RGB;
+          bmi->bmiHeader.biCompression   = BI_RGB;                  
           bmi->bmiHeader.biXPelsPerMeter = 0;
           bmi->bmiHeader.biYPelsPerMeter = 0;
           bmi->bmiHeader.biClrUsed       = 0;
@@ -55796,7 +55573,7 @@ public:
           HBITMAP hbm = ::CreateDIBSection( NULL, bmi, ..., (LPVOID*)&bits, NULL, 0);
 
           {
-            // Use ON_WindowsBitmap to write a compressed bitmap to
+            // Use ON_WindowsBitmap to write a compressed bitmap to 
             // archive.  Does not modify bmi or bits.
             ON_WindowsBitmap onbm;
             onbm.Create(bmi,bit,false);
@@ -55804,7 +55581,7 @@ public:
           }
 
   */
-  bool Create( const BITMAPINFO* bmi,
+  bool Create( const BITMAPINFO* bmi, 
                const unsigned char* bits,
                bool bCopy
              );
@@ -55813,9 +55590,9 @@ public:
 
   /*
   Returns:
-    True if m_bmi and m_bits are in a single contiguous
+    True if m_bmi and m_bits are in a single contiguous 
     block of memory.
-    False if m_bmi and m_bits are in two blocks of memory.
+    False if m_bmi and m_bits are in two blocks of memory.    
   */
   bool IsContiguous() const;
 
@@ -55831,7 +55608,7 @@ private:
   int m_bFreeBMI; // 0 m_bmi and m_bits are not freed by ON_WindowsBitmap::Destroy
                   // 1 m_bmi  memory is freed by ON_WindowsBitmap::Destroy
                   // 2 m_bits memory is freed by ON_WindowsBitmap::Destroy
-                  // 3 m_bmi and m_bits memory is freed by ON_WindowsBitmap::Destroy
+                  // 3 m_bmi and m_bits memory is freed by ON_WindowsBitmap::Destroy                    
 };
 
 /*
@@ -55890,7 +55667,7 @@ public:
 // THIS SOFTWARE IS PROVIDED "AS IS" WITHOUT EXPRESS OR IMPLIED WARRANTY.
 // ALL IMPLIED WARRANTIES OF FITNESS FOR ANY PARTICULAR PURPOSE AND OF
 // MERCHANTABILITY ARE HEREBY DISCLAIMED.
-//
+//				
 // For complete openNURBS copyright information see <http://www.opennurbs.org>.
 //
 ////////////////////////////////////////////////////////////////
@@ -55901,7 +55678,7 @@ public:
 
 /*
 Description:
-  An ON_InstanceDefinition defines the geometry used by
+  An ON_InstanceDefinition defines the geometry used by 
   instance references.
 See Also:
   ON_InstanceRef
@@ -55913,13 +55690,13 @@ class ON_CLASS ON_InstanceDefinition : public ON_Geometry
 public:
 
   // IDEF_UPDATE_TYPE lists the possible relationships between
-  // the instance definition geometry and the archive
+  // the instance definition geometry and the archive 
   // (m_source_archive) containing the original defition.
   enum IDEF_UPDATE_TYPE
   {
     static_def = 0,
     embedded_def = 1,
-      // As of 7 February, "static_def" and "embedded_def"
+      // As of 7 February, "static_def" and "embedded_def" 
       // and shall be treated the same. Using "static_def"
       // is prefered and "embedded_def" is obsolete.
       // The geometry for the instance definition
@@ -55931,21 +55708,21 @@ public:
     linked_and_embedded_def = 2,
       // The geometry for the instance definition
       // is saved in archives.  Complete source
-      // archive and checksum information will be
-      // present. The document setting
-      // ON_3dmIOSettings.m_idef_link_update
+      // archive and checksum information will be 
+      // present. The document setting 
+      // ON_3dmIOSettings.m_idef_link_update 
       // determines if, when and how the instance
       // definition geometry is updated by reading the
       // source archive.
-    linked_def = 3,
+    linked_def = 3,   
       // The geometry for this instance definition
       // is not saved in the archive that contains
-      // this instance definition. This instance
+      // this instance definition. This instance 
       // definition geometry is imported from a
       // "source archive" The "source archive" file
       // name and checksum information are saved
       // in m_source_archive and m_source_archive_checksum.
-      // If file named in m_source_archive is not available,
+      // If file named in m_source_archive is not available, 
       // then this instance definition is not valid and any
       // references to it are not valid.
     force_32bit_idef_update_type = 0xFFFFFFFF
@@ -55966,7 +55743,7 @@ public:
     idef_url_setting            =    4,  // all m_url_* fields
     idef_units_setting          =    8,  // m_us and m_unit_scale
     idef_source_archive_setting = 0x10,  // all m_source_*, layer style, update depth fields
-    idef_userdata_setting       = 0x20,
+    idef_userdata_setting       = 0x20, 
     all_idef_settings           = 0xFFFFFFFF
   };
 
@@ -55996,7 +55773,7 @@ public:
          double* boxmax,
          int bGrowBox = false
          ) const;
-  ON_BOOL32 Transform(
+  ON_BOOL32 Transform( 
          const ON_Xform& xform
          );
 
@@ -56039,15 +55816,15 @@ public:
       If source_archive and checksum are empty, then
       source_type is ignored and static_def will be used.
       If source_archive is a nonempty string and checksum
-      is set, then source_type must be either
+      is set, then source_type must be either 
       linked_and_embedded_def or linked_def.  If you
       are changing the source archive of a valid idef,
       then simply pass this->IdefUpdateType().
   Remarks:
     See the IDEF_UPDATE_TYPE comments for more details.
   */
-  void SetSourceArchive(
-        const wchar_t* source_archive,
+  void SetSourceArchive( 
+        const wchar_t* source_archive, 
         ON_CheckSum checksum,
         IDEF_UPDATE_TYPE update_type
         );
@@ -56091,7 +55868,7 @@ public:
     bRelativePath - [in]
       true if alternate_source_archive_path is a relative path.
   */
-  void SetAlternateSourceArchivePath(
+  void SetAlternateSourceArchivePath( 
         const wchar_t* alternate_source_archive_path,
         bool bRelativePath
         );
@@ -56099,7 +55876,7 @@ public:
   /*
   Description:
     If there is an alternate location to look for a linked instance
-    defininition archive when it cannot be found in the location
+    defininition archive when it cannot be found in the location 
     specified by m_source_archive, then function will return the
     alterate location.
   Parameters:
@@ -56107,7 +55884,7 @@ public:
     bRelativePath - [out]
       true if alternate_source_archive_path is a relative path.
   */
-  bool GetAlternateSourceArchivePath(
+  bool GetAlternateSourceArchivePath( 
         ON_wString& alternate_source_archive_path,
         bool& bRelativePath
         ) const;
@@ -56137,8 +55914,8 @@ public:
 
   /*
   Description:
-    Set linked instance definition parent layer information.
-    Typically this is done just before the linked idef is
+    Set linked instance definition parent layer information. 
+    Typically this is done just before the linked idef is 
     saved to a file.
   Parameters:
     linked_idef_parent_layer - [in]
@@ -56165,7 +55942,7 @@ public:
   /*
   Description:
     Set linked instance definition layer settings.
-    Typically this is done just before the linked idef is
+    Typically this is done just before the linked idef is 
     saved to a file.
   Parameters:
     layer_settings - [in]
@@ -56181,11 +55958,11 @@ public:
 public:
 
   ON_UUID m_uuid;     // unique id for this instance definition
-  ON_wString m_name;  // The "name" is for human comfort.
+  ON_wString m_name;  // The "name" is for human comfort.  
                       // It can be empty and duplicates
                       // may exist. Instance reference use
                       // m_uuid to find instance definitions.
-  ON_wString m_description;
+  ON_wString m_description; 
 
   ON_wString m_url;
   ON_wString m_url_tag;     // UI link text for m_url
@@ -56193,9 +55970,9 @@ public:
 #if defined(ON_32BIT_POINTER)
 private:
   // 24 January 2011:
-  //   Because the Rhino 4 and 5 SDKs are fixed, the offset of
+  //   Because the Rhino 4 and 5 SDKs are fixed, the offset of 
   //   existing fields cannot be changed and the m_reserved1
-  //   value has to be located in different places for
+  //   value has to be located in different places for 
   //   32 and 64 bit builds.
   unsigned int m_reserved1;
 #endif
@@ -56204,14 +55981,14 @@ public:
   ON_BoundingBox m_bbox;
 
   ON_UnitSystem  m_us;
-
+  
   // Note: the embedded_def type is obsolete.
   //  To avoid having to deal with this obsolete type in
   //  your code, using ON_InstanceDefintion::IdefUpdateType()
   //  to get this value.  The IdefUpdateType() function
   //  with convert the obsolte value to the correct
   //  value.
-  IDEF_UPDATE_TYPE m_idef_update_type;
+  IDEF_UPDATE_TYPE m_idef_update_type; 
 
   IDEF_UPDATE_TYPE IdefUpdateType() const;
 
@@ -56220,7 +55997,7 @@ public:
                            //   0: read everything, included nested linked idefs
                            //   1: skip nested linked idefs.
 
-  ON_wString m_source_archive;   // filename used to update idef
+  ON_wString m_source_archive;   // filename used to update idef 
                                  // (it can be empty or relative)
   bool m_source_bRelativePath;  // True if the filename in m_source_archive is
                                  // a relative the location of the 3dm file
@@ -56232,16 +56009,16 @@ public:
   //   1 = active (linked idef layers will be active)
   //   2 = reference (linked idef layers will be reference)
   unsigned char m_idef_layer_style;
-
+                               
 private:
   unsigned char m_reserved2[2];
 
 #if defined(ON_64BIT_POINTER)
 private:
   // 24 January 2011:
-  //   Because the Rhino 4 and 5 SDKs are fixed, the offset of
+  //   Because the Rhino 4 and 5 SDKs are fixed, the offset of 
   //   existing fields cannot be changed and the m_runtime_sn
-  //   value has to be located in different places for
+  //   value has to be located in different places for 
   //   32 and 64 bit builds.
   unsigned int m_reserved1;
 #endif
@@ -56289,7 +56066,7 @@ public:
          double* boxmax,
          int bGrowBox = false
          ) const;
-  ON_BOOL32 Transform(
+  ON_BOOL32 Transform( 
          const ON_Xform& xform
          );
 
@@ -56302,7 +56079,7 @@ public:
   /////////////////////////////////////////////////////////////
   //
 
-  // Unique id of the instance definition (ON_InstanceDefinition)
+  // Unique id of the instance definition (ON_InstanceDefinition) 
   // in the instance definition table that defines the geometry
   // used by this reference.
   ON_UUID m_instance_definition_uuid;
@@ -56358,14 +56135,14 @@ public:
 
   /*
   Returns:
-    true
+    true 
       if m_create_time is >= January 1, 1970
   */
   bool CreateTimeIsSet() const;
 
   /*
   Returns:
-    true
+    true 
       if m_last_edit_time is >= January 1, 1970
   */
   bool LastEditedTimeIsSet() const;
@@ -56630,13 +56407,13 @@ private:
   // The default is 1.0. Values <= 0.0 are not valid.
   float m_world_view_text_scale;
   float m_world_view_hatch_scale;
-
+  
 private:
   // If m_bEnableAnnotationScaling is false:
   //   * m_world_view_text_scale is ignored.
   //   * text is not scaled.
-  //   * ON_DimStyle::DimScale() determines the scale
-  //     applied to all other annotation objects in all
+  //   * ON_DimStyle::DimScale() determines the scale 
+  //     applied to all other annotation objects in all 
   //     types of views.
   //   * The value of ON_DetailView::m_page_per_model_ratio
   //     is applied to all objects (annotation and geometry)
@@ -56644,11 +56421,11 @@ private:
   //
   // If m_bEnableAnnotationScaling is true:
   //   * m_world_view_text_scale is used as described above.
-  //   * ON_DimStyle::DimScale() determines the scale
-  //     applied to all non text annotation objects in
-  //     world views.
-  //   * ON_DimStyle::DimScale() is ignored in page and
-  //     detail views.
+  //   * ON_DimStyle::DimScale() determines the scale 
+  //     applied to all non text annotation objects in 
+  //     world views. 
+  //   * ON_DimStyle::DimScale() is ignored in page and 
+  //     detail views. 
   //   * ON_DetailView::m_page_per_model_ratio is ingored
   //     for annotation objects in detail views, other
   //     geometry is scaled.
@@ -56908,7 +56685,7 @@ public:
   ON_Viewport m_vp;
 
   // clipping planes
-  // Prior to Dec 14, 2010 m_clipping_planes was not saved with the view.
+  // Prior to Dec 14, 2010 m_clipping_planes was not saved with the view. 
   // After Dec 14, 2010 m_clipping_planes is saved.
   ON_SimpleArray<ON_ClippingPlaneInfo> m_clipping_planes;
 
@@ -57235,7 +57012,7 @@ public:
   // controls if, when and how linked and linked_and_embedded
   // instance defintions are updated when the source archive
   // that was used to create the idef has changed.
-  int m_idef_link_update;
+  int m_idef_link_update;  
       // 1 = prompt - ask the user if the idef should be updated.
       // 2 = always update - no prompting
       // 3 = never update - no prompting
@@ -57626,7 +57403,7 @@ public:
     and bEnable was true.  Use SetMeshParameters() to set
     per object mesh parameters.
   Remarks:
-    Sets the value of ON_MeshParameters::m_bCustomSettingsDisabled
+    Sets the value of ON_MeshParameters::m_bCustomSettingsDisabled 
     to !bEnable
   */
   bool EnableCustomRenderMeshParameters(bool bEnable);
@@ -57635,7 +57412,7 @@ public:
   Returns:
     Null or a pointer to fragile mesh parameters.
     If a non-null pointer is returned, copy it and use the copy.
-    * DO NOT SAVE THIS POINTER FOR LATER USE. A call to
+    * DO NOT SAVE THIS POINTER FOR LATER USE. A call to 
       DeleteMeshParameters() will delete the class.
     * DO NOT const_cast the returned pointer and change its
       settings.  You must use either SetMeshParameters()
@@ -57740,7 +57517,7 @@ private:
   unsigned char m_linetype_source;    // ON::object_linetype_source values
 
   unsigned char m_reserved_0;
-
+  
   ON_SimpleArray<int> m_group; // array of zero based group indices
 public:
 
@@ -58390,7 +58167,7 @@ public:
   //////// override virtual ON_UserData::GetDescription function
   //////ON_BOOL32 GetDescription( ON_wString& description );
   //////// override virtual ON_UserData::Archive function
-  //////ON_BOOL32 Archive() const;
+  //////ON_BOOL32 Archive() const; 
 
   ON_Annotation2Text& operator=(const char*);
   ON_Annotation2Text& operator=(const wchar_t*);
@@ -58489,11 +58266,11 @@ public:
   ON_DimensionExtra* DimensionExtension(const class ON_LinearDimension2* pDim, bool bCreate);
   static
   ON_DimensionExtra* DimensionExtension(class ON_RadialDimension2* pDim, bool bCreate);
-  static const
+  static const 
   ON_DimensionExtra* DimensionExtension(const class ON_RadialDimension2* pDim, bool bCreate);
   static
   ON_DimensionExtra* DimensionExtension(class ON_OrdinateDimension2* pDim, bool bCreate);
-  static const
+  static const 
   ON_DimensionExtra* DimensionExtension(const class ON_OrdinateDimension2* pDim, bool bCreate);
 
   void SetDefaults();
@@ -58841,7 +58618,7 @@ public:
 
   /*
     Description:
-
+      
       Set or get the string value of the user text, with no substitution for "<>"
     Parameters:
       [in] const wchar_t* string   the new value for UserText
@@ -58870,7 +58647,7 @@ public:
   See Also:
     ON_Annotation2Text::SetTextValue()
     ON_Annotation2Text::SetTextFormula()
-    ON_Annotation2Text::TextFormula()
+    ON_Annotation2Text::TextFormula()    
   Remarks:
     This gets the literal value of the text, there is no
     substitution for any "<>" substrings.  When a dimension
@@ -58878,8 +58655,8 @@ public:
     with the measured value for the dimension and formatted
     according to the DimStyle settings.
 
-    Annotation text values can be constant or the result
-    of evaluating text formula containing %<...>%
+    Annotation text values can be constant or the result 
+    of evaluating text formula containing %<...>% 
     expressions. The ...TextValue() functions set
     and get the text's value.  The ...TextFormula()
     functions get and set the text's formula.
@@ -58896,11 +58673,11 @@ public:
     Value of the annotation text.
   See Also:
     ON_Annotation2Text::SetTextFormula()
-    ON_Annotation2Text::TextValue()
-    ON_Annotation2Text::TextFormula()
+    ON_Annotation2Text::TextValue()    
+    ON_Annotation2Text::TextFormula()    
   Remarks:
-    Annotation text values can be constant or the result
-    of evaluating text formula containing %<...>%
+    Annotation text values can be constant or the result 
+    of evaluating text formula containing %<...>% 
     expressions. The ...TextValue() functions set
     and get the text's value.  The ...TextFormula()
     functions get and set the text's formula.
@@ -58916,11 +58693,11 @@ public:
     Value of the annotation text.
   See Also:
     ON_Annotation2Text::SetTextValue()
-    ON_Annotation2Text::TextValue()
-    ON_Annotation2Text::TextFormula()
+    ON_Annotation2Text::TextValue()    
+    ON_Annotation2Text::TextFormula()    
   Remarks:
-    Annotation text values can be constant or the result
-    of evaluating text formula containing %<...>%
+    Annotation text values can be constant or the result 
+    of evaluating text formula containing %<...>% 
     expressions. The ...TextValue() functions set
     and get the text's value.  The ...TextFormula()
     functions get and set the text's formula.
@@ -58936,11 +58713,11 @@ public:
     Value of the annotation text.
   See Also:
     ON_Annotation2Text::SetTextValue()
-    ON_Annotation2Text::Value()
-    ON_Annotation2Text::Formula()
+    ON_Annotation2Text::Value()    
+    ON_Annotation2Text::Formula()    
   Remarks:
-    Annotation text values can be constant or the result
-    of evaluating text formula containing %<...>%
+    Annotation text values can be constant or the result 
+    of evaluating text formula containing %<...>% 
     expressions. The ...TextValue() functions set
     and get the text's value.  The ...TextFormula()
     functions get and set the text's formula.
@@ -59187,7 +58964,7 @@ public:
     Returns:
       True if text_xform is set.
   */
-  //bool GetTextXform(
+  //bool GetTextXform( 
   //    const ON_RECT gdi_text_rect,
   //    const ON_Font& font,
   //    const ON_DimStyle& dimstyle,
@@ -59306,10 +59083,10 @@ public:
   bool m_userpositionedtext;
   // Added 13 Aug, 2010 - Lowell
   // This determines whether the object will be scaled according to detail
-  // scale factor or by 1.0 in paperspace rather than by
+  // scale factor or by 1.0 in paperspace rather than by 
   // dimscale or text scale.
   // For the first try this will only be used on text and its
-  // here on the base class because it would fit and in case
+  // here on the base class because it would fit and in case 
   // its needed later on dimensions.
   bool m_annotative_scale;
 private:
@@ -59533,10 +59310,7 @@ public:
 
   // Added for V5. 4/24/07 LW
   // Get the userdata extension for this dimension
-  ON_DimensionExtra* DimensionExtension();
-  const ON_DimensionExtra* DimensionExtension() const;
-
-
+  
 
 
 };
@@ -60684,7 +60458,7 @@ public:
 // THIS SOFTWARE IS PROVIDED "AS IS" WITHOUT EXPRESS OR IMPLIED WARRANTY.
 // ALL IMPLIED WARRANTIES OF FITNESS FOR ANY PARTICULAR PURPOSE AND OF
 // MERCHANTABILITY ARE HEREBY DISCLAIMED.
-//
+//				
 // For complete openNURBS copyright information see <http://www.opennurbs.org>.
 //
 ////////////////////////////////////////////////////////////////
@@ -60749,7 +60523,7 @@ public:
     Pointer to loop's 2d curve
   */
   const ON_Curve* Curve() const;
-
+ 
   /*
   Description:
     Specify the 2d loop curve in the hatch's plane coordinates
@@ -60798,9 +60572,9 @@ protected:
   Angle is the direction of the line CCW from the x axis
   The first line origin is at base
   Each line repetition is offset by offset from the previous line
-    offset.x is parallel to the line and
+    offset.x is parallel to the line and 
     offset.y is perpendicular to the line
-  The base and offset values are rotated by the line's angle to
+  The base and offset values are rotated by the line's angle to 
     produce a location in the hatch pattern's coordinate system
   There can be gaps and dashes specified for drawing the line
 
@@ -60815,9 +60589,9 @@ public:
   ON_HatchLine();
   // C++ default copy construction and operator= work fine.
 
-  ON_HatchLine(
-    double angle,
-    const ON_2dPoint& base,
+  ON_HatchLine( 
+    double angle, 
+    const ON_2dPoint& base, 
     const ON_2dVector& offset,
     const ON_SimpleArray<double> dashes);
 
@@ -60851,7 +60625,7 @@ public:
   Return:
   */
   void SetAngle( double angle);
-
+  
   /*
   Description:
     Get this line's 2d basepoint
@@ -60868,7 +60642,7 @@ public:
   Return:
   */
   void SetBase( const ON_2dPoint& base);
-
+  
   /*
   Description:
     Get this line's 2d offset for line repetitions
@@ -60928,7 +60702,7 @@ public:
 
   /*
   Description:
-    Get the line's angle, base, offset and dashes
+    Get the line's angle, base, offset and dashes 
     in one function call
   Parameters:
     angle  - [out] angle in radians CCW from x-axis
@@ -60938,9 +60712,9 @@ public:
   Return:
   */
   void GetLineData(
-    double& angle,
-    ON_2dPoint& base,
-    ON_2dVector& offset,
+    double& angle, 
+    ON_2dPoint& base, 
+    ON_2dVector& offset, 
     ON_SimpleArray<double>& dashes) const;
 
   /*
@@ -60964,7 +60738,7 @@ public:
 
 #if defined(ON_DLL_TEMPLATE)
 // This stuff is here because of a limitation in the way Microsoft
-// handles templates and DLLs.  See Microsoft's knowledge base
+// handles templates and DLLs.  See Microsoft's knowledge base 
 // article ID Q168958 for details.
 #pragma warning( push )
 #pragma warning( disable : 4231 )
@@ -60979,7 +60753,7 @@ ON_DLL_TEMPLATE template class ON_CLASS ON_ClassArray<ON_HatchLine>;
   /////////////////////////////////////////////////////////////////
   Fill definition for a hatch
 
-  The hatch  will be one of
+  The hatch  will be one of 
     ON_Hatch::ftLines     - pat file style definition
     ON_Hatch::ftGradient  - uses a color function
     ON_Hatch::ftSolid     - uses entity color
@@ -61041,7 +60815,7 @@ public:
   */
   void SetName( const wchar_t* pName);
   void SetName( const char* pName);
-
+  
   /*
   Description:
     Get the name of the pattern
@@ -61067,7 +60841,7 @@ public:
   */
   void SetDescription( const wchar_t* pDescription);
   void SetDescription( const char* pDescription);
-
+  
   /*
   Description:
     Get a short description of the pattern
@@ -61160,7 +60934,7 @@ public:
 
   /*
   Description:
-    Set all of the hatch lines at once.
+    Set all of the hatch lines at once. 
     Existing hatchlines are deleted.
   Parameters:
     lines - [in] Array of lines to add.  Lines are copied
@@ -61173,14 +60947,14 @@ public:
   int m_hatchpattern_index;         // Index in the hatch pattern table
   ON_wString m_hatchpattern_name;   // String name of the pattern
   ON_UUID m_hatchpattern_id;
-
+  
   eFillType m_type;
-
+  
   ON_wString m_description;  // String description of the pattern
 
   // Represents a collection of ON_HatchLine's to make a complete pattern
   // This is the definition of a hatch pattern.
-  // Simple solid line hatches with fixed angle and spacing are also
+  // Simple solid line hatches with fixed angle and spacing are also 
   // represented with this type of hatch
   ON_ClassArray<ON_HatchLine> m_lines; // used by line hatches
 };
@@ -61188,7 +60962,7 @@ public:
 /*
   class ON_Hatch
   /////////////////////////////////////////////////////////////////
-  Represents a hatch in planar boundary loop or loops
+  Represents a hatch in planar boundary loop or loops 
   This is a 2d entity with a plane defining a local coordinate system
   The loops, patterns, angles, etc are all in this local coordinate system
 
@@ -61246,19 +61020,19 @@ public:
     Get tight bounding box of the hatch.
 	Parameters:
 		tight_bbox - [in/out] tight bounding box
-		bGrowBox -[in]	(default=false)
+		bGrowBox -[in]	(default=false)			
       If true and the input tight_bbox is valid, then returned
-      tight_bbox is the union of the input tight_bbox and the
+      tight_bbox is the union of the input tight_bbox and the 
       tight bounding box of the hatch.
 		xform -[in] (default=NULL)
       If not NULL, the tight bounding box of the transformed
       hatch is calculated.  The hatch is not modified.
 	Returns:
-    True if the returned tight_bbox is set to a valid
+    True if the returned tight_bbox is set to a valid 
     bounding box.
   */
-	bool GetTightBoundingBox(
-			ON_BoundingBox& tight_bbox,
+	bool GetTightBoundingBox( 
+			ON_BoundingBox& tight_bbox, 
       int bGrowBox = false,
 			const ON_Xform* xform = 0
       ) const;
@@ -61294,9 +61068,9 @@ public:
     true = success, false = failure
   */
   bool Create( const ON_Plane& plane,
-               const ON_SimpleArray<const ON_Curve*> loops,
-               int pattern_index,
-               double pattern_rotation,
+               const ON_SimpleArray<const ON_Curve*> loops, 
+               int pattern_index, 
+               double pattern_rotation, 
                double pattern_scale);
 
   /*
@@ -61316,10 +61090,10 @@ public:
   Returns:
   */
   void SetPlane( const ON_Plane& plane);
-
+  
   /*
   Description:
-    Gets the rotation applied to the hatch pattern
+    Gets the rotation applied to the hatch pattern 
     when it is mapped to the hatch's plane
   Returns:
     The rotation in radians
@@ -61331,7 +61105,7 @@ public:
 
 /*
   Description:
-    Sets the rotation applied to the hatch pattern
+    Sets the rotation applied to the hatch pattern 
     when it is mapped to the hatch's plane
   Parameters:
     rotation - [in] The rotation in radians
@@ -61340,10 +61114,10 @@ public:
     the hatch's plane origin by this value
   */
   void SetPatternRotation( double rotation);
-
+  
   /*
   Description:
-    Gets the scale applied to the hatch pattern
+    Gets the scale applied to the hatch pattern 
     when it is mapped to the hatch's plane
   Returns:
     The scale
@@ -61355,7 +61129,7 @@ public:
 
 /*
   Description:
-    Sets the scale applied to the hatch pattern
+    Sets the scale applied to the hatch pattern 
     when it is mapped to the hatch's plane
   Parameters:
     scale - [in] The scale
@@ -61364,7 +61138,7 @@ public:
     the hatch's plane origin by this value
   */
   void SetPatternScale( double scale);
-
+  
   /*
   Description:
     Get the number of loops used by this hatch
@@ -61517,7 +61291,7 @@ protected:
 // THIS SOFTWARE IS PROVIDED "AS IS" WITHOUT EXPRESS OR IMPLIED WARRANTY.
 // ALL IMPLIED WARRANTIES OF FITNESS FOR ANY PARTICULAR PURPOSE AND OF
 // MERCHANTABILITY ARE HEREBY DISCLAIMED.
-//
+//				
 // For complete openNURBS copyright information see <http://www.opennurbs.org>.
 //
 ////////////////////////////////////////////////////////////////
@@ -61561,9 +61335,9 @@ public:
     text_log - [in] if the object is not valid and text_log
         is not NULL, then a brief englis description of the
         reason the object is not valid is appened to the log.
-        The information appended to text_log is suitable for
-        low-level debugging purposes by programmers and is
-        not intended to be useful as a high level user
+        The information appended to text_log is suitable for 
+        low-level debugging purposes by programmers and is 
+        not intended to be useful as a high level user 
         interface tool.
   Returns:
     @untitled table
@@ -61734,9 +61508,9 @@ public:
     fn_lengthfactor                = 16,
     fn_bAlternate                  = 17,
     fn_alternate_lengthfactor      = 18,
-    fn_alternate_lengthformat      = 19,
+    fn_alternate_lengthformat      = 19, 
     fn_alternate_lengthresolution  = 20,
-    fn_alternate_angleformat       = 21,
+    fn_alternate_angleformat       = 21, 
     fn_alternate_angleresolution   = 22,
     fn_prefix                      = 23,
     fn_suffix                      = 24,
@@ -61748,8 +61522,8 @@ public:
     fn_suppressextension1          = 30,
     fn_suppressextension2          = 31,
     fn_last                        = 32, // not used - left here for sdk
-
-  // Added for v5 - 5/01/07 LW
+                   
+  // Added for v5 - 5/01/07 LW    
   // version 1.6
     fn_overall_scale               = 33,
     fn_ext_line_color_source       = 34,
@@ -61779,14 +61553,14 @@ public:
     fn_tolerance_height_scale      = 58,
     fn_baseline_spacing            = 59,
 
-  // Added for v5 - 12/15/09 LW
+  // Added for v5 - 12/15/09 LW    
   // version 1.7
     fn_draw_mask                   = 60,
     fn_mask_color_source           = 61,
     fn_mask_color                  = 62,
     fn_mask_border                 = 63,
 
-  // Added for v5 - 12/17/09 LW
+  // Added for v5 - 12/17/09 LW    
   // version 1.8
     fn_dimscale                    = 64,
     fn_dimscale_source             = 65,
@@ -61821,15 +61595,15 @@ public:
   // Test if the dimstyle has any field override flags set
   bool HasOverrides() const;
 
-  // Change the fields in this dimstyle to match the fields of the
+  // Change the fields in this dimstyle to match the fields of the 
   // source dimstyle for all of the fields that are marked overridden in the source
   // and to match the parent for all of the fields not marked overriden.
   // Returns true if any overrides were set.
   bool OverrideFields( const ON_DimStyle& source, const ON_DimStyle& parent);
 
-  //
-  // Change the fields in this dimstyle to match the fields of the
-  // parent dimstyle for all of the fields that are not marked overridden in the
+  // 
+  // Change the fields in this dimstyle to match the fields of the 
+  // parent dimstyle for all of the fields that are not marked overridden in the 
   // target dimstyle.
   // This is the complement of OverrideFields()
   bool InheritFields( const ON_DimStyle& parent);
@@ -61868,7 +61642,7 @@ public:
   void SetToleranceUpperValue( double upper_value);
   void SetToleranceLowerValue( double lower_value);
   void SetToleranceHeightScale( double scale);
-
+  
   void SetBaselineSpacing( double spacing = false);
 
     // Determines whether or not to draw a Text Mask
@@ -61892,7 +61666,7 @@ public:
   double DimScale() const;
 
   // Offset for the border around text to the rectangle used to draw the mask
-  // This number * CRhinoAnnotation::TextHeight() for the text is the offset
+  // This number * CRhinoAnnotation::TextHeight() for the text is the offset 
   // on each side of the tight rectangle around the text characters to the mask rectangle.
   double MaskOffsetFactor() const;
 
@@ -61986,7 +61760,7 @@ public:
 // THIS SOFTWARE IS PROVIDED "AS IS" WITHOUT EXPRESS OR IMPLIED WARRANTY.
 // ALL IMPLIED WARRANTIES OF FITNESS FOR ANY PARTICULAR PURPOSE AND OF
 // MERCHANTABILITY ARE HEREBY DISCLAIMED.
-//
+//				
 // For complete openNURBS copyright information see <http://www.opennurbs.org>.
 //
 ////////////////////////////////////////////////////////////////
@@ -62051,7 +61825,7 @@ public:
     Pointer to loop's 2d curve
   */
   const ON_Curve* Curve() const;
-
+ 
   /*
   Description:
     Specify the 2d loop curve in the hatch's plane coordinates
@@ -62100,9 +61874,9 @@ protected:
   Angle is the direction of the line CCW from the x axis
   The first line origin is at base
   Each line repetition is offset by offset from the previous line
-    offset.x is parallel to the line and
+    offset.x is parallel to the line and 
     offset.y is perpendicular to the line
-  The base and offset values are rotated by the line's angle to
+  The base and offset values are rotated by the line's angle to 
     produce a location in the hatch pattern's coordinate system
   There can be gaps and dashes specified for drawing the line
 
@@ -62117,9 +61891,9 @@ public:
   ON_HatchLine();
   // C++ default copy construction and operator= work fine.
 
-  ON_HatchLine(
-    double angle,
-    const ON_2dPoint& base,
+  ON_HatchLine( 
+    double angle, 
+    const ON_2dPoint& base, 
     const ON_2dVector& offset,
     const ON_SimpleArray<double> dashes);
 
@@ -62153,7 +61927,7 @@ public:
   Return:
   */
   void SetAngle( double angle);
-
+  
   /*
   Description:
     Get this line's 2d basepoint
@@ -62170,7 +61944,7 @@ public:
   Return:
   */
   void SetBase( const ON_2dPoint& base);
-
+  
   /*
   Description:
     Get this line's 2d offset for line repetitions
@@ -62230,7 +62004,7 @@ public:
 
   /*
   Description:
-    Get the line's angle, base, offset and dashes
+    Get the line's angle, base, offset and dashes 
     in one function call
   Parameters:
     angle  - [out] angle in radians CCW from x-axis
@@ -62240,9 +62014,9 @@ public:
   Return:
   */
   void GetLineData(
-    double& angle,
-    ON_2dPoint& base,
-    ON_2dVector& offset,
+    double& angle, 
+    ON_2dPoint& base, 
+    ON_2dVector& offset, 
     ON_SimpleArray<double>& dashes) const;
 
   /*
@@ -62266,7 +62040,7 @@ public:
 
 #if defined(ON_DLL_TEMPLATE)
 // This stuff is here because of a limitation in the way Microsoft
-// handles templates and DLLs.  See Microsoft's knowledge base
+// handles templates and DLLs.  See Microsoft's knowledge base 
 // article ID Q168958 for details.
 #pragma warning( push )
 #pragma warning( disable : 4231 )
@@ -62281,7 +62055,7 @@ ON_DLL_TEMPLATE template class ON_CLASS ON_ClassArray<ON_HatchLine>;
   /////////////////////////////////////////////////////////////////
   Fill definition for a hatch
 
-  The hatch  will be one of
+  The hatch  will be one of 
     ON_Hatch::ftLines     - pat file style definition
     ON_Hatch::ftGradient  - uses a color function
     ON_Hatch::ftSolid     - uses entity color
@@ -62343,7 +62117,7 @@ public:
   */
   void SetName( const wchar_t* pName);
   void SetName( const char* pName);
-
+  
   /*
   Description:
     Get the name of the pattern
@@ -62369,7 +62143,7 @@ public:
   */
   void SetDescription( const wchar_t* pDescription);
   void SetDescription( const char* pDescription);
-
+  
   /*
   Description:
     Get a short description of the pattern
@@ -62462,7 +62236,7 @@ public:
 
   /*
   Description:
-    Set all of the hatch lines at once.
+    Set all of the hatch lines at once. 
     Existing hatchlines are deleted.
   Parameters:
     lines - [in] Array of lines to add.  Lines are copied
@@ -62475,14 +62249,14 @@ public:
   int m_hatchpattern_index;         // Index in the hatch pattern table
   ON_wString m_hatchpattern_name;   // String name of the pattern
   ON_UUID m_hatchpattern_id;
-
+  
   eFillType m_type;
-
+  
   ON_wString m_description;  // String description of the pattern
 
   // Represents a collection of ON_HatchLine's to make a complete pattern
   // This is the definition of a hatch pattern.
-  // Simple solid line hatches with fixed angle and spacing are also
+  // Simple solid line hatches with fixed angle and spacing are also 
   // represented with this type of hatch
   ON_ClassArray<ON_HatchLine> m_lines; // used by line hatches
 };
@@ -62490,7 +62264,7 @@ public:
 /*
   class ON_Hatch
   /////////////////////////////////////////////////////////////////
-  Represents a hatch in planar boundary loop or loops
+  Represents a hatch in planar boundary loop or loops 
   This is a 2d entity with a plane defining a local coordinate system
   The loops, patterns, angles, etc are all in this local coordinate system
 
@@ -62548,19 +62322,19 @@ public:
     Get tight bounding box of the hatch.
 	Parameters:
 		tight_bbox - [in/out] tight bounding box
-		bGrowBox -[in]	(default=false)
+		bGrowBox -[in]	(default=false)			
       If true and the input tight_bbox is valid, then returned
-      tight_bbox is the union of the input tight_bbox and the
+      tight_bbox is the union of the input tight_bbox and the 
       tight bounding box of the hatch.
 		xform -[in] (default=NULL)
       If not NULL, the tight bounding box of the transformed
       hatch is calculated.  The hatch is not modified.
 	Returns:
-    True if the returned tight_bbox is set to a valid
+    True if the returned tight_bbox is set to a valid 
     bounding box.
   */
-	bool GetTightBoundingBox(
-			ON_BoundingBox& tight_bbox,
+	bool GetTightBoundingBox( 
+			ON_BoundingBox& tight_bbox, 
       int bGrowBox = false,
 			const ON_Xform* xform = 0
       ) const;
@@ -62596,9 +62370,9 @@ public:
     true = success, false = failure
   */
   bool Create( const ON_Plane& plane,
-               const ON_SimpleArray<const ON_Curve*> loops,
-               int pattern_index,
-               double pattern_rotation,
+               const ON_SimpleArray<const ON_Curve*> loops, 
+               int pattern_index, 
+               double pattern_rotation, 
                double pattern_scale);
 
   /*
@@ -62618,10 +62392,10 @@ public:
   Returns:
   */
   void SetPlane( const ON_Plane& plane);
-
+  
   /*
   Description:
-    Gets the rotation applied to the hatch pattern
+    Gets the rotation applied to the hatch pattern 
     when it is mapped to the hatch's plane
   Returns:
     The rotation in radians
@@ -62633,7 +62407,7 @@ public:
 
 /*
   Description:
-    Sets the rotation applied to the hatch pattern
+    Sets the rotation applied to the hatch pattern 
     when it is mapped to the hatch's plane
   Parameters:
     rotation - [in] The rotation in radians
@@ -62642,10 +62416,10 @@ public:
     the hatch's plane origin by this value
   */
   void SetPatternRotation( double rotation);
-
+  
   /*
   Description:
-    Gets the scale applied to the hatch pattern
+    Gets the scale applied to the hatch pattern 
     when it is mapped to the hatch's plane
   Returns:
     The scale
@@ -62657,7 +62431,7 @@ public:
 
 /*
   Description:
-    Sets the scale applied to the hatch pattern
+    Sets the scale applied to the hatch pattern 
     when it is mapped to the hatch's plane
   Parameters:
     scale - [in] The scale
@@ -62666,7 +62440,7 @@ public:
     the hatch's plane origin by this value
   */
   void SetPatternScale( double scale);
-
+  
   /*
   Description:
     Get the number of loops used by this hatch
@@ -62819,7 +62593,7 @@ protected:
 // THIS SOFTWARE IS PROVIDED "AS IS" WITHOUT EXPRESS OR IMPLIED WARRANTY.
 // ALL IMPLIED WARRANTIES OF FITNESS FOR ANY PARTICULAR PURPOSE AND OF
 // MERCHANTABILITY ARE HEREBY DISCLAIMED.
-//
+//				
 // For complete openNURBS copyright information see <http://www.opennurbs.org>.
 //
 ////////////////////////////////////////////////////////////////
@@ -62910,7 +62684,7 @@ public:
 
   /*
     Index of each linetype
-    This index is used by geometry objects to
+    This index is used by geometry objects to 
     reference a specific linetype
   */
   bool SetLinetypeIndex( int);
@@ -62995,7 +62769,7 @@ private:
 // THIS SOFTWARE IS PROVIDED "AS IS" WITHOUT EXPRESS OR IMPLIED WARRANTY.
 // ALL IMPLIED WARRANTIES OF FITNESS FOR ANY PARTICULAR PURPOSE AND OF
 // MERCHANTABILITY ARE HEREBY DISCLAIMED.
-//
+//				
 // For complete openNURBS copyright information see <http://www.opennurbs.org>.
 //
 ////////////////////////////////////////////////////////////////
@@ -63042,12 +62816,12 @@ public:
   //     In this case m_component_index identifies the
   //     the edge in the brep and m_t_ci identifies a trim.
   //
-  //  4: m_geometry points to a mesh or mesh face and
+  //  4: m_geometry points to a mesh or mesh face and 
   //     m_t_ci identifies the mesh face.
   //     If the face is a triangle, the barycentric coordinates
-  //     of m_point are(m_t[0], m_t[1], m_t[2]) and m_t[3] is zero.
+  //     of m_point are(m_t[0], m_t[1], m_t[2]) and m_t[3] is zero. 
   //     If the mesh face is a quadrangle, the barycentric coordinates
-  //     of m_point are (m_t[0], m_t[1], m_t[2], m_t[3]) and at least
+  //     of m_point are (m_t[0], m_t[1], m_t[2], m_t[3]) and at least 
   //     one of the coordinates is zero.  In both cases, the point
   //     can be evaluated using the formula
   //     m_t[0]*mesh.m_V[f.vi[0]] + ... + m_t[3]*mesh.m_V[f.vi[3]],
@@ -63108,7 +62882,7 @@ public:
   ON_UUID  m_idef_uuid;
 
   // m_geometry_index is the index of the uuid of the pertinant
-  // piece of geometry in the ON_InstanceRef.m_object_uuid[]
+  // piece of geometry in the ON_InstanceRef.m_object_uuid[] 
   // array.  This index is identical to the index of the
   // geometry's CRhinoObject in the
   // CRhinoInstanceDefinition.m_objects[] array.
@@ -63123,18 +62897,18 @@ public:
   // where the Ts are the transformations from the children.
   ON_Xform m_geometry_xform;
 
-  // If this ON_ObjRef_IRefID is the first entry in the
+  // If this ON_ObjRef_IRefID is the first entry in the 
   // ON_ObjRef.m__iref[] array, then it references a "real"
-  // piece of geometry (not a nested instance reference).
+  // piece of geometry (not a nested instance reference).  
   // If the reference is to a subobject of the real piece
   // of geometry, then m_component_index records
   // the subobject index.
   // In all other cases, m_component_index is not set.
   ON_COMPONENT_INDEX m_component_index;
 
-  // If this ON_ObjRef_IRefID is the first entry in the
+  // If this ON_ObjRef_IRefID is the first entry in the 
   // ON_ObjRef.m__iref[] array, then it references a "real"
-  // piece of geometry (not a nested instance reference).
+  // piece of geometry (not a nested instance reference).  
   // If there is an evaluation parameter for the geometry,
   // it is saved in m_evp.
   // In all other cases, m_evp is not set.
@@ -63143,7 +62917,7 @@ public:
 
 #if defined(ON_DLL_TEMPLATE)
 // This stuff is here because of a limitation in the way Microsoft
-// handles templates and DLLs.  See Microsoft's knowledge base
+// handles templates and DLLs.  See Microsoft's knowledge base 
 // article ID Q168958 for details.
 #pragma warning( push )
 #pragma warning( disable : 4231 )
@@ -63169,13 +62943,13 @@ public:
   ON_UUID m_uuid;
 
   // The m_geometry and m_parent_geometry pointers are runtime values
-  // that point to the object being referenced.  The destructor
+  // that point to the object being referenced.  The destructor 
   // ~ON_ObjRef  does not delete the objects these pointers reference.
   //
   // m_geometry_type records the type of geometry m_geometry points to.
   //
-  // When the referenced object is a subobject, like a part of a brep
-  // or mesh, m_geometry points to the subobject and m_parent_geometry
+  // When the referenced object is a subobject, like a part of a brep 
+  // or mesh, m_geometry points to the subobject and m_parent_geometry 
   // points to the parent object, like the brep or mesh.  In this case
   // m_component_index records the location of the subobject.
   //
@@ -63193,7 +62967,7 @@ public:
   //   the CRhinoInstanceObject, m_parent_geometry would point
   //   to a, possibly proxy, ON_Brep object, m_geometry would point
   //   to the ON_BrepEdge in the ON_Brep, m_component_index would
-  //   record the edge's index in the ON_Brep.m_E[] array and
+  //   record the edge's index in the ON_Brep.m_E[] array and 
   //   m_geometry_type would be ON::curve_object or ON::brep_edge.
   //   m__iref->Last() would contain the information about the
   //   top level instance reference.  If the brep was at the bottom
@@ -63213,13 +62987,13 @@ public:
   // it generally changes if you save and reload an archive.
   unsigned int m_runtime_sn;
 
-  // If m_point != ON_UNSET_POINT, then the ObjRef resolves to
+  // If m_point != ON_UNSET_POINT, then the ObjRef resolves to 
   // a point location.  The point location is saved here so the
   // information can persist if the object itself vanishes.
   ON_3dPoint m_point;
 
   // If the point was the result of some type of object snap, then
-  // the object snap is recorded here.
+  // the object snap is recorded here. 
   ON::osnap_mode m_osnap_mode;
 
   // If m_point != ON_UNSET_POINT and m_evp.m_t_type != 0, then
@@ -63246,13 +63020,13 @@ public:
 
   /*
   Description:
-    Expert user tool to initialize the ON_ObjRef
+    Expert user tool to initialize the ON_ObjRef 
     m__proxy1, m__proxy2, and m__proxy_ref_count fields.
   */
-  void SetProxy(
-          ON_Object* proxy1,
-          ON_Object* proxy2,
-          bool bCountReferences
+  void SetProxy( 
+          ON_Object* proxy1, 
+          ON_Object* proxy2, 
+          bool bCountReferences 
           );
 
   bool SetParentIRef( const ON_InstanceRef& iref,
@@ -63277,7 +63051,7 @@ public:
 
   /*
   Description:
-    This tool is used in rare situations when the object ids
+    This tool is used in rare situations when the object ids 
     stored in the uuid list need to be remapped.
   Parameters:
     uuid_remap - [in]
@@ -63290,12 +63064,12 @@ private:
   // In simple (and the most common) cases where m_geometry
   // is managed by something outside of the ON_ObjRef class,
   // m__proxy_ref_count is NULL.  In this case, the m__proxy1
-  // and m__proxy2 pointers may still be used to store
+  // and m__proxy2 pointers may still be used to store 
   // references to a parent object.
   //
   // In cases when the referenced geometry pointed at by
   // m_geometry is not being managed by another class,
-  // m_proxy1 and m_proxy2 are not NULL and *m_proxy_ref_count
+  // m_proxy1 and m_proxy2 are not NULL and *m_proxy_ref_count 
   // counts the number of ON_ObjRef classes that refer to m__proxy1/2.
   // When the last ON_ObjRef is destroyed, m__proxy1/2 is deleted.
   // When the ON_ObjRef is using reference counting and managing
@@ -63305,7 +63079,7 @@ private:
   // The convention is to use m__proxy1 to store
   // ON_MeshVertex/Edge/FaceRefs and CRhinoPolyEdges
   // and m__proxy2 to store transformed copies if instance
-  // definition geometry.
+  // definition geometry.  
   ON_Object* m__proxy1;
   ON_Object* m__proxy2;
   int* m__proxy_ref_count;
@@ -63314,7 +63088,7 @@ private:
 
 #if defined(ON_DLL_TEMPLATE)
 // This stuff is here because of a limitation in the way Microsoft
-// handles templates and DLLs.  See Microsoft's knowledge base
+// handles templates and DLLs.  See Microsoft's knowledge base 
 // article ID Q168958 for details.
 #pragma warning( push )
 #pragma warning( disable : 4231 )
@@ -63333,7 +63107,7 @@ ON_DLL_TEMPLATE template class ON_CLASS ON_ClassArray<ON_ObjRef>;
 // THIS SOFTWARE IS PROVIDED "AS IS" WITHOUT EXPRESS OR IMPLIED WARRANTY.
 // ALL IMPLIED WARRANTIES OF FITNESS FOR ANY PARTICULAR PURPOSE AND OF
 // MERCHANTABILITY ARE HEREBY DISCLAIMED.
-//
+//				
 // For complete openNURBS copyright information see <http://www.opennurbs.org>.
 //
 ////////////////////////////////////////////////////////////////
@@ -63342,7 +63116,7 @@ ON_DLL_TEMPLATE template class ON_CLASS ON_ClassArray<ON_ObjRef>;
 #if !defined(ON_OFFSETSURFACE_INC_)
 #define ON_OFFSETSURFACE_INC_
 
-// This file is to be used in V3 plug-ins.
+// This file is to be used in V3 plug-ins.  
 // In V4, this will be included as part of opennurbs.
 // Ask Dale Lear if you have any questions.
 
@@ -63395,7 +63169,7 @@ public:
 
 #if defined(ON_DLL_TEMPLATE)
 // This stuff is here because of a limitation in the way Microsoft
-// handles templates and DLLs.  See Microsoft's knowledge base
+// handles templates and DLLs.  See Microsoft's knowledge base 
 // article ID Q168958 for details.
 #pragma warning( push )
 #pragma warning( disable : 4231 )
@@ -63422,7 +63196,7 @@ public:
     True if successful.
   */
   bool SetBaseSurface(
-    const ON_Surface* srf
+    const ON_Surface* srf 
     );
 
   /*
@@ -63433,7 +63207,7 @@ public:
 
   /*
   Description:
-    Use set SetSideTangency if you want the offset
+    Use set SetSideTangency if you want the offset 
     surface and base surface to have the same unit
     normals along a side of the surfaces's parameter
     spaces.
@@ -63491,22 +63265,22 @@ public:
     s - [in]
     t - [in] (s,t) is a base surface evaluation parameter
   */
-  bool SetPoint(
-    int index,
-    double s,
+  bool SetPoint( 
+    int index, 
+    double s, 
     double t
     );
 
 
   /*
-  Description:
+  Description: 
     Set the offset distance for an existing point
   Parameters:
     index - [in] index of the point to set
     distance - [in] new distance
   */
-  bool SetDistance(
-    int index,
+  bool SetDistance( 
+    int index, 
     double distance);
 
 
@@ -63672,7 +63446,7 @@ public:
     True if successful.
   */
   bool SetBaseSurface(
-        ON_Surface* base_surface,
+        ON_Surface* base_surface, 
         bool bManage
         );
 
@@ -63703,7 +63477,7 @@ private:
 // THIS SOFTWARE IS PROVIDED "AS IS" WITHOUT EXPRESS OR IMPLIED WARRANTY.
 // ALL IMPLIED WARRANTIES OF FITNESS FOR ANY PARTICULAR PURPOSE AND OF
 // MERCHANTABILITY ARE HEREBY DISCLAIMED.
-//
+//				
 // For complete openNURBS copyright information see <http://www.opennurbs.org>.
 //
 ////////////////////////////////////////////////////////////////
@@ -63748,7 +63522,7 @@ public:
   //////////////////////////////////////////////////////
   //
   // virtual ON_Geometry overrides
-  // The m_boundary determines all bounding boxes
+  // The m_boundary determines all bounding boxes 
   //
   int Dimension() const;
 
@@ -63758,8 +63532,8 @@ public:
          int bGrowBox = false
          ) const;
 
-	bool GetTightBoundingBox(
-			ON_BoundingBox& tight_bbox,
+	bool GetTightBoundingBox( 
+			ON_BoundingBox& tight_bbox, 
       int bGrowBox = false,
 			const ON_Xform* xform = 0
       ) const;
@@ -63798,7 +63572,7 @@ public:
 // THIS SOFTWARE IS PROVIDED "AS IS" WITHOUT EXPRESS OR IMPLIED WARRANTY.
 // ALL IMPLIED WARRANTIES OF FITNESS FOR ANY PARTICULAR PURPOSE AND OF
 // MERCHANTABILITY ARE HEREBY DISCLAIMED.
-//
+//				
 // For complete openNURBS copyright information see <http://www.opennurbs.org>.
 //
 ////////////////////////////////////////////////////////////////
@@ -63809,9 +63583,9 @@ public:
 
 /*
 Description:
-  ON_SerialNumberMap provides a way to map set of unique
+  ON_SerialNumberMap provides a way to map set of unique 
   serial number - uuid pairs to application defined values
-  so that adding, finding and removing serial numbers is
+  so that adding, finding and removing serial numbers is 
   fast and efficient.  The class is designed to handle
   several millions of unique serial numbers.  There are no
   restrictions on what order numbers are added and removed.
@@ -63893,13 +63667,13 @@ public:
 
   /*
   Returns:
-    The active element with the smallest serial number,
+    The active element with the smallest serial number, 
     or null if the list is empty.
   Restrictions:
     The returned pointer may become invalid after any
-    subsequent calls to any function in this class.
+    subsequent calls to any function in this class.  
     If you need to save information in the returned
-    SN_ELEMENT for future use, you must copy the
+    SN_ELEMENT for future use, you must copy the 
     information into storage you are managing.
 
     You may change the value of the SN_ELEMENT's m_value
@@ -63915,9 +63689,9 @@ public:
     or null if the list is empty.
   Restrictions:
     The returned pointer may become invalid after any
-    subsequent calls to any function in this class.
+    subsequent calls to any function in this class.  
     If you need to save information in the returned
-    SN_ELEMENT for future use, you must copy the
+    SN_ELEMENT for future use, you must copy the 
     information into storage you are managing.
 
     You may change the value of the SN_ELEMENT's m_value
@@ -63935,9 +63709,9 @@ public:
     its element is returned.
   Restrictions:
     The returned pointer may become invalid after any
-    subsequent calls to any function in this class.
+    subsequent calls to any function in this class.  
     If you need to save information in the returned
-    SN_ELEMENT for future use, you must copy the
+    SN_ELEMENT for future use, you must copy the 
     information into storage you are managing.
 
     You may change the value of the SN_ELEMENT's m_value
@@ -63955,9 +63729,9 @@ public:
     its element is returned.
   Restrictions:
     The returned pointer may become invalid after any
-    subsequent calls to any function in this class.
+    subsequent calls to any function in this class.  
     If you need to save information in the returned
-    SN_ELEMENT for future use, you must copy the
+    SN_ELEMENT for future use, you must copy the 
     information into storage you are managing.
 
     You may change the value of the SN_ELEMENT's m_value
@@ -63974,20 +63748,20 @@ public:
     sn - [in] serial number to add.
   Returns:
     If the serial number is valid (>0), a pointer to its
-    element is returned.  When a new element is added,
+    element is returned.  When a new element is added, 
     every byte of the m_value field is set to 0.
     If the serial number was already active, its element is
     also returned.  If you need to distinguish between new
-    and previously existing elements, then change
+    and previously existing elements, then change  
     m_value.m_u_type to something besides 0 after you add
     a new serial number.  The id associated with this
     serial number will be zero and cannot be found using
     FindId().
   Restrictions:
     The returned pointer may become invalid after any
-    subsequent calls to any function in this class.
+    subsequent calls to any function in this class.  
     If you need to save information in the returned
-    SN_ELEMENT for future use, you must copy the
+    SN_ELEMENT for future use, you must copy the 
     information into storage you are managing.
 
     You may change the value of the SN_ELEMENT's m_value
@@ -64005,13 +63779,13 @@ public:
               to the element.
   Returns:
     If the serial number is valid (>0), a pointer to its
-    element is returned.  When a new element is added,
+    element is returned.  When a new element is added, 
     every byte of the m_value field is set to 0.
     If the serial number was already active, its element is
     also returned.  If you need to distinguish between new
-    and previously existing elements, then change
+    and previously existing elements, then change  
     m_value.m_u_type to something besides 0 after you add
-    a new serial number.
+    a new serial number. 
     If the id parameter is zero, then a new uuid is created
     and added. If the id parameter is non zero but is active
     on another element, a new uuid is created and added.
@@ -64020,9 +63794,9 @@ public:
     the element.
   Restrictions:
     The returned pointer may become invalid after any
-    subsequent calls to any function in this class.
+    subsequent calls to any function in this class.  
     If you need to save information in the returned
-    SN_ELEMENT for future use, you must copy the
+    SN_ELEMENT for future use, you must copy the 
     information into storage you are managing.
 
     You may change the value of the SN_ELEMENT's m_value
@@ -64041,9 +63815,9 @@ public:
     the element's id was active, the id is also removed.
   Restrictions:
     The returned pointer may become invalid after any
-    subsequent calls to any function in this class.
+    subsequent calls to any function in this class.  
     If you need to save information in the returned
-    SN_ELEMENT for future use, you must copy the
+    SN_ELEMENT for future use, you must copy the 
     information into storage you are managing.
 
     You may change the value of the SN_ELEMENT's m_value
@@ -64066,9 +63840,9 @@ public:
     use RemoveSerialNumberAndId().
   Restrictions:
     The returned pointer may become invalid after any
-    subsequent calls to any function in this class.
+    subsequent calls to any function in this class.  
     If you need to save information in the returned
-    SN_ELEMENT for future use, you must copy the
+    SN_ELEMENT for future use, you must copy the 
     information into storage you are managing.
 
     You may change the value of the SN_ELEMENT's m_value
@@ -64102,7 +63876,7 @@ public:
   */
   size_t GetElements(
           unsigned int sn0,
-          unsigned int sn1,
+          unsigned int sn1, 
           size_t max_count,
           ON_SimpleArray<SN_ELEMENT>& elements
           ) const;
@@ -64167,7 +63941,7 @@ private:
   ON_MEMORY_POOL* m_pool;
 
   // Serial Number list counts
-  size_t m_sn_count;   // total number of elements
+  size_t m_sn_count;   // total number of elements                       
   size_t m_sn_purged;  // total number of purged elements
 
   // ID hash table counts (all ids in the hash table are active)
@@ -64179,7 +63953,7 @@ private:
                             // id so we don't have to waste time
                             // searching the hash table for
                             // an id that is not there.
-
+                            
 
   // The blocks in m_sn_list[] are alwasy sorted, disjoint,
   // and in increasing order.  m_sn_list is used when
@@ -64208,8 +63982,8 @@ private:
   void GarbageCollectHelper();
   size_t GarbageCollectMoveHelper(SN_BLOCK* dst,SN_BLOCK* src);
 
-  // When m_bHashTableIsValid is true, then m_hash_table[i] is
-  // a linked list of elements whose id satisfies
+  // When m_bHashTableIsValid is true, then m_hash_table[i] is 
+  // a linked list of elements whose id satisfies 
   // i = HashIndex(&e->m_id).  When m_bHashTableIsValid is false,
   // m_hash_table[] is identically zero.
   struct SN_ELEMENT* m_hash_table[ID_HASH_TABLE_COUNT];
@@ -64232,7 +64006,7 @@ private:
 // THIS SOFTWARE IS PROVIDED "AS IS" WITHOUT EXPRESS OR IMPLIED WARRANTY.
 // ALL IMPLIED WARRANTIES OF FITNESS FOR ANY PARTICULAR PURPOSE AND OF
 // MERCHANTABILITY ARE HEREBY DISCLAIMED.
-//
+//				
 // For complete openNURBS copyright information see <http://www.opennurbs.org>.
 //
 ////////////////////////////////////////////////////////////////
@@ -64243,7 +64017,7 @@ private:
 
 #if defined(ON_DLL_TEMPLATE)
 // This stuff is here because of a limitation in the way Microsoft
-// handles templates and DLLs.  See Microsoft's knowledge base
+// handles templates and DLLs.  See Microsoft's knowledge base 
 // article ID Q168958 for details.
 #pragma warning( push )
 #pragma warning( disable : 4231 )
@@ -64276,7 +64050,7 @@ private:
 
 #if defined(ON_DLL_TEMPLATE)
 // This stuff is here because of a limitation in the way Microsoft
-// handles templates and DLLs.  See Microsoft's knowledge base
+// handles templates and DLLs.  See Microsoft's knowledge base 
 // article ID Q168958 for details.
 #pragma warning( push )
 #pragma warning( disable : 4231 )
@@ -64465,7 +64239,7 @@ public:
     Determine if object is an antecedent (input) in this
     history record.
   Parameters:
-    object_uuid - [in]
+    object_uuid - [in] 
   Returns:
     Returns true if object_uuid is the id of an input
     object.
@@ -64490,7 +64264,7 @@ public:
 
   // A YYYYMMDDn version number that gets updated when
   // a command changes.  This version is checked so that
-  // new versions of a command's ReplayHistory don't
+  // new versions of a command's ReplayHistory don't 
   // attempt to use information saved in old files.
   int m_version;
 
@@ -64518,13 +64292,13 @@ public:
   // when the record is added to Rhino's history record table.
   ON_UUID m_record_id;
 
-  // List of object id values of antecedent objects that
+  // List of object id values of antecedent objects that 
   // are referenced in the list of input events in m_value[].
   // These were the command's "input" objects.
   ON_UuidList m_antecedents;
 
-  // List of object id values of descendant objects that
-  // were created.  These were the command's "output" objects
+  // List of object id values of descendant objects that 
+  // were created.  These were the command's "output" objects 
   ON_UuidList m_descendants;
 
   // Information needed to update the descendant objects
@@ -64533,7 +64307,7 @@ public:
 
   /*
   Description:
-    This tool is used in rare situations when the object ids
+    This tool is used in rare situations when the object ids 
     stored in the uuid list need to be remapped.
   Parameters:
     uuid_remap - [in]
@@ -64560,7 +64334,7 @@ private:
 // THIS SOFTWARE IS PROVIDED "AS IS" WITHOUT EXPRESS OR IMPLIED WARRANTY.
 // ALL IMPLIED WARRANTIES OF FITNESS FOR ANY PARTICULAR PURPOSE AND OF
 // MERCHANTABILITY ARE HEREBY DISCLAIMED.
-//
+//				
 // For complete openNURBS copyright information see <http://www.opennurbs.org>.
 //
 ////////////////////////////////////////////////////////////////
@@ -64597,8 +64371,6 @@ public:
   ~ONX_Model_UserData();
   ONX_Model_UserData(const ONX_Model_UserData&);
   ONX_Model_UserData& operator=(const ONX_Model_UserData&);
-
-  void Dump( ON_TextLog& ) const;
 
   ON_UUID  m_uuid;
   ON_3dmGoo m_goo;
@@ -64688,7 +64460,7 @@ public:
 
 #if defined(ON_DLL_TEMPLATE)
 // This stuff is here because of a limitation in the way Microsoft
-// handles templates and DLLs.  See Microsoft's knowledge base
+// handles templates and DLLs.  See Microsoft's knowledge base 
 // article ID Q168958 for details.
 #pragma warning( push )
 #pragma warning( disable : 4231 )
@@ -64796,17 +64568,17 @@ public:
     ONX_Model::Write
     ONX_Model::m_crc_error_count
   */
-  bool Read(
+  bool Read( 
          ON_BinaryArchive& archive,
          ON_TextLog* error_log = NULL
          );
 
-  bool Read(
+  bool Read( 
          const char* filename,
          ON_TextLog* error_log = NULL
          );
 
-  bool Read(
+  bool Read( 
          const wchar_t* filename,
          ON_TextLog* error_log = NULL
          );
@@ -64814,7 +64586,7 @@ public:
   /*
   Description:
     Writes contents of this model to an openNURBS archive.
-    It is a good practice to call Polish() before calling
+    It is a good practice to call Polish() before calling 
     Write so that your file has all the "fluff" that makes it
     complete.  If the model is not valid, then Write will refuse
     to write it.
@@ -64823,29 +64595,29 @@ public:
     archive - [in]
       archive to write to
 
-    version - [in]
+    version - [in] 
       Version of the openNURBS archive to write.
         0 default value and suggested.
            When 0 is passed in, the value of ON_BinaryArchive::CurrentArchiveVersion()
            is used.
         2, 3, 4
-          If you pass in one of these values, some information
+          If you pass in one of these values, some information 
           in current data structures will not be saved in the
-          file.
+          file. 
           Rhino 2.x can read version 2 files.
           Rhino 3.x can read version 2 and 3 files.
           Rhino 4.x can read version 2, 3 and 4 files.
           Rhino 5.x can read version 2, 3, 4, 5 and 50 files.
           Rhino 5.x writes version 50 files.
 
-    sStartSectionComment - [in]
+    sStartSectionComment - [in] 
       Brief desciption of your app, today's date, etc.
 
     error_log - [out]
       any archive writing errors are logged here.
 
   Returns:
-    True if archive is written with no error.
+    True if archive is written with no error. 
     False if errors occur.
     Error details are logged in error_log.
 
@@ -64879,9 +64651,9 @@ public:
                 const char* sStartSectionComment = "...";
                 int version = 5; // 2, 3, 4 or 5 are valid
                 ON_BinaryFile archive( ON::write3dm, fp );
-                ok = model.write( archive,
-                                  version,
-                                  sStartSectionComment,
+                ok = model.write( archive, 
+                                  version, 
+                                  sStartSectionComment, 
                                   error_log );
                 ON::CloseFile( fp );
               }
@@ -64892,21 +64664,21 @@ public:
     ONX_Model::IsValid
     ONX_Model::Read
   */
-  bool Write(
+  bool Write( 
          ON_BinaryArchive& archive,
          int version = 0,
          const char* sStartSectionComment = NULL,
          ON_TextLog* error_log = NULL
          );
 
-  bool Write(
+  bool Write( 
          const char* filename,
          int version = 0,
          const char* sStartSectionComment = NULL,
          ON_TextLog* error_log = NULL
          );
 
-  bool Write(
+  bool Write( 
          const wchar_t* filename,
          int version = 0,
          const char* sStartSectionComment = NULL,
@@ -64927,8 +64699,8 @@ public:
 
   /*
   Description:
-    Quickly fills in the little details, like making sure there is
-    at least one layer and table indices make sense.
+    Quickly fills in the little details, like making sure there is 
+    at least one layer and table indices make sense.  
     For a full blown check and repair, call Audit(true).
   See Also:
     ONX_Model::Audit
@@ -64966,14 +64738,14 @@ public:
           14      some m_material_table[i].m_material_id was nil or not unique.
           15      some m_light_table[i].m_light_id was nil or not unique.
   Returns:
-    True if model is valid and false if the model has serious
+    True if model is valid and false if the model has serious 
     @untitled table
     <0      model has serious errors
     =0      model is ok
     >0      number of problems that were found.
   */
   virtual
-  int Audit(
+  int Audit( 
         bool bAttemptRepair,
         int* repair_count,
         ON_TextLog* text_log,
@@ -65045,9 +64817,9 @@ public:
     attributes - [in] object attributes.
     material - [out] render material
   */
-  void GetRenderMaterial(
+  void GetRenderMaterial( 
         const ON_3dmObjectAttributes& attributes,
-        ON_Material& material
+        ON_Material& material 
         ) const;
 
   /*
@@ -65057,9 +64829,9 @@ public:
     object_index - [in] m_object_table[] index
     material - [out] render material
   */
-  void GetRenderMaterial(
+  void GetRenderMaterial( 
         int object_index,
-        ON_Material& material
+        ON_Material& material 
         ) const;
 
   /*
@@ -65069,9 +64841,9 @@ public:
     attributes - [in] object attributes.
     linetype - [out] linetype
   */
-  void GetLinetype(
+  void GetLinetype( 
         const ON_3dmObjectAttributes& attributes,
-        ON_Linetype& linetype
+        ON_Linetype& linetype 
         ) const;
 
   /*
@@ -65083,7 +64855,7 @@ public:
   */
   void GetLinetype(
         int object_index,
-        ON_Linetype& linetype
+        ON_Linetype& linetype 
         ) const;
 
   /*
@@ -65106,7 +64878,7 @@ public:
   */
   ON_Color WireframeColor(int object_index) const;
 
-  /*
+  /* 
   Description:
     Get index of object in m_object_table from object_uuid.
   Parameters:
@@ -65115,11 +64887,11 @@ public:
     Index of the object or -1 if it is not found.
   */
   virtual
-  int ObjectIndex(
-    ON_UUID object_uuid
+  int ObjectIndex( 
+    ON_UUID object_uuid 
     ) const;
 
-  /*
+  /* 
   Description:
     Get instance definition from instance definition table.
   Parameters:
@@ -65141,11 +64913,11 @@ public:
     Index of the instance definition or -1 if it is not found.
   */
   virtual
-  int IDefIndex(
-    ON_UUID idef_uuid
+  int IDefIndex( 
+    ON_UUID idef_uuid 
     ) const;
 
-  /*
+  /* 
   Description:
     Get instance definition index from instance definition name.
   Parameters:
@@ -65154,18 +64926,18 @@ public:
     Index of the instance definition or -1 if it is not found.
   */
   virtual
-  int IDefIndex(
+  int IDefIndex( 
     const wchar_t* idef_name
     ) const;
 
-  /*
+  /* 
   Description:
     Get instance definition name that is not currently in use.
   */
   virtual
   void GetUnusedIDefName( ON_wString& idef_name ) const;
 
-  /*
+  /* 
   Description:
     See if the instance reference iref refers to an instance
     definition.
@@ -65181,12 +64953,12 @@ public:
     -2         invalid idef found
   */
   virtual
-  int UsesIDef(
+  int UsesIDef( 
         const ON_InstanceRef& iref,
         ON_UUID idef_uuid
         ) const;
 
-  /*
+  /* 
   Description:
     Get layer definition from layer table.
   Parameters:
@@ -65208,11 +64980,11 @@ public:
     Index of the layer or -1 if it is not found.
   */
   virtual
-  int LayerIndex(
+  int LayerIndex( 
     const wchar_t* layer_name
     ) const;
 
-  /*
+  /* 
   Description:
     Get layer name that is not currently in use.
   */
@@ -65229,14 +65001,14 @@ public:
     Attach a user string to the document.
   Parameters:
     key - [in] id used to retrieve this string.
-    string_value - [in]
+    string_value - [in] 
       If NULL, the string with this id will be removed.
   Returns:
     True if successful.
   */
-  bool SetDocumentUserString(
-    const wchar_t* key,
-    const wchar_t* string_value
+  bool SetDocumentUserString( 
+    const wchar_t* key, 
+    const wchar_t* string_value 
     );
 
   /*
@@ -65248,9 +65020,9 @@ public:
   Returns:
     True if a string with id was found.
   */
-  bool GetDocumentUserString(
-    const wchar_t* key,
-    ON_wString& string_value
+  bool GetDocumentUserString( 
+    const wchar_t* key, 
+    ON_wString& string_value 
     ) const;
 
   /*
@@ -65277,21 +65049,21 @@ public:
 
   // text dump of entire model
   void Dump( ON_TextLog& ) const;
-
+  
   // text dump of model properties and settings
   void DumpSummary( ON_TextLog& ) const;
 
   // text dump of bitmap table
-  void DumpBitmapTable( ON_TextLog& ) const;
+  void DumpBitmapTable( ON_TextLog& ) const; 
 
   // text dump of texture mapping table
-  void DumpTextureMappingTable( ON_TextLog& ) const;
+  void DumpTextureMappingTable( ON_TextLog& ) const; 
 
   // text dump of render material table
-  void DumpMaterialTable( ON_TextLog& ) const;
+  void DumpMaterialTable( ON_TextLog& ) const; 
 
   // text dump of line type table
-  void DumpLinetypeTable( ON_TextLog& ) const;
+  void DumpLinetypeTable( ON_TextLog& ) const; 
 
   // text dump of layer table
   void DumpLayerTable( ON_TextLog& ) const;
@@ -65371,8 +65143,8 @@ Returns:
   True if the string is a valid name.
 */
 ON_DECL
-bool ONX_IsValidName(
-          const wchar_t* name
+bool ONX_IsValidName( 
+          const wchar_t* name 
           );
 
 #endif
