@@ -46,8 +46,6 @@ public:
   ONX_Model_UserData(const ONX_Model_UserData&);
   ONX_Model_UserData& operator=(const ONX_Model_UserData&);
 
-  void Dump( ON_TextLog& ) const;
-
   ON_UUID  m_uuid;
   ON_3dmGoo m_goo;
 

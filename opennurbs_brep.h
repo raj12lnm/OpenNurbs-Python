@@ -1236,11 +1236,6 @@ public:
   bool ChangeSurface(
     int si
     );
-  bool ChangeSurface(
-    int si,
-    bool bTransformTrimCurves
-    );
-
   /*
   Returns:
     brep.m_S[] surface index of the 3d surface geometry used by 
@@ -2898,30 +2893,6 @@ public:
     ON_BOOL32* pbHasBoundary = NULL
     ) const;
 
-  /*
-  Description: 
-    Determine if P is inside Brep.  This question only makes sense
-    when the brep is a closed manifold.  This function does not
-    not check for closed or manifold, so result is not valid in
-    those cases.  Intersects a line through P with brep, finds
-    the intersection point Q closest to P, and looks at face 
-    normal at Q.  If the point Q is on an edge or the intersection
-    is not transverse at Q, then another line is used.
-  Parameters:
-    P - [in] 3d point
-    tolerance - [in] 3d distance tolerance used for intersection
-      and determining strict inclusion.
-    bStrictlInside - [in] If bStrictlInside is true, then this
-      function will return false if the distance from P is within
-      tolerance of a brep face.
-  Returns:
-    True if P is in, false if not. See parameter bStrictlyIn.
-  */
-  bool IsPointInside(
-          ON_3dPoint P, 
-          double tolerance,
-          bool bStrictlyInside
-          ) const;
 
 
   bool IsSurface() const;      // returns true if the b-rep has a single face
@@ -3746,29 +3717,6 @@ public:
   */
   bool RemoveSlits(ON_BrepFace& F);
 
-  /*
-  Description:
-    If fid0 != fid1 and m_F[fid0] and m_F[fid1] have the same surface (m_si is identical),
-    and they are joined along a set of edges that do not have any other faces, then this will
-    combine the two faces into one.
-  Parameters:
-    fid0, fid1 - [in] indices into m_F of faces to be merged.
-  Returns:
-    id of merged face if faces were successfully merged. -1 if not merged.
-  Remarks:
-    Caller should call Compact() when done.
-  */
-  int MergeFaces(int fid0, int fid1);
-
-  /*
-  Description:
-    Merge all possible faces that have the same m_si
-  Returns:
-    true if any faces were successfully merged.
-  Remarks:
-    Caller should call Compact() when done.
-  */
-  bool MergeFaces();
 
   /*
   Description:

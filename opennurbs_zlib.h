@@ -82,12 +82,6 @@ public:
           );
 
   /*
-  Returns:
-    Number of bytes in the uncompressed information.
-  */
-  size_t SizeOfUncompressedBuffer() const;
-
-  /*
   Description:
     Uncompress the contents of this ON_CompressedBuffer.
   Parameters:

@@ -229,23 +229,6 @@ public:
   */
   double AscentRatio() const;
 
-  /*
-    Description:
-      Compare the visible characteristics to another font
-
-    Parameters:
-      font_to_compare - [in] The cont to compare this one to
-      bCompareName    - [in] if this is set, test if the names match
-                             otherwise don't compare the names
-
-    Returns:
-      true if font_to_compare matches this one
-      false if font_to_match doesn't match this one
-
-    Added for v5 - 5/20/07
-  */
-  bool CompareFontCharacteristics( ON_Font& font_to_compare, bool bCompareName) const;
-
 #if defined(ON_OS_WINDOWS_GDI)
   bool SetLogFont( const LOGFONT& logfont );
   const LOGFONT& LogFont() const;

@@ -271,15 +271,6 @@ public:
          ON_Surface*& east_or_north_side
          ) const;
 
-  bool GetClosestPoint( 
-          const ON_3dPoint& P,
-          double* s,
-          double* t,
-          double maximum_distance = 0.0,
-          const ON_Interval* sdomain = 0,
-          const ON_Interval* tdomain = 0
-          ) const;
-
   ON_BOOL32 GetLocalClosestPoint( const ON_3dPoint&, // test_point
           double,double,     // seed_parameters
           double*,double*,   // parameters of local closest point returned here

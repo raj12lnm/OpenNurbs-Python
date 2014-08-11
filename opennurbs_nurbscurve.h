@@ -996,15 +996,6 @@ public:
     ) const;
 
   /*
-  Returns:
-    True if every span in the NURBS curve is singular.
-  See Also:
-    ON_NurbsCurve::RepairBadKnots()
-    ON_NurbsCurve::RemoveShortSegments()
-  */
-  bool IsSingular() const;
-
-  /*
   Paramaters:
     span_index - [in]
       The index of a non-empty span to remove.

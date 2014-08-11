@@ -354,38 +354,6 @@ public:
           const ON_Interval* curve_domain = 0
           ) const;
 
-
-  /*
-  Description:
-    virtual ON_Curve::GetNormalizedArcLengthPoints override.
-    Get the parameter of the point on the curve that is a
-    prescribed arc length from the start of the curve.
-  Parameters:
-    count - [in] number of parameters in s.
-    s - [in] array of normalized arc length parameters. E.g., 0 = start
-         of curve, 1/2 = midpoint of curve, 1 = end of curve.
-    t - [out] array of curve parameters such that the length of the
-       curve from its start to t[i] is s[i]*curve_length.
-    absolute_tolerance - [in] if absolute_tolerance > 0, then the difference
-        between (s[i+1]-s[i])*curve_length and the length of the curve
-        segment from t[i] to t[i+1] will be <= absolute_tolerance.
-    fractional_tolerance - [in] desired fractional precision for each segment.
-        fabs("true" length - actual length)/(actual length) <= fractional_tolerance
-    sub_domain - [in] If not NULL, the calculation is performed on
-        the specified sub-domain of the curve.  A 0.0 s value corresponds to
-        sub_domain->Min() and a 1.0 s value corresponds to sub_domain->Max().
-  Returns:
-    true if successful
-  */
-  ON_BOOL32 GetNormalizedArcLengthPoints(
-          int count,
-          const double* s,
-          double* t,
-          double absolute_tolerance = 0.0,
-          double fractional_tolerance = 1.0e-8,
-          const ON_Interval* sub_domain = NULL
-          ) const;
-
   // virtual ON_Curve::GetNurbForm override
   int GetNurbForm( // returns 0: unable to create NURBS representation
                    //            with desired accuracy.

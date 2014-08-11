@@ -1346,35 +1346,6 @@ public:
     int // dir 0 = "r", 1 = "s", 2 = "t"
     ) const;
 
-  bool Reverse( 
-    int dir // dir 0 = "r", 1 = "s", 2 = "t"
-    );
-  
-  bool Transpose(
-    int dir0,
-    int dir1
-    );
-
-  bool ClampEnd(
-            int dir,         // dir 0 = "r", 1 = "s", 2 = "t"
-            int end // 0 = clamp start, 1 = clamp end, 2 = clamp start and end
-            );
-
-  bool InsertKnot(
-           int dir,         // dir 0 = "r", 1 = "s", 2 = "t"
-           double knot_value, // value of knot
-           int knot_multiplicity=1   // multiplicity of knot ( >= 1 and <= degree )
-           );
-
-  ON_BOOL32 IncreaseDegree(
-           int dir,  // dir 0 = "r", 1 = "s", 2 = "t"
-           int desired_degree  //  desired_degree
-           );
-
-  ON_BOOL32 ChangeDimension(
-           int desired_dimension  //  desired_dimension
-           );
-
   /*
   Description:
     Evaluate the NURBS cage
@@ -1474,15 +1445,6 @@ public:
          ON_NurbsSurface* srf = 0
          ) const;
 
-  bool Trim(
-         int dir,
-         const ON_Interval& domain
-         );
-
-  bool Extend(
-    int dir,
-    const ON_Interval& domain
-    );
 
   /*
   Description:
@@ -1519,17 +1481,6 @@ public:
   int Degree(
         int dir
         ) const;
-
-
-  int SpanCount(
-    int dir         // dir 0 = "r", 1 = "s", 2 = "t"
-    ) const;
-
-  bool GetSpanVector(
-    int dir,        // dir 0 = "r", 1 = "s", 2 = "t"
-    double* span_vector
-    ) const;
-
   /*
   Description:
     Expert user function to get a pointer to control vertex

@@ -1202,10 +1202,7 @@ public:
 
   // Added for V5. 4/24/07 LW
   // Get the userdata extension for this dimension
-  ON_DimensionExtra* DimensionExtension();
-  const ON_DimensionExtra* DimensionExtension() const;
-
-
+  
 
 
 };

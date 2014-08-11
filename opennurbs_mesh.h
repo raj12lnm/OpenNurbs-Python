@@ -1274,49 +1274,6 @@ public:
   bool ComputeFaceNormals();   // compute face normals for all faces
   bool ComputeFaceNormal(int); // computes face normal of indexed face
 
-  /*
-  Description:
-    Get a list of pairs of faces that clash.
-  Parameters:
-    max_pair_count - [in]
-      If max_pair_count > 0, then at most this many pairs
-      will be appended to the clashing_pairs[] array.
-      If max_pair_count <= 0, then all clashing pairs
-      will be appended to the clashing_pairs[] array.
-    clashing_pairs - [out]
-      The faces indices of clashing pairs are appended
-      to this array. 
-  Returns:
-    Number of pairs appended to clashing_pairs[].
-  */
-  int GetClashingFacePairs( 
-    int max_pair_count,
-    ON_SimpleArray< ON_2dex >& clashing_pairs
-    ) const;
-
-  /*
-  Description:
-    Cull clashing faces from the mesh.
-  Parameters:
-    what_to_cull - [in]
-      0: when a pair of faces clash, cull both faces
-      1: when a pair of faces clash, leave the face with the
-         longest edge.
-      2: when a pair of faces clash, cull the face with the
-         longest edge.
-      3: when a pair of faces clash, leave the face with
-         the largest area.
-      4: when a pair of faces clash, cull the face with
-         the largest area.
-  Returns:
-    Number of faces culled from the mesh.
-  Remarks:
-    If a large face clashes with many small faces, the large
-    face and one small face will be removed.  When a degenerate
-    face is encountered, it is also culled.
-  */
-  int CullClashingFaces( int what_to_cull );
-
   int CullDegenerateFaces(); // returns number of degenerate faces
 
   int CullUnusedVertices(); // returns number of culled vertices

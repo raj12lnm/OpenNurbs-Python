@@ -699,8 +699,6 @@ struct ON_3DM_BIG_CHUNK
 
 bool ON_IsLongChunkTypecode(ON__UINT32 typecode);
 
-bool ON_IsShortChunkTypecode(ON__UINT32 typecode);
-
 #if defined(ON_DLL_TEMPLATE)
 // This stuff is here because of a limitation in the way Microsoft
 // handles templates and DLLs.  See Microsoft's knowledge base 
@@ -1183,9 +1181,6 @@ public:
 	bool WriteChar(    // Write a single 8 bit char
 			char
 			);  
-	bool WriteChar(    // Write a single 8 bit unsigned char
-			unsigned char
-			);  
 
 	bool WriteShort(   // Write an array of 16 bit shorts
 			size_t,       // number of shorts to write
@@ -1197,9 +1192,6 @@ public:
 			);  
 	bool WriteShort(   // Write a single 16 bit short
 			short
-			);  
-	bool WriteShort(   // Write a single 16 bit unsigned short
-			unsigned short
 			);  
 
 	bool WriteInt( // Write an array of 32 bit integers

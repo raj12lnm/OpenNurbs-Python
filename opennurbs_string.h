@@ -407,20 +407,19 @@ class ON_CLASS ON_String
 public:
 
 // Constructors
-	ON_String();
-	ON_String( const ON_String& );
+  ON_String();
+  ON_String( const ON_String& );
 
-	ON_String( const char* );
-	ON_String( const char*, int /*length*/ );        // from substring
-	ON_String( char, int = 1 /* repeat count */ );   
+  ON_String( const char* );
+  ON_String( const char*, int /*length*/ );        // from substring
 
-	ON_String( const unsigned char* );
-	ON_String( const unsigned char*, int /*length*/ );        // from substring
-	ON_String( unsigned char, int = 1 /* repeat count */ ); 
-  
+  ON_String( const unsigned char* );
+
+
   // construct a UTF-8 string string from a UTF-16 string.
-	ON_String( const wchar_t* src );  // src = UTF-16 string
-	ON_String( const wchar_t* src, int length ); // from a UTF-16 substring
+  ON_String( const wchar_t* src );  // src = UTF-16 string
+  ON_String( const wchar_t* src, int length ); // from a UTF-16 substringstring
+
   ON_String( const ON_wString& src ); // src = UTF-16 string
 
 #if defined(ON_OS_WINDOWS)
@@ -463,7 +462,6 @@ public:
 	char operator[](int) const;
   char GetAt(int) const;
 	void SetAt(int, char);
-	void SetAt(int, unsigned char);
 	operator const char*() const;  // as a C string
 
 	// overloaded assignment
@@ -551,10 +549,6 @@ public:
     Number of times token1 was replaced with token2.
   */
   int Replace( const char* token1, const char* token2 );
-  int Replace( const unsigned char* token1, const unsigned char* token2 );
-  int Replace( char token1, char token2 );
-  int Replace( unsigned char token1, unsigned char token2 );
-
 
 	// simple sub-string extraction
 	ON_String Mid(
@@ -585,13 +579,9 @@ public:
 	// searching (return starting index, or -1 if not found)
 	// look for a single character match
 	int Find(char) const;
-	int Find(unsigned char) const;
 	int ReverseFind(char) const;
-	int ReverseFind(unsigned char) const;
 
-	// look for a specific sub-string
-	int Find(const char*) const;
-	int Find(const unsigned char*) const;
+
 
 	// simple formatting
 	void ON_MSC_CDECL Format( const char*, ...);
@@ -702,23 +692,20 @@ class ON_CLASS ON_wString
 public:
 
 // Constructors
-	ON_wString();
-	ON_wString( const ON_wString& );
+  ON_wString();
+  ON_wString( const ON_wString& );
 
-	ON_wString( const ON_String& src ); // src = UTF-8 string
+  ON_wString( const ON_String& src ); // src = UTF-8 string
 
-	ON_wString( const char* src ); // src = nul; terminated UTF-8 string
-	ON_wString( const char* src, int /*length*/ );  // from UTF-8 substring
-	ON_wString( char, int = 1 /* repeat count */ );   
+  ON_wString( const char* src ); // src = nul; terminated UTF-8 string
+  ON_wString( const char* src, int /*length*/ );  // from UTF-8 substring
 
-	ON_wString( const unsigned char* src); // src = nul; terminated UTF-8 string
-	ON_wString( const unsigned char*src, int /*length*/ );        // from UTF-8 substring
-	ON_wString( unsigned char, int = 1 /* repeat count */ ); 
+  ON_wString( const unsigned char* src); // src = nul; terminated UTF-8 string
+
+  ON_wString( const wchar_t* );
+  ON_wString( const wchar_t*, int /*length*/ );        // from substring
+  ON_wString( wchar_t, int = 1 /* repeat count */ );
   
-	ON_wString( const wchar_t* );
-	ON_wString( const wchar_t*, int /*length*/ );        // from substring
-	ON_wString( wchar_t, int = 1 /* repeat count */ );   
-
 #if defined(ON_OS_WINDOWS)
   // Windows support
 	bool LoadResourceString(HINSTANCE, UINT); // load from string resource
@@ -758,7 +745,6 @@ public:
 	wchar_t operator[](int) const;
   wchar_t GetAt(int) const;
 	void SetAt(int, char);
-	void SetAt(int, unsigned char);
 	void SetAt(int, wchar_t);
 	operator const wchar_t*() const;  // as a UNICODE string
 
@@ -935,18 +921,13 @@ public:
 
 	// searching (return starting index, or -1 if not found)
 	// look for a single character match
-	int Find(char) const;
-	int Find(unsigned char) const;
-	int Find(wchar_t) const;
-	int ReverseFind(char) const;
-	int ReverseFind(unsigned char) const;
-	int ReverseFind(wchar_t) const;
+  int Find(char) const;
+  int Find(wchar_t) const;
+  int ReverseFind(char) const;
+  int ReverseFind(wchar_t) const;
 
-	// look for a specific sub-string
-	int Find(const char*) const;
-	int Find(const unsigned char*) const;
-	int Find(const wchar_t*) const;
-
+  int Find(const char*) const;
+  int Find(const wchar_t*) const;
 
 	// simple formatting - be careful with %s in format string
 	void ON_MSC_CDECL Format( const char*, ...);
